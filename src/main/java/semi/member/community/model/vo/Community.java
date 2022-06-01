@@ -13,6 +13,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Community {
 	
+//	수정예정
 	private int boardNo;
 	private String boardTitle;
 	private String memberNickname;
