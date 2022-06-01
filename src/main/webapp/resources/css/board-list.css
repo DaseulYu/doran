@@ -1,0 +1,148 @@
+*{ box-sizing: border-box;}
+
+/* section, div, form{
+    border: 1px solid black;
+} */
+
+*{font-family: 'NanumBarunGothic';}
+
+.board-list{
+    width: 1000px;
+    margin: auto;
+}
+
+/* 글쓰기 버튼 */
+.btn-area{
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+#insertBtn{
+    width: 70px;
+    height: 30px;
+    background-color: #ff8339;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+#insertBtn:hover{
+    background-color: white;
+    color: #ff8339;
+    border: 1px solid #ff8339;
+    font-weight: bold;
+}
+ 
+
+/* 자유게시판 */
+.list-wrapper{
+    margin: 7px auto;
+}
+/* 목록 출력 테이블 */
+.list-table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.list-table > thead{
+    background-color: #ff8339;
+    color: white;
+}
+.list-table tr{
+    height: 35px;
+}
+
+.list-table > tbody > tr{
+    border-bottom: 1px solid gray;
+}
+
+.list-table tr > *{
+    text-align: center;
+}
+
+.list-table tr > *:nth-of-type(1){ width: 10%;}
+
+.list-table tr > *:nth-of-type(2){ width: 50%;}
+.list-table tr > td:nth-of-type(2){
+    width: 50%;
+    text-align: left;
+    padding-left: 50px;
+}
+.list-table tr > *:nth-of-type(3){ width: 15%;}
+.list-table tr > *:nth-of-type(4){ width: 15%;}
+.list-table tr > *:nth-of-type(5){ width: 10%;}
+
+.list-table a{
+    text-decoration: none;
+    color: black;
+}
+
+.list-table a:hover{
+    text-decoration: underline;
+}
+
+
+/* 페이지 */
+.paging{
+    width: 300px;
+    height: 30px;
+    margin: auto;
+    margin-top: 10px;
+}
+.paging > ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.paging li{
+    flex: 50px;
+}
+.paging a{
+    display: block;
+    text-align: center;
+    padding: 5px 0;
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+}
+.paging .current{
+    color: white;
+    background-color: #0C71FF;
+    border-radius: 10%;
+}
+
+
+/* 검색 영역 */
+#boardSearch{
+    width: 400px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+}
+/* 검색 영역 공통 스타일 */
+#boardSearch *{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+#boardSearch select{
+    width: 100px;
+}
+#boardSearch input{
+    flex-grow: 1;
+    margin: 0 10px;
+    padding-left: 10px;
+}
+#boardSearch button{
+    width: 60px;
+    background-color: #ff8339;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
