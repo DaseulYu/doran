@@ -1,4 +1,8 @@
 
+
+
+
+
 -- 게시판 종류
 DROP TABLE "BOARD_TYPE";
 
