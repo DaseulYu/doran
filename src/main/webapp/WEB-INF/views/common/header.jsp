@@ -3,16 +3,14 @@
 <header>
     <section class="header-content">
             <a href="#">회원가입</a>
-            <!-- <a href="#">유저일님</a> -->
             <a href="#">로그인</a>
-            <!-- <a href="#">로그아웃</a> -->
             <a href="#">공지사항</a>
 
     </section>
 
     <section>
         <button id="category">
-            <img src="../resources/images/menubar.png" id="menubar"><br>
+            <img src="${contextPath}/resources/images/menubar.png" id="menubar"><br>
             카테고리
         </button>
         <a href="${contextPath}">
