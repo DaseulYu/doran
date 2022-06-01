@@ -1,0 +1,300 @@
+*{ box-sizing: border-box;}
+
+/* div{ border: 1px solid black; } */
+
+*{font-family: 'NanumBarunGothic';}
+
+.community-container{
+    width: 1140px;
+    margin: auto;
+}
+
+/* board-head 게시판 헤드 */
+.community-head{
+    width: 1000px;
+    height: 310px;
+    display: flex;
+    margin: auto;
+}
+/* 모임 이미지*/
+.head-left{
+    flex-basis: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.head-left > img{
+    height: 300px;
+    width: 300px; 
+}
+
+/* 모임 헤드 우측 모임명/소개 등 */
+.head-right{
+    flex-basis: 800px;
+    margin-left: 10px;
+}
+/* 모임명 */
+.head-title{
+    height: 40px;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+.community-name{
+    flex-basis: 90%;
+    display: flex;
+}
+
+/* 모임 편집(모임장만 가능) */
+.community-name > a{
+    text-decoration: none;
+}
+.btn-edit{
+    color: gray;
+    font-size: 0.7em;
+    font-weight: normal;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.btn-edit:hover{
+    color: #0C71FF;
+    text-decoration: underline;
+} 
+
+/* 모임 신고 버튼 */
+.btn-report{
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 0;
+    border-radius: 3px;
+    color: gray;
+    cursor: pointer;
+}
+.btn-report:hover{
+    color: #0C71FF;
+    border: 1px solid #0C71FF;
+}
+
+/* 모임 소개글 */
+.head-info{
+    height: 140px;
+    margin-left: 15px;
+}
+
+/* 모임장 정보 */
+/* 프로필사진 */
+#user{
+    width: 35px;
+    border-radius: 50%;
+}
+.head-user{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+.head-user > div:nth-of-type(1){
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* 모임 가입하기 */
+/* 찜하기 */
+#pick{
+    width: 30px;
+    cursor: pointer;
+}
+.head-join{
+    display: flex;
+}
+.head-join > div:nth-of-type(1){
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 모임 가입하기 버튼 */
+.btn-join{
+    height: 50px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff8339;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+
+}
+.btn-join:hover{
+    background-color: white;
+    color: #ff8339;
+    border: 1px solid #ff8339;
+    font-weight: bold;
+}
+
+/* board-nav 게시판 네비 */
+.community-nav{
+    width: 1000px;
+    height: 40px;
+    position: sticky;
+    top: 0; 
+    margin: auto;
+    background-color: white;
+    border-top: 1px solid #ff8339;
+    border-bottom: 1px solid #ff8339;
+}
+.community-nav > ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+.community-nav li{
+    flex: 1 1 150px; 
+        /* 팽창, 수축, 기본값 */
+}
+.community-nav a{
+    display: block;
+    height: 100%;
+    text-align: center;
+    padding: 8px 0;
+
+    /* 밑줄 */
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+}
+.community-nav a:hover{
+    border: none;
+    color: #ff8339;
+    font-weight: bold;
+}
+.community-nav span{
+    font-size: 20px;
+    color: black;
+    padding: 4px;
+}
+
+/* board-content 게시판 내용 */
+/* 게시판 밑줄 */
+.board{
+    width: 1000px;
+    min-height: 230px;
+    margin: 25px auto;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 상세 정보 소개글 */
+.board-detail-txt{
+    min-height: 100px;
+}
+
+/* 다음 모임 */
+.next-event{
+    margin-top: -10px;
+    border-collapse: collapse;
+}
+.next-event th{
+    border: 1px solid black;
+    background-color: #ff8339;
+    color: white;
+    width: 90px;
+    height: 35px;
+}
+.next-event td{
+    border: 1px solid black;
+    width: 300px;
+	padding-left: 10px;
+}
+/* 참여하기 버튼 */
+.btn-event{
+    margin: 7px 310px;
+    width: 80px;
+    height: 30px;
+    background-color: #ff8339;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-event:hover{
+    background-color: white;
+    color: #ff8339;
+    border: 1px solid #ff8339;
+    font-weight: bold;
+}
+
+/* 가입인사 / 자유게시판 / 모임 후기 전체 보기 */
+.board a{
+    text-decoration: none;
+}
+
+.board-all{
+    font-size: 0.7em;
+    font-weight: normal;
+    color: rgb(66, 66, 66);
+    margin-left: 7px;
+}
+.board-all:hover{
+    text-decoration: underline;
+    color: #0C71FF;
+}
+
+
+
+
+
+
+/* 모임 후기 */
+.review-content {
+    display: flex;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+.review{
+    flex-basis: 25%;
+    text-align: center;
+}
+/* 후기 사진 */
+.review-img > img{
+    width: 200px;
+    height: 200px;
+}
+.userInfo{
+    display: flex;
+    align-items: center;
+    margin: 7px 15px;
+    height: 40px;
+    border-bottom: 1px solid rgb(253, 243, 243);;
+}
+.userInfo > div:nth-of-type(1){
+    flex-basis: 25%;
+}
+.userInfo > div:nth-of-type(2){
+    height: 40px;
+    text-align: left;
+}
+.review-text{
+    text-align: left;
+    margin: 7px 15px;
+    max-height: 130px;
+
+}
+
+
+
+

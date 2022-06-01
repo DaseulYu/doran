@@ -1,0 +1,230 @@
+/* 자유게시판 세부 내용 & 모임 후기 게시판 */
+
+*{ box-sizing: border-box;}
+
+/* div, span{ border: 1px solid black; } */
+
+*{font-family: 'NanumBarunGothic';}
+
+.board-detail{
+    width: 1000px;
+    margin: auto;
+}
+/* 글쓰기 버튼 */
+.btn-area{
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 28px;
+}
+#insertBtn, #goToListBtn{
+    width: 70px;
+    height: 30px;
+    background-color: #ff8339;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+#insertBtn:hover, #goToListBtn:hover{
+    background-color: white;
+    color: #ff8339;
+    border: 1px solid #ff8339;
+    font-weight: bold;
+}
+
+/* 후기 수정/삭제 버튼 영역 */
+/* 댓글 수정/삭제 버튼 영역 */
+.write-btn-area, .reply-btn-area {
+    width: 120px;
+    display: flex;
+}
+.write-btn-area > button, .reply-btn-area > button{
+    width: 40px;
+    height : 20px;
+    color: #0C71FF;
+    background-color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 0.8em;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.write-btn-area > button:hover, .reply-btn-area > button:hover{
+    color: #0C71FF;
+    border: 1px solid #0C71FF;
+}
+
+
+/* 후기 */
+.content{
+    width: 95%;
+    margin: 20px auto;
+    /* margin-top: 10px; */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+/* 작성자 프로필 */
+.user > img{
+    width: 35px;
+    border-radius: 50%;
+}
+/* 프로필 영역 */
+.user{
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 후기글 작성자 */
+.userInfo {
+    display: flex;
+    height: 50px;
+    margin: auto;
+}
+/* 작성자 닉네임, 작성일 */
+.writerInfo{
+    width: 800px;
+    padding: 5px;
+}
+.user-nick{
+    font-size: 16px;
+    font-weight: bold;
+}
+.txt-date{
+    font-size: 0.8em;
+    color: gray;
+}
+.userInfo > div:nth-of-type(3){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 후기 내용, 댓글 내용 */
+.content-txt, .reply-list-area{
+    margin: 15px 0 15px 15px;
+    width: 900px;
+}
+
+/* 후기 사진 */
+.content-img-area{
+    margin-left: 15px;
+    display: flex;
+    width: 900px;
+    height: 220px;
+}
+.content-img-area > div{
+    width: 200px;
+    height: 200px;
+    margin: 10px 10px;
+}
+.content-img-area img{
+    width: 200px;
+    height: 200px;
+}
+
+
+
+/* 댓글 영역 */
+.reply-list-area{
+    border-top: 1px solid #ddd;
+}
+.reply-row{
+    display: flex;
+    margin: 15px auto;
+}
+.reply-txt-area{
+    height: 60px;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+.reply-txt-date{
+    margin-left: 7px;
+    font-size: 0.7em;
+    color: gray;
+}
+.reply-nick{
+    height: 60px;
+    width: 130px;
+    margin-left: -25px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+.reply-nick > #user{
+    width: 30px;
+    border-radius: 50%;
+}
+
+
+
+
+/* 댓글 작성 textarea */
+.reply-write-area{
+    margin-left: 15px;
+    width: 900px;
+    display: flex;
+    align-items: center;
+}
+.reply-write-area > textarea{
+    width: 830px;
+    height: 60px;
+    resize: none;;
+}
+.btn-reply{
+    margin-left: 10px;
+    width: 60px;
+    height: 60px;
+    background-color: #ff8339;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-reply:hover{
+    background-color: white;
+    color: #ff8339;
+    border: 1px solid #ff8339;
+    font-weight: bold;
+}
+
+
+
+/* 페이지 */
+.paging{
+    width: 300px;
+    height: 30px;
+    margin: 20px auto;
+}
+.paging > ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.paging li{
+    flex: 50px;
+}
+.paging a{
+    display: block;
+    text-align: center;
+    padding: 5px 0;
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+}
+.paging .current{
+    color: white;
+    background-color: #0C71FF;
+    border-radius: 10%;
+}

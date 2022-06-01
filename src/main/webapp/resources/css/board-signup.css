@@ -1,0 +1,138 @@
+*{ box-sizing: border-box;}
+
+/* div{ border: 1px solid black; } */
+
+*{font-family: 'NanumBarunGothic';}
+
+.board-signup{
+    width: 1000px;
+    margin: auto;
+}
+
+
+/* 수정/삭제/신고 버튼 */
+.write-btn-area{
+    width: 120px;
+    display: flex;
+}
+.write-btn-area > button{
+    width: 40px;
+    height : 20px;
+    color: #0C71FF;
+    background-color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 0.8em;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.write-btn-area > button:hover{
+    color: #0C71FF;
+    border: 1px solid #0C71FF;
+}
+
+
+/* 가입인사 글 */
+/* 작성자 프로필 */
+#user{
+    width: 35px;
+    border-radius: 50%;
+}
+/* 프로필 영역 */
+.user{
+    width: 120px;
+    height: 60px;
+    text-align: center;
+}
+/* 작성자 닉네임 */
+.user > p{
+    display: block;
+    text-decoration: none;
+    color: black;
+    margin-top: 2px;
+    font-size: 12px;
+}
+/* 가입인사 */
+.signup{
+    width: 95%;
+    height: 70px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(253, 243, 243);
+}
+.message{
+    display: flex;
+    width: 100%;
+    margin-left: 15px;
+    font-size: 14px;
+    align-items: center;
+}
+.message-date{
+    margin: 4px 0 0 7px;
+    font-size: 0.8em;
+    color: gray;
+}
+
+/* 가입인사 작성 */
+.message-textarea{
+    width: 95%;
+    height: 70px;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+}
+.message-textarea > textarea{
+    width: 90%;
+    height: 60px;
+    margin-left: 15px;
+    resize: none;
+}
+.btn-reply{
+    margin-left: 10px;
+    width: 60px;
+    height: 60px;
+    background-color: #ff8339;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-reply:hover{
+    background-color: white;
+    color: #ff8339;
+    border: 1px solid #ff8339;
+    font-weight: bold;
+}
+
+
+/* 페이지 */
+.paging{
+    width: 300px;
+    height: 30px;
+    margin: 20px auto;
+}
+.paging > ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.paging li{
+    flex: 50px;
+}
+.paging a{
+    display: block;
+    text-align: center;
+    padding: 5px 0;
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+}
+.paging .current{
+    color: white;
+    background-color: #0C71FF;
+    border-radius: 10%;
+}
