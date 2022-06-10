@@ -54,14 +54,19 @@ form[name='login-form']{
     margin-top: 10px;
     margin-left : 15px;
 }
+
+input[type='checkbox']{
+    margin-left: 30px;
+}
+/* 
 label[for='id-save'] {
     position: relative;
     top: 1.5px;
 }
 input[type='checkbox'] + label[for='id-save']{
     display: inline-block;
-    width: 300px;
-    height: 300px;
+    width: 20px;
+    height: 20px;
     margin-left: 30px;
     border: 1px solid #ccc;
     cursor: pointer;
@@ -71,10 +76,9 @@ input[type='checkbox']{
     display: none;
 }
 input[type='checkbox'] :checked + label[for='id-save']{
-background-image: url(../resources/images/checkbox.png);
-position: relative;
-top: 5px;
-}
+background-image: url("../resources/images/checkbox.png");
+background-size: cover;
+} */
 
 .message-area{
     margin-top: 15px;

@@ -18,6 +18,7 @@
     
 </head>
 <body>
+    <a href="${contextPath}/member/login.jsp">로그인</a>
     <div class="board-container">
     
         <form class="community-head">
