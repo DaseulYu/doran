@@ -6,6 +6,8 @@ import java.sql.Connection;
 
 import semi.member.community.model.dao.CommunityDAO;
 import semi.member.community.model.vo.Community;
+import semi.member.community.model.vo.CommunityGetTogether;
+import semi.member.community.model.vo.CommunityMember;
 
 public class CommunityService {
 	
@@ -25,6 +27,69 @@ public class CommunityService {
 		close(conn);
 		
 		return comm;
+	}
+	
+	/** 모임 등록 Service
+	 * @param com
+	 * @param categoryNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int addMeeting(Community com, String categoryName) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.addMeeting(conn, com);
+		
+		if(result > 0) {
+			result = dao.addMeeting2(conn, categoryName);
+		}
+		
+		if(result > 0) commit(conn);
+		else         rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/** 모임 정모 등록 Service
+	 * @param cgt
+	 * @return result
+	 * @throws Exception
+	 */
+	public int addSchedule(CommunityGetTogether cgt) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.addSchedule(conn, cgt);
+		
+		if(result > 0) commit(conn);
+		else         rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/** 모임 승인 Service
+	 * @param cm
+	 * @return result
+	 * @throws Exception
+	 */
+	public int addCommunityMember(CommunityMember cm) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.addCommunityMember(conn, cm);
+		
+		
+		if(result > 0) commit(conn);
+		else         rollback(conn);
+		
+		close(conn);
+		
+		return result;
 	}
 
 }
