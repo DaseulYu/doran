@@ -16,5 +16,36 @@ public class BoardImage {
 	private String imageOriginal;
 	private int imageLevel;
 	private int boardNo;
-
+	public int getImageNo() {
+		return imageNo;
+	}
+	public void setImageNo(int imageNo) {
+		this.imageNo = imageNo;
+	}
+	public String getImageName() {
+		return imageName;
+	}
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+	public String getImageOriginal() {
+		return imageOriginal;
+	}
+	public void setImageOriginal(String imageOriginal) {
+		this.imageOriginal = imageOriginal;
+	}
+	public int getImageLevel() {
+		return imageLevel;
+	}
+	public void setImageLevel(int imageLevel) {
+		this.imageLevel = imageLevel;
+	}
+	public int getBoardNo() {
+		return boardNo;
+	}
+	public void setBoardNo(int boardNo) {
+		this.boardNo = boardNo;
+	}
+	
+	
 }
