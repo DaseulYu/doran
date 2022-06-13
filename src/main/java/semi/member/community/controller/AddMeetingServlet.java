@@ -2,6 +2,7 @@ package semi.member.community.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,6 +48,8 @@ public class AddMeetingServlet extends HttpServlet{
 			int result = service.addMeeting(com, categoryName);
 			
 			HttpSession session = req.getSession();
+			String path = null;
+			String message = null;
 			
 			if(result > 0) {
 				session.setAttribute("message", "모임 생성을 완료하였습니다.");
@@ -54,7 +57,9 @@ public class AddMeetingServlet extends HttpServlet{
 			} else {
 				session.setAttribute("message", "모임 생성에 실패하였습니다.");
 			}
-			resp.sendRedirect(req.getContextPath());
+			
+			session.setAttribute("message", message);
+			resp.sendRedirect(path);
 			
 		} catch(Exception e) {
 			e.printStackTrace();

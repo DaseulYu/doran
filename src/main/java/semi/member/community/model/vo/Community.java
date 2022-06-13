@@ -21,10 +21,25 @@ public class Community {
 	private String communityArea;
 	private String memberNickname;
 	private String profileImage;
-	private char communityFlag;
+	private String communityFlag;
 	private String communityNotice;
 	private int categoryNo;
+	private String communityAdmin;
+	private int memberNo;
 	
+	
+	public int getMemberNo() {
+		return memberNo;
+	}
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
+	}
+	public String getCommunityAdmin() {
+		return communityAdmin;
+	}
+	public void setCommunityAdmin(String communityAdmin) {
+		this.communityAdmin = communityAdmin;
+	}
 	public int getCommunityNo() {
 		return communityNo;
 	}
@@ -73,10 +88,10 @@ public class Community {
 	public void setProfileImage(String profileImage) {
 		this.profileImage = profileImage;
 	}
-	public char getCommunityFlag() {
+	public String getCommunityFlag() {
 		return communityFlag;
 	}
-	public void setCommunityFlag(char communityFlag) {
+	public void setCommunityFlag(String communityFlag) {
 		this.communityFlag = communityFlag;
 	}
 	public String getCommunityNotice() {

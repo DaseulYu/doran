@@ -177,7 +177,56 @@ public class CommunityDAO {
 		}
 		return result;
 	}
-	
-	
 
+	/** 모임장 위임 DAO
+	 * @param conn
+	 * @param com
+	 * @return result
+	 * @throws Exception
+	 */
+	public int entrust(Connection conn, Community com) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("entrust");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, com.getCommunityNo());
+			pstmt.setInt(2, com.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/** 멤버 추방 DAO
+	 * @param conn
+	 * @param cm
+	 * @return result
+	 * @throws Exception
+	 */
+	public int memberOut(Connection conn, CommunityMember cm) throws Exception  {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("memberOut");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, cm.getCommunityNo());
+			pstmt.setInt(2, cm.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }
