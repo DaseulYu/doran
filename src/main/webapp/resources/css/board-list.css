@@ -67,7 +67,6 @@
 
 .list-table tr > *:nth-of-type(2){ width: 50%;}
 .list-table tr > td:nth-of-type(2){
-    width: 50%;
     text-align: left;
     padding-left: 50px;
 }
@@ -117,7 +116,7 @@
 
 
 /* 검색 영역 */
-#boardSearch{
+#noticeSearch{
     width: 400px;
     height: 30px;
     display: flex;
@@ -125,20 +124,20 @@
     margin: 20px auto;
 }
 /* 검색 영역 공통 스타일 */
-#boardSearch *{
+#noticeSearch *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
-#boardSearch select{
+#noticeSearch select{
     width: 100px;
 }
-#boardSearch input{
+#noticeSearch input{
     flex-grow: 1;
     margin: 0 10px;
     padding-left: 10px;
 }
-#boardSearch button{
+#noticeSearch button{
     width: 60px;
     background-color: #ff8339;
     color: white;

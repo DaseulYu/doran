@@ -2,9 +2,10 @@
 
 <header>
     <section class="header-content">
+            <a href="${contextPath}/admin/list">admin</a>
             <a href="#">회원가입</a>
             <a href="#">로그인</a>
-            <a href="#">공지사항</a>
+            <a href="${contextPath}/notice">공지사항</a>
 
     </section>
 
@@ -31,8 +32,8 @@
             </article>
         </section>
 
-        <a href="#">유저일님</a>
+        <!-- <a href="#">유저일님</a>
         <a href="#">로그아웃</a>
-        <a href="#">공지사항</a>
+        <a href="#">공지사항</a> -->
     </section>
 </header>
