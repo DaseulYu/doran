@@ -58,12 +58,14 @@ public class LoginServlet extends HttpServlet {
 			}
 			c.setPath(req.getContextPath());
 			
+
 			resp.addCookie(c);
 			}else {//로그인 실패
 			session.setAttribute("message", "아이디 또는 패스워드가 일치하지 않습니다.");
 			}
-			
+
 			resp.sendRedirect(req.getContextPath());
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();

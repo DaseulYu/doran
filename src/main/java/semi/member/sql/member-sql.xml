@@ -4,7 +4,6 @@
 	<comment>member-sql.xml</comment>
 
 	<entry key="login">
-
 		SELECT MEMBER_NO, MEMBER_ID,MEMBER_PW, MEMBER_NM,
 		TO_CHAR(MEMBER_BIRTH, 'YYYY-MM-DD') AS MEMBER_BIRTH, MEMBER_PHONE,
 		MEMBER_NICK, PROFILE_IMG, MEMBER_LIVE
@@ -12,5 +11,31 @@
 		WHERE MEMBER_ID = ?
 		AND MEMBER_PW = ?
 		AND SECESSION_FL ='N'
+	</entry>
+	
+	<entry key="nicknameDupCheck">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_NICK = ?
+		AND SECESSION_FL ='N'
+	</entry>
+	
+	<entry key="phoneDupCheck">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_PHONE = ?
+		AND SECESSION_FL = 'N'
+	</entry>
+	
+	<entry key="updateMember">
+		UPDATE MEMBER SET
+		MEMBER_NICK = ?, 
+		MEMBER_PHONE = ?
+		WHERE MEMBER_NO=?
+	</entry>
+	
+	<entry key="changePw">
+		UPDATE MEMBER SET
+		MEMBER_PW = ?
+		WHERE MEMBER_PW = ?
+		AND MEMBER_NO = ?
 	</entry>
 </properties>
