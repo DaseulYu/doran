@@ -18,7 +18,7 @@
     align-items: center;
     margin-right: 28px;
 }
-#insertBtn, #goToListBtn{
+.btn-area > button{
     width: 70px;
     height: 30px;
     background-color: #ff8339;
@@ -29,7 +29,7 @@
     border: none;
     cursor: pointer;
 }
-#insertBtn:hover, #goToListBtn:hover{
+.btn-area > button:hover{
     background-color: white;
     color: #ff8339;
     border: 1px solid #ff8339;
@@ -49,10 +49,7 @@
     background-color: white;
     border: none;
     border-radius: 3px;
-    font-size: 0.8em;
     margin: auto;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
 }
 .write-btn-area > button:hover, .reply-btn-area > button:hover{
@@ -61,14 +58,24 @@
 }
 
 
-/* 후기 */
+/* 후기 내용 */
 .content{
     width: 95%;
     margin: 20px auto;
-    /* margin-top: 10px; */
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
     border-radius: 5px;
     padding: 7px;
+}
+
+/* 제목 */
+.board-title-area{
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+.board-title{
+    width: 800px;
 }
 
 /* 작성자 프로필 */
@@ -92,13 +99,14 @@
 /* 작성자 닉네임, 작성일 */
 .writerInfo{
     width: 800px;
-    padding: 5px;
+    padding-top: 15px;
 }
 .user-nick{
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
 }
 .txt-date{
+    margin-left: 7px;
     font-size: 0.8em;
     color: gray;
 }
@@ -119,7 +127,6 @@
     margin-left: 15px;
     display: flex;
     width: 900px;
-    height: 220px;
 }
 .content-img-area > div{
     width: 200px;
@@ -150,7 +157,7 @@
 }
 .reply-txt-date{
     margin-left: 7px;
-    font-size: 0.7em;
+    font-size: 0.8em;
     color: gray;
 }
 .reply-nick{

@@ -73,6 +73,7 @@ section > .search-content{
 .search-area{
     border: none;
     display: flex;
+    align-items: center;
 }
 
 #query{
