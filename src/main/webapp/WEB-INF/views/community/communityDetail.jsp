@@ -32,7 +32,7 @@
                     <div class="head-title">
                         <div class="community-name">
                             <span>${comm.communityName}</span>
-                            <a href="#"><span class="btn-edit">edit</span></a>
+                            <a href="/src/main/webapp/WEB-INF/views/community/meeting-admin.jsp"><span class="btn-edit">edit</span></a>
                         </div>
                         <div><button class="btn-report">신고</button></div>
                     </div>
