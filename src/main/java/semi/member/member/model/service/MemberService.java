@@ -92,4 +92,39 @@ public class MemberService {
 		
 	}
 
+	/** 현재 비밀번호 확인 Service
+	 * @param currentPw
+	 * @param loginMemberNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int currentPwConfirmCheck(String currentPw, int loginMemberNo) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.currentPwConfirmCheck(conn, currentPw, loginMemberNo);
+		
+		close(conn);
+		return result;
+	}
+
+	/** 프로필 이미지 변경 Service
+	 * @param memberNo
+	 * @param profileImage
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateProfileImage(int memberNo, String profileImage) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.updateProfileImage(conn, memberNo,profileImage);
+		
+		if(result>0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+		
+	}
+
 }
