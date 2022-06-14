@@ -25,8 +25,8 @@ public class CommunitySignup extends HttpServlet {
 			SignupService service = new SignupService();
 			List<SignupDetail> detail = service.selectSignupList(communityNo);
 			
-			System.out.println(communityNo);
-			System.out.println(detail);
+//			System.out.println(communityNo);
+//			System.out.println(detail);
 			
 
 			req.setAttribute("detail", detail);

@@ -23,39 +23,57 @@
             <div>
                 <h2>가입인사</h2>
             </div>
-            
-            <div class="signup">
-                <div class="user">
-                    <img src="../../resources/images/user.png" id="user">
-                    <p>최대여덟글자까지</p>
-                </div>
-                <div class="message">
-                    <p>
-                        <span class="message-txt">안녕하세요.</span>
-                        <span class="message-date">2022.05.22</span>
-                    </p>
-                </div>
-                <div class="write-btn-area">
-                    <button id="btn-report">신고</button>
-                    <button id="updateBtn">수정</button>
-                    <button id="deleteBtn">삭제</button>
-                </div>
-            </div>
 
+            <div class="signup">
+                <ul id="signup-list">
+
+                    <li class="signup-row">
+                        <div class="user">
+                            <img src="${contextPath}/resources/images/user.png" id="user">
+                            <p>최대최대여덟글자</p>
+                        </div>
+                        <div class="message">
+                            <span class="message-txt">안녕하세요.</span>
+                            <span class="message-date">2022.05.22</span>
+                        </div>
+                        <div class="write-btn-area">
+                            <button id="btn-report">신고</button>
+                            <button id="updateBtn">수정</button>
+                            <button id="deleteBtn">삭제</button>
+                        </div>
+                    </li>
+
+                    <li class="signup-row">
+                        <div class="user">
+                            <img src="${contextPath}/resources/images/user.png" id="user">
+                            <p>최대여덟글자</p>
+                        </div>
+                        <div class="message">
+                            <span class="message-txt">안녕하세요.</span>
+                            <span class="message-date">2022.05.22</span>
+                        </div>
+                        <div class="write-btn-area">
+                            <button id="btn-report">신고</button>
+                            <button id="updateBtn">수정</button>
+                            <button id="deleteBtn">삭제</button>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
 
             
             <div class="message-textarea">
                 <textarea maxlength="100" placeholder="내용을 입력해주세요.(100 글자 이하)" id="msgContent"></textarea>
                 <button class="btn-reply" id="btn-reply">등록</button>
             </div>
-
-            
         
         </div>
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+    <script src="${contextPath}/resources/js/board/board-signup.js"></script>
 
 </body>
 </html>
