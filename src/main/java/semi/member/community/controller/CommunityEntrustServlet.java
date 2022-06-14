@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import semi.member.community.model.service.CommunityService;
 import semi.member.community.model.vo.Community;
 
-@WebServlet("/community/admin/entrust")
+@WebServlet("/community/admin")
 public class CommunityEntrustServlet extends HttpServlet{
 	
 	@Override
@@ -31,7 +31,6 @@ public class CommunityEntrustServlet extends HttpServlet{
 		CommunityService service = new CommunityService();
 		
 		try {
-			
 			int result = service.entrust(com);
 			
 			HttpSession session = req.getSession();
