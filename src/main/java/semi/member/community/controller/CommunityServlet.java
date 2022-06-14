@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.member.community.model.service.CommunityService;
+import semi.member.community.model.vo.Community;
 
 @WebServlet("/community/detail")
 public class CommunityServlet extends HttpServlet{
@@ -18,8 +19,13 @@ public class CommunityServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
+			int communityNo = Integer.parseInt(req.getParameter("cn"));
 			
 			CommunityService service = new CommunityService();
+			
+			Community comm = service.selectCommunity(communityNo);
+			
+			req.setAttribute("comm", comm);
 			
 			String path = "/WEB-INF/views/community/communityDetail.jsp";
 			

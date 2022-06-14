@@ -13,20 +13,6 @@ import javax.sql.DataSource;
 
 public class JDBCTemplate {
 	
-	  /* DB 연결, JDBC 자원 반환, 트랜잭션 제어 같은 
-	    * 반복적으로 사용되는 JDBC 관련 코드를 모아둔 클래스
-	    * 
-	    * getConnection() 메서드
-	    * 
-	    * close( Connection | Statement | ResultSet  ) 메서드
-	    *   --> PreparedStatement는 Statement의 자식이므로 
-	    *       매개변수 다형성으로 한번에 처리
-	    *   
-	    * commit(Connection)
-	    * rollback(Connection)
-	    * */
-	   
-	   
 	   // 필드
 	   
 	   // static 메서드에서 

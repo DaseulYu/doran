@@ -13,10 +13,16 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Community {
 	
-	private int boardNo;
-	private String boardTitle;
+	private int communityNo;
+	private String communityName;
+	private String communityImage;
+	private String communityInfo; 
+	private String communityDetail;
+	private String communityArea;
 	private String memberNickname;
-	private String createDate;
+	private String profileImage;
+	private char communityFlag;
+	private String communityNotice;
+	private int categoryNo;
 	
-
 }

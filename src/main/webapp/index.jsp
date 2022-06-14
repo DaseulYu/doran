@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+>>>>>>> origin/YDS
 
 
 <!DOCTYPE html>
@@ -17,11 +22,16 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/board-signup.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board-list.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/YDS
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
     
 </head>
 <body>
 
+<<<<<<< HEAD
     
     <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
@@ -37,10 +47,33 @@
                     <div class="community-name">
                         <span>도란도란</span>
                         <a href="#"><span class="btn-edit">edit</span></a>
-                    </div>
-                    <div><button class="btn-report">신고</button></div>
-                </div>
+=======
+    <!-- 임시 index => 메인 완성 후 교체 -->
 
+    <main>
+        <!-- header -->
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
+        <!-- 임시 버튼 -->
+        <a href="community/detail?cn=1"> cn=1모임 바로가기 </a>
+    
+        <div class="board-container">
+
+            <form class="community-head">
+                <div class="head-left">
+                    <img src="resources/images/sample.jpg">
+                </div>
+                <div class="head-right">
+                    <div class="head-title">
+                        <div class="community-name">
+                            <span>INDEX</span>
+                            <a href="#"><span class="btn-edit">edit</span></a>
+                        </div>
+                        <div><button class="btn-report">신고</button></div>
+>>>>>>> origin/YDS
+                    </div>
+
+<<<<<<< HEAD
                 <div class="head-info">
                     <p>모임소개글</p>
                 </div>
@@ -53,55 +86,32 @@
                 <div class="head-join">
                     <div>
                         <img src="${contextPath}/resources/images/pick1.png" id="pick"></a>
+=======
+                    <div class="head-info">
+                        <p>모임소개글</p>
+>>>>>>> origin/YDS
                     </div>
-                    <div class="btn-join">모임 가입하기</div>
-                </div>
-            </div>
-        </form>
 
-        <div class="community-nav">
-            <ul>
-                <li><a href="#board-detail">상세정보</a></li>
-                <span>|</span>
-                <li><a href="#board-signup">가입인사</a></li>
-                <span>|</span>
-                <li><a href="#board-community">자유게시판</a></li>
-                <span>|</span>
-                <li><a href="#board-review">정모후기</a></li>
-            </ul>
+                    <div class="head-user">
+                        <div><img src="resources/images/user_sample.jpg" id="user"></div>
+                        <div>닉네임</div>
+                    </div>
+
+                    <div class="head-join">
+                        <div>
+                            <img src="resources/images/pick1.png" id="pick"></a>
+                        </div>
+                        <div class="btn-join">모임 가입하기</div>
+                    </div>
+                </div>
+            </form>
         </div>
-        
-        <section class="community-content">
-        
-        	<!-- 모임 상세정보(모임장 작성) -->
-            <div class="board board-detail">
-                <h3>상세정보</h3>
-                <div class="board-detail-txt">
-                    모임소개글을 입력해주세요.<br>
-                    모임소개글을 입력해주세요.<br>
-                </div>
+    </main>
 
-                <!-- 다음 모임 -->
-                <div class="board-event">
-                    <h4>다음모임</h4>
-                    <table class="next-event">
-                        <tr>
-                            <th>일시</th>
-                            <td>2022월 05월 13일(금) 18:00</td>
-                        </tr>
-                        <tr>
-                            <th>장소</th>
-                            <td>서울시 종로구</td>
-                        </tr>
-                        <tr>
-                            <th>참여인원</th>
-                            <td>12명</td>
-                        </tr>
-                    </table>
-                    
-                    <button class="btn-event">참여하기</button>
-                </div>
+    <!-- jQuery 라이브러리 추가 (CDN) -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+<<<<<<< HEAD
             </div>
 
             <!-- 가입인사 -->
@@ -319,6 +329,11 @@
     </div>
     <!-- jQuery 라이브러리 추가 (CDN) -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+=======
+    <!-- footer -->
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    
+>>>>>>> origin/YDS
 </body>
 
 

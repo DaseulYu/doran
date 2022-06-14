@@ -7,305 +7,205 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모임명</title>
+    <title>${comm.communityName}</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/member-community.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board-signup.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board-list.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
     
 </head>
 <body>
-    <div class="board-container">
-    
-        <form class="community-head">
-            <div class="head-left">
-                <img src="${contextPath}/resources/images/sample.jpg">
-            </div>
-            <div class="head-right">
-                <div class="head-title">
-                    <div class="community-name">
-                        <span>도란도란</span>
-                        <a href="#"><span class="btn-edit">edit</span></a>
-                    </div>
-                    <div><button class="btn-report">신고</button></div>
-                </div>
 
-                <div class="head-info">
-                    <p>모임소개글</p>
-                </div>
+    <main>
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-                <div class="head-user">
-                    <div><img src="${contextPath}/resources/images/user.png" id="user"></div>
-                    <div>닉네임</div>
-                </div>
-
-                <div class="head-join">
-                    <div>
-                        <img src="${contextPath}/resources/images/pick1.png" id="pick"></a>
-                    </div>
-                    <div class="btn-join">모임 가입하기</div>
-                </div>
-            </div>
-        </form>
-
-        <div class="community-nav">
-            <ul>
-                <li><a href="#board-detail">상세정보</a></li>
-                <span>|</span>
-                <li><a href="#board-signup">가입인사</a></li>
-                <span>|</span>
-                <li><a href="#board-community">자유게시판</a></li>
-                <span>|</span>
-                <li><a href="#board-review">정모후기</a></li>
-            </ul>
-        </div>
+        <div class="board-container">
         
-        <section class="community-content">
-        
-        	<!-- 모임 상세정보(모임장 작성) -->
-            <div class="board board-detail" id="board-detail">
-                <h3>상세정보</h3>
-                <div class="board-detail-txt">
-                    모임소개글을 입력해주세요.<br>
-                    모임소개글을 입력해주세요.<br>
+            <form class="community-head">
+                <div class="head-left">
+                    <img src="${contextPath}${comm.communityImage}">
+                </div>
+                <div class="head-right">
+                    <div class="head-title">
+                        <div class="community-name">
+                            <span>${comm.communityName}</span>
+                            <a href="#"><span class="btn-edit">edit</span></a>
+                        </div>
+                        <div><button class="btn-report">신고</button></div>
+                    </div>
+
+                    <div class="head-info">
+                        <p>${comm.communityInfo}</p>
+                    </div>
+
+                    <div class="head-user">
+                        <div>
+                            <c:if test="${empty comm.profileImage}">
+                                <img src="${contextPath}/resources/images/user.png" id="user">
+                            </c:if>
+                            
+                            <c:if test="${!empty comm.profileImage}">
+                                <img src="${contextPath}${comm.profileImage}" id="user">
+                            </c:if>
+                        </div>
+                        
+                        <div>${comm.memberNickname}</div>
+
+                    </div>
+
+                    <div class="head-join">
+                        <div onclick="pick()">
+                            <img src="${contextPath}/resources/images/pick1.png" id="pick" >
+                        </div>
+                        <div class="btn-join" id="btn-join">모임 가입하기</div>
+                    </div>
+                    <div id="btn-leave">모임 탈퇴하기</div>
+                </div>
+            </form>
+
+            <div class="community-nav">
+                <ul>
+                    <li><a href="#board-detail">공지사항</a></li>
+                    <span>|</span>
+                    <li><a href="#board-signup">가입인사</a></li>
+                    <span>|</span>
+                    <li><a href="#board-community">자유게시판</a></li>
+                    <span>|</span>
+                    <li><a href="#board-review">정모후기</a></li>
+                </ul>
+            </div>
+            
+            <section class="community-content">
+            
+                <!-- 모임 상세정보(모임장 작성) -->
+                <div class="board board-detail" id="board-detail">
+                    <h3>공지사항</h3>
+                    <div class="board-detail-txt">
+                        ${comm.communityDetail}
+                    </div>
+
+                    <!-- 다음 모임 -->
+                    <div class="board-event">
+                        <h4>다음모임</h4>
+                        <table class="next-event">
+                            <tr>
+                                <th>일시</th>
+                                <td>2022월 05월 13일(금) 18:00</td>
+                            </tr>
+                            <tr>
+                                <th>장소</th>
+                                <td>서울시 종로구</td>
+                            </tr>
+                            <tr>
+                                <th>참여인원</th>
+                                <td>12명</td>
+                            </tr>
+                        </table>
+                        
+                        <button class="btn-event">참여하기</button>
+                    </div>
+
                 </div>
 
-                <!-- 다음 모임 -->
-                <div class="board-event">
-                    <h4>다음모임</h4>
-                    <table class="next-event">
-                        <tr>
-                            <th>일시</th>
-                            <td>2022월 05월 13일(금) 18:00</td>
-                        </tr>
-                        <tr>
-                            <th>장소</th>
-                            <td>서울시 종로구</td>
-                        </tr>
-                        <tr>
-                            <th>참여인원</th>
-                            <td>12명</td>
-                        </tr>
-                    </table>
+                <!-- 가입인사 -->
+                <div class="board board-signup" id="board-signup">
+                    <h3>가입인사
+                        <a href="${contextPath}/community/signup/list?cn=${param.cn}" target="_blank"><span class="board-all">전체 가입인사 보기 &gt;</span></a>
+                    </h3>
+
+                    <div class="signup">
+                        <ul id="signup-list">
+        
+                            <li class="signup-row">
+                                <div class="user">
+                                    <img src="${contextPath}/resources/images/user.png" id="user">
+                                    <p>최대최대여덟글자</p>
+                                </div>
+                                <div class="message">
+                                    <span class="message-txt">안녕하세요.</span>
+                                    <span class="message-date">2022.05.22</span>
+                                </div>
+                                <div class="write-btn-area">
+                                    <button id="btn-report">신고</button>
+                                    <button id="updateBtn">수정</button>
+                                    <button id="deleteBtn">삭제</button>
+                                </div>
+                            </li>
+        
+                            <li class="signup-row">
+                                <div class="user">
+                                    <img src="${contextPath}/resources/images/user.png" id="user">
+                                    <p>최대여덟글자</p>
+                                </div>
+                                <div class="message">
+                                    <span class="message-txt">안녕하세요.</span>
+                                    <span class="message-date">2022.05.22</span>
+                                </div>
+                                <div class="write-btn-area">
+                                    <button id="btn-report">신고</button>
+                                    <button id="updateBtn">수정</button>
+                                    <button id="deleteBtn">삭제</button>
+                                </div>
+                            </li>
+        
+                        </ul>
+                    </div>
                     
-                    <button class="btn-event">참여하기</button>
                 </div>
 
-            </div>
 
-            <!-- 가입인사 -->
-            <div class="board board-signup" id="board-signup">
-                <h3>가입인사
-                    <a href="/SemiProject/community/boardSignup" target="_blank"><span class="board-all">전체 가입인사 보기 &gt;</span></a>
-                </h3>
+                <!-- 자유게시판 -->
+                <div class="board board-list" id="board-list">
+                    <h3>자유게시판
+                        <a href="${contextPath}/community/board/list?cn=${param.cn}&type=1" target="_blank"><span class="board-all">전체 게시글 보기 &gt;</span></a>
+                    </h3>
 
-                <div class="signup">
-                    <div class="user">
-                        <img src="${contextPath}/resources/images/user.png" id="user">
-                        <p>닉네임입니다</p>
-                    </div>
-                    <div class="message">
-                        <p>
-                            <span class="message-txt">안녕하세요.</span>
-                            <span class="message-date">2022.05.22</span>
-                        </p>
-                    </div>
+                    <jsp:include page="/WEB-INF/views/community/commu-board.jsp"/>
+
                 </div>
-                <div class="signup">
-                    <div class="user">
-                        <img src="${contextPath}/resources/images/user.png" id="user">
-                        <p>닉네임입니다</p>
-                    </div>
-                    <div class="message">
-                        <p>
-                            <span class="message-txt">안녕하세요.</span>
-                            <span class="message-date">2022.05.22</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="signup">
-                    <div class="user">
-                        <img src="${contextPath}/resources/images/user.png" id="user">
-                        <p>닉네임입니다</p>
-                    </div>
-                    <div class="message">
-                        <p>
-                            <span class="message-txt">안녕하세요.</span>
-                            <span class="message-date">2022.05.22</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="message-textarea">
-                    <textarea maxlength="100" placeholder="내용을 입력해주세요.(100 글자 이하)"></textarea>
-                    <button class="btn-reply">등록</button>
-                </div>
-            </div>
-
-
-            <!-- 자유게시판 -->
-            <div class="board board-list" id="board-list">
-                <h3>자유게시판
-                    <a href="/SemiProject/community/boardList" target="_blank"><span class="board-all">전체 게시글 보기 &gt;</span></a>
-                </h3>
-
-                <div class="list-wrapper">
-                    <table class="list-table">
-                        <thead>
-                            <tr>
-                                <th>번호</th>
-                                <th>제목</th>
-                                <th>작성자</th>
-                                <th>작성일</th>
-                                <th>조회수</th>
-                            </tr>
-                        </thead>
-        
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <a href="#">1번째 게시글</a>
-                                </td>
-                                <td>유저일</td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    <a href="#">2번째 게시글</a>
-                                </td>
-                                <td>유저일</td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>
-                                    <a href="#">3번째 게시글</a>
-                                </td>
-                                <td>유저일</td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>
-                                    <a href="#">4번째 게시글</a>
-                                </td>
-                                <td>유저일</td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>
-                                    <a href="#">5번째 게시글</a>
-                                </td>
-                                <td>유저일</td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
 
 
-            <!-- 모임 후기 -->
-            <div class="board board-review" id="board-review">
-                <h3>모임후기
-                    <a href="/SemiProject/community/boardReview" target="_blank"><span class="board-all">전체 후기 보기 &gt;</span></a>
-                </h3>  
+                <!-- 모임 후기 -->
+                <div class="board board-review" id="board-review">
+                    <h3>모임후기
+                        <a href="${contextPath}/community/board/review?cn=${param.cn}&type=2" target="_blank"><span class="board-all">전체 후기 보기 &gt;</span></a>
+                    </h3>  
 
-                <div class="review-content">
+                    <div class="review-content">
 
-                    <div class="review">
-                        <div class="review-img thumbnail">
-                            <img src="${contextPath}/resources/images/sample.jpg">
-                        </div>
-                        <div class="userInfo">
-                            <div>
-                                <img src="${contextPath}/resources/images/user.png" id="user">
+                        <div class="review">
+                            <div class="review-img thumbnail">
+                                <img src="${contextPath}/resources/images/sample.jpg">
                             </div>
-                            <span><h4>닉네임</h4></span>
-                        </div>
-                        <div class="review-text">
-                            모임후기1<br>
-                            모임후기2<br>
-                            모임후기3<br>
-                            모임후기4<br>
-                            모임후기5<br>
-                        </div>
-                    </div>
-
-                    <div class="review">
-                        <div class="review-img thumbnail">
-                            <img src="${contextPath}/resources/images/sample.jpg">
-                        </div>
-                        <div class="userInfo">
-                            <div>
-                                <img src="${contextPath}/resources/images/user.png" id="user">
+                            <div class="userInfo">
+                                <div>
+                                    <img src="${contextPath}/resources/images/user.png" id="user">
+                                </div>
+                                <span><h4>여덟글자닉네임임</h4></span>
                             </div>
-                            <span><h4>닉네임</h4></span>
-                        </div>
-                        <div class="review-text">
-                            모임후기1<br>
-                            모임후기2<br>
-                            모임후기3<br>
-                            모임후기4<br>
-                            모임후기5<br>
-                        </div>
-                    </div>
-
-                    <div class="review">
-                        <div class="review-img thumbnail">
-                            <img src="${contextPath}/resources/images/sample.jpg">
-                        </div>
-                        <div class="userInfo">
-                            <div>
-                                <img src="${contextPath}/resources/images/user.png" id="user">
+                            <div class="review-text">
+                                모임후기1<br>
+                                모임후기2<br>
+                                모임후기3<br>
+                                모임후기4<br>
+                                모임후기5<br>
                             </div>
-                            <span><h4>닉네임</h4></span>
                         </div>
-                        <div class="review-text">
-                            모임후기1<br>
-                            모임후기2<br>
-                            모임후기3<br>
-                            모임후기4<br>
-                            모임후기5<br>
-                        </div>
+                        
                     </div>
-
-                    <div class="review">
-                        <div class="review-img thumbnail">
-                            <img src="${contextPath}/resources/images/sample.jpg">
-                        </div>
-                        <div class="userInfo">
-                            <div>
-                                <img src="${contextPath}/resources/images/user.png" id="user">
-                            </div>
-                            <span><h4>닉네임</h4></span>
-                        </div>
-                        <div class="review-text">
-                            모임후기1<br>
-                            모임후기2<br>
-                            모임후기3<br>
-                            모임후기4<br>
-                            모임후기5<br>
-                        </div>
-                    </div>
-
                 </div>
+                
+            </section>
+        </div>
+    </main>
 
-            </div>
-
-        </section>
-
-    </div>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    
+    <script src="${contextPath}/resources/js/community/member-community.js"></script>
     
 </body>
 </html>

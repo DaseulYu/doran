@@ -1,0 +1,183 @@
+*{ box-sizing: border-box;}
+
+/* *{ border: 1px solid black; } */
+
+*{font-family: 'NanumBarunGothic';}
+
+/* 관리자 네비 */
+.admin-nav{
+    width: 250px;
+    height: 35px;
+    top: 0; 
+    background-color: white;
+}
+.admin-nav > ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+.admin-nav li{
+    flex: 1; 
+}
+.admin-nav a{
+    display: block;
+    height: 100%;
+    text-align: center;
+    padding: 8px 0;
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+}
+.admin-nav a:hover{
+    font-weight: bold;
+    border-bottom: 3px solid #0C71FF;
+}
+
+
+/* 공지사항 */
+.admin-detail{
+    width: 1000px;
+    margin: auto;
+}
+
+/* 자유게시판 */
+.list-wrapper{
+    margin: 10px auto;
+}
+/* 목록 출력 테이블 */
+.list-table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.list-table > thead{
+    background-color: #0C71FF;
+    color: white;
+}
+.list-table tr{
+    height: 35px;
+}
+
+.list-table tr > *{
+    text-align: center;
+}
+
+.list-table tr > *:nth-of-type(1){ width: 5%;}
+
+.list-table tr > *:nth-of-type(2){ width: 10%;}
+.list-table tr > *:nth-of-type(3){ width: 55%;}
+.list-table tr > td:nth-of-type(3){
+    text-align: left;
+    padding-left: 30px;
+}
+.list-table tr > *:nth-of-type(4){ width: 10%;}
+.list-table tr > *:nth-of-type(5){ width: 5%;}
+.list-table tr > *:nth-of-type(6){ width: 5%;}
+.list-table tr > *:nth-of-type(7){ width: 5%;}
+.list-table tr > *:nth-of-type(8){ width: 5%;}
+
+/* 게시글 제목 */
+.list-table a{
+    text-decoration: none;
+    color: black;
+}
+.list-table a:hover{
+    text-decoration: underline;
+}
+
+/* 등록/삭제 버튼 */
+#noticeInsertBtn:hover, #noticeDeleteBtn:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+
+
+/* 글쓰기 버튼 */
+.btn-area{
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+#insertBtn{
+    width: 70px;
+    height: 30px;
+    color: #0C71FF;
+    background-color: white;
+    border: 1px solid #0C71FF;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+#insertBtn:hover{
+    color: #0C71FF;
+    text-decoration: underline;
+}
+
+/* 페이지 */
+.paging{
+    width: 300px;
+    height: 30px;
+    margin: auto;
+    margin-top: 10px;
+}
+.paging > ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.paging li{
+    flex: 50px;
+}
+.paging a{
+    display: block;
+    text-align: center;
+    padding: 5px 0;
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+}
+.paging .current{
+    color: white;
+    background-color: #ff8339;
+    border-radius: 10%;
+}
+
+
+/* 검색 영역 */
+#noticeSearch{
+    width: 400px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+}
+/* 검색 영역 공통 스타일 */
+#noticeSearch *{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+#noticeSearch select{
+    width: 100px;
+}
+#noticeSearch input{
+    flex-grow: 1;
+    margin: 0 10px;
+    padding-left: 10px;
+}
+#noticeSearch button{
+    width: 60px;
+    background-color: #0C71FF;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+

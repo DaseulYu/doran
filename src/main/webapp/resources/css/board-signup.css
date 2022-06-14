@@ -8,12 +8,17 @@
     width: 1000px;
     margin: auto;
 }
-
+.signup-row{
+    display: flex;
+    border-bottom: 1px solid rgb(253, 243, 243); 
+    margin-bottom: 10px;
+}
 
 /* 수정/삭제/신고 버튼 */
 .write-btn-area{
     width: 120px;
     display: flex;
+    margin-left: 10px;
 }
 .write-btn-area > button{
     width: 40px;
@@ -36,13 +41,17 @@
 
 /* 가입인사 글 */
 /* 작성자 프로필 */
+#signup-list{
+    list-style: none;
+    width: 95%;
+}
 #user{
     width: 35px;
     border-radius: 50%;
 }
 /* 프로필 영역 */
 .user{
-    width: 120px;
+    width: 140px;
     height: 60px;
     text-align: center;
 }
@@ -53,15 +62,15 @@
     color: black;
     margin-top: 2px;
     font-size: 12px;
+    font-weight: bold;
 }
 /* 가입인사 */
 .signup{
     width: 95%;
-    height: 70px;
     margin: auto;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid rgb(253, 243, 243);
+
 }
 .message{
     display: flex;
