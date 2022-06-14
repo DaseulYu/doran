@@ -68,7 +68,7 @@
 
             <div class="community-nav">
                 <ul>
-                    <li><a href="#board-detail">상세정보</a></li>
+                    <li><a href="#board-detail">공지사항</a></li>
                     <span>|</span>
                     <li><a href="#board-signup">가입인사</a></li>
                     <span>|</span>
@@ -82,7 +82,7 @@
             
                 <!-- 모임 상세정보(모임장 작성) -->
                 <div class="board board-detail" id="board-detail">
-                    <h3>상세정보</h3>
+                    <h3>공지사항</h3>
                     <div class="board-detail-txt">
                         ${comm.communityDetail}
                     </div>
@@ -114,20 +114,44 @@
                 <div class="board board-signup" id="board-signup">
                     <h3>가입인사
                         <a href="${contextPath}/community/signup/list?cn=${param.cn}" target="_blank"><span class="board-all">전체 가입인사 보기 &gt;</span></a>
-                        <!-- <a href="${contextPath}/community/signup/list" target="_blank"><span class="board-all">전체 가입인사 보기 &gt;</span></a> -->
                     </h3>
 
                     <div class="signup">
-                        <div class="user">
-                            <img src="${contextPath}/resources/images/user_sample.jpg" id="user">
-                            <p>닉네임입니다</p>
-                        </div>
-                        <div class="message">
-                            <p>
-                                <span class="message-txt">안녕하세요.</span>
-                                <span class="message-date">2022.05.22</span>
-                            </p>
-                        </div>
+                        <ul id="signup-list">
+        
+                            <li class="signup-row">
+                                <div class="user">
+                                    <img src="${contextPath}/resources/images/user.png" id="user">
+                                    <p>최대최대여덟글자</p>
+                                </div>
+                                <div class="message">
+                                    <span class="message-txt">안녕하세요.</span>
+                                    <span class="message-date">2022.05.22</span>
+                                </div>
+                                <div class="write-btn-area">
+                                    <button id="btn-report">신고</button>
+                                    <button id="updateBtn">수정</button>
+                                    <button id="deleteBtn">삭제</button>
+                                </div>
+                            </li>
+        
+                            <li class="signup-row">
+                                <div class="user">
+                                    <img src="${contextPath}/resources/images/user.png" id="user">
+                                    <p>최대여덟글자</p>
+                                </div>
+                                <div class="message">
+                                    <span class="message-txt">안녕하세요.</span>
+                                    <span class="message-date">2022.05.22</span>
+                                </div>
+                                <div class="write-btn-area">
+                                    <button id="btn-report">신고</button>
+                                    <button id="updateBtn">수정</button>
+                                    <button id="deleteBtn">삭제</button>
+                                </div>
+                            </li>
+        
+                        </ul>
                     </div>
                     
                 </div>

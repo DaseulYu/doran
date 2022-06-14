@@ -1,23 +1,16 @@
 *{font-family: 'NanumBarunGothic';}
 
-/* 헤더 */
+/* header */
 body{ margin : 0; } 
 
 main{
-    width: 100%;
+    width: 1140px;
     margin: auto;
 }
 
 header{
-    height: 200px;
+    height: 150px;
     display: block;
-}
-
-header > section:nth-of-type(1){
-    flex-basis : 20%;
-}
-header > section:nth-of-type(2){
-    flex-basis : 80%;
 }
 
 .header-content{
@@ -36,12 +29,15 @@ header > section:nth-of-type(2){
     margin-right: 15px;
 }
 
+.header-content a :hover {
+    color: black;
+}
+
 header > section:nth-of-type(2){
     display: flex;
     align-items: center;
     border-bottom: 2px solid #ddd;
 }
-
 
 #category{
     width: 100px;
@@ -60,28 +56,28 @@ header > section:nth-of-type(2){
 }
 
 a #home-logo{
+    display: flex;
+    width: 200px;
+}
+
+.search-content{
+    display: flex;
     justify-content: center;
-    width: 250px;
-}
-
-
-section > .search-content{
-    display: flex;
-    margin: auto;
-}
-
-.search-area{
-    border: none;
-    display: flex;
     align-items: center;
 }
 
+.search-area{
+    width: 550px;
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+
 #query{
-    width: 330px;
-    height: 45px;
+    width: 70%;
     border-radius: 5px;
     border: 1px solid #ddd;
-    color: #F6F6F6;
+    color: gray;
     padding: 5px;
     font-size: 15px;
 }
@@ -100,15 +96,58 @@ section > .search-content{
     align-items: center;
 }
 
+.member-content{
+    margin-left: 40px;
+    width: 200px;
+    justify-content: end;
+}
+
 section a{
+    justify-content: end;
     font-size: 15px;
     text-decoration: none;
     color: gray;
-    margin-right: 15px;
+    margin-right: 5px;
+}
+
+/* footer */
+footer{
+    padding: 20px;
+    background-color: rgb(248, 248, 248);
+}
+
+.customer-service{
+    margin: 0px auto;
+    width: 40%;
+    color: rgb(146, 145, 145);
+}
+
+.cs{
+    margin: 5px;
+    font-weight:600;
+}
+
+footer a{
+    color: black;
+    text-decoration: none;
+}
+
+.info{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.customer-service > p:first-child{
+    color: black;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.customer-service > a:last-child{
+    font-weight: bold;
 }
 
 
-/* 풋터 */
+
 /* footer */
 footer{
     padding: 20px;

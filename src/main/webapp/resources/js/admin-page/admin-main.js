@@ -102,6 +102,8 @@ function searchValidate(){
 const noticeNo = "${noticeList.noticeNo}";
 // 등록
 function noticeInsert(noticeNo){
+
+    const noticeInsertBtn = document.getElementById("noticeInsertBtn");
     
     if(confirm("게시글을 등록 하시겠습니까?")){
         $.ajax({
