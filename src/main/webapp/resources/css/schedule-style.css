@@ -1,0 +1,213 @@
+.addMeeting-content{
+    display: flex;
+    width: 1100px;
+}
+
+.schedule-form{
+    width: 50%;
+    margin: 0px auto;
+    display: block;
+}
+
+h1{
+    margin: 0px;
+    margin-bottom: 10px;
+    color: #FF8339;
+    font-size: 28px;
+}
+
+div > a{
+    color: #D5D5D5;
+    text-decoration: none;
+    border-bottom: 2px solid #ddd;
+}
+
+div > a:hover {
+    color : black;
+    border-bottom: 2px solid black;
+}
+
+#sch {
+    color : black;
+    border-bottom: 2px solid black;
+}
+
+#clock {
+    width: 30px;
+    height: 30px;  
+    margin-left: 12px;
+    margin-right: 20px;
+    
+}
+
+#map {
+    width: 40px;
+    height: 40px;
+    margin-left: 7px;
+    margin-right: 20px;
+}
+
+.schedule-input-area { 
+    width: 500px;
+    height: 30px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.schedule-input-area-exp{
+    width: 500px;
+    height: 180px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+div > label {
+    display: inline-block;
+    text-align: center;
+    font-size: 15px;
+    color: gray;
+    margin: 5px;
+    margin-top: 10px;
+}
+
+#groupTime-1 {
+    width: 37%;
+    height: 100%;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    outline: 0;
+    color: gray;
+}
+
+#groupTime-1:focus-within{
+    border: 1px solid #FF8339;
+}
+
+#time-1 {
+    width: 37%;
+    height: 100%;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    outline: 0;
+    color: gray;
+}
+
+#time-1:focus-within{
+    border: 1px solid #FF8339;
+}
+
+#groupTime-2 {
+    width: 37%;
+    height: 100%;
+    margin-left: 100px;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    outline: 0;
+    color: gray;
+    margin-left: 62px;
+}
+
+#groupTime-2:focus-within{
+    border: 1px solid #FF8339;
+}
+
+#time-2 {
+    width: 37%;
+    height: 100%;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    outline: 0;
+    color: gray;
+}
+
+#time-2:focus-within{
+    border: 1px solid #FF8339;
+}
+
+.schedule-input-area > span {
+    font-size: 14.2px;
+    margin-left: 62px;
+    color: #0c71ff;
+    
+}
+
+#groupArea {
+    width: 75%;
+    height: 100%;
+    border-radius: 5px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    outline: 0;
+    color: gray;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+#groupArea:focus-within{
+    border: 1px solid #FF8339;
+}
+
+#limitedPeople {
+    width: 74%;
+    height: 100%;
+    border-radius: 5px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    outline: 0;
+    color: gray;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+#limitedPeople:focus-within{
+    border: 1px solid #FF8339;
+}
+
+#scheduleExp{
+    width: 74%;
+    height: 100%;
+    border-radius: 5px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    outline: 0;
+    color: gray;
+    padding: 5px;
+}
+
+#scheduleExp:focus-within{
+    border: 1px solid #FF8339;
+}
+
+.schedule-input-area > button {
+    background-color: #FF8339;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+}
+
+#add {
+    margin-left: 65px;
+    margin-bottom: 10px;
+    background-color: #FF8339;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    width: 77%;
+    height: 100%;
+}
+
+

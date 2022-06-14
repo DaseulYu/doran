@@ -2,4 +2,55 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>community-sql.xml</comment>
+
+	<!-- 모임 상세정보  -->
+	<entry key= "selectCommunity">
+		SELECT COMMUNITY_NO, COMMUNITY_NM, COMMUNITY_IMG, COMMUNITY_INFO, COMMUNITY_DETAIL, 
+				COMMUNITY_AREA, MEMBER_NICK, PROFILE_IMG, COMMUNITY_NOTICE
+		FROM COMMUNITY
+		JOIN MEMBER USING(MEMBER_NO)
+		WHERE COMMUNITY_NO = ?
+	</entry>
+	
+	<!-- 모임 추가 -->
+	<entry key = "addMeeting1">
+		INSERT INTO COMMUNITY (COMMUNITY_NO, COMMUNITY_NM, COMMUNITY_INFO, COMMUNITY_AREA) 
+		VALUES (SEQ_COMMUNITY_NO.NEXTVAL, ?, ?, ?)
+	</entry>
+	
+	<!-- 모임 추가2 -->
+	<entry key = "addMeeting2">
+		INSERT INTO COMMUNITY (CATEGORY_NO, CATEGORY_NM) 
+		VALUES (SEQ_COMMUNITY_NO.NEXTVAL, ?)
+	</entry>
+	
+	<!-- 모임 정모 추가 -->
+	<entry key = "addSchedule">
+		INSERT INTO GET_TOGETHER (COMMUNITY_NO, COMMUNITY_EVENT, COMMUNITY_DT, LIMITED_MEMBER)
+		VALUES (SEQ_COMMUNITY_NO.NEXTVAL, ?, ?, ?)
+	</entry>
+	
+	<!-- 모임 승인 -->
+	<entry key = "addCommunityMember">
+		INSERT INTO COMMUNITY_MEMBER
+		VALUES (?, ?, DEFAULT, max(MEMBER_COUNT)+1)
+	</entry>
+	
+	<!-- 모임장 위임 -->
+	<entry key = "entrust">
+		UPDATE SET COMMUNITY
+		COMMUNITY_ADMIN = 'Y'
+		WHERE COMMUNITY_NO = ?
+		AND MEMBER_NO = ?
+	</entry>
+	
+	<!-- 멤버 추방 -->
+	<entry key= "memberOut">
+		UPDATE SET COMMUNITY_MEMBER
+		MEMBER_FL = 'Y',
+		MAX(MEMBER_COUNT)-1
+		WHERE COMMUNITY_NO = ?
+		AND MEMBER_NO = ?
+	</entry>
+	
 </properties>

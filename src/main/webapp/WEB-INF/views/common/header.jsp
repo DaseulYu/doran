@@ -16,9 +16,10 @@
 			</c:when>
 			
 		<c:otherwise>
+      <a href="${contextPath}/admin/list">admin</a>
 			<a href="${contextPath}/member/myPage/info">${loginMember.memberNickname}님</a>
 			<a href="${contextPath}/member/logout">로그아웃</a>
-			<a href="#">공지사항</a>
+			<a href="${contextPath}/notice">공지사항</a>
 		</c:otherwise>
 		</c:choose>
 			
@@ -29,7 +30,7 @@
 			카테고리
 		</button>
 		<a href="${contextPath}"> 
-            <img src="${contextPath}/resources/images/logoV2.png" id="home-logo">
+            <img src="${contextPath}/resources/images/logo.png" id="home-logo">
 		</a>
 
 		<section class="search-content">
@@ -47,7 +48,6 @@
 				</form>
 			</article>
 		</section>
-
-
+    
 	</section>
 </header>

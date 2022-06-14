@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>admin-sql.xml</comment>
+
+	<!-- 공지사항 카테고리 이름 조회 -->
+	<entry key="selectNoticeName">
+		SELECT NOTICE_NM FROM NOTICE_TYPE WHERE NOTICE_CD = ?
+	</entry>
+	
+	<!-- 공지사항 카테고리별 전체 게시글 수 조회 -->
+	<entry key="getListCount">
+		SELECT COUNT(*) FROM NOTICE 
+		WHERE NOTICE_ST = 'N'
+		AND NOTICE_CD = ?
+	</entry>
+
+	<!-- 공지사항 카테고리별 일정한 범위 목록 조회 -->
+	<entry key="selectNoticeList">
+		SELECT * FROM(
+			SELECT ROWNUM RNUM, A.* FROM(
+				SELECT NOTICE_NO, NOTICE_NM, NOTICE_TITLE, MEMBER_NICK, 
+					TO_CHAR(CREATE_DT, 'YYYY.MM.DD') AS CREATE_DT, READ_COUNT
+				FROM NOTICE
+				JOIN NOTICE_TYPE USING (NOTICE_CD)
+				JOIN MEMBER USING(MEMBER_NO)
+				WHERE NOTICE_ST = 'N'
+				AND NOTICE_CD = ?
+				ORDER BY NOTICE_NO DESC
+			) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+
+	<!-- 공지사항 전체 게시글 수 조회 -->
+	<entry key="getListCountAll">
+		SELECT COUNT(*) FROM NOTICE 
+	</entry>
+	
+	
+	<!-- 공지사항 전체 목록 조회 -->
+	<entry key="noticeListAll1">
+		SELECT * FROM(
+			SELECT ROWNUM RNUM, A.* FROM(
+				SELECT NOTICE_NO, NOTICE_NM, NOTICE_TITLE, MEMBER_NICK, 
+					TO_CHAR(CREATE_DT, 'YYYY.MM.DD') AS CREATE_DT, 
+					READ_COUNT, NOTICE_ST
+				FROM NOTICE
+				JOIN NOTICE_TYPE USING (NOTICE_CD)
+				JOIN MEMBER USING (MEMBER_NO)
+	</entry>
+	<entry key="noticeListAll2">
+				ORDER BY NOTICE_NO DESC
+			) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	
+	<!-- 공지 게시글 상세 조회 -->
+	<entry key="selectNoticeDetail">
+		SELECT NOTICE_NO, NOTICE_TITLE, MEMBER_NICK, NOTICE_CONTENT, 
+		   TO_CHAR(CREATE_DT, 'YYYY.MM.DD') CREATE_DT, READ_COUNT, NOTICE_NM
+		FROM NOTICE 
+		JOIN NOTICE_TYPE USING (NOTICE_CD)
+		JOIN MEMBER USING (MEMBER_NO)
+		WHERE NOTICE_NO = ?
+	</entry>
+
+
+	<!-- 첨부된 이미지 리스트 조회 -->
+	<entry key="selectImageList">
+		SELECT * FROM NOTICE_IMG
+		WHERE NOTICE_NO = ?
+		ORDER BY IMG_LEVEL
+	</entry>
+	
+	
+	<!-- 다음 공지 게시글 번호 조회 -->
+	<entry key="nextNoticeNo">
+		SELECT SEQ_NOTICE_NO.NEXTVAL FROM DUAL 
+	</entry>
+	
+	
+	<!-- 공지 게시글 등록 -->
+	<entry key="insertNotice">
+		INSERT INTO NOTICE
+		VALUES(?, ?, ?, ?, DEFAULT, DEFAULT, DEFAULT, ?)
+	</entry>
+
+
+	<!-- 공지 게시글 이미지 등록 -->
+	<entry key="insertNoticeImage">
+		INSERT INTO NOTICE_IMG
+		VALUES(SEQ_IMG_NO.NEXTVAL, ?, ?, ?, ?)
+	</entry>
+	
+	
+	<!-- 공지 게시글 내용 수정 -->
+	<entry key="updateNotice">
+		UPDATE NOTICE SET NOTICE_CD = ?, NOTICE_TITLE = ?, NOTICE_CONTENT = ?, CREATE_DT = SYSDATE
+		WHERE NOTICE_NO = ?
+	</entry>
+
+	<!-- 공지 게시글 이미지 수정 -->
+	<entry key="updateNoticeImage">
+		UPDATE NOTICE_IMG SET
+		IMG_NM = ?, IMG_ORIGINAL = ?
+		WHERE IMG_LEVEL = ? AND NOTICE_NO = ? 
+	</entry>
+	
+	<!-- 공지 게시글 이미지 삭제 -->
+	<entry key="deleteNoticeImage">
+		DELETE FROM NOTICE_IMG
+		WHERE NOTICE_NO = ?
+		AND IMG_LEVEL IN (
+	</entry>
+	
+	
+	<!-- 공지 게시글 삭제 -->
+	<entry key="deleteNotice">
+		UPDATE NOTICE SET
+		NOTICE_ST = 'Y'
+		WHERE NOTICE_NO = ?
+	</entry>
+	
+	<!-- 공지 게시글 등록 -->
+	<entry key="insertNotice2">
+		UPDATE NOTICE SET
+		NOTICE_ST = 'N'
+		WHERE NOTICE_NO = ?
+	</entry>
+	
+	
+	<!-- 카테고리별 검색 결과 게시글 목록 조회 -->
+	<entry key="searchNoticeList1">
+		SELECT * FROM(
+			SELECT ROWNUM RNUM, A.* FROM(
+				SELECT NOTICE_NO, NOTICE_NM, NOTICE_TITLE, MEMBER_NICK, 
+					TO_CHAR(CREATE_DT, 'YYYY.MM.DD') AS CREATE_DT, 
+					READ_COUNT
+				FROM NOTICE
+				JOIN NOTICE_TYPE USING (NOTICE_CD)
+				JOIN MEMBER USING (MEMBER_NO)
+				WHERE NOTICE_ST = 'N'
+				AND NOTICE_CD = ?
+	</entry>
+	<entry key="searchNoticeList">
+				ORDER BY NOTICE_NO DESC
+			) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	
+	
+
+
+</properties>

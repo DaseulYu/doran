@@ -12,13 +12,13 @@
 /* board-head 게시판 헤드 */
 .community-head{
     width: 1000px;
-    height: 310px;
+    height: 330px;
     display: flex;
-    margin: auto;
+    margin: 5px auto;
 }
 /* 모임 이미지*/
 .head-left{
-    flex-basis: 350px;
+    flex-basis: 35%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,7 +30,7 @@
 
 /* 모임 헤드 우측 모임명/소개 등 */
 .head-right{
-    flex-basis: 800px;
+    flex-basis: 65%;
     margin-left: 10px;
 }
 /* 모임명 */
@@ -125,7 +125,7 @@
 /* 모임 가입하기 버튼 */
 .btn-join{
     height: 50px;
-    width: 400px;
+    width: 550px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,6 +143,20 @@
     border: 1px solid #ff8339;
     font-weight: bold;
 }
+
+/* 탈퇴하기 */
+#btn-leave{
+    float: right;
+    margin-top: 10px;
+    margin-right: 50px;
+    color: gray;
+    cursor: pointer;
+}
+#btn-leave:hover{
+    color: #0C71FF;
+    text-decoration: underline;
+}
+
 
 /* board-nav 게시판 네비 */
 .community-nav{
@@ -178,7 +192,6 @@
     color: black;
 }
 .community-nav a:hover{
-    border: none;
     color: #ff8339;
     font-weight: bold;
 }
