@@ -29,6 +29,8 @@ function entrustChk(){
         });
     }
     return true;
+
+
 }
 
 function outChk(){
@@ -46,7 +48,7 @@ function deleteMeeting(){
 
     Swal.fire({
         title: '정말로 삭제하시겠습니까?',
-        text: '10일 후에 삭제 및 모든 회원은 자동 강퇴되며, 해당 내용은 각 회원 이메일로 전송됩니다.',
+        text: '삭제취소10일 후에 삭제 및 모든 회원은 자동 강퇴되며, 해당 내용은 각 회원 이메일로 전송됩니다.',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#0C71FF',
@@ -63,7 +65,4 @@ function deleteMeeting(){
             )
         }
     })
-
-
 }
-

@@ -9,7 +9,6 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @ToString
-// 모임 정모 VO
 public class CommunityGetTogether {
 	
 	private String communityEvent;
