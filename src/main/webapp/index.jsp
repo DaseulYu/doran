@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>임시index</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/member-community.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/board-signup.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/board-list.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
+    <link rel="stylesheet" href="resources/css/member-community.css">
+    <link rel="stylesheet" href="resources/css/board-signup.css">
+    <link rel="stylesheet" href="resources/css/board-list.css">
+    <link rel="stylesheet" href="resources/css/header-footer.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
     
@@ -30,7 +29,7 @@
         <a href="community/detail?cn=1"> cn=1모임 바로가기 </a>
     
         <div class="board-container">
-
+        
             <form class="community-head">
                 <div class="head-left">
                     <img src="resources/images/sample.jpg">
@@ -61,11 +60,7 @@
                     </div>
                 </div>
             </form>
-        </div>
     </main>
-
-    <!-- jQuery 라이브러리 추가 (CDN) -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

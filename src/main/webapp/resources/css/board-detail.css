@@ -102,7 +102,7 @@
     padding-top: 15px;
 }
 .user-nick{
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
 }
 .txt-date{
@@ -144,43 +144,35 @@
 .reply-list-area{
     border-top: 1px solid #ddd;
 }
-.reply-list-area > p{
-    font-size: 1.1em;
-    font-weight: bold;
-}
 .reply-row{
     display: flex;
     margin: 15px auto;
 }
 .reply-txt-area{
-    width: 580px;
+    height: 60px;
+    width: 600px;
     display: flex;
     align-items: center;
     margin-left: 10px;
 }
 .reply-txt-date{
-    min-width: 80px;
     margin-left: 7px;
     font-size: 0.8em;
     color: gray;
 }
 .reply-nick{
     height: 60px;
-    width: 150px;
+    width: 130px;
     margin-left: -25px;
     font-size: 13px;
     display: flex;
     align-items: center;
 }
-.reply-nick > img{
+.reply-nick > #user{
     width: 30px;
     border-radius: 50%;
 }
-.reply-nick > p{
-    font-size: 15px;
-    margin-left: 5px;
-    font-weight: bold;
-}
+
 
 
 
@@ -213,31 +205,6 @@
     font-weight: bold;
 }
 
-/* 댓글 수정 */
-.reply-update-area{
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-.reply-update-area > textarea{
-    width: 750px;
-    height: 60px;
-    resize: none;;
-}
-.reply-update-area button{
-    width: 40px;
-    height : 20px;
-    color: #0C71FF;
-    background-color: white;
-    border: none;
-    border-radius: 3px;
-    margin: auto;
-    cursor: pointer;
-}
-.reply-update-area button:hover{
-    color: #0C71FF;
-    border: 1px solid #0C71FF;
-}
 
 
 /* 페이지 */

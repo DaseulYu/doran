@@ -86,12 +86,18 @@
 .list-table a:hover{
     text-decoration: underline;
 }
-
-/* 등록/삭제 버튼 */
-#noticeInsertBtn:hover, #noticeDeleteBtn:hover{
+/* 공개 여부 */
+/* .list-table input{
+    display: none;
+}
+.n-cancel:hover{
     text-decoration: underline;
     cursor: pointer;
 }
+.n-entroll{
+    color: #ff8339;
+    font-weight: bold;
+} */
 
 
 
