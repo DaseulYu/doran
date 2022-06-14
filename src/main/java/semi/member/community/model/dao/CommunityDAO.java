@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import semi.member.community.model.vo.Community;
@@ -228,5 +230,40 @@ public class CommunityDAO {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	
+	/** 가입된 회원 목록 조회 Service
+	 * @param conn
+	 * @return commMemberList
+	 * @throws Exception
+	 */
+	public List<CommunityMember> selectCommMember(Connection conn, int communityNo) throws Exception {
+		
+		List<CommunityMember> commMemberList = new ArrayList<CommunityMember>();
+		
+		try {
+			String sql = prop.getProperty("selectCommMember");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, communityNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				CommunityMember cm = new CommunityMember();
+				
+				cm.setMemberNo(rs.getInt("memberNo"));
+				cm.setMemberNickname(rs.getString("memberNickname"));
+				cm.setMemberProfileImage(rs.getString("memberProfileImage"));
+				cm.setMemberCount(rs.getInt("memberCount"));
+				
+				commMemberList.add(cm);
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return commMemberList;
 	}
 }
