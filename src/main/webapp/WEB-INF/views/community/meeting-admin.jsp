@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,51 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모임장 관리 페이지</title>
 
-    <link rel="stylesheet" href="../../resources/css/meeting-admin-style.css">
-    <link rel="stylesheet" href="../../resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/meeting-admin-style.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 </head>
 <body>
     <main>
-        <header>
-            <section class="header-content">
-                <a href="#">회원가입</a>
-                <a href="#">로그인</a>
-                <a href="#">공지사항</a>
-            </section>
-           
-            <section class="menu-content">
-                <button id="category">
-                    <img src="../resources/images/menubar.png" id="menubar"><br>
-                    카테고리
-                </button>
-                <a href="#">
-                    <img src="../resources/images/logo.png" id="home-logo">
-                </a>
-           
-                <section class="search-content">
-                    <article class="search-area">
-                        <form action="#" name="search-form">
-                            <fieldset class="search-area">
-                                <input type="search" id="query" name="query" 
-                                autocomplete="off" placeholder="검색어를 입력해주세요.">
-                                <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass">
-                                    <img src="../resources/images/search.png" id="search-logo">
-                                </button>
-                            </fieldset>
-                        </form>
-                    </article>
-                </section>
-           
-                <section class="member-content">
-                <!-- <a href="#">유저일님</a>
-                <a href="#">로그아웃</a>
-                <a href="#">공지사항</a> -->
-                </section>
-           </section>
-       </header>
+        
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
         <section class="meeting-admin-content">
             <form action="#" method="POST" name="meeting-admin-form">
@@ -59,9 +27,9 @@
                 <div class="meeting-request-area">
                     <h4>모임 신청 내역</h4>
                     <div class="req-member-area">
-                        <a href="#" id="openPop"><img src="../resources/images/profile_icon.png" id="profile"></a>
+                        <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
                         <div class="nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="nickname-icon">
                             <span class="req-nickname">닉네임</span>
                         </div>
                         <button id="confirm">승인</button>
@@ -69,9 +37,9 @@
                     </div>
 
                     <div class="req-member-area">
-                        <a href="#" id="openPop"><img src="../resources/images/profile_icon.png" id="profile"></a>
+                        <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
                         <div class="nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="nickname-icon">
                             <span class="req-nickname">닉네임</span>
                         </div>
                         <button id="confirm">승인</button>
@@ -79,9 +47,9 @@
                     </div>
 
                     <div class="req-member-area">
-                        <a href="#" id="openPop"><img src="../resources/images/profile_icon.png" id="profile"></a>
+                        <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
                         <div class="nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="nickname-icon">
                             <span class="req-nickname">닉네임</span>
                         </div>
                         <button id="confirm">승인</button>
@@ -89,9 +57,9 @@
                     </div>
 
                     <div class="req-member-area">
-                        <a href="#" id="openPop"><img src="../resources/images/profile_icon.png" id="profile"></a>
+                        <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
                         <div class="nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="nickname-icon">
                             <span class="req-nickname">닉네임</span>
                         </div>
                         <button id="confirm">승인</button>
@@ -103,7 +71,7 @@
                     <h4>회원 관리</h4>
                     <div class="member-area">
                         <div class="member-nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
                             <span class="member-nickname">닉네임</span>
                         </div>
                         <div class="member-area-button">
@@ -114,7 +82,7 @@
 
                     <div class="member-area">
                         <div class="member-nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
                             <span class="member-nickname">닉네임</span>
                         </div>
                         <div class="member-area-button">
@@ -125,7 +93,7 @@
 
                     <div class="member-area">
                         <div class="member-nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
                             <span class="member-nickname">닉네임</span>
                         </div>
                         <div class="member-area-button">
@@ -136,7 +104,7 @@
 
                     <div class="member-area">
                         <div class="member-nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
                             <span class="member-nickname">닉네임</span>
                         </div>
                         <div class="member-area-button">
@@ -147,7 +115,7 @@
 
                     <div class="member-area">
                         <div class="member-nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
                             <span class="member-nickname">닉네임</span>
                         </div>
                         <div class="member-area-button">
@@ -158,7 +126,7 @@
 
                     <div class="member-area">
                         <div class="member-nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
                             <span class="member-nickname">닉네임</span>
                         </div>
                         <div class="member-area-button">
@@ -169,7 +137,7 @@
 
                     <div class="member-area">
                         <div class="member-nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
                             <span class="member-nickname">닉네임</span>
                         </div>
                         <div class="member-area-button">
@@ -180,7 +148,7 @@
 
                     <div class="member-area">
                         <div class="member-nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
                             <span class="member-nickname">닉네임</span>
                         </div>
                         <div class="member-area-button">
@@ -191,7 +159,7 @@
 
                     <div class="member-area">
                         <div class="member-nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
                             <span class="member-nickname">닉네임</span>
                         </div>
                         <div class="member-area-button">
@@ -202,7 +170,7 @@
 
                     <div class="member-area">
                         <div class="member-nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
                             <span class="member-nickname">닉네임</span>
                         </div>
                         <div class="member-area-button">
@@ -213,7 +181,7 @@
 
                     <div class="member-area">
                         <div class="member-nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
                             <span class="member-nickname">닉네임</span>
                         </div>
                         <div class="member-area-button">
@@ -224,7 +192,7 @@
 
                     <div class="member-area">
                         <div class="member-nickname-area">
-                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
                             <span class="member-nickname">닉네임</span>
                         </div>
                         <div class="member-area-button">
@@ -245,7 +213,7 @@
                         <!--팝업 컨텐츠 영역-->
                         <div class="popup_cont">
                             <div class="popup_content">
-                            <img src="../resources/images/nickname_icon.png" id="nickname-icon-pop">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="nickname-icon-pop">
                             <span class="req-nickname-pop">닉네임</span>
                             </div>
                             <p>
@@ -263,27 +231,8 @@
         </section>
     </main>
 
-    <footer>
-        <div class="customer-service">
-            <p class="cs">고객센터</p>
-            <p class="cs">이메일 : cs@doran.com</p>
-            <p class="cs">고객센터 : 02-555-5252</p>
-            <p class="cs">업무시간 : 평일 9:00 - 18:00 (점심: 12:00 - 13:00)</p>
-            
-        </div>
-        
-        <br><hr style="border: solid 1px rgb(230, 230, 230); width: 40%;" >
-        <div class="customer-service info">
-            <a href="#">소개</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보처리방침</a>
-            <span>|</span>
-            <a href="#"> ⓒ DORAN</a>
-        </div>
-    </footer>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <script src="../resources/js/community/meeting-admin.js"></script>
+    <script src="${contextPath}/resources/js/community/meeting-admin.js"></script>
 </body>
 </html>

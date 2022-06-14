@@ -10,7 +10,7 @@
     <title>새 모임 추가페이지</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/schedule-style.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
 
     <script src="https://kit.fontawesome.com/a2e8ca0ae3.js" crossorigin="anonymous"></script>
 </head>

@@ -92,4 +92,42 @@ public class CommunityService {
 		return result;
 	}
 
+	/** 모임장 위임 Service
+	 * @param com
+	 * @return result
+	 * @throws Exception
+	 */
+	public int entrust(Community com) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.entrust(conn, com);
+		
+		if(result > 0) commit(conn);
+		else         rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/** 멤버 추방 Service
+	 * @param cm
+	 * @return result
+	 * @throws Exception
+	 */
+	public int memberOut(CommunityMember cm) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.memberOut(conn, cm);
+		
+		if(result > 0) commit(conn);
+		else         rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
 }

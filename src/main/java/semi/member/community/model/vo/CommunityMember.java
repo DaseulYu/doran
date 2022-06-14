@@ -4,7 +4,7 @@ public class CommunityMember {
 	
 	private int communityNo;
 	private int memberNo;
-	private String memberFL;
+	private String memberFlag;
 	private int memberCount;
 	
 	public int getCommunityNo() {
@@ -19,11 +19,11 @@ public class CommunityMember {
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
-	public String getMemberFL() {
-		return memberFL;
+	public String getMemberFlag() {
+		return memberFlag;
 	}
-	public void setMemberFL(String memberFL) {
-		this.memberFL = memberFL;
+	public void setMemberFlag(String memberFlag) {
+		this.memberFlag = memberFlag;
 	}
 	public int getMemberCount() {
 		return memberCount;

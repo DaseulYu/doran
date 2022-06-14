@@ -43,6 +43,8 @@ public class AddScheduleServlet extends HttpServlet {
 			int result = service.addSchedule(cgt);
 			
 			HttpSession session = req.getSession();
+			String path = null;
+			String message = null;
 			
 			if(result > 0) {
 				session.setAttribute("message", "모임 정모 생성을 완료하였습니다.");
@@ -50,8 +52,8 @@ public class AddScheduleServlet extends HttpServlet {
 			} else {
 				session.setAttribute("message", "모임 정모 생성에 실패하였습니다.");
 			}
-			
-			resp.sendRedirect(req.getContextPath());
+			session.setAttribute("message", message);
+			resp.sendRedirect(path);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
