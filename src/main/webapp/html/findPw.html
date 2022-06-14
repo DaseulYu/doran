@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비밀번호 찾기</title>
+
+    <link rel="stylesheet" href="../resources/css/main-style.css">
+    <link rel="stylesheet" href="../resources/css/findPw-style.css">
+</head>
+
+<body>
+    <main>
+        <header>
+            <section class="header-content">
+                <a href="#">회원가입</a>
+                <a href="#">로그인</a>
+                <a href="#">공지사항</a>
+            </section>
+
+            <section>
+                <button id="category">
+                    <img src="../resources/images/menubar.png" id="menubar"><br>
+                    카테고리
+                </button>
+                <a href="#">
+                    <img src="../resources/images/logo.png" id="home-logo">
+                </a>
+
+                <section class="search-content">
+                    <article class="search-area">
+                        <form action="#" name="search-form">
+                            <fieldset class="search-area">
+                                <input type="search" id="query" name="query" autocomplete="off"
+                                    placeholder="검색어를 입력해주세요.">
+                                <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass">
+                                    <img src="../resources/images/search.png" id="search-logo">
+                                </button>
+                            </fieldset>
+                        </form>
+                    </article>
+                </section>
+
+                <a href="#">유저일님</a>
+                <a href="#">로그아웃</a>
+                <a href="#">공지사항</a>
+            </section>
+        </header>
+
+        <section class="findPw-content">
+            
+            <div class="findPw-area">
+            <h1 class="findPw-title">비밀번호 찾기</h1>
+            <h4 class="findPw-subtitle">본인확인 이메일 주소와 입력한 이메일 주소가 같아야, <br>인증번호를 받을 수 있습니다.</h4>
+                <form action="#" name="findPw-form">
+                    
+                    <div class="findPw-input-area">
+                    <label for="memberName">이름</label>
+                        <input type="text" id="memberName" name="memberName" placeholder="이름" autocomplete="off" maxlength="10">
+                    </div>
+                    <span class="message-area error"><strong>이름</strong>을 입력해주세요.</span>
+                                    
+                    <div class="findPw-input-area">
+                    <label for="memberEmail">아이디(이메일)</label>    
+                    <input type="text" id="memberEmail" name="memberEmail" placeholder="아이디(이메일)" autocomplete="off">
+                <button type="button" class="checkConfirm-btn">인증번호 받기</button>
+                </div>
+                        <span class="message-area error"><strong>아이디(이메일)</strong>을 입력해주세요.</span>
+                    
+                    <div class="findPw-input-area">
+                    <label for="checkConfirm">인증번호</label>   
+                    <input type="text" id="checkConfirm" name="checkConfirm" placeholder="인증번호 6자리 숫자 입력" autocomplete="off">
+                    </div>
+                            <span class="message-area confirm"><strong>인증번호</strong>가 일치합니다.</span>
+                    
+
+                    <div class="findPw-btn-area">
+                        <button type="submit" class="findPw-btn">비밀번호 찾기</button>
+                    </div>
+                </form>
+        </section>
+
+
+        <footer>
+            <div class="customer-service">
+                <p class="cs">고객센터</p>
+                <p class="cs">이메일 : cs@doran.com</p>
+                <p class="cs">고객센터 : 02-555-5252</p>
+                <p class="cs">업무시간 : 평일 9:00 - 18:00 (점심: 12:00 - 13:00)</p>
+
+            </div>
+
+            <br>
+            <hr style="border: solid 1px rgb(230, 230, 230); width: 40%;">
+            <div class="customer-service info">
+                <a href="#">소개</a>
+                <span>|</span>
+                <a href="#">이용약관</a>
+                <span>|</span>
+                <a href="#">개인정보처리방침</a>
+                <span>|</span>
+                <a href="#"> ⓒ DORAN</a>
+            </div>
+        </footer>
+
+
+</body>
+
+</html>

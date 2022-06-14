@@ -1,0 +1,127 @@
+*{
+    box-sizing: border-box;
+}
+
+.login-content{
+    display: flex;
+    margin: 50px 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+form[name='login-form']{
+    margin-top: 30px;
+
+}
+
+.login-title{
+    display: flex;
+    font-size: 2.5em;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-input-area{
+    width: 300px;
+    height: 40px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+        display: flex;
+            justify-content: center;
+            align-items: center;
+}
+
+.login-input-area>input{
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px 5px;
+    margin: auto;
+    display: inline-block;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #ccc;
+        outline: 0;
+        border-radius: 3px;
+}
+    
+
+.login-input-area>input:focus-within{
+    border: 1px solid #ff8339;
+    border-radius: 3px;
+}
+
+#id-save{
+    margin-top: 10px;
+    margin-left : 15px;
+}
+
+input[type='checkbox']{
+    margin-left: 30px;
+}
+/* 
+label[for='id-save'] {
+    position: relative;
+    top: 1.5px;
+}
+input[type='checkbox'] + label[for='id-save']{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 30px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+input[type='checkbox']{
+    display: none;
+}
+input[type='checkbox'] :checked + label[for='id-save']{
+background-image: url("../resources/images/checkbox.png");
+background-size: cover;
+} */
+
+.message-area{
+    margin-top: 15px;
+    margin-left: 30px;
+    font-size: 14px;
+}
+
+.error{
+    color: red;
+}
+/*버튼 영억*/
+.login-btn-area{
+    display: flex;
+    justify-content: center;
+}
+
+.login-btn{
+    background-color: #FF8339;
+    border: 1px solid #FF8339;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+    margin-left: 30px;
+    cursor: pointer;
+
+}
+
+.signUp-find-area{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.signUp-find-area>span {
+    margin-right: 10px;
+}
+
+.signUp-find-area> a{
+    text-decoration: none;
+    font-weight: bold;
+    color: gray;
+}

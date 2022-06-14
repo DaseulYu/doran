@@ -1,0 +1,94 @@
+*{
+    box-sizing: border-box;
+}
+
+.findPw-content{
+    display: flex;
+    margin : 80px auto;
+    justify-content: center;
+
+}
+
+form[name="findId-form"] {
+
+    margin-top: 40px;
+}
+
+.findPw-input-area{
+    display: flex;
+    align-items: center;
+}
+
+.findPw-input-area >label {
+    display: inline-block;
+    width: 130px;
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+}
+
+.findPw-input-area>input {
+    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    padding: 10px 5px 10px;
+    border: 0;
+    outline: 0;
+    border-bottom: 2px solid #ccc;
+}
+
+.findPw-input-area>input:focus-within{
+    border-bottom: 2px solid #FF8339;
+}
+
+.checkConfirm-btn{
+    background-color: #FF8339;
+        border: 1px solid #FF8339;
+        border-radius: 5px;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        width: 150px;
+        height: 40px;
+        cursor: pointer;
+        margin-left: 20px;
+        
+}
+
+.checkConfirm-btn:hover{
+    background-color: #fff;
+    border: 2px solid #FF8339;
+    border-radius: 5px;
+    color: #FF8339;
+    font-size: 14px;
+    font-weight: bold;
+    width: 150px;
+    height: 40px;
+
+}
+
+.findPw-btn-area{
+    display: flex;
+    justify-content: center;
+}
+.findPw-btn{
+    background-color: #FF8339;
+        border: 1px solid #FF8339;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        width: 70%;
+        height: 40px;
+        margin-top: 15px;
+        cursor: pointer;
+}
+
+.error{
+    color : red;
+}
+
+.confirm{
+    color : green;
+}
