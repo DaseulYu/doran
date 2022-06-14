@@ -3,6 +3,7 @@ package semi.member.community.model.service;
 import static semi.member.common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.List;
 
 import semi.member.community.model.dao.CommunityDAO;
 import semi.member.community.model.vo.Community;
@@ -130,4 +131,18 @@ public class CommunityService {
 		return result;
 	}
 
+	/** 가입된 회원 목록 조회 Service
+	 * @return commMemberList
+	 * @throws Exception
+	 */
+	public List<CommunityMember> selectCommMember(int communityNo) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		List<CommunityMember> commMemberList = dao.selectCommMember(conn, communityNo);
+		
+		close(conn);
+		
+		return commMemberList;
+	}
 }

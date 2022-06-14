@@ -13,7 +13,7 @@ import semi.member.community.model.service.CommunityService;
 import semi.member.community.model.vo.Community;
 import semi.member.community.model.vo.CommunityMember;
 
-@WebServlet("/community/admin")
+@WebServlet("/community/admin/out")
 public class CommunityOutServlet extends HttpServlet{
 	
 	@Override
