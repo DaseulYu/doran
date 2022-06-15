@@ -8,7 +8,7 @@
 		<c:choose>
 			<%-- 로그인 되어 있지 않은 경우 --%>
 			<c:when test="${empty sessionScope.loginMember}">
-				<a href="#">회원가입</a>
+				<a href="/doran/member/signUp">회원가입</a>
 				<a href="${contextPath}/member/login">로그인</a>
 				<a href="#">공지사항</a>
 			</c:when>

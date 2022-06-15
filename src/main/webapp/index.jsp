@@ -38,15 +38,14 @@
 				<span id="doran"> 다같이 모여,<br> 도란도란
 				</span>
 
-				<div id="member">
-					<button id="login">로그인</button>
-					<br>
-					<button id="signUp">회원가입</button>
-				</div>
-				<span id="boardList">내게 맞는 모임 만나려면 <a href="/board/list">모임 찾기</a></span>
-			</div>
-		</div>
-	</main>
+                        <div id="member">
+                            <button id="login">로그인</button><br>
+                            <button id="signUp">회원가입</button>
+                        </div>
+                        <span id="boardList">내게 맞는 모임 만나려면 <a href="${contextPath}/board/list?cp=1">모임 찾기</a></span>
+                    </div>
+                </div>
+            </main>
 
 	<!-- jQuery 라이브러리 추가 (CDN) -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"

@@ -1,0 +1,141 @@
+.board{
+    width: 100%;
+    /* margin: 50px auto; */
+}
+
+.board-content{
+    display: flex;
+    flex-flow: wrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    width: 100%;
+    padding: 100px;
+    min-height: 500px;
+    justify-content: center;
+}
+
+/* 이미지 */
+.cover{
+    float:left;
+    margin-right:15px;
+    padding-right: 10px;
+}
+
+.board-post{
+    width: 10px;
+    flex-wrap: wrap;
+}
+
+/* 페이지네이션 */
+.pagination{
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    justify-content: center;
+}
+
+.pagination > li{
+    width: 50px;
+    height: 50px;
+    margin: 0 5px;
+    text-align: center;
+    line-height: 50px;
+    border: 2px solid rgb(218, 218, 218);
+
+    border-radius: 20%;
+}
+
+.pagination a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    letter-spacing: -2px;
+    text-decoration-line: none;
+    color: rgb(88, 87, 87);
+    font-weight: bold;
+}
+
+/* 현재 페이지 번호 */
+.pagination .current{
+    background-color: rgb(255, 129, 45);
+    border-radius: 20%;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 게시글 */
+.board-post{
+    width: 1200px;
+}
+
+.post{
+    display: flex;
+    justify-content: center;
+}
+
+li > .doran{
+    display: flex;
+}
+
+.doran{
+    width: 600px;
+    display: table-cell;
+    float: left;
+    padding-bottom: 50px;
+}
+.doran > *{
+    padding: 3px;
+}
+.doran-block > *{
+    margin-top: 0;
+    margin-bottom: 8px;
+    display:inline-table;
+}
+
+.list{
+    flex-wrap: wrap;
+}
+
+div > ul{
+    display: flex;
+    list-style: none;
+    
+    padding: 0;
+    margin: 0;
+
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.categoryName{
+    padding: 0px 5px;
+    background-color: rgb(226, 225, 225);
+
+    border-radius: 30px;
+}
+
+.doran-block a:link, .doran-block a:visited{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
+/* 모임생성 */
+.create{
+    text-align: right;
+}
+.create > a{
+
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 500px;
+
+}
+
+.fa-heart{
+    color: red;
+}
