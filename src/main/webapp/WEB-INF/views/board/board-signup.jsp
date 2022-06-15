@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>가입인사</title>
     <link rel="stylesheet" href="${contextPath}/resources/css/board-signup.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
     
@@ -24,54 +24,23 @@
                 <h2>가입인사</h2>
             </div>
 
-            <div class="signup">
-                <ul id="signup-list">
-
-                    <li class="signup-row">
-                        <div class="user">
-                            <img src="${contextPath}/resources/images/user.png" id="user">
-                            <p>최대최대여덟글자</p>
-                        </div>
-                        <div class="message">
-                            <span class="message-txt">안녕하세요.</span>
-                            <span class="message-date">2022.05.22</span>
-                        </div>
-                        <div class="write-btn-area">
-                            <button id="btn-report">신고</button>
-                            <button id="updateBtn">수정</button>
-                            <button id="deleteBtn">삭제</button>
-                        </div>
-                    </li>
-
-                    <li class="signup-row">
-                        <div class="user">
-                            <img src="${contextPath}/resources/images/user.png" id="user">
-                            <p>최대여덟글자</p>
-                        </div>
-                        <div class="message">
-                            <span class="message-txt">안녕하세요.</span>
-                            <span class="message-date">2022.05.22</span>
-                        </div>
-                        <div class="write-btn-area">
-                            <button id="btn-report">신고</button>
-                            <button id="updateBtn">수정</button>
-                            <button id="deleteBtn">삭제</button>
-                        </div>
-                    </li>
-
-                </ul>
-            </div>
-
             
-            <div class="message-textarea">
-                <textarea maxlength="100" placeholder="내용을 입력해주세요.(100 글자 이하)" id="msgContent"></textarea>
-                <button class="btn-reply" id="btn-reply">등록</button>
-            </div>
+            <jsp:include page="/WEB-INF/views/board/board-signup-write.jsp"/>
+
         
         </div>
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+        const contextPath = "${contextPath}";
+        const communityNo = "${param.cn}";
+        // 로그인한 회원
+        // const loginMemberNo = "${loginMember.memberNo}";
+    </script>
 
     <script src="${contextPath}/resources/js/board/board-signup.js"></script>
 

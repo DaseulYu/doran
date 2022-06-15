@@ -1,6 +1,7 @@
 package semi.member.community.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import semi.member.community.model.service.BoardReplyService;
+import semi.member.community.model.service.CommunityBoardService;
 import semi.member.community.model.service.CommunityService;
+import semi.member.community.model.vo.BoardReply;
 import semi.member.community.model.vo.Community;
+import semi.member.community.model.vo.CommunityBoard;
 
 @WebServlet("/community/detail")
 public class CommunityServlet extends HttpServlet{
@@ -24,6 +29,17 @@ public class CommunityServlet extends HttpServlet{
 			CommunityService service = new CommunityService();
 			
 			Community comm = service.selectCommunity(communityNo);
+			
+			
+			// 게시판별 내용 얻어오기
+			if(comm != null) {
+				List<CommunityBoard> bList = new CommunityBoardService().selectBoardList(communityNo);
+				req.setAttribute("bList", bList);
+				
+				List<BoardReply> bReply = new BoardReplyService().selectReplyList(communityNo);
+				req.setAttribute("bReply", bReply);
+			}
+			
 			
 			req.setAttribute("comm", comm);
 			

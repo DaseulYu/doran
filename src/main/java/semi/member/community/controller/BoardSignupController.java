@@ -27,6 +27,8 @@ public class BoardSignupController extends HttpServlet {
 		BoardSignupService service = new BoardSignupService();
 		
 		try {
+
+			// 가입 인사 목록 조회
 			if(command.equals("selectSignupList")) {
 				int communityNo = Integer.parseInt( req.getParameter("cn") );
 				List<BoardSignup> sList = service.selectSignupList(communityNo);
@@ -35,8 +37,43 @@ public class BoardSignupController extends HttpServlet {
 			}
 			
 			
+
+			// 가입 인사 등록
+			if(command.equals("insert")) {
+				
+				int communityNo = Integer.parseInt( req.getParameter("cn") );
+				int memberNo = Integer.parseInt( req.getParameter("memberNo") );
+				String signupContent = req.getParameter("signupContent");
+				
+				BoardSignup signup = new BoardSignup();
+				
+				signup.setCommunityNo(communityNo);
+				signup.setMemberNo(memberNo);
+				signup.setSignupContent(signupContent);
+				
+				int result = service.insertSignup(signup);
+				
+				resp.getWriter().print(result);
+			}
 			
 			
+			// 가입 인사 삭제
+			if(command.equals("delete")) {
+				int signupNo = Integer.parseInt( req.getParameter("signupNo") );
+				int result = service.deleteSignup(signupNo);
+				resp.getWriter().print(result);
+			}
+			
+			
+			// 가입 인사 수정
+			if(command.equals("update")) {
+				int signupNo = Integer.parseInt( req.getParameter("signupNo") );
+				String signupContent = req.getParameter("signupContent");
+				
+				int result = service.updateSignup(signupNo, signupContent); 
+				
+				resp.getWriter().print(result);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			resp.setStatus(500);

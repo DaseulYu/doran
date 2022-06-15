@@ -41,7 +41,6 @@ public class CommunityBoardList extends HttpServlet {
 			
 			req.setAttribute("map", map);
 			
-			
 			String path = "/WEB-INF/views/board/boardList.jsp";
 			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
 			dispatcher.forward(req, resp);

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/member-community.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board-signup.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board-list.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
     
@@ -32,7 +32,9 @@
                     <div class="head-title">
                         <div class="community-name">
                             <span>${comm.communityName}</span>
-                            <a href="/src/main/webapp/WEB-INF/views/community/meeting-admin.jsp"><span class="btn-edit">edit</span></a>
+                            <c:if test="${comm.communityAdmin eq 'Y'}">
+                                <a href="/src/main/webapp/WEB-INF/views/community/meeting-admin.jsp"><span class="btn-edit">edit</span></a>
+                            </c:if>
                         </div>
                         <div><button class="btn-report">신고</button></div>
                     </div>
@@ -83,6 +85,13 @@
                 <!-- 모임 상세정보(모임장 작성) -->
                 <div class="board board-detail" id="board-detail">
                     <h3>공지사항</h3>
+                 
+                    <%--
+                    <c:if test="${comm.communityAdmin eq 'Y'}">
+                        <a href="#" id="detail-Popup">edit</a>
+                    </c:if>
+                    --%>
+
                     <div class="board-detail-txt">
                         ${comm.communityDetail}
                     </div>
@@ -90,6 +99,9 @@
                     <!-- 다음 모임 -->
                     <div class="board-event">
                         <h4>다음모임</h4>
+                        <c:if test="${comm.communityAdmin eq 'Y'}">
+                            <a href="#" id="event-Popup">edit</a>
+                        </c:if>
                         <table class="next-event">
                             <tr>
                                 <th>일시</th>
@@ -116,43 +128,8 @@
                         <a href="${contextPath}/community/signup/list?cn=${param.cn}" target="_blank"><span class="board-all">전체 가입인사 보기 &gt;</span></a>
                     </h3>
 
-                    <div class="signup">
-                        <ul id="signup-list">
-        
-                            <li class="signup-row">
-                                <div class="user">
-                                    <img src="${contextPath}/resources/images/user.png" id="user">
-                                    <p>최대최대여덟글자</p>
-                                </div>
-                                <div class="message">
-                                    <span class="message-txt">안녕하세요.</span>
-                                    <span class="message-date">2022.05.22</span>
-                                </div>
-                                <div class="write-btn-area">
-                                    <button id="btn-report">신고</button>
-                                    <button id="updateBtn">수정</button>
-                                    <button id="deleteBtn">삭제</button>
-                                </div>
-                            </li>
-        
-                            <li class="signup-row">
-                                <div class="user">
-                                    <img src="${contextPath}/resources/images/user.png" id="user">
-                                    <p>최대여덟글자</p>
-                                </div>
-                                <div class="message">
-                                    <span class="message-txt">안녕하세요.</span>
-                                    <span class="message-date">2022.05.22</span>
-                                </div>
-                                <div class="write-btn-area">
-                                    <button id="btn-report">신고</button>
-                                    <button id="updateBtn">수정</button>
-                                    <button id="deleteBtn">삭제</button>
-                                </div>
-                            </li>
-        
-                        </ul>
-                    </div>
+                    <!-- 가입인사 연결 -->
+                    <jsp:include page="/WEB-INF/views/community/commu-board.jsp"/>
                     
                 </div>
 
@@ -162,9 +139,8 @@
                     <h3>자유게시판
                         <a href="${contextPath}/community/board/list?cn=${param.cn}&type=1" target="_blank"><span class="board-all">전체 게시글 보기 &gt;</span></a>
                     </h3>
-
+                    <!-- 자유게시판 연결 -->
                     <jsp:include page="/WEB-INF/views/community/commu-board.jsp"/>
-
                 </div>
 
 
@@ -195,10 +171,76 @@
                                 모임후기5<br>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
-                
+
+                <!-- 공지 수정 팝업 -->
+                <div class="detail_popup_layer" id="detail_popup_layer" style="display: none;">
+                    <div class="detail_popup_box">
+                        <div style="height: 10px; width: 375px; float: top;">
+                            <!-- <a href="closePop();" class="popUp-close" width="30px" height="30px"></a> -->
+                        </div>
+
+                        <div class="detail_popup_cont">
+                            <h4>모임 공지사항 수정하기</h4>
+                            </div>
+                            <textarea type="text" id="detailUpdate" name="detailUpdate" placeholder="수정할 내용을 입력해주세요."></textarea>
+                            <div class="detail_popup_button">
+                                <a href="#" id="detail-cancelBtn">취소</a>
+                                <a href="#" id="detail-updateBtn">수정</a>
+                            </div>
+                        </div>                    
+                    </div>
+
+                <!-- 정모 수정 팝업 -->
+                <div class="event_popup_layer" id="event_popup_layer" style="display: none;">
+                    <div class="event_popup_box">
+                        <div style="height: 10px; width: 375px; float: top;">
+                            <!-- <a href="closePop();" class="popUp-close" width="30px" height="30px"></a> -->
+                        </div>
+
+                        <div class="event_popup_cont">
+                            <h4>정모 일시 및 장소 등록하기</h4>
+                        </div>
+                        <div class="schedule-input-area">
+                            <img src="../resources/images/clock_icon.png" id="clock">
+                            <input type="date" id="groupTime-1" name="groupTime">
+                            <input type="time" name="time" id="time-1"></input> <br>
+                        </div>
+        
+                        <div class="schedule-input-area">
+                            <input type="date" id="groupTime-2" name="groupTime">
+                            <input type="time" name="time" id="time-2"></input> <br>
+                        </div>
+        
+                        <div class="schedule-input-area">
+                            <span class="schedule-message confirm">일정 : ${cgt.communityDate}</span>
+                        </div>
+        
+                        <div class="schedule-input-area">
+                            <img src="../resources/images/map_icon.png" id="map"> <br>
+                            <input type="text" id="groupArea" placeholder="위치를 입력해주세요">
+                        </div>
+        
+                        <div class="schedule-input-area">
+                            <span>위치 : 서울특별시 중구 남대문로1가 19</span>
+                        </div>
+        
+                        <div class="schedule-input-area">
+                            <label for="limitedPeople">제한인원 : </label>
+                            <input type="text" id="limitedPeople" name="limitedPeople" placeholder="인원 수를 입력해주세요">
+                        </div>
+        
+                        <div class="schedule-input-area-exp">
+                            <label for="scheduleExp">일정설명 : </label>
+                            <textarea type="text" id="scheduleExp" name="scheduleExp" placeholder="내용을 입력해주세요." ></textarea>
+                        </div>
+                        <div class="event_popup_button">
+                            <a href="#" id="detail-cancelBtn">취소</a>
+                            <a href="#" id="detail-updateBtn">수정</a>
+                        </div>
+                    </div>                    
+                </div>
             </section>
         </div>
     </main>
