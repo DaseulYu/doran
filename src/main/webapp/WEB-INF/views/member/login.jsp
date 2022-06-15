@@ -50,7 +50,7 @@
 				</form>
 				<div class="signUp-find-area">
 
-					<a href="#">아이디 찾기</a> <span>|</span> <a href="#">비밀번호 찾기</a> <span>|</span>
+					<a href="${contextPath}/member/findPw">비밀번호 찾기</a> <span>|</span>
 					<a href="#">회원가입</a>
 
 				</div>

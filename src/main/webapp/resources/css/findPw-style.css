@@ -21,10 +21,14 @@ form[name="findId-form"] {
 
 .findPw-input-area >label {
     display: inline-block;
-    width: 130px;
+    width: 150px;
+    height: 30px;
         margin-top: 20px;
         font-size: 18px;
         font-weight: bold;
+        background-color: #FF8339;
+        color: white;
+        text-align: center;
 }
 
 .findPw-input-area>input {
@@ -32,7 +36,7 @@ form[name="findId-form"] {
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 18px;
-    padding: 10px 5px 10px;
+    padding: 10px 10px 10px;
     border: 0;
     outline: 0;
     border-bottom: 2px solid #ccc;
@@ -42,14 +46,28 @@ form[name="findId-form"] {
     border-bottom: 2px solid #FF8339;
 }
 
-.checkConfirm-btn{
+#sendBtn{
+    
     background-color: #FF8339;
         border: 1px solid #FF8339;
         border-radius: 5px;
         color: white;
         font-size: 14px;
         font-weight: bold;
-        width: 150px;
+        width: 120px;
+        height: 40px;
+        cursor: pointer;
+        margin-left: 20px;
+}
+
+#cBtn{
+    background-color: #FF8339;
+        border: 1px solid #FF8339;
+        border-radius: 5px;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        width: 120px;
         height: 40px;
         cursor: pointer;
         margin-left: 20px;
@@ -83,6 +101,10 @@ form[name="findId-form"] {
         height: 40px;
         margin-top: 15px;
         cursor: pointer;
+}
+
+.message-row > span{
+    margin-left: 50px;
 }
 
 .error{

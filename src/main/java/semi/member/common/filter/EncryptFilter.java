@@ -17,6 +17,7 @@ import semi.member.common.wrapper.EncryptWrapper;
 @WebFilter(filterName = "encryptFilter",
 			urlPatterns = {"/member/login",
 						"/member/signUp",
+						"/member/findPw",
 						"/member/myPage/changePw",
 						"/member/myPage/secession",
 						"/member/myPage/currentPwConfirmCheck"} )
