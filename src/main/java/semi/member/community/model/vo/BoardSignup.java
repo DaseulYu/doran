@@ -11,8 +11,8 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class SignupDetail {
-
+public class BoardSignup {
+	
 	private int signupNo;
 	private int communityNo;
 	private String signupContent;
@@ -20,7 +20,7 @@ public class SignupDetail {
 	private int memberNo;
 	private String memberNickname;
 	private String profileImage;
-	
+
 	public int getSignupNo() {
 		return signupNo;
 	}
@@ -63,6 +63,5 @@ public class SignupDetail {
 	public void setProfileImage(String profileImage) {
 		this.profileImage = profileImage;
 	}
-	
 	
 }

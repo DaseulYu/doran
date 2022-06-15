@@ -10,7 +10,7 @@
     <title>관리자</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/admin-report.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 </head>
@@ -103,8 +103,6 @@
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-
-    <script src="${contextPath}/resources/js/admin-page/admin-report.js"></script>
 
 </body>
 </html>

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 작성</title>
     <link rel="stylesheet" href="${contextPath}/resources/css/board-write.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 
@@ -77,12 +77,12 @@
 
                         <!-- insert 모드 -->
                         <c:if test="${param.mode == 'insert'}">
-                            <button type="button" id="goToListBtn" onclick="location.href='${header.referer}'">작성 취소</button>
+                            <button type="button" class="goToListBtn" onclick="location.href='${header.referer}'">작성 취소</button>
                         </c:if>
                         
                         <!-- update 모드 -->
                         <c:if test="${param.mode == 'update'}">
-                            <button type="button" id="goToListBtn" onclick="location.href='${header.referer}'">수정 취소</button>
+                            <button type="button" class="goToListBtn" onclick="location.href='${header.referer}'">수정 취소</button>
                         </c:if>
                     </div>
                 </div>

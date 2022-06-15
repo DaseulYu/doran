@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import semi.member.community.model.service.SignupService;
-import semi.member.community.model.vo.SignupDetail;
+import semi.member.community.model.service.BoardSignupService;
+import semi.member.community.model.vo.BoardSignup;
 
 @WebServlet("/community/signup/list")
 public class CommunitySignup extends HttpServlet {
@@ -20,16 +19,12 @@ public class CommunitySignup extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			
-			int communityNo = Integer.parseInt(req.getParameter("cn"));
-			SignupService service = new SignupService();
-			List<SignupDetail> detail = service.selectSignupList(communityNo);
-			
-			System.out.println(communityNo);
-			System.out.println(detail);
-			
 
-			req.setAttribute("detail", detail);
+			int communityNo = Integer.parseInt( req.getParameter("cn") );
+				
+			List<BoardSignup> sList = new BoardSignupService().selectSignupList(communityNo);
+			req.setAttribute("sList", sList);
+
 			
 			String path = "/WEB-INF/views/board/board-signup.jsp";
 			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
@@ -38,8 +33,5 @@ public class CommunitySignup extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
 	}
-	
-
 }

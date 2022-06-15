@@ -123,10 +123,14 @@ public class CommunityBoardDAO {
 				list.setBoardNo(rs.getInt("BOARD_NO"));
 				list.setBoardName(rs.getString("BOARD_NM"));
 				list.setBoardTitle(rs.getString("BOARD_TITLE"));
+				list.setBoardContent(rs.getString("BOARD_CONTENT"));
 				list.setMemberNickname(rs.getString("MEMBER_NICK"));
+				list.setProfileImage(rs.getString("PROFILE_IMG"));
 				list.setCreateDate(rs.getString("CREATE_DT"));
 				list.setReadCount(rs.getInt("READ_COUNT"));
-				
+				list.setImage0(rs.getString("IMG0"));
+				list.setImage1(rs.getString("IMG1"));
+
 				boardList.add(list);
 			}
 		} finally {
@@ -331,10 +335,10 @@ public class CommunityBoardDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, image.getImageLevel());
-			pstmt.setString(2, image.getImageName());
-			pstmt.setString(3, image.getImageOriginal());
-			pstmt.setInt(4, image.getBoardNo());
+			pstmt.setString(1, image.getImageName());
+			pstmt.setString(2, image.getImageOriginal());
+			pstmt.setInt(3, image.getBoardNo());
+			pstmt.setInt(4, image.getImageLevel());
 			
 			result = pstmt.executeUpdate();
 		} finally {
@@ -450,10 +454,11 @@ public class CommunityBoardDAO {
 	 * @param communityNo
 	 * @param boardNo
 	 * @param communityNo 
+	 * @param type 
 	 * @return result
 	 * @throws Exception
 	 */
-	public int deleteBoard(Connection conn, int boardNo, int communityNo) throws Exception {
+	public int deleteBoard(Connection conn, int boardNo, int communityNo, int type) throws Exception {
 		int result = 0;
 		
 		try {
@@ -463,6 +468,7 @@ public class CommunityBoardDAO {
 			
 			pstmt.setInt(1, boardNo);
 			pstmt.setInt(2, communityNo);
+			pstmt.setInt(3, type);
 			
 			result = pstmt.executeUpdate();
 			
@@ -471,6 +477,44 @@ public class CommunityBoardDAO {
 		}
 		return result;
 	}
+
+	/** 모임 메인 자유게시판
+	 * @param conn
+	 * @param communityNo
+	 * @return bList
+	 * @throws Exception
+	 */
+	public List<CommunityBoard> selectBoardList(Connection conn, int communityNo) throws Exception {
+		List<CommunityBoard> bList = new ArrayList<CommunityBoard>();
+		
+		try {
+			String sql = prop.getProperty("selectBoardListMain");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, communityNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				CommunityBoard list = new CommunityBoard();
+				
+				list.setBoardNo(rs.getInt("BOARD_NO"));
+				list.setBoardTitle(rs.getString("BOARD_TITLE"));
+				list.setMemberNickname(rs.getString("MEMBER_NICK"));
+				list.setCreateDate(rs.getString("CREATE_DT"));
+				list.setReadCount(rs.getInt("READ_COUNT"));
+
+				bList.add(list);
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return bList;
+	}
+
+	
+
 
 
 	

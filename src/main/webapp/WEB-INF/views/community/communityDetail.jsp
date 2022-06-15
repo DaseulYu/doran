@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/member-community.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board-signup.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board-list.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
     
@@ -70,7 +70,7 @@
 
             <div class="community-nav">
                 <ul>
-                    <li><a href="#board-detail">상세정보</a></li>
+                    <li><a href="#board-detail">공지사항</a></li>
                     <span>|</span>
                     <li><a href="#board-signup">가입인사</a></li>
                     <span>|</span>
@@ -84,10 +84,14 @@
             
                 <!-- 모임 상세정보(모임장 작성) -->
                 <div class="board board-detail" id="board-detail">
-                    <h3>상세정보</h3>
+                    <h3>공지사항</h3>
+                 
+                    <%--
                     <c:if test="${comm.communityAdmin eq 'Y'}">
                         <a href="#" id="detail-Popup">edit</a>
                     </c:if>
+                    --%>
+
                     <div class="board-detail-txt">
                         ${comm.communityDetail}
                     </div>
@@ -122,21 +126,10 @@
                 <div class="board board-signup" id="board-signup">
                     <h3>가입인사
                         <a href="${contextPath}/community/signup/list?cn=${param.cn}" target="_blank"><span class="board-all">전체 가입인사 보기 &gt;</span></a>
-                        <!-- <a href="${contextPath}/community/signup/list" target="_blank"><span class="board-all">전체 가입인사 보기 &gt;</span></a> -->
                     </h3>
 
-                    <div class="signup">
-                        <div class="user">
-                            <img src="${contextPath}/resources/images/user_sample.jpg" id="user">
-                            <p>닉네임입니다</p>
-                        </div>
-                        <div class="message">
-                            <p>
-                                <span class="message-txt">안녕하세요.</span>
-                                <span class="message-date">2022.05.22</span>
-                            </p>
-                        </div>
-                    </div>
+                    <!-- 가입인사 연결 -->
+                    <jsp:include page="/WEB-INF/views/community/commu-board.jsp"/>
                     
                 </div>
 
@@ -146,9 +139,8 @@
                     <h3>자유게시판
                         <a href="${contextPath}/community/board/list?cn=${param.cn}&type=1" target="_blank"><span class="board-all">전체 게시글 보기 &gt;</span></a>
                     </h3>
-
+                    <!-- 자유게시판 연결 -->
                     <jsp:include page="/WEB-INF/views/community/commu-board.jsp"/>
-
                 </div>
 
 

@@ -1,4 +1,6 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <footer>
@@ -21,3 +23,14 @@
         <a href="#"> ⓒ DORAN</a>
     </div>
 </footer>
+
+
+<%-- session에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
+<c:if test="${ !empty sessionScope.message }">
+	<script>
+                alert("${message}");
+        </script>
+
+	<%-- message 1회 출력 후 session에서 제거 --%>
+	<c:remove var="message" scope="session" />
+</c:if>
