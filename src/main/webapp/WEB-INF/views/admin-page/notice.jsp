@@ -14,7 +14,7 @@
     <title>공지사항</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/notice.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 </head>

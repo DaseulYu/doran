@@ -112,8 +112,12 @@ public class BoardWriteController extends HttpServlet{
 				
 				if(boardNo > 0) { // 성공
 					message = "게시글이 등록되었습니다.";
-					path = "detail?no=" + boardNo + "&type=" + boardCode + "&cn=" + communityNo;
 					
+					if(boardCode==1) {
+						path = "detail?no=" + boardNo + "&type=" + boardCode + "&cn=" + communityNo;
+					} else {
+						path = "review?type=" + boardCode + "&cn=" + communityNo;
+					}
 					
 				} else { // 실패
 					message = "게시글 등록 실패";
@@ -125,9 +129,12 @@ public class BoardWriteController extends HttpServlet{
 			
 			if(mode.equals("update")) {
 				int boardNo = Integer.parseInt(mpReq.getParameter("no"));
-				int cp = Integer.parseInt(mpReq.getParameter("cp"));
 				String deleteList = mpReq.getParameter("deleteList");
 				
+				int cp = 1;
+				if( req.getParameter("cp") != null ) { 
+					cp = Integer.parseInt(req.getParameter("cp"));
+				}
 				
 				detail.setBoardNo(boardNo);
 				
@@ -138,7 +145,13 @@ public class BoardWriteController extends HttpServlet{
 				
 				if(result > 0) { // 성공
 					message = "게시글이 수정되었습니다.";
-					path = "detail?no=" + boardNo + "&type=" + boardCode + "&cn=" + communityNo + "&cp=" + cp;
+					
+					if(boardCode==1) {
+						path = "detail?no=" + boardNo + "&type=" + boardCode + "&cn=" + communityNo + "&cp=" + cp;
+					} 
+					if(boardCode==2) {
+						path = "review?type=" + boardCode + "&cn=" + communityNo + "&cp=" + cp;
+					}
 					
 				} else { // 실패
 					message = "게시글 수정 실패";

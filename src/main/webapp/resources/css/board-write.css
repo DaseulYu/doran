@@ -115,7 +115,7 @@
 }
 
 /* 취소 버튼 */
-#goToListBtn{
+.goToListBtn{
     width: 70px;
     height: 30px;
     background-color: lightgray;
@@ -126,7 +126,7 @@
     border: none;
     cursor: pointer;
 }
-#goToListBtn:hover{
+.goToListBtn:hover{
     background-color: white;
     color: gray;
     border: 1px solid gray;

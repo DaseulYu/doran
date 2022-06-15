@@ -8,10 +8,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import semi.member.community.model.vo.Community;
-import semi.member.community.model.vo.CommunityGetTogether;
+import semi.member.community.model.vo.CommunityApply;
 import semi.member.community.model.vo.CommunityMember;
 
 public class CommunityDAO {
@@ -124,33 +126,6 @@ public class CommunityDAO {
 		return result;
 	}
 
-	/** 모임 정보 등록 DAO
-	 * @param conn
-	 * @param cgt
-	 * @return result
-	 * @throws Exception
-	 */
-	public int addSchedule(Connection conn, CommunityGetTogether cgt) throws Exception {
-		
-		int result = 0;
-		
-		try {
-			
-			String sql = prop.getProperty("addSchedule");
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, cgt.getCommunityDate());
-			pstmt.setInt(2, cgt.getRemitedMember());
-			pstmt.setString(3, cgt.getCommunityEvent());
-			
-			result = pstmt.executeUpdate();
-			
-		} finally {
-			close(pstmt);
-		}
-		return result;
-	}
 
 	/** 모임 승인 DAO
 	 * @param conn
@@ -228,5 +203,74 @@ public class CommunityDAO {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	
+	/** 가입된 회원 목록 조회 DAO
+	 * @param conn
+	 * @return commMemberList
+	 * @throws Exception
+	 */
+	public List<CommunityMember> selectCommMember(Connection conn, int communityNo) throws Exception {
+		
+		List<CommunityMember> commMemberList = new ArrayList<CommunityMember>();
+		
+		try {
+			String sql = prop.getProperty("selectCommMember");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, communityNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				CommunityMember cm = new CommunityMember();
+				
+				cm.setMemberNo(rs.getInt("memberNo"));
+				cm.setMemberNickname(rs.getString("memberNickname"));
+				cm.setMemberProfileImage(rs.getString("memberProfileImage"));
+				cm.setMemberCount(rs.getInt("memberCount"));
+				
+				commMemberList.add(cm);
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return commMemberList;
+	}
+
+	/** 가입 신청 회원 목록 조회 DAO
+	 * @param conn
+	 * @param communityNo
+	 * @return
+	 * @throws Exception
+	 */
+	public List<CommunityApply> selectApllyMember(Connection conn, int communityNo) throws Exception {
+		
+		List<CommunityApply> applyMemberList = new ArrayList<CommunityApply>();
+		
+		try {
+			String sql = prop.getProperty("selectApllyMember");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, communityNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				CommunityApply ca = new CommunityApply();
+				
+				ca.setMemberNo(rs.getInt("memberNo"));
+				ca.setMemberNickname(rs.getString("memberNickname"));
+				ca.setMemberProfileImage(rs.getString("memberProfileImage"));
+				
+				applyMemberList.add(ca);
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return applyMemberList;
 	}
 }

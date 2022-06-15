@@ -22,65 +22,86 @@
 
         <section class="meeting-admin-content">
             <form action="#" method="POST" name="meeting-admin-form">
-                <span class="meetingname-admin">[모임명] 관리</span>
+                <span class="meetingname-admin">${comm.communityName} 관리</span>
 
                 <div class="meeting-request-area">
                     <h4>모임 신청 내역</h4>
-                    <div class="req-member-area">
-                        <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
-                        <div class="nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="nickname-icon">
-                            <span class="req-nickname">닉네임</span>
-                        </div>
-                        <button id="confirm">승인</button>
-                        <button id="refuse" onclick="return refuseChk()">거절</button>
-                    </div>
-
-                    <div class="req-member-area">
-                        <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
-                        <div class="nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="nickname-icon">
-                            <span class="req-nickname">닉네임</span>
-                        </div>
-                        <button id="confirm">승인</button>
-                        <button id="refuse">거절</button>
-                    </div>
-
-                    <div class="req-member-area">
-                        <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
-                        <div class="nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="nickname-icon">
-                            <span class="req-nickname">닉네임</span>
-                        </div>
-                        <button id="confirm">승인</button>
-                        <button id="refuse">거절</button>
-                    </div>
-
-                    <div class="req-member-area">
-                        <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
-                        <div class="nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="nickname-icon">
-                            <span class="req-nickname">닉네임</span>
-                        </div>
-                        <button id="confirm">승인</button>
-                        <button id="refuse">거절</button>
-                    </div>
+                    <c:choose>
+                        <c:when test="${empty ca.memberNo}">
+                            <h4>모임을 신청한 회원이 존재하지 않습니다.</h4>
+                        </c:when>
+                        <c:otherwise>
+                            <!-- 모임 신청 테이블 추가 필요 -->
+                            <c:forEach var="ca" items="${applyMemberList}">
+                                <div class="req-member-area">
+                                    <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
+                                    <div class="nickname-area">
+                                        <img src="${contextPath}${ca.profileImage}" id="nickname-icon">
+                                        <span class="req-nickname">${ca.memberNickname}</span>
+                                    </div>
+                                    <button id="confirm">승인</button>
+                                    <button id="refuse" onclick="return refuseChk()">거절</button>
+                                </div>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
+
+                    <!-- <div class="req-member-area">
+                        <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
+                        <div class="nickname-area">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="nickname-icon">
+                            <span class="req-nickname">닉네임</span>
+                        </div>
+                        <button id="confirm">승인</button>
+                        <button id="refuse">거절</button>
+                    </div>
+
+                    <div class="req-member-area">
+                        <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
+                        <div class="nickname-area">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="nickname-icon">
+                            <span class="req-nickname">닉네임</span>
+                        </div>
+                        <button id="confirm">승인</button>
+                        <button id="refuse">거절</button>
+                    </div>
+
+                    <div class="req-member-area">
+                        <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
+                        <div class="nickname-area">
+                            <img src="${contextPath}/resources/images/nickname_icon.png" id="nickname-icon">
+                            <span class="req-nickname">닉네임</span>
+                        </div>
+                        <button id="confirm">승인</button>
+                        <button id="refuse">거절</button>
+                    </div> -->
+
 
                 <div class="member-admin-area">
-                    <h4>회원 관리</h4>
-                    <div class="member-area">
-                        <div class="member-nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
-                            <span class="member-nickname">닉네임</span>
-                        </div>
-                        <div class="member-area-button">
-                            <button id="entrust" onclick="return entrustChk()">모임장 위임하기</button>
-                            <button id="out" onclick="return outChk()">추방</button>
-                        </div>
-                    </div>
+                    <h4>회원 관리</h4> <h5>인원 수 : <span>${cm.memberCount}</span></h5>
+                    <c:choose>
+                        <c:when test="${cm.memberCount == 0}">
+                            <h4>모임 회원이 존재하지 않습니다.</h4>
+                        </c:when>
 
-                    <div class="member-area">
+                        <c:otherwise>
+                            <c:forEach var="cm" items="${commMemberList}">
+                                <div class="member-area">
+                                    <div class="member-nickname-area">
+                                        <img src="${contextPath}${cm.profileImage}" id="member-nickname-icon">
+                                        <span class="member-nickname">${cm.memberNickname}</span>
+                                    </div>
+                                    <div class="member-area-button">
+                                        <button id="entrust" onclick="return entrustChk()">모임장 위임하기</button>
+                                        <button id="out" onclick="return outChk()">추방</button>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <!-- <div class="member-area">
                         <div class="member-nickname-area">
                             <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
                             <span class="member-nickname">닉네임</span>
@@ -200,7 +221,7 @@
                             <button id="out">추방</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <a href="#" id="deleteMeeting" onclick="return deleteMeeting()">모임 삭제하기</a>
 
