@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>board-sql.xml</comment>
+
+	<!-- 전체 게시글 수 조회 -->
+	<entry key="getListCount">
+		SELECT COUNT(*) FROM COMMUNITY
+		WHERE COMMUNITY_FL = 'N'
+	</entry>
+	
+	
+	<!-- 게시판 일정한 범위 조회 -->
+	<entry key="selectBoardList">
+	SELECT * FROM(
+		   SELECT ROWNUM RNUM, A.* FROM(
+		      SELECT COMMUNITY_AREA, COMMUNITY_NO, COMMUNITY_NM, CATEGORY_NM, 
+				(SELECT COUNT(*) FROM PICK WHERE COMMUNITY.COMMUNITY_NO = PICK.COMMUNITY_NO) PICK, 
+				(SELECT COUNT(*) FROM COMMUNITY_MEMBER WHERE COMMUNITY.COMMUNITY_NO = COMMUNITY_MEMBER.COMMUNITY_NO) COMMUNITY_MEMBER
+			  FROM COMMUNITY
+			  JOIN CATEGORY USING(CATEGORY_NO)
+			  WHERE COMMUNITY_FL = 'N'
+		      ORDER BY COMMUNITY_NO DESC
+		   ) A
+		)
+	WHERE RNUM BETWEEN ? AND ?
+	</entry>
+</properties>
