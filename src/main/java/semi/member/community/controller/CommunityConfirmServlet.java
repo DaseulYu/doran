@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import semi.member.community.model.service.CommunityService;
-import semi.member.community.model.vo.Community;
+import semi.member.community.model.vo.CommunityMember;
 
-@WebServlet("/community/admin/delete")
-public class CommunityDeleteServlet extends HttpServlet{
+@WebServlet("/community/admin/confirm")
+public class CommunityConfirmServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,20 +26,21 @@ public class CommunityDeleteServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		int communityNo = Integer.parseInt(req.getParameter("cn"));
-			
+		int memberNo = Integer.parseInt(req.getParameter("memberNo"));
+		
 		try {
 			
 			CommunityService service = new CommunityService();
 			
-			int result = service.deleteCommunity(communityNo); 
+			int result = service.addCommunityMember(communityNo, memberNo);
 			
 			HttpSession session = req.getSession();
 			
 			if(result > 0) {
-				session.setAttribute("message", "모임이 삭제되었습니다.");
+				session.setAttribute("message", "승인하였습니다.");
 				
 			} else {
-				session.setAttribute("message", "모임 삭제에 실패하였습니다.");
+				session.setAttribute("message", "승인에 실패하였습니다.");
 			}
 			
 			resp.sendRedirect(req.getContextPath());
@@ -47,5 +48,6 @@ public class CommunityDeleteServlet extends HttpServlet{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 }

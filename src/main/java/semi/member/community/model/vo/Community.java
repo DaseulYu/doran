@@ -26,7 +26,7 @@ public class Community {
 	private String communityFlag;
 	private String communityNotice;
 	private int categoryNo;
-	private String communityAdmin;
+	private int communityAdmin;
 	private int memberNo;
 	
 	
@@ -36,10 +36,10 @@ public class Community {
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
-	public String getCommunityAdmin() {
+	public int getCommunityAdmin() {
 		return communityAdmin;
 	}
-	public void setCommunityAdmin(String communityAdmin) {
+	public void setCommunityAdmin(int communityAdmin) {
 		this.communityAdmin = communityAdmin;
 	}
 	public int getCommunityNo() {

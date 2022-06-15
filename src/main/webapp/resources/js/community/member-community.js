@@ -14,43 +14,29 @@ function pick(){
 }
 
 
-// // 모임 메인 자유게시판
-// const contextPath = "${contextPath}";
-// // 게시글 번호
-// const communityNo = "${param.cn}"; 
-// function mainBoardList(){
-
-//         $.ajax({
-//             url : "/community/detail/boardList",
-//             data : {"communityNo" : communityNo},
-//             type : "get",
-//             dataType : "JSON",
-//             suceess : function(bList){
-//                 console.log(bList);
-
-//             },
-//             error : function(req, status, error){
-//                 console.log("에러발생");
-//                 console.log(req.responseText);
-//             }
-//         });
-// }
-
 const detail_popup = document.getElementById("detail-Popup");
-const event_popup = document.getElementById("event-Popup");
 
 detail_popup.addEventListener("click", function(){
     document.getElementById("detail_popup_layer").style.display = "block";
-});
-
-event_popup.addEventListener("click", function(){
-    document.getElementById("event_popup_layer").style.display = "block";
 });
 
 // closePop.addEventListener("click", function(){
 //     document.getElementById("popup_layer").style.display = "none";
 // });
 
+// 커뮤니티 대표 이미지 등록
+const updateImage = document.getElementById("update-image");
 
+if(updateImage != null){
+    updateImage.addEventListener("change", function(){
 
-
+        if(this.files[0] != undefined){
+            const reader = new FileReader();
+            reader.readAsDataURL(this.files[0]);
+            reader.onload = function(e){
+                const communityImage = document.getElementById("community-image");
+                communityImage.setAttribute("src", e.target.result);
+            }
+        }
+    });
+}

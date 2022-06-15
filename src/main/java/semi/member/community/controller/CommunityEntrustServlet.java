@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import semi.member.community.model.service.CommunityService;
 import semi.member.community.model.vo.Community;
+import semi.member.member.model.vo.Member;
 
 @WebServlet("/community/admin/entrust")
 public class CommunityEntrustServlet extends HttpServlet{
@@ -18,36 +19,33 @@ public class CommunityEntrustServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String communityAdmin = req.getParameter("communityAdmin");
-		int communityNo = Integer.parseInt(req.getParameter("communityNo"));
-		int memberNo = Integer.parseInt(req.getParameter("memberNo"));
+		int communityAdmin = Integer.parseInt(req.getParameter("communityAdmin"));
+		int communityNo = Integer.parseInt(req.getParameter("no"));
 		
 		Community com = new Community();
 		
-		com.setCommunityNo(communityNo);
-		com.setMemberNo(memberNo);
 		com.setCommunityAdmin(communityAdmin);
+		com.setCommunityNo(communityNo);
 		
-		CommunityService service = new CommunityService();
+		HttpSession session = req.getSession();
+		
+		Member loginMember = (Member)(session.getAttribute("loginMember"));
+		
+		int memberNo = loginMember.getMemberNo();
 		
 		try {
+			CommunityService service = new CommunityService();
 			
-			int result = service.entrust(com);
-			
-			HttpSession session = req.getSession();
-			String path = null;
-			String message = null;
+			int result = service.entrust(com, memberNo);
 			
 			if(result > 0) {
-				session.setAttribute("message", "위임에 성공하였습니다.");
+				session.setAttribute("message", "모임장 위임을 완료하였습니다.");
 				
 			} else {
-				session.setAttribute("message", "위임에 실패하였습니다.");
+				session.setAttribute("message", "모임장 위임에 실패하였습니다.");
 			}
 			
-			session.setAttribute("message", message);
-			resp.sendRedirect(path);
-			
+			resp.sendRedirect(req.getContextPath());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

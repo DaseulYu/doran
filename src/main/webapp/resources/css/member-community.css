@@ -315,3 +315,12 @@
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
 }
+
+
+#update-image{
+    position:absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
