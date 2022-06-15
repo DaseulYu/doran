@@ -1,0 +1,177 @@
+.category-board{
+    width: 100%;
+    margin: 50px auto;
+}
+
+.boardContent{
+    display: flex;
+    flex-flow: wrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    width: 100%;
+    padding: 100px;
+    min-height: 500px;
+    justify-content: center;
+}
+
+/* 이미지 */
+.cover{
+    float:left;
+    margin-right:15px;
+    padding-right: 10px;
+}
+
+.board-post{
+    width: 10px;
+    flex-wrap: wrap;
+}
+
+/* 페이지네이션 */
+.pagination{
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    justify-content: center;
+}
+
+.pagination > li{
+    width: 50px;
+    height: 50px;
+    margin: 0 5px;
+    text-align: center;
+    line-height: 50px;
+    border: 2px solid rgb(218, 218, 218);
+
+    border-radius: 20%;
+}
+
+.pagination a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    letter-spacing: -2px;
+    text-decoration-line: none;
+    color: rgb(88, 87, 87);
+    font-weight: bold;
+}
+
+/* 현재 페이지 번호 */
+.pagination .current{
+    border: 0;
+    background-color: rgb(255, 129, 45);
+    border-radius: 20%;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 게시글 */
+.board-post{
+    width: 1200px;
+}
+
+.post{
+    display: flex;
+    justify-content: center;
+}
+
+li > .doran{
+    display: flex;
+}
+
+.doran{
+    width: 600px;
+    display: table-cell;
+    float: left;
+    padding-bottom: 50px;
+}
+.doran > *{
+    padding: 3px;
+}
+
+.list{
+    flex-wrap: wrap;
+}
+
+div > ul{
+    display: flex;
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+
+.doranName{
+    margin-bottom: 30px;
+    
+}
+
+.doranName a:link, .doranName a:visited{
+    text-decoration: none;
+    color: black;
+}
+
+/* 카테고리명 */
+.category-name{ 
+    text-align:center;
+    font-size: 45px;
+    font-weight: bold;
+    position: relative;
+}
+
+
+
+
+
+/* 카테고리 드롭 */
+
+.dropdown{
+    position: relative;
+}
+.button{
+    
+    background-color: white;
+    border: 0;
+    display: inline-block;
+}
+
+.fal{
+    cursor: pointer;
+}
+#dropContent{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 700px;
+    background: linear-gradient(180deg, white 60%, rgba(180, 180, 180, 0.363) 60%);
+    float: left;
+    display:flex;
+    justify-content: space-between;
+}
+
+.drop-category{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    color: rgb(129, 129, 129);
+    box-sizing: inherit;
+    outline: none;
+    font-family: inherit;
+    white-space: nowrap;
+    letter-spacing: -0.7px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 550px;
+    margin: 80px 100px 0;
+}
+
+
+.category{
+    cursor: pointer;
+}
+

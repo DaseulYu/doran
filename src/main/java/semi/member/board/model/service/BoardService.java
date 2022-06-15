@@ -60,15 +60,74 @@ public class BoardService {
 		int listCount = dao.searchListCount(conn, query);
 
 		Pagination pagination = new Pagination(cp, listCount);
-		
+
 		List<Board> boardList = dao.serchBoardList(conn, pagination, query);
-		
+
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		map.put("pagination", pagination);
 		map.put("boardList", boardList);
-		
+
 		close(conn);
 		return map;
 	}
+
+	/**
+	 * 카테고리별 게시글 조회 Service
+	 * 
+	 * @param type
+	 * @param cp
+	 * @return
+	 * @throws Exception
+	 */
+	public Map<String, Object> selectCategoryList(int type, int cp) throws Exception {
+		Connection conn = getConnection();
+
+		String categoryName = dao.selectCategoryName(conn, type);
+
+		int listCount = dao.getCategoryListCount(conn, type);
+
+		Pagination pagination = new Pagination(cp, listCount);
+
+		List<Board> categoryList = dao.selectCategoryList(conn, pagination, type);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		map.put("categoryName", categoryName);
+		map.put("pagination", pagination);
+		map.put("categoryList", categoryList);
+
+		close(conn);
+
+		return map;
+	}
+
+	/** 카테고리별 검색 Service
+	 * @param cp
+	 * @param query
+	 * @param type
+	 * @return map
+	 * @throws Exception
+	 */
+	public Map<String, Object> searchCategoryList(int cp, String query, int type) throws Exception {
+		Connection conn = getConnection();
+
+		String categoryName = dao.selectCategoryName(conn, type);
+		
+		int listCount = dao.searchCategoryListCount(conn, query, type);
+
+		Pagination pagination = new Pagination(cp, listCount);
+
+		List<Board> categoryList = dao.searchCategoryList(conn, pagination, query, type);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("categoryName", categoryName);
+		map.put("pagination", pagination);
+		map.put("categoryList", categoryList);
+
+		close(conn);
+		return map;
+	}
+
+	
 }

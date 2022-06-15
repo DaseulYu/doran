@@ -18,6 +18,7 @@
             <link rel="stylesheet" href="${contextPath}/resources/css/boardList-style.css">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+            <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
         </head>
 
         <body>
@@ -25,7 +26,6 @@
             <c:if test="${!empty param.query}">
                 <c:set var="sURL" value="&query=${param.query}"/>
             </c:if>
-            
             
 
             <section class="board">
@@ -37,19 +37,22 @@
 
                             <c:choose>
                             <c:when test="${empty boardList}">
-
-                                <tr>
-                                    <th colspan="1">게시글이 존재하지 않습니다.</th>
-                                </tr>
+                                    <span id="noCommunity">게시글이 존재하지 않습니다.</span>
                             </c:when>
 
                             <c:otherwise>
-
                                 <c:forEach var="board" items="${boardList}">
                                     <li class="list">
                                         <div class="doran">
                                             <div class="cover">
-                                                <img src="/images/category.JPG" width="110px" height="110px">
+
+                                                <c:if test="${!empty board.communityImage}">
+                                                    <img width="110px" height="110px" src="${contextPath}${board.communityImage}">
+                                                </c:if>
+                                                
+                                                <c:if test="${empty board.communityImage}">
+                                                    <img src="${contextPath}/resources/images/thumbnail.png" width="110px" height="110px">
+                                                </c:if>
                                             </div>
                                             <div class="doran-block">
                                                 <p class="doranLocation"><i class="fal fa-map-marker-alt"></i> ${board.communityArea}</p><br>
@@ -106,6 +109,7 @@
                 </ul>
                 </div>
             </section>
+            <jsp:include page="/WEB-INF/views/common/footer.jsp" />
             <script src="${contextPath}/resources/js/community/communityList.js"></script>
         </body>
 
