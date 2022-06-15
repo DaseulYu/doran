@@ -11,8 +11,8 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class SignupDetail {
-
+public class BoardSignup {
+	
 	private int signupNo;
 	private int communityNo;
 	private String signupContent;
