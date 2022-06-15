@@ -42,7 +42,7 @@
                             <button id="login">로그인</button><br>
                             <button id="signUp">회원가입</button>
                         </div>
-                        <span id="boardList">내게 맞는 모임 만나려면 <a href="${contextPath}/board/list?cp=1">모임 찾기</a></span>
+                        <span id="boardList">내게 맞는 모임 만나려면 <a href="${contextPath}/community/list?cp=1">모임 찾기</a></span>
                     </div>
                 </div>
             </main>
