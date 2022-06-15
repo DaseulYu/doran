@@ -11,23 +11,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.member.community.model.service.CommunityService;
-import semi.member.community.model.vo.CommunityApply;
+import semi.member.community.model.vo.CommunityMember;
 
 @WebServlet("/community/admin/select")
-public class CommunityMemberSelectServlet extends HttpServlet{
+public class SelectCommunityMemberServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try { 
 			
-			int communityNo = Integer.parseInt(req.getParameter("communityNo"));
+			int communityNo = Integer.parseInt(req.getParameter("cn"));
 			
 			CommunityService service = new CommunityService();
 			
-			List<CommunityApply> applyMemberList = service.selectApllyMember(communityNo);
+			List<CommunityMember> commMemberList = service.selectCommMember(communityNo);
 			
-			req.setAttribute("applyMemberList", applyMemberList);
+			req.setAttribute("commMemberList", commMemberList);
 			
 			String path = "/WEB-INF/views/community/meeting-admin.jsp";
 			
