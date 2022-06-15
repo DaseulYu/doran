@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모임장 관리 페이지</title>
+
+    <link rel="stylesheet" href="../../resources/css/meeting-admin-style.css">
+    <link rel="stylesheet" href="../../resources/css/header-footer.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+</head>
+<body>
+    <main>
+        <header>
+            <section class="header-content">
+                <a href="#">회원가입</a>
+                <a href="#">로그인</a>
+                <a href="#">공지사항</a>
+            </section>
+           
+            <section class="menu-content">
+                <button id="category">
+                    <img src="../../resources/images/menubar.png" id="menubar"><br>
+                    카테고리
+                </button>
+                <a href="#">
+                    <img src="../resources/images/logo.png" id="home-logo">
+                </a>
+           
+                <section class="search-content">
+                    <article class="search-area">
+                        <form action="#" name="search-form">
+                            <fieldset class="search-area">
+                                <input type="search" id="query" name="query" 
+                                autocomplete="off" placeholder="검색어를 입력해주세요.">
+                                <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass">
+                                    <img src="../resources/images/search.png" id="search-logo">
+                                </button>
+                            </fieldset>
+                        </form>
+                    </article>
+                </section>
+           
+                <section class="member-content">
+                <!-- <a href="#">유저일님</a>
+                <a href="#">로그아웃</a>
+                <a href="#">공지사항</a> -->
+                </section>
+           </section>
+       </header>
+
+        <section class="meeting-admin-content">
+            <form action="#" method="POST" name="meeting-admin-form">
+                <span class="meetingname-admin">[모임명] 관리</span>
+
+                <div class="meeting-request-area">
+                    <h4>모임 신청 내역</h4>
+                    <div class="req-member-area">
+                        <a href="#" id="openPop"><img src="../resources/images/profile_icon.png" id="profile"></a>
+                        <div class="nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="nickname-icon">
+                            <span class="req-nickname">닉네임</span>
+                        </div>
+                        <button id="confirm">승인</button>
+                        <button id="refuse" onclick="return refuseChk()">거절</button>
+                    </div>
+
+                    <div class="req-member-area">
+                        <a href="#" id="openPop"><img src="../resources/images/profile_icon.png" id="profile"></a>
+                        <div class="nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="nickname-icon">
+                            <span class="req-nickname">닉네임</span>
+                        </div>
+                        <button id="confirm">승인</button>
+                        <button id="refuse">거절</button>
+                    </div>
+
+                    <div class="req-member-area">
+                        <a href="#" id="openPop"><img src="../resources/images/profile_icon.png" id="profile"></a>
+                        <div class="nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="nickname-icon">
+                            <span class="req-nickname">닉네임</span>
+                        </div>
+                        <button id="confirm">승인</button>
+                        <button id="refuse">거절</button>
+                    </div>
+
+                    <div class="req-member-area">
+                        <a href="#" id="openPop"><img src="../resources/images/profile_icon.png" id="profile"></a>
+                        <div class="nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="nickname-icon">
+                            <span class="req-nickname">닉네임</span>
+                        </div>
+                        <button id="confirm">승인</button>
+                        <button id="refuse">거절</button>
+                    </div>
+                </div>
+
+                <div class="member-admin-area">
+                    <h4>회원 관리</h4>
+                    <div class="member-area">
+                        <div class="member-nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <span class="member-nickname">닉네임</span>
+                        </div>
+                        <div class="member-area-button">
+                            <button id="entrust" onclick="return entrustChk()">모임장 위임하기</button>
+                            <button id="out" onclick="return outChk()">추방</button>
+                        </div>
+                    </div>
+
+                    <div class="member-area">
+                        <div class="member-nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <span class="member-nickname">닉네임</span>
+                        </div>
+                        <div class="member-area-button">
+                            <button id="entrust">모임장 위임하기</button>
+                            <button id="out">추방</button>
+                        </div>
+                    </div>
+
+                    <div class="member-area">
+                        <div class="member-nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <span class="member-nickname">닉네임</span>
+                        </div>
+                        <div class="member-area-button">
+                            <button id="entrust">모임장 위임하기</button>
+                            <button id="out">추방</button>
+                        </div>
+                    </div>
+
+                    <div class="member-area">
+                        <div class="member-nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <span class="member-nickname">닉네임</span>
+                        </div>
+                        <div class="member-area-button">
+                            <button id="entrust">모임장 위임하기</button>
+                            <button id="out">추방</button>
+                        </div>
+                    </div>
+
+                    <div class="member-area">
+                        <div class="member-nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <span class="member-nickname">닉네임</span>
+                        </div>
+                        <div class="member-area-button">
+                            <button id="entrust">모임장 위임하기</button>
+                            <button id="out">추방</button>
+                        </div>
+                    </div>
+
+                    <div class="member-area">
+                        <div class="member-nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <span class="member-nickname">닉네임</span>
+                        </div>
+                        <div class="member-area-button">
+                            <button id="entrust">모임장 위임하기</button>
+                            <button id="out">추방</button>
+                        </div>
+                    </div>
+
+                    <div class="member-area">
+                        <div class="member-nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <span class="member-nickname">닉네임</span>
+                        </div>
+                        <div class="member-area-button">
+                            <button id="entrust">모임장 위임하기</button>
+                            <button id="out">추방</button>
+                        </div>
+                    </div>
+
+                    <div class="member-area">
+                        <div class="member-nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <span class="member-nickname">닉네임</span>
+                        </div>
+                        <div class="member-area-button">
+                            <button id="entrust">모임장 위임하기</button>
+                            <button id="out">추방</button>
+                        </div>
+                    </div>
+
+                    <div class="member-area">
+                        <div class="member-nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <span class="member-nickname">닉네임</span>
+                        </div>
+                        <div class="member-area-button">
+                            <button id="entrust">모임장 위임하기</button>
+                            <button id="out">추방</button>
+                        </div>
+                    </div>
+
+                    <div class="member-area">
+                        <div class="member-nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <span class="member-nickname">닉네임</span>
+                        </div>
+                        <div class="member-area-button">
+                            <button id="entrust">모임장 위임하기</button>
+                            <button id="out">추방</button>
+                        </div>
+                    </div>
+
+                    <div class="member-area">
+                        <div class="member-nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <span class="member-nickname">닉네임</span>
+                        </div>
+                        <div class="member-area-button">
+                            <button id="entrust">모임장 위임하기</button>
+                            <button id="out">추방</button>
+                        </div>
+                    </div>
+
+                    <div class="member-area">
+                        <div class="member-nickname-area">
+                            <img src="../resources/images/nickname_icon.png" id="member-nickname-icon">
+                            <span class="member-nickname">닉네임</span>
+                        </div>
+                        <div class="member-area-button">
+                            <button id="entrust">모임장 위임하기</button>
+                            <button id="out">추방</button>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" id="deleteMeeting" onclick="return deleteMeeting()">모임 삭제하기</a>
+
+                <div class="popup_layer" id="popup_layer" style="display: none;">
+                    <div class="popup_box">
+                        <div style="height: 10px; width: 375px; float: top;">
+                            <!-- <a href="closePop();" class="popUp-close" width="30px" height="30px"></a> -->
+                        </div>
+
+                        <!--팝업 컨텐츠 영역-->
+                        <div class="popup_cont">
+                            <div class="popup_content">
+                            <img src="../resources/images/nickname_icon.png" id="nickname-icon-pop">
+                            <span class="req-nickname-pop">닉네임</span>
+                            </div>
+                            <p>
+                                이름 : <span>유저일</span> <br>
+                                성별 : <span>남</span> <br>
+                                생년월일 : <span>2020-10-25</span>
+                            </p>
+                            <div class="popup_button">
+                            <a href="#" id="closePop">확인</a>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="customer-service">
+            <p class="cs">고객센터</p>
+            <p class="cs">이메일 : cs@doran.com</p>
+            <p class="cs">고객센터 : 02-555-5252</p>
+            <p class="cs">업무시간 : 평일 9:00 - 18:00 (점심: 12:00 - 13:00)</p>
+            
+        </div>
+        
+        <br><hr style="border: solid 1px rgb(230, 230, 230); width: 40%;" >
+        <div class="customer-service info">
+            <a href="#">소개</a>
+            <span>|</span>
+            <a href="#">이용약관</a>
+            <span>|</span>
+            <a href="#">개인정보처리방침</a>
+            <span>|</span>
+            <a href="#"> ⓒ DORAN</a>
+        </div>
+    </footer>
+
+    <script src="../resources/js/community/meeting-admin.js"></script>
+</body>
+</html>

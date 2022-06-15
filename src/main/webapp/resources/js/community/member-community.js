@@ -36,6 +36,20 @@ function pick(){
 //         });
 // }
 
+const detail_popup = document.getElementById("detail-Popup");
+const event_popup = document.getElementById("event-Popup");
+
+detail_popup.addEventListener("click", function(){
+    document.getElementById("detail_popup_layer").style.display = "block";
+});
+
+event_popup.addEventListener("click", function(){
+    document.getElementById("event_popup_layer").style.display = "block";
+});
+
+// closePop.addEventListener("click", function(){
+//     document.getElementById("popup_layer").style.display = "none";
+// });
 
 
 

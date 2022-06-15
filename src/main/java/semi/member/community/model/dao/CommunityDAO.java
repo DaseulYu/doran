@@ -8,9 +8,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import semi.member.community.model.vo.Community;
+import semi.member.community.model.vo.CommunityGetTogether;
+import semi.member.community.model.vo.CommunityMember;
 
 public class CommunityDAO {
 	
@@ -68,7 +72,198 @@ public class CommunityDAO {
 		return comm;
 	}
 	
+	/** 모임 등록 DAO
+	 * @param conn
+	 * @param com
+	 * @return result
+	 * @throws Exception
+	 */
+	public int addMeeting(Connection conn, Community com) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("addMeeting");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, com.getCommunityName());
+			pstmt.setString(2, com.getCommunityInfo());
+			pstmt.setString(3, com.getCommunityArea());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
+	/** 모임 등록2 DAO
+	 * @param conn
+	 * @param categoryName
+	 * @return result 
+	 * @throws Exception
+	 */
+	public int addMeeting2(Connection conn, String categoryName) throws Exception {
+		
+		int result = 0;
+		
+		try {
 	
+			String sql = prop.getProperty("addMeeting2");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, categoryName);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 
+	/** 모임 정보 등록 DAO
+	 * @param conn
+	 * @param cgt
+	 * @return result
+	 * @throws Exception
+	 */
+	public int addSchedule(Connection conn, CommunityGetTogether cgt) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("addSchedule");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cgt.getCommunityDate());
+			pstmt.setInt(2, cgt.getRemitedMember());
+			pstmt.setString(3, cgt.getCommunityEvent());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/** 모임 승인 DAO
+	 * @param conn
+	 * @param cm
+	 * @return result
+	 * @throws Exception
+	 */
+	public int addCommunityMember(Connection conn, CommunityMember cm) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("addCommunityMember");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, cm.getCommunityNo());
+			pstmt.setInt(2, cm.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/** 모임장 위임 DAO
+	 * @param conn
+	 * @param com
+	 * @return result
+	 * @throws Exception
+	 */
+	public int entrust(Connection conn, Community com) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("entrust");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, com.getCommunityNo());
+			pstmt.setInt(2, com.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/** 멤버 추방 DAO
+	 * @param conn
+	 * @param cm
+	 * @return result
+	 * @throws Exception
+	 */
+	public int memberOut(Connection conn, CommunityMember cm) throws Exception  {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("memberOut");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, cm.getCommunityNo());
+			pstmt.setInt(2, cm.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	
+	/** 가입된 회원 목록 조회 Service
+	 * @param conn
+	 * @return commMemberList
+	 * @throws Exception
+	 */
+	public List<CommunityMember> selectCommMember(Connection conn, int communityNo) throws Exception {
+		
+		List<CommunityMember> commMemberList = new ArrayList<CommunityMember>();
+		
+		try {
+			String sql = prop.getProperty("selectCommMember");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, communityNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				CommunityMember cm = new CommunityMember();
+				
+				cm.setMemberNo(rs.getInt("memberNo"));
+				cm.setMemberNickname(rs.getString("memberNickname"));
+				cm.setMemberProfileImage(rs.getString("memberProfileImage"));
+				cm.setMemberCount(rs.getInt("memberCount"));
+				
+				commMemberList.add(cm);
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return commMemberList;
+	}
 }

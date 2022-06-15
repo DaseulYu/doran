@@ -1,0 +1,174 @@
+package semi.member.member.model.dao;
+
+import static semi.member.common.JDBCTemplate.*;
+
+import java.io.FileInputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Properties;
+
+import semi.member.member.model.vo.Member;
+
+/**
+ * @author user1
+ *
+ */
+public class MemberDAO {
+
+	private Statement stmt;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
+
+	private Properties prop;
+
+	public MemberDAO() {
+
+		try {
+			prop = new Properties();
+			String filePath = MemberDAO.class.getResource("/semi/member/sql/member-sql.xml").getPath();
+
+			prop.loadFromXML(new FileInputStream(filePath));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Member login(Connection conn, Member mem) throws Exception {
+
+		Member loginMember = null;
+
+		try {
+			String sql = prop.getProperty("login");
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, mem.getMemberEmail());
+			pstmt.setString(2, mem.getMemberPw());
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				loginMember = new Member();
+
+				loginMember.setMemberNo(rs.getInt("MEMBER_NO"));
+				loginMember.setMemberEmail(rs.getString("MEMBER_ID"));
+				loginMember.setMemberName(rs.getString("MEMBER_NM"));
+//				loginMember.setMemberGender(rs.getString("MEMBER_GENDER").charAt(0));
+				loginMember.setMemberBirth(rs.getString("MEMBER_BIRTH"));
+				loginMember.setMemberPhone(rs.getString("MEMBER_PHONE"));
+				loginMember.setMemberNickname(rs.getString("MEMBER_NICK"));
+				loginMember.setProfileImage(rs.getString("PROFILE_IMG"));
+				loginMember.setMemberLive(rs.getString("MEMBER_LIVE"));
+			}
+
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return loginMember;
+
+	}
+
+	/**
+	 * 닉네임 중복검사 DAO
+	 * 
+	 * @param conn
+	 * @param memberNickname
+	 * @return result
+	 * @throws Exception
+	 */
+	public int nicknameDupCheck(Connection conn, String memberNickname) throws Exception {
+		int result = 0;
+		try {
+			String sql = prop.getProperty("nicknameDupCheck");
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberNickname);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+
+		} finally {
+			close(conn);
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/**
+	 * 휴대폰 번호 중복 검사 DAO
+	 * 
+	 * @param conn
+	 * @param memberPhone
+	 * @return result
+	 * @throws Exception
+	 */
+	public int phoneDupCheck(Connection conn, String memberPhone) throws Exception {
+		int result = 0;
+
+		try {
+			String sql = prop.getProperty("phoneDupCheck");
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, memberPhone);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateMember(Connection conn, Member mem) throws Exception {
+
+		int result = 0;
+
+		try {
+			String sql = prop.getProperty("updateMember");
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, mem.getMemberNickname());
+			pstmt.setString(2, mem.getMemberPhone());
+			pstmt.setInt(3, mem.getMemberNo());
+
+			result = pstmt.executeUpdate();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int changePw(Connection conn, String currentPw, String newPw, int memberNo) throws Exception {
+		int result = 0;
+
+		try {
+			String sql = prop.getProperty("changePw");
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, newPw);
+			pstmt.setString(2, currentPw);
+			pstmt.setInt(3, memberNo);
+
+			result = pstmt.executeUpdate();
+
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+}

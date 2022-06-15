@@ -1,0 +1,268 @@
+.meeting-admin-content{
+    width: 1100px;
+    margin: 0px auto;
+}
+
+form[name="meeting-admin-form"]{
+    margin: 0px auto;
+    width: 80%;
+    display: block;
+}
+
+.meetingname-admin {
+    font-size: 28px;
+    font-weight: bold;
+    color: #0C71FF;
+}
+
+.meeting-request-area{
+    width: 100%;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: #F6F6F6;
+    margin: 0px auto;
+    margin-bottom: 20px;
+}
+
+.nickname-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meeting-request-area h4{
+    padding : 10px;
+}
+
+.member-admin-area{
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: #F6F6F6;
+    margin: 0px auto;
+    margin-bottom: 20px;
+}
+
+.member-admin-area h4{
+    padding : 10px;
+}
+
+.req-member-area{
+    width: 24%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+#profile{
+    width: 50%;
+    display: block;
+    margin: 0px auto;
+}
+
+#nickname-icon{
+    width: 20%;
+    display: inline-block;
+    margin-left: 50px;
+}
+
+.req-nickname{
+    width: 80%;  
+    font-size: 15px;
+    color: #8C8C8C;
+    display: inline;
+    margin: 0 auto;
+    align-items: center;
+}
+
+#confirm{
+    background-color: #FF8339;
+    border: none;
+    color: white;
+    width: 25%;
+    border-radius: 5px;
+    display: inline-block;
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+
+#refuse{
+    background-color: #BDBDBD;
+    border: none;
+    color: white;
+    width: 25%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.member-area{
+    padding: 5px;
+    background-color: #EAEAEA;
+    width: 21%;
+    display: inline-block;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    margin-left: 18px;
+}
+
+.member-nickname-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#member-nickname-icon {
+    width: 30px;
+    display: inline;
+    margin-right: 5px;
+}
+
+.member-nickname-area > span {
+    width: 100%;
+    display: inline;
+}
+
+.member-area-button {
+    justify-content: end;
+    padding: 5px;
+}
+#entrust{
+    border: none;
+    font-size: 11px;
+    background-color: transparent;
+}
+
+#entrust:hover{
+    cursor: pointer;
+    border-bottom: 0.5px solid black;
+    font-size: 11px;
+    background-color: transparent;
+}
+
+#out{
+    border: none;
+    font-size: 11px;
+    color: red;
+    background-color: transparent;
+}
+
+#out:hover{
+    cursor: pointer;
+    border-bottom: 0.5px solid red;
+    font-size: 11px;
+    color: red;
+    background-color: transparent;
+}
+
+#deleteMeeting{
+    color: red;
+    font-weight: bold;
+}
+
+#deleteMeeting:hover{
+    cursor: pointer;
+    border-bottom: 0.5px solid red;
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 팝업창 */
+/*popup*/
+.popup_layer {
+    position:fixed;
+    top:0;
+    left:0;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+}
+
+/*팝업 박스*/
+.popup_box{
+    position: relative;
+    top:50%;
+    left:50%; 
+    overflow: auto; 
+    height: 400px; 
+    width:375px;
+    transform:translate(-50%, -50%);
+    z-index:1002;
+    box-sizing:border-box;
+    background:#fff;
+    box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+    -webkit-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+    -moz-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+}
+
+/*컨텐츠 영역*/
+.popup_box .popup_cont {
+    line-height:1.4rem;
+    font-size:14px; 
+}
+
+.popup_content{
+    padding-top:30px;
+    padding-bottom: 15px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#nickname-icon-pop {
+    width: 150px;
+}
+
+.req-nickname-pop {
+    font-size: 30px;
+}
+
+.popup_cont p {
+    font-size: 16px;
+    text-align: center;
+    color: gray;
+    padding-bottom: 10px;
+    line-height: 30px;
+}
+
+.popup_cont .popup_button{
+    display: flex;
+    justify-content: center;
+}
+.popup_cont #closePop {
+    width: 50%;
+    height: 30px;
+    background-color: #FF8339;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 30px;
+    border: 0;
+}
+
+.popup_cont #closePop:hover {
+    width: 50%;
+    height: 30px;
+    background-color: white;
+    color:#FF8339;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid #FF8339;
+}
+
+/*오버레이 뒷배경*/
+.popup_overlay{
+    position:fixed;
+    top:0px;
+    right:0;
+    left:0;
+    bottom:0;
+    z-index:1001;
+    background:rgba(0,0,0,0.5);
+}
