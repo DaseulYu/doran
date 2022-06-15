@@ -37,8 +37,7 @@
 					<fieldset class="search-area">
 						<input type="search" id="query" name="query" autocomplete="off"
 							placeholder="검색어를 입력해주세요.">
-						<button type="submit" id="search-btn"
-							class="fa-solid fa-magnifying-glass">
+						<button type="submit" id="search-btn">
 							<img src="${contextPath}/resources/images/search.png"
 								id="search-logo">
 						</button>

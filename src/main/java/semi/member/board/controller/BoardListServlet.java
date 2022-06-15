@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi.member.board.model.service.BoardService;
 
-@WebServlet("/board/list")
+@WebServlet("/community/list")
 public class BoardListServlet extends HttpServlet {
 
 	@Override
