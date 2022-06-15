@@ -116,8 +116,8 @@
                         <a href="${contextPath}/community/signup/list?cn=${param.cn}" target="_blank"><span class="board-all">전체 가입인사 보기 &gt;</span></a>
                     </h3>
 
-                    <jsp:include page="/WEB-INF/views/board/board-signup-write.jsp"/>
-                    
+                    <!-- 가입인사 연결 -->
+                    <jsp:include page="/WEB-INF/views/community/commu-board.jsp"/>
                     
                 </div>
 
