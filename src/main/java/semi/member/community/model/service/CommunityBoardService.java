@@ -225,6 +225,21 @@ public class CommunityBoardService {
 		return bList;
 	}
 
+	/** 모임 메인 후기게시판
+	 * @param communityNo
+	 * @return rList
+	 * @throws Exception
+	 */
+	public List<CommunityBoard> selectReviewListMain(int communityNo) throws Exception {
+		Connection conn = getConnection();
+
+		List<CommunityBoard> rList = dao.selectReviewListMain(conn, communityNo);
+		
+		close(conn);
+		
+		return rList;
+	}
+
 
 
 	

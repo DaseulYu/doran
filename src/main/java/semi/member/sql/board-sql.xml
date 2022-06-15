@@ -25,4 +25,31 @@
 		)
 	WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
+	<!-- 조건을 만족하는 게시글 수 조회 -->
+	<entry key="searchListCount">
+		SELECT COUNT(*) FROM COMMUNITY
+		WHERE COMMUNITY_FL = 'N'
+	</entry>
+	
+	<!-- 조건을 만족하는 게시글 목록 조회 -->
+	<entry key="searchBoardList1">
+	SELECT * FROM(
+		   SELECT ROWNUM RNUM, A.* FROM(
+		      SELECT COMMUNITY_AREA, COMMUNITY_NO, COMMUNITY_NM, CATEGORY_NM, 
+				(SELECT COUNT(*) FROM PICK WHERE COMMUNITY.COMMUNITY_NO = PICK.COMMUNITY_NO) PICK, 
+				(SELECT COUNT(*) FROM COMMUNITY_MEMBER WHERE COMMUNITY.COMMUNITY_NO = COMMUNITY_MEMBER.COMMUNITY_NO) COMMUNITY_MEMBER
+			  FROM COMMUNITY
+			  JOIN CATEGORY USING(CATEGORY_NO)
+			  WHERE COMMUNITY_FL = 'N'
+			 
+		      
+	</entry>
+	
+	<entry key="searchBoardList2">
+				ORDER BY COMMUNITY_NO DESC
+			   ) A
+			)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
 </properties>

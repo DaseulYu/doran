@@ -14,6 +14,13 @@ import semi.member.board.model.vo.Pagination;
 public class BoardService {
 	private BoardDAO dao = new BoardDAO();
 
+	/**
+	 * 게시글 조회
+	 * 
+	 * @param cp
+	 * @return map
+	 * @throws Exception
+	 */
 	public Map<String, Object> selectBoardList(int cp) throws Exception {
 		Connection conn = getConnection();
 
@@ -34,6 +41,34 @@ public class BoardService {
 
 		close(conn);
 
+		return map;
+	}
+
+	/**
+	 * 검색 목록 조회 Service
+	 * 
+	 * @param cp
+	 * @param key
+	 * @param query
+	 * @return result
+	 * @throws Exception
+	 */
+	public Map<String, Object> serchBoardList(int cp, String key, String query) throws Exception {
+
+		Connection conn = getConnection();
+
+		int listCount = dao.searchListCount(conn, query);
+
+		Pagination pagination = new Pagination(cp, listCount);
+		
+		List<Board> boardList = dao.serchBoardList(conn, pagination, query);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+		
+		close(conn);
 		return map;
 	}
 }

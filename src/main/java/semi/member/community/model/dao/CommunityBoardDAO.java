@@ -513,6 +513,41 @@ public class CommunityBoardDAO {
 		return bList;
 	}
 
+	/** 모임 메인 후기게시판
+	 * @param conn
+	 * @param communityNo
+	 * @return rList
+	 * @throws Exception
+	 */
+	public List<CommunityBoard> selectReviewListMain(Connection conn, int communityNo) throws Exception {
+		List<CommunityBoard> rList = new ArrayList<CommunityBoard>();
+		
+		try {
+			String sql = prop.getProperty("selectReviewListMain");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, communityNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				CommunityBoard list = new CommunityBoard();
+				
+				list.setBoardTitle(rs.getString("BOARD_TITLE"));
+				list.setBoardContent(rs.getString("BOARD_CONTENT"));
+				list.setProfileImage(rs.getString("PROFILE_IMG"));
+				list.setMemberNickname(rs.getString("MEMBER_NICK"));
+				list.setImage0(rs.getString("IMG_NM"));
+
+				rList.add(list);
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return rList;
+	}
+
 	
 
 

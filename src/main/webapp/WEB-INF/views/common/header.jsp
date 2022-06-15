@@ -33,7 +33,7 @@
 
 		<section class="search-content">
 			<article class="search-area">
-				<form action="#" name="search-form">
+				<form action="${contextPath}/community/list?" name="search-form" onsubmit="return searchValidate()">
 					<fieldset class="search-area">
 						<input type="search" id="query" name="query" autocomplete="off"
 							placeholder="검색어를 입력해주세요.">
