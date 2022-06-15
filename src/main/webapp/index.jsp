@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="resources/css/member-community.css">
     <link rel="stylesheet" href="resources/css/board-signup.css">
     <link rel="stylesheet" href="resources/css/board-list.css">
-    <link rel="stylesheet" href="resources/css/header-footer.css">
+    <link rel="stylesheet" href="resources/css/main-style.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
     
