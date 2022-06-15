@@ -20,7 +20,7 @@ public class BoardSignup {
 	private int memberNo;
 	private String memberNickname;
 	private String profileImage;
-	
+
 	public int getSignupNo() {
 		return signupNo;
 	}
@@ -63,6 +63,5 @@ public class BoardSignup {
 	public void setProfileImage(String profileImage) {
 		this.profileImage = profileImage;
 	}
-	
 	
 }

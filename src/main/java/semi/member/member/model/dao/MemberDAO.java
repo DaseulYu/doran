@@ -130,6 +130,12 @@ public class MemberDAO {
 		return result;
 	}
 
+	/** 회원 정보 수정 DAO
+	 * @param conn
+	 * @param mem
+	 * @return result
+	 * @throws Exception
+	 */
 	public int updateMember(Connection conn, Member mem) throws Exception {
 
 		int result = 0;
@@ -150,6 +156,14 @@ public class MemberDAO {
 		return result;
 	}
 
+	/** 비밀번호 변경 DAO
+	 * @param conn
+	 * @param currentPw
+	 * @param newPw
+	 * @param memberNo
+	 * @return result
+	 * @throws Exception
+	 */
 	public int changePw(Connection conn, String currentPw, String newPw, int memberNo) throws Exception {
 		int result = 0;
 
@@ -168,6 +182,55 @@ public class MemberDAO {
 			close(pstmt);
 		}
 
+		return result;
+	}
+
+	public int currentPwConfirmCheck(Connection conn, String currentPw, int loginMemberNo) throws Exception{
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("currentPwConfirmCheck");
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, currentPw);
+			pstmt.setInt(2, loginMemberNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/** 프로필 이미지 변경 DAO
+	 * @param conn
+	 * @param memberNo
+	 * @param profileImage
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateProfileImage(Connection conn, int memberNo, String profileImage) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateProfileImage");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, profileImage);
+			pstmt.setInt(2, memberNo);
+			
+			result = pstmt.executeUpdate();
+		} finally {
+			close(pstmt);
+		}
+		
 		return result;
 	}
 

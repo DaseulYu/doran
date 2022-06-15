@@ -1,5 +1,6 @@
 package semi.member.community.model.service;
 
+
 import static semi.member.common.JDBCTemplate.*;
 
 import java.sql.Connection;
@@ -12,6 +13,7 @@ import semi.member.community.model.vo.BoardSignup;
 public class BoardSignupService {
 	
 	private BoardSignupDAO dao = new BoardSignupDAO();
+
 
 	/** 가입 인사 목록 조회
 	 * @param communityNo
@@ -88,6 +90,7 @@ public class BoardSignupService {
 		close(conn);
 		
 		return result;
+
 	}
 	
 	

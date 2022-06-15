@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<comment>member-sql.xml</comment>
-
+	<!-- 로그인 -->
 	<entry key="login">
 		SELECT MEMBER_NO, MEMBER_ID,MEMBER_PW, MEMBER_NM,
 		TO_CHAR(MEMBER_BIRTH, 'YYYY-MM-DD') AS MEMBER_BIRTH, MEMBER_PHONE,
@@ -12,30 +12,46 @@
 		AND MEMBER_PW = ?
 		AND SECESSION_FL ='N'
 	</entry>
-	
+	<!-- 닉네임 중복 검사 -->
 	<entry key="nicknameDupCheck">
 		SELECT COUNT(*) FROM MEMBER
 		WHERE MEMBER_NICK = ?
-		AND SECESSION_FL ='N'
+		AND
+		SECESSION_FL ='N'
 	</entry>
-	
+	<!-- 휴대폰 번호 중복 검사 -->
 	<entry key="phoneDupCheck">
 		SELECT COUNT(*) FROM MEMBER
 		WHERE MEMBER_PHONE = ?
-		AND SECESSION_FL = 'N'
+		AND
+		SECESSION_FL = 'N'
 	</entry>
-	
+	<!-- 내 정보 수정 -->
 	<entry key="updateMember">
 		UPDATE MEMBER SET
-		MEMBER_NICK = ?, 
+		MEMBER_NICK = ?,
 		MEMBER_PHONE = ?
 		WHERE MEMBER_NO=?
 	</entry>
-	
+	<!-- 비밀번호 변경 -->
 	<entry key="changePw">
 		UPDATE MEMBER SET
 		MEMBER_PW = ?
 		WHERE MEMBER_PW = ?
+		AND
+		MEMBER_NO = ?
+	</entry>
+	<!-- 현재 비밀번호 일치 확인 -->
+	<entry key="currentPwConfirmCheck">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_PW = ?
 		AND MEMBER_NO = ?
+		AND SECESSION_FL = 'N'
+	</entry>
+	
+	<entry key="updateProfileImage">
+	UPDATE MEMBER SET
+	PROFILE_IMG = ?
+	WHERE MEMBER_NO = ?
 	</entry>
 </properties>

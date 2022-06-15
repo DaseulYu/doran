@@ -19,10 +19,12 @@ public class CommunitySignup extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+
 			int communityNo = Integer.parseInt( req.getParameter("cn") );
 				
 			List<BoardSignup> sList = new BoardSignupService().selectSignupList(communityNo);
 			req.setAttribute("sList", sList);
+
 			
 			String path = "/WEB-INF/views/board/board-signup.jsp";
 			RequestDispatcher dispatcher = req.getRequestDispatcher(path);

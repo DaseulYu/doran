@@ -1,5 +1,6 @@
 package semi.member.community.model.dao;
 
+
 import static semi.member.common.JDBCTemplate.*;
 
 import java.io.FileInputStream;
@@ -30,6 +31,7 @@ public class BoardSignupDAO {
 			e.printStackTrace();
 		}
 	}
+
 
 	/** 가입 인사 목록 조회
 	 * @param conn
@@ -137,7 +139,6 @@ public class BoardSignupDAO {
 		}
 		return result;
 	}
-	
 	
 	
 	

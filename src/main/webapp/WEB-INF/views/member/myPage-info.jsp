@@ -34,10 +34,13 @@
            
             <section class="myPage-main">
                 <h1 class="myPage-title"> 내 정보</h1>
-                <span class="myPage-explanation"> 원하는 개인 정보를 수정할 수 있습니다.</span>
+                <span class="myPage-explanation"> 현재 비밀번호를 확인 후 원하는 개인 정보를 수정할 수 있습니다.</span>
             <form action="info" method="POST" name="myPage-form" onsubmit="return myInfoUpdateValidate()">
             <div class="myPage-row">
-                <label>이름</label><span>${loginMember.memberName}</span>
+                <label>현재 비밀번호</label><input type="password" name="currentPw" id="currentPw"> 
+            </div>
+            <div class="message-row">
+                <span id="currentPwMessage"></span>
             </div>
             <div class="myPage-row">
                 <label>닉네임</label><input type="text" name="memberNickname" id="memberNickname" value="${loginMember.memberNickname}">
@@ -67,6 +70,12 @@
         <!-- jQuery 라이브러리 추가(CDN) -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     
+        
+        <script>
+            const loginMemberNo = "${loginMember.memberNo}";
+        </script>
+
+
         <script src="${contextPath}/resources/js/myPage.js"></script>
 </body>
 </html>

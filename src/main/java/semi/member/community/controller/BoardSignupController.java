@@ -27,7 +27,7 @@ public class BoardSignupController extends HttpServlet {
 		BoardSignupService service = new BoardSignupService();
 		
 		try {
-			
+
 			// 가입 인사 목록 조회
 			if(command.equals("selectSignupList")) {
 				int communityNo = Integer.parseInt( req.getParameter("cn") );
@@ -37,6 +37,7 @@ public class BoardSignupController extends HttpServlet {
 			}
 			
 			
+
 			// 가입 인사 등록
 			if(command.equals("insert")) {
 				
