@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="write-area">
-                        <textarea maxlength="100" placeholder="내용을 입력해주세요." id="boardContent" name="boardContent">${detail.noticeContent}</textarea>
+                        <textarea placeholder="내용을 입력해주세요." id="boardContent" name="boardContent">${detail.noticeContent}</textarea>
                     </div>
 
                     <div class="btn-area">

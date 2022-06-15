@@ -92,32 +92,9 @@
                     </c:if>
                     --%>
 
+                    <!-- 공지사항으로 테이블명 수정 필요함 -->
                     <div class="board-detail-txt">
                         ${comm.communityDetail}
-                    </div>
-
-                    <!-- 다음 모임 -->
-                    <div class="board-event">
-                        <h4>다음모임</h4>
-                        <c:if test="${comm.communityAdmin eq 'Y'}">
-                            <a href="#" id="event-Popup">edit</a>
-                        </c:if>
-                        <table class="next-event">
-                            <tr>
-                                <th>일시</th>
-                                <td>2022월 05월 13일(금) 18:00</td>
-                            </tr>
-                            <tr>
-                                <th>장소</th>
-                                <td>서울시 종로구</td>
-                            </tr>
-                            <tr>
-                                <th>참여인원</th>
-                                <td>12명</td>
-                            </tr>
-                        </table>
-                        
-                        <button class="btn-event">참여하기</button>
                     </div>
 
                 </div>
@@ -129,7 +106,7 @@
                     </h3>
 
                     <!-- 가입인사 연결 -->
-                    <jsp:include page="/WEB-INF/views/community/commu-board.jsp"/>
+                    <jsp:include page="/WEB-INF/views/community/commu-signup.jsp"/>
                     
                 </div>
 
@@ -151,27 +128,9 @@
                         <a href="${contextPath}/community/board/review?cn=${param.cn}&type=2" target="_blank"><span class="board-all">전체 후기 보기 &gt;</span></a>
                     </h3>  
 
-                    <div class="review-content">
-
-                        <div class="review">
-                            <div class="review-img thumbnail">
-                                <img src="${contextPath}/resources/images/sample.jpg">
-                            </div>
-                            <div class="userInfo">
-                                <div>
-                                    <img src="${contextPath}/resources/images/user.png" id="user">
-                                </div>
-                                <span><h4>여덟글자닉네임임</h4></span>
-                            </div>
-                            <div class="review-text">
-                                모임후기1<br>
-                                모임후기2<br>
-                                모임후기3<br>
-                                모임후기4<br>
-                                모임후기5<br>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- 모임게시판 연결 -->
+                    <jsp:include page="/WEB-INF/views/community/commu-review.jsp"/>
+                    
                 </div>
 
                 <!-- 공지 수정 팝업 -->

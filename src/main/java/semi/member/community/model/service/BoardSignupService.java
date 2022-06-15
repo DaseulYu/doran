@@ -94,4 +94,21 @@ public class BoardSignupService {
 	}
 	
 	
+	/** 메인용 가입 인사 목록 조회
+	 * @param communityNo
+	 * @return sList
+	 * @throws Exception
+	 */
+	public List<BoardSignup> selectSignupListMain(int communityNo) throws Exception {
+
+		Connection conn = getConnection();
+		
+		List<BoardSignup> sList = dao.selectSignupListMain(conn, communityNo);
+		
+		close(conn);
+		
+		return sList;
+	}
+	
+	
 }
