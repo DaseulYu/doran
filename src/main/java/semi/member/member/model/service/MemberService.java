@@ -169,5 +169,39 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
+
+	/** 이메일 확인 Service
+	 * @param inputEmail
+	 * @return result
+	 * @throws Exception
+	 */
+	public int emailDupCheck(String inputEmail) throws Exception{
+		Connection conn = getConnection();
+		
+		
+		int result = dao.emailDupCheck(conn, inputEmail);
+		
+		close(conn);
+		return result;
+	}
+
+	/** 비밀번호 재설정 Service
+	 * @param inputName
+	 * @param inputEmail
+	 * @return result
+	 * @throws Exception
+	 */
+	public int findPw(Member mem) throws Exception  {
+		Connection conn = getConnection();
+		
+		int result = dao.findPw(conn, mem); 
+		
+		if(result>0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
 }
 

@@ -15,6 +15,14 @@ import semi.member.member.model.vo.Member;
  * @author user1
  *
  */
+/**
+ * @author user1
+ *
+ */
+/**
+ * @author user1
+ *
+ */
 public class MemberDAO {
 
 	private Statement stmt;
@@ -185,6 +193,13 @@ public class MemberDAO {
 		return result;
 	}
 
+	/** 현재 비밀번호 확인 DAO
+	 * @param conn
+	 * @param currentPw
+	 * @param loginMemberNo
+	 * @return result
+	 * @throws Exception
+	 */
 	public int currentPwConfirmCheck(Connection conn, String currentPw, int loginMemberNo) throws Exception{
 		int result = 0;
 		
@@ -323,6 +338,61 @@ public class MemberDAO {
 			close(pstmt);
 		}
 		
+		return result;
+	}
+
+	/** 이메일 확인 DAO
+	 * @param conn
+	 * @param inputEmail
+	 * @return result
+	 * @throws Exception
+	 */
+	public int emailDupCheck(Connection conn, String inputEmail) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("emailDupCheck");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, inputEmail);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+
+	/**비밀번호 재설정 DAO
+	 * @param conn
+	 * @param mem
+	 * @return result
+	 * @throws Exception
+	 */
+	public int findPw(Connection conn, Member mem) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("resetPw");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mem.getMemberPw());
+			pstmt.setString(2, mem.getMemberName());
+			pstmt.setString(3, mem.getMemberEmail());
+		
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
 		return result;
 	}
 

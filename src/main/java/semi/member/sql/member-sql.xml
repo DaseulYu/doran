@@ -85,5 +85,26 @@
 		   END			
 		FROM DUAL
 	</entry>
+	<!-- 이메일 확인  -->
+	<entry key="emailDupCheck">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_ID = ?
+		AND SECESSION_FL = 'N'
+	</entry>
+	<!-- 비밀번호 찾기 -->
+	<entry key="findPw">
+	 	SELECT MEMBER_PW FROM MEMBER
+	 	WHERE MEMBER_NM = ?
+	 	AND MEMBER_ID = ?
+	 	AND SECESSION_FL = 'N'
+	</entry>
 	
+	<!-- 비밀번호 재설정  -->
+	<entry key="resetPw">
+		UPDATE MEMBER SET
+		MEMBER_PW = ?
+		WHERE MEMBER_NM = ?
+		AND
+		MEMBER_ID = ?
+	</entry>
 </properties>
