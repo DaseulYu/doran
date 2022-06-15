@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${boardName}</title>
     <link rel="stylesheet" href="${contextPath}/resources/css/board-list.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
     

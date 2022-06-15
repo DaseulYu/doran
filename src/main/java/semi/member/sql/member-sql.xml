@@ -38,4 +38,6 @@
 		WHERE MEMBER_PW = ?
 		AND MEMBER_NO = ?
 	</entry>
+	
+	
 </properties>
