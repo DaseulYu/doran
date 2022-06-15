@@ -130,6 +130,12 @@ public class MemberDAO {
 		return result;
 	}
 
+	/** 회원 정보 수정 DAO
+	 * @param conn
+	 * @param mem
+	 * @return result
+	 * @throws Exception
+	 */
 	public int updateMember(Connection conn, Member mem) throws Exception {
 
 		int result = 0;
@@ -150,6 +156,14 @@ public class MemberDAO {
 		return result;
 	}
 
+	/** 비밀번호 변경 DAO
+	 * @param conn
+	 * @param currentPw
+	 * @param newPw
+	 * @param memberNo
+	 * @return result
+	 * @throws Exception
+	 */
 	public int changePw(Connection conn, String currentPw, String newPw, int memberNo) throws Exception {
 		int result = 0;
 
@@ -171,6 +185,145 @@ public class MemberDAO {
 		return result;
 	}
 
+	public int currentPwConfirmCheck(Connection conn, String currentPw, int loginMemberNo) throws Exception{
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("currentPwConfirmCheck");
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, currentPw);
+			pstmt.setInt(2, loginMemberNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
 
+	/** 프로필 이미지 변경 DAO
+	 * @param conn
+	 * @param memberNo
+	 * @param profileImage
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateProfileImage(Connection conn, int memberNo, String profileImage) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateProfileImage");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, profileImage);
+			pstmt.setInt(2, memberNo);
+			
+			result = pstmt.executeUpdate();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	/** 인증번호, 발급일 수정 DAO
+	 * @param conn
+	 * @param inputEmail
+	 * @param cNumber
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateCertification(Connection conn, String inputEmail, String cNumber) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateCertification");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cNumber);
+			pstmt.setString(2, inputEmail);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+	/** 인증번호 생성 DAO
+	 * @param conn
+	 * @param inputEmail
+	 * @param cNumber
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertCertification(Connection conn, String inputEmail, String cNumber) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("insertCertification");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, inputEmail);
+			pstmt.setString(2, cNumber);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	
+
+
+	/** 인증번호 확인 DAO
+	 * @param conn
+	 * @param inputEmail
+	 * @param cNumber
+	 * @return result
+	 * @throws Exception
+	 */
+	public int checkNumber(Connection conn, String inputEmail, String cNumber) throws Exception{
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("checkNumber");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, inputEmail);
+			pstmt.setString(2, cNumber);
+			pstmt.setString(3, inputEmail);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
 }

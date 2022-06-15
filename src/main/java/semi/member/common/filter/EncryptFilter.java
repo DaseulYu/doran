@@ -18,7 +18,8 @@ import semi.member.common.wrapper.EncryptWrapper;
 			urlPatterns = {"/member/login",
 						"/member/signUp",
 						"/member/myPage/changePw",
-						"/member/myPage/secession"} )
+						"/member/myPage/secession",
+						"/member/myPage/currentPwConfirmCheck"} )
 public class EncryptFilter extends HttpFilter implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException{}
 	

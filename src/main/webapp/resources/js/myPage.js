@@ -1,15 +1,14 @@
-
 const checkObj = {
     "memberNickname": false,
-    "memberPhone": false
-
+    "memberPhone": false,
+    "currentPw" : false
+    
 };
-
 
 const memberNickname = document.getElementById("memberNickname");
 const nicknameMessage = document.getElementById("nicknameMessage");
 
-
+// 닉네임 수정 시 정규표현식 및 중복 검사 (Ajax)
 memberNickname.addEventListener("input", function () {
 
     const regExp1 = /^[a-zA-Z0-9가-힣]{2,10}$/; // 닉네임 정규표현식
@@ -55,7 +54,7 @@ memberNickname.addEventListener("input", function () {
     }
 });
 
-
+// 휴대폰 번호 수정 시 정규표현식 검사 및 중복 검사(Ajax)
 const memberPhone = document.getElementById("memberPhone");
 const phoneMessage = document.getElementById("phoneMessage");
 
@@ -102,6 +101,56 @@ memberPhone.addEventListener("input", function() {
 
 });
 
+
+const currentPw = document.getElementById("currentPw");
+const currentPwMessage = document.getElementById("currentPwMessage");
+
+const regExp = /^[\w!@#_-]{6,30}$/;
+
+
+currentPw.addEventListener("input",function(){
+    
+    if(currentPw.value.trim().length==0){
+        currentPwMessage.innerHTML = "<strong>현재 비밀번호</strong>를 입력해주세요.";
+        currentPwMessage.classList.add("error");
+        currentPwMessage.classList.remove("confirm");
+        checkObj.currentPw = false;
+    }
+
+    if(regExp.test(currentPw.value)){ // 현재 비밀번호 유효성 검사, 유효 O
+        
+        $.ajax({ // 현재 비밀번호 일치 여부 검사 (ajax)
+            url : "currentPwConfirmCheck",
+            data : {"currentPw" : currentPw.value, 
+                    "loginMemberNo" : loginMemberNo},
+            type : "POST",
+            success : function(result){
+                if(result==1){// 현재 비밀번호 일치
+                    currentPwMessage.innerHTML = "<strong>현재 비밀번호</strong>가 일치합니다.";
+                    currentPwMessage.classList.add("confirm");
+                    currentPwMessage.classList.remove("error");
+                    checkObj.currentPw = true;
+
+                }else{ // 현재 비밀번호 일치하지 않음
+                    currentPwMessage.innerHTML = "<strong>현재 비밀번호</strong>가 일치하지 않습니다.";
+                    currentPwMessage.classList.add("error");
+                    currentPwMessage.classList.remove("confirm");
+                    checkObj.currentPw = false;
+                }
+            },error(result, req){
+                console.log("에러 발생");
+                console.log(req.responseText);
+            }
+        });
+    }else{
+        currentPwMessage.innerHTML = "<strong>영어, 숫자, 특수문자(!,@,#,-,_) 6~30글자</strong> 사이로 작성해주세요.";
+        currentPwMessage.classList.add("error");
+        currentPwMessage.classList.remove("confirm");
+        checkObj.currentPw = false;
+    }
+});
+
+// 내 정보 수정 유효성 검사
 function myInfoUpdateValidate(){
 
     let str;
@@ -112,6 +161,7 @@ function myInfoUpdateValidate(){
             switch(key){
                 case "memberNickname" : str="닉네임이"; break;
                 case "memberPhone" : str="휴대폰 번호가"; break;
+                case "currentPw" : str="현재 비밀번호가"; break;
 
             }
             str+= " 유효하지 않습니다.";

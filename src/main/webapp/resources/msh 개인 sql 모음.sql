@@ -65,3 +65,77 @@ INSERT INTO MEMBER
 VALUES(SEQ_MEMBER_NO.NEXTVAL,'user02@kh.or.kr', 'pass02@', '유저이', 'M', SYSDATE, '01023455678', '호랑이', DEFAULT, NULL, '서울');
 
 COMMIT;
+
+
+SELECT COUNT(*) FROM MEMBER
+        WHERE MEMBER_NICK = '유저일'
+        AND SECESSION_FL ='N';
+        
+SELECT MEMBER_NICK FROM MEMBER;
+
+
+INSERT INTO MEMBER 
+VALUES(SEQ_MEMBER_NO.NEXTVAL,'user03@kh.or.kr', 'pass03#', '유저삼', 'M', SYSDATE, '01023455678', '파국이다', DEFAULT, NULL, '서울');
+
+COMMIT;
+
+ALTER TABLE MEMBER MODIFY(MEMBER_PW VARCHAR2(100));
+
+UPDATE MEMBER 
+SET MEMBER_PW = 'k1AvTlLTYv9GAKzy4/6ydEuIS11oKBro81C7Wzq5QkoL3wGx1Y0gWas5ICgOdyvDYDzzb2OESO/fYO4OyQNojw=='
+WHERE MEMBER_ID = 'user03@kh.or.kr';
+
+COMMIT;
+
+-- 인증 테이블 생성
+ -- 한 이메일로 발급 받은 인증번호가 계속 업데이트
+CREATE TABLE CERTIFICATION (
+   EMAIL VARCHAR2(50) PRIMARY KEY,
+   C_NUMBER CHAR(6) NOT NULL,
+   ISSUE_DT DATE DEFAULT SYSDATE
+);
+
+-- user01@kh.or.kr   123456   
+
+SELECT EMAIL, C_NUMBER,
+   TO_CHAR(ISSUE_DT, 'YYYY-MM-DD HH24:MI:SS')
+ FROM CERTIFICATION;
+
+
+
+-- 일정 시간이 지난 후를 조회하는 방법
+--> 인증번호 발급시간 + 5분 == 발급 받은지 5분이 지남 == 인증번호 만료
+-- (INTERVAL '1' HOUR | MINUTE | SECOND)
+SELECT TO_CHAR(SYSDATE + (INTERVAL '5' MINUTE), 'YYYY-MM-DD HH24:MI:SS') 
+FROM DUAL;
+
+-- 발급 시간 + 5 분 < 현재 시간 == 만료
+-- 17:03 + 5분 == 17:08      <  17:11  
+
+-- 발급 시간 + 5 분 > 현재 시간 == 인증 가능 시간
+-- 17:03 + 5분 == 17:08    >  17:06  
+
+
+-- NVL( A , B ) : A가 NULL 이면 B를 반환
+
+SELECT * FROM CERTIFICATION;
+
+-- 조건절이 TRUE이면 '1' , 아니면 NULL  조회
+SELECT '1' FROM CERTIFICATION
+WHERE 1 = 0;
+
+
+SELECT 
+   -- 이메일, 인증번호가 일치하는 행이 있는지를 찾음 -> 있으면 1, 없으면 NULL
+   --> 1이면 THEN 구문 수행  , NULL이면 ELSE 수행
+   CASE WHEN (SELECT '1' FROM CERTIFICATION
+               WHERE EMAIL = 'knbdh9782@naver.com'
+               AND C_NUMBER = '6jJZWz')  = 1
+   
+      THEN NVL( (SELECT '1' FROM CERTIFICATION
+                  WHERE EMAIL = 'knbdh9782@naver.com'
+                  AND ISSUE_DT + (INTERVAL '5' MINUTE) >= SYSDATE) , '2') 
+                  
+      ELSE '3'  
+   END          
+FROM DUAL;

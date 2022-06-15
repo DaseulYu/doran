@@ -1,5 +1,6 @@
 // boardList 연결
 // board-detail 연결
+// board-write 연결
 
 // 목록으로
 (function(){
@@ -40,7 +41,7 @@
 })();
 
 
-// 게시글 삭제
+// 자유 게시글 삭제
 (function(){
     const deleteBtn = document.getElementById("deleteBtn"); 
     if(deleteBtn != null){ 
@@ -52,14 +53,16 @@
             // 변수 저장
             const cn = "?cn=" + params.get("cn");
             const no = "&no=" + params.get("no");
-            url += cn + no;
-
+            const type = "&type=" + params.get("type");
+            url += cn + no + type;
+            
             if(confirm("게시글을 삭제 하시겠습니까?")){
                 location.href = url; 
             }
         });
     }
 })();
+
 
 
 

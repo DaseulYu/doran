@@ -22,17 +22,25 @@ public class CommunityBoardDelete extends HttpServlet{
 		try {
 			int boardNo = Integer.parseInt(req.getParameter("no"));
 			int communityNo = Integer.parseInt(req.getParameter("cn"));
+			int type = Integer.parseInt(req.getParameter("type"));
 			
-			int result = new CommunityBoardService().deleteBoard(boardNo, communityNo);
+			int result = new CommunityBoardService().deleteBoard(boardNo, communityNo, type);
 			
 			HttpSession session = req.getSession();
 			String path = null;
 			String message = null;
 			
 			if(result > 0) {
+				
 				message = "게시글이 삭제되었습니다.";
-				path = "list?cn="+communityNo+ "&type=1";
-				// /board/list?cn=1&type=1
+				if(type==1) {
+					path = "list?cn=" + communityNo + "&type=" + type;
+					// /board/list?cn=1&type=1
+				} 
+				if(type==2) {
+					path = req.getHeader("referer");
+				}
+				
 			} else {
 				message = "게시글 삭제 실패";
 				path = req.getHeader("referer");

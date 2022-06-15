@@ -7,7 +7,7 @@ import java.util.List;
 
 import semi.member.community.model.dao.CommunityDAO;
 import semi.member.community.model.vo.Community;
-import semi.member.community.model.vo.CommunityGetTogether;
+import semi.member.community.model.vo.CommunityApply;
 import semi.member.community.model.vo.CommunityMember;
 
 public class CommunityService {
@@ -45,25 +45,6 @@ public class CommunityService {
 		if(result > 0) {
 			result = dao.addMeeting2(conn, categoryName);
 		}
-		
-		if(result > 0) commit(conn);
-		else         rollback(conn);
-		
-		close(conn);
-		
-		return result;
-	}
-
-	/** 모임 정모 등록 Service
-	 * @param cgt
-	 * @return result
-	 * @throws Exception
-	 */
-	public int addSchedule(CommunityGetTogether cgt) throws Exception {
-		
-		Connection conn = getConnection();
-		
-		int result = dao.addSchedule(conn, cgt);
 		
 		if(result > 0) commit(conn);
 		else         rollback(conn);
@@ -144,5 +125,21 @@ public class CommunityService {
 		close(conn);
 		
 		return commMemberList;
+	}
+
+	/** 가입 신청 회원 목록 조회 Service
+	 * @param communityNo
+	 * @return applyMemberList
+	 * @throws Exception
+	 */
+	public List<CommunityApply> selectApllyMember(int communityNo) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		List<CommunityApply> applyMemberList = dao.selectApllyMember(conn, communityNo);
+		
+		close(conn);
+		
+		return applyMemberList;
 	}
 }

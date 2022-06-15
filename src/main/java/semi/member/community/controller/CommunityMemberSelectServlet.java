@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.member.community.model.service.CommunityService;
-import semi.member.community.model.vo.CommunityMember;
+import semi.member.community.model.vo.CommunityApply;
 
 @WebServlet("/community/admin/select")
 public class CommunityMemberSelectServlet extends HttpServlet{
@@ -25,9 +25,9 @@ public class CommunityMemberSelectServlet extends HttpServlet{
 			
 			CommunityService service = new CommunityService();
 			
-			List<CommunityMember> commMemberList = service.selectCommMember(communityNo);
+			List<CommunityApply> applyMemberList = service.selectApllyMember(communityNo);
 			
-			req.setAttribute("commMemberList", commMemberList);
+			req.setAttribute("applyMemberList", applyMemberList);
 			
 			String path = "/WEB-INF/views/community/meeting-admin.jsp";
 			

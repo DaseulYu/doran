@@ -1,5 +1,7 @@
 package semi.member.community.model.vo;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -107,6 +109,10 @@ public class Community {
 		this.categoryNo = categoryNo;
 	}
 	
+	
+	
+	private List<CommunityBoard> boardList;
+	private List<BoardReply> replyList;
 	
 	
 }

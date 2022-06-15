@@ -15,14 +15,14 @@
 
         <tbody>
             <c:choose>
-                <c:when test="${empty boardList}">
+                <c:when test="${empty bList}">
                     <tr>
                         <td colspan="5">게시글이 없습니다.</td>
                     </tr>
                 </c:when>
 
                 <c:otherwise>
-                    <c:forEach var="boardList" items="${boardList}">
+                    <c:forEach var="boardList" items="${bList}">
                         <tr>
                             <td>${boardList.boardNo}</td>
                             <td>${boardList.boardTitle}</td>

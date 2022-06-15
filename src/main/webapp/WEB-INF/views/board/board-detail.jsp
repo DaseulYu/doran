@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자유게시판</title>
     <link rel="stylesheet" href="${contextPath}/resources/css/board-detail.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 
@@ -95,15 +95,29 @@
                         </c:if>
                     </div>
                 </c:if>
+
+                <jsp:include page="/WEB-INF/views/board/board-reply.jsp"/>
             </div>
-
         </div>
-
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <script src="${contextPath}/resources/js/board/board.js"></script>
+
+    <script>
+        const contextPath = "${contextPath}";
+        const boardNo = "${param.no}";
+
+        // 로그인한 회원
+        // const loginMemberNo = "${loginMember.memberNo}";
+    </script>
+
+    <script src="${contextPath}/resources/js/board/board-reply.js"></script>
     
 </body>
 </html>
