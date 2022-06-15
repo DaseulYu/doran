@@ -8,13 +8,13 @@
 		<c:choose>
 			<%-- 로그인 되어 있지 않은 경우 --%>
 			<c:when test="${empty sessionScope.loginMember}">
-				<a href="/doran/member/signUp">회원가입</a>
+				<a href="${contextPath}/member/signUp">회원가입</a>
 				<a href="${contextPath}/member/login">로그인</a>
-				<a href="#">공지사항</a>
+				<a href="${contextPath}/notice">공지사항</a>
 			</c:when>
 			
 		<c:otherwise>
-      <a href="${contextPath}/admin/list">admin</a>
+     		<a href="${contextPath}/admin/list">admin</a>
 			<a href="${contextPath}/member/myPage/info">${loginMember.memberNickname}님</a>
 			<a href="${contextPath}/member/logout">로그아웃</a>
 			<a href="${contextPath}/notice">공지사항</a>
