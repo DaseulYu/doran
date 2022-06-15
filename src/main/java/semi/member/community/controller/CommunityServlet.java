@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.member.community.model.service.BoardReplyService;
+import semi.member.community.model.service.BoardSignupService;
 import semi.member.community.model.service.CommunityBoardService;
 import semi.member.community.model.service.CommunityService;
 import semi.member.community.model.vo.BoardReply;
+import semi.member.community.model.vo.BoardSignup;
 import semi.member.community.model.vo.Community;
 import semi.member.community.model.vo.CommunityBoard;
 
@@ -38,8 +40,12 @@ public class CommunityServlet extends HttpServlet{
 				req.setAttribute("bList", bList);
 				
 				// 가입인사
-				//List<BoardSignup> bReply = new BoardReplyService().selectReplyList(communityNo);
-				//req.setAttribute("bReply", bReply);
+				List<BoardSignup> bSignup = new BoardSignupService().selectSignupListMain(communityNo);
+				req.setAttribute("bSignup", bSignup);
+				
+				// 모임후기
+				List<CommunityBoard> rList = new CommunityBoardService().selectReviewListMain(communityNo);
+				req.setAttribute("rList", rList);
 			}
 			
 			

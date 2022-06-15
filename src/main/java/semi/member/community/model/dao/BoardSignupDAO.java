@@ -139,6 +139,43 @@ public class BoardSignupDAO {
 		}
 		return result;
 	}
+
+
+	/** 모임 메인 가입인사
+	 * @param conn
+	 * @param communityNo
+	 * @return sList
+	 * @throws Exception
+	 */
+	public List<BoardSignup> selectSignupListMain(Connection conn, int communityNo) throws Exception {
+		List<BoardSignup> sList = new ArrayList<BoardSignup>();
+		
+		try {
+			String sql = prop.getProperty("selectSignupListMain");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, communityNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				BoardSignup b = new BoardSignup();
+				
+				b.setMemberNo(rs.getInt("SIGNUP_NO"));
+				b.setMemberNickname(rs.getString("MEMBER_NICK"));
+				b.setProfileImage(rs.getString("PROFILE_IMG"));
+				b.setSignupContent(rs.getString("SIGNUP_CONTENT"));
+				b.setCreateDate(rs.getString("CREATE_DT"));
+				
+				sList.add(b);
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return sList;
+	}
 	
 	
 	
