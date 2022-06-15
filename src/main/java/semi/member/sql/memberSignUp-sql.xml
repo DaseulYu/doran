@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>memberSignUp-sql.xml</comment>
+
+	<!-- 회원가입 -->
+	<entry key="signUp">
+		INSERT INTO MEMBER
+		VALUES(SEQ_MEMBER_NO.NEXTVAL , ?, ?, ? , ? , 
+		TO_DATE(?, 'YYYY-MM-DD'), ?, ?, DEFAULT, DEFAULT, ?)
+	</entry>
+</properties>
