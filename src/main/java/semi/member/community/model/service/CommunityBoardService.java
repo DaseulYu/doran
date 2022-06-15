@@ -193,13 +193,14 @@ public class CommunityBoardService {
 	 * @param communityNo
 	 * @param boardNo
 	 * @param communityNo 
+	 * @param type 
 	 * @return result
 	 * @throws Exception
 	 */
-	public int deleteBoard(int boardNo, int communityNo) throws Exception {
+	public int deleteBoard(int boardNo, int communityNo, int type) throws Exception {
 		Connection conn = getConnection();
 		
-		int result = dao.deleteBoard(conn, boardNo, communityNo);
+		int result = dao.deleteBoard(conn, boardNo, communityNo, type);
 		
 		if(result > 0) commit(conn);
 		else rollback(conn);
@@ -207,6 +208,21 @@ public class CommunityBoardService {
 		close(conn);
 		
 		return result;
+	}
+
+	/** 모임 메인 자유게시판
+	 * @param communityNo
+	 * @return bList
+	 * @throws Exception
+	 */
+	public List<CommunityBoard> selectBoardList(int communityNo) throws Exception {
+		Connection conn = getConnection();
+
+		List<CommunityBoard> bList = dao.selectBoardList(conn, communityNo);
+		
+		close(conn);
+		
+		return bList;
 	}
 
 

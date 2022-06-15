@@ -127,7 +127,7 @@ replyBtn.addEventListener("click", function(){
                 replyContent.value="";
                 selectReplyList(); 
             } else{
-                alert("댓글 등록에 실패");
+                alert("댓글 등록 실패");
             }
         },
         error : function(req, status, error){

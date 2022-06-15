@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모임명-모임후기</title>
+    <title>모임후기</title>
     <link rel="stylesheet" href="../../resources/css/board-detail.css">
-    <link rel="stylesheet" href="../../resources/css/header-footer.css">
+    <link rel="stylesheet" href="../../resources/css/main-style.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
     
@@ -27,7 +27,7 @@
                     카테고리
                 </button>
                 <a href="#">
-                    <img src="../../resources/images/logoV2.png" id="home-logo">
+                    <img src="../../resources/images/logo.png" id="home-logo">
                 </a>
         
                 <section class="search-content">
@@ -43,10 +43,6 @@
                         </form>
                     </article>
                 </section>
-
-                <a href="#">유저일님</a>
-                <a href="#">로그아웃</a>
-                <a href="#">공지사항</a>
             </section>
         </header>
 
@@ -60,18 +56,23 @@
 
 
             <div class="content">
-                <div class="userInfo">
-                    <div class="user writer">
-                        <img src="../../resources/images/user_sample.jpg" id="user">
-                    </div>
-                    <div class="writerInfo">
-                        <span class="user-nick">최대여덟글자까지</span><br>
-                        <span class="txt-date">2022.05.22</span>
+                <div class="board-title-area">
+                    <div class="board-title">
+                        <h2>게시글 제목</h2>
                     </div>
                     <div class="write-btn-area">
                         <button id="btn-report">신고</button>
                         <button id="updateBtn">수정</button>
                         <button id="deleteBtn">삭제</button>
+                    </div>
+                </div>
+                <div class="userInfo">
+                    <div class="user writer">
+                        <img src="../../resources/images/user_sample.jpg" id="user">
+                    </div>
+                    <div class="writerInfo">
+                        <span class="user-nick">최대여덟글자까지</span>
+                        <span class="txt-date">2022.05.22</span>
                     </div>
                 </div>
                 <div class="content-txt">
@@ -135,24 +136,29 @@
                 </div>
 
                 <div class="reply-write-area">
-                    <textarea maxlength="100" placeholder="내용을 입력해주세요.(100 글자 이하)"></textarea>
-                    <button class="btn-reply">등록</button>
+                    <textarea maxlength="100" placeholder="내용을 입력해주세요.(100 글자 이하)" id="msgContent"></textarea>
+                    <button class="btn-reply" id="btn-reply">등록</button>
                 </div>
             </div>
 
             <div class="content">
-                <div class="userInfo">
-                    <div class="user writer">
-                        <img src="../../resources/images/user_sample.jpg" id="user">
-                    </div>
-                    <div class="writerInfo">
-                        <span class="user-nick">최대여덟글자까지</span><br>
-                        <span class="txt-date">2022.05.22</span>
+                <div class="board-title-area">
+                    <div class="board-title">
+                        <h2>게시글 제목</h2>
                     </div>
                     <div class="write-btn-area">
                         <button id="btn-report">신고</button>
                         <button id="updateBtn">수정</button>
                         <button id="deleteBtn">삭제</button>
+                    </div>
+                </div>
+                <div class="userInfo">
+                    <div class="user writer">
+                        <img src="../../resources/images/user_sample.jpg" id="user">
+                    </div>
+                    <div class="writerInfo">
+                        <span class="user-nick">최대여덟글자까지</span>
+                        <span class="txt-date">2022.05.22</span>
                     </div>
                 </div>
                 <div class="content-txt">
@@ -171,6 +177,30 @@
 
                 <div class="reply-list-area">
                     <ul id="reply-list">
+                        <li class="reply-row">
+                            <div class="reply-nick">
+                                <img src="../../resources/images/user_sample.jpg" id="user">최대여덟글자까지
+                            </div>
+                            <div class="reply-txt-area">
+                                <span class="reply-txt">
+                                    가나다라마바사아자차카타파하
+                                    가나다라마바사아자차카타파하
+                                    가나다라마바사아자차카타파하
+                                    가나다라마바사아자차카타파하
+                                    가나다라마바사아자차카타파하
+                                    가나다라마바사아자차카타파하
+                                    가나다라마바사아자차카타파하하하
+                                    <span class="reply-txt-date">2022.05.22</span>
+                                </span>
+                            </div>
+                            
+                            <div class="reply-btn-area">
+                                <button id="btn-report">신고</button>
+                                <button id="updateBtn">수정</button>
+                                <button id="deleteBtn">삭제</button>
+                            </div>
+                        </li>
+
                         <li class="reply-row">
                             <div class="reply-nick">
                                 <img src="../../resources/images/user.png" id="user">닉네임
@@ -192,25 +222,9 @@
                 </div>
 
                 <div class="reply-write-area">
-                    <textarea maxlength="100" placeholder="내용을 입력해주세요.(100 글자 이하)"></textarea>
-                    <button class="btn-reply">등록</button>
+                    <textarea maxlength="100" placeholder="내용을 입력해주세요.(100 글자 이하)" id="msgContent"></textarea>
+                    <button class="btn-reply" id="btn-reply">등록</button>
                 </div>
-            </div>
-
-
-
-            <div class="paging">
-                <ul>
-                    <li><a href="#">&lt;&lt;</a></li>
-                    <li><a href="#">&lt;</a></li>
-                    <li><a class="current">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
-                    <li><a href="#">&gt;&gt;</a></li>
-                </ul>
             </div>
             
         </div>

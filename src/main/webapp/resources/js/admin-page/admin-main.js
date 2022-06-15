@@ -102,9 +102,6 @@ function searchValidate(){
 const noticeNo = "${noticeList.noticeNo}";
 // 등록
 function noticeInsert(noticeNo){
-
-    const noticeInsertBtn = document.getElementById("noticeInsertBtn");
-    
     if(confirm("게시글을 등록 하시겠습니까?")){
         $.ajax({
             url : "list/insert",
@@ -113,6 +110,7 @@ function noticeInsert(noticeNo){
             success : function(result){
                 if(result>0){
                     alert("게시글이 등록되었습니다.");
+                    window.location.reload();
                 } else  {
                     alert("게시글 등록 실패");
                 }
@@ -135,7 +133,7 @@ function noticeDelete(noticeNo){
             success : function(result){
                 if(result>0){
                     alert("게시글이 삭제되었습니다.");
-                    noticeState.innerText = "Y";
+                    window.location.reload();
                 } else  {
                     alert("게시글 삭제 실패");
                 }

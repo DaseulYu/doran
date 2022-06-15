@@ -1,15 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 
+<c:set var="boardName" value="${map.boardName}" />
+<c:set var="pagination" value="${map.pagination}" />
+<c:set var="boardList" value="${map.boardList}" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모임명-모임후기</title>
+    <title>모임후기</title>
     <link rel="stylesheet" href="${contextPath}/resources/css/board-detail.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
     
@@ -24,152 +28,66 @@
                 <h2>모임후기</h2>
             </div>
             <div class="btn-area">
-                <button id="insertBtn">후기 작성</button>
+                <button id="insertBtn" onclick="location.href='write?mode=insert&cn=${param.cn}&type=${param.type}&cp=${param.cp}'">후기 작성</button>
             </div>
 
+            <c:choose>
+                <c:when test="${empty boardList}">
+                    <h4 style="color: #0C71FF;">게시글이 없습니다.<br>첫 후기를 작성해주세요.</h4>
+                </c:when>
 
-            <div class="content">
-                <div class="userInfo">
-                    <div class="user writer">
-                        <img src="../../resources/images/user_sample.jpg" id="user">
-                    </div>
-                    <div class="writerInfo">
-                        <span class="user-nick">최대여덟글자까지</span><br>
-                        <span class="txt-date">2022.05.22</span>
-                    </div>
-                    <div class="write-btn-area">
-                        <button id="btn-report">신고</button>
-                        <button id="updateBtn">수정</button>
-                        <button id="deleteBtn">삭제</button>
-                    </div>
-                </div>
-                <div class="content-txt">
-                    모임후기1<br>
-                    내용입력<br>
-                    내용입력<br>
-                </div>
-                <div class="content-img-area">
-                    <div class="content-img thumbnail">
-                        <img src="../../resources/images/sample.jpg">
-                    </div>
-                    <div class="content-img">
-                        <img src="../../resources/images/sample.jpg">
-                    </div>
-                </div>
+                <c:otherwise>
+                    <c:forEach var="boardList" items="${boardList}">
 
-                <div class="reply-list-area">
-                    <ul id="reply-list">
-                        <li class="reply-row">
-                            <div class="reply-nick">
-                                <img src="../../resources/images/user_sample.jpg" id="user">최대여덟글자까지
+                        <div class="content">
+                            <div class="board-title-area">
+                                <div class="board-title">
+                                    <h2>${boardList.boardTitle}</h2>
+                                </div>
+                                <div class="write-btn-area">
+                                    <button id="btn-report">신고</button>
+                                    <button id="updateBtn" onclick="location.href='write?mode=update&no=${boardList.boardNo}&cn=${param.cn}&type=${param.type}&cp=${param.cp}'">수정</button>
+                                    <button id="deleteBtn" onclick="boardDelete(${boardList.boardNo})">삭제</button>
+                                </div>
                             </div>
-                            <div class="reply-txt-area">
-                                <span class="reply-txt">
-                                    가나다라마바사아자차카타파하
-                                    가나다라마바사아자차카타파하
-                                    가나다라마바사아자차카타파하
-                                    가나다라마바사아자차카타파하
-                                    가나다라마바사아자차카타파하
-                                    가나다라마바사아자차카타파하
-                                    가나다라마바사아자차카타파하하하
-                                    <span class="reply-txt-date">2022.05.22</span>
-                                </span>
+                            <div class="userInfo">
+                                <div class="user writer">
+                                    <c:if test="${empty boardList.profileImage}">
+                                        <img src="${contextPath}/resources/images/user.png" id="user">
+                                    </c:if>
+                                    
+                                    <c:if test="${!empty boardList.profileImage}">
+                                        <img src="${contextPath}${boardList.profileImage}" id="user">
+                                    </c:if>
+                                </div>
+                                <div class="writerInfo">
+                                    <span class="user-nick">${boardList.memberNickname}</span>
+                                    <span class="txt-date">${boardList.createDate}</span>
+                                </div>
                             </div>
-                            
-                            <div class="reply-btn-area">
-                                <button id="btn-report">신고</button>
-                                <button id="updateBtn">수정</button>
-                                <button id="deleteBtn">삭제</button>
+                            <div class="content-txt">
+                                ${boardList.boardContent}
                             </div>
-                        </li>
+                            <div class="content-img-area">
+                                <c:if test="${!empty boardList.image0}">
+                                    <div class="content-img thumbnail">
+                                        <img src="${contextPath}${boardList.image0}">
+                                    </div>
+                                </c:if>
+                                <c:if test="${!empty boardList.image1}">
+                                    <div class="content-img">
+                                        <img src="${contextPath}${boardList.image1}">
+                                    </div>
+                                </c:if>
+                            </div>
 
-                        <li class="reply-row">
-                            <div class="reply-nick">
-                                <img src="../../resources/images/user.png" id="user">닉네임
-                            </div>
-                            <div class="reply-txt-area">
-                                <span class="reply-txt">
-                                    안녕하세요.
-                                    <span class="reply-txt-date">2022.05.22</span>
-                                </span>
-                            </div>
-                            
-                            <div class="reply-btn-area">
-                                <button id="btn-report">신고</button>
-                                <button id="updateBtn">수정</button>
-                                <button id="deleteBtn">삭제</button>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="reply-write-area">
-                    <textarea maxlength="100" placeholder="내용을 입력해주세요.(100 글자 이하)"></textarea>
-                    <button class="btn-reply">등록</button>
-                </div>
-            </div>
-
-            <div class="content">
-                <div class="userInfo">
-                    <div class="user writer">
-                        <img src="../../resources/images/user_sample.jpg" id="user">
-                    </div>
-                    <div class="writerInfo">
-                        <span class="user-nick">최대여덟글자까지</span><br>
-                        <span class="txt-date">2022.05.22</span>
-                    </div>
-                    <div class="write-btn-area">
-                        <button id="btn-report">신고</button>
-                        <button id="updateBtn">수정</button>
-                        <button id="deleteBtn">삭제</button>
-                    </div>
-                </div>
-                <div class="content-txt">
-                    모임후기1<br>
-                    내용입력<br>
-                    내용입력<br>
-                </div>
-                <div class="content-img-area">
-                    <div class="content-img thumbnail">
-                        <img src="../../resources/images/sample.jpg">
-                    </div>
-                    <div class="content-img">
-                        <img src="../../resources/images/sample.jpg">
-                    </div>
-                </div>
-
-                <div class="reply-list-area">
-                    <ul id="reply-list">
-                        <li class="reply-row">
-                            <div class="reply-nick">
-                                <img src="../../resources/images/user.png" id="user">닉네임
-                            </div>
-                            <div class="reply-txt-area">
-                                <span class="reply-txt">
-                                    안녕하세요.
-                                    <span class="reply-txt-date">2022.05.22</span>
-                                </span>
-                            </div>
-                            
-                            <div class="reply-btn-area">
-                                <button id="btn-report">신고</button>
-                                <button id="updateBtn">수정</button>
-                                <button id="deleteBtn">삭제</button>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="reply-write-area">
-                    <textarea maxlength="100" placeholder="내용을 입력해주세요.(100 글자 이하)"></textarea>
-                    <button class="btn-reply">등록</button>
-                </div>
-            </div>
-
-
+                        </div>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
 
             <div class="paging">
-                <c:set var="url" value="list?cn=${param.cn}&type=${param.type}&cp="/>
+                <c:set var="url" value="review?cn=${param.cn}&type=${param.type}&cp="/>
 
                 <ul class="pagination">
                     <!-- 첫 페이지로 이동 -->
@@ -203,6 +121,14 @@
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script> 
+        const cn = "${param.cn}";
+        const type = "${param.type}";
+    </script>
+    <script src="${contextPath}/resources/js/board/board-review.js"></script>
     
 </body>
 </html>

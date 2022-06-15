@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/member-community.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board-signup.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board-list.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
     
@@ -116,43 +116,8 @@
                         <a href="${contextPath}/community/signup/list?cn=${param.cn}" target="_blank"><span class="board-all">전체 가입인사 보기 &gt;</span></a>
                     </h3>
 
-                    <div class="signup">
-                        <ul id="signup-list">
-        
-                            <li class="signup-row">
-                                <div class="user">
-                                    <img src="${contextPath}/resources/images/user.png" id="user">
-                                    <p>최대최대여덟글자</p>
-                                </div>
-                                <div class="message">
-                                    <span class="message-txt">안녕하세요.</span>
-                                    <span class="message-date">2022.05.22</span>
-                                </div>
-                                <div class="write-btn-area">
-                                    <button id="btn-report">신고</button>
-                                    <button id="updateBtn">수정</button>
-                                    <button id="deleteBtn">삭제</button>
-                                </div>
-                            </li>
-        
-                            <li class="signup-row">
-                                <div class="user">
-                                    <img src="${contextPath}/resources/images/user.png" id="user">
-                                    <p>최대여덟글자</p>
-                                </div>
-                                <div class="message">
-                                    <span class="message-txt">안녕하세요.</span>
-                                    <span class="message-date">2022.05.22</span>
-                                </div>
-                                <div class="write-btn-area">
-                                    <button id="btn-report">신고</button>
-                                    <button id="updateBtn">수정</button>
-                                    <button id="deleteBtn">삭제</button>
-                                </div>
-                            </li>
-        
-                        </ul>
-                    </div>
+                    <jsp:include page="/WEB-INF/views/board/board-signup-write.jsp"/>
+                    
                     
                 </div>
 
@@ -162,9 +127,8 @@
                     <h3>자유게시판
                         <a href="${contextPath}/community/board/list?cn=${param.cn}&type=1" target="_blank"><span class="board-all">전체 게시글 보기 &gt;</span></a>
                     </h3>
-
+                    <!-- 자유게시판 연결 -->
                     <jsp:include page="/WEB-INF/views/community/commu-board.jsp"/>
-
                 </div>
 
 

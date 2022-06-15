@@ -19,6 +19,7 @@
                     </c:if>
                     <p>${reply.memberNickname}</p>
                 </div>
+                
                 <div class="reply-txt-area">
                     <span class="reply-txt">${reply.replyContent}</span>
                     <span class="reply-txt-date">${reply.createDate}</span>
