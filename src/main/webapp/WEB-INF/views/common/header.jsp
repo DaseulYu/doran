@@ -28,11 +28,7 @@
 			카테고리
 		</button>
 		<a href="${contextPath}"> 
-<<<<<<< HEAD
-            <img src="${contextPath}/resources/images/logoV2.png" id="home-logo">
-=======
             <img src="${contextPath}/resources/images/logo.png" id="home-logo">
->>>>>>> 83ec08e11e74ddc626d93807c15c048b32d2e7c5
 		</a>
 
 		<section class="search-content">
@@ -50,11 +46,5 @@
 				</form>
 			</article>
 		</section>
-<<<<<<< HEAD
-
-
-=======
-    
->>>>>>> 83ec08e11e74ddc626d93807c15c048b32d2e7c5
 	</section>
 </header>

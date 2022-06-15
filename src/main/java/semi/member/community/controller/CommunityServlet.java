@@ -33,11 +33,13 @@ public class CommunityServlet extends HttpServlet{
 			
 			// 게시판별 내용 얻어오기
 			if(comm != null) {
+				// 자유게시판
 				List<CommunityBoard> bList = new CommunityBoardService().selectBoardList(communityNo);
 				req.setAttribute("bList", bList);
 				
-				List<BoardReply> bReply = new BoardReplyService().selectReplyList(communityNo);
-				req.setAttribute("bReply", bReply);
+				// 가입인사
+				//List<BoardSignup> bReply = new BoardReplyService().selectReplyList(communityNo);
+				//req.setAttribute("bReply", bReply);
 			}
 			
 			
