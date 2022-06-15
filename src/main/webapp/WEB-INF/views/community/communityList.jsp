@@ -4,51 +4,6 @@
         <c:set var="pagination" value="${map.pagination}" />
         <c:set var="boardList" value="${map.boardList}" />
 
-        <!-- 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>도란도란</title>
-
-    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/boardList-style.css">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-</head>
-
-<body>
-    <jsp:include page="/WEB-INF/views/common/header.jsp" />
-
-    <section class="board">
-
-        <section class="board-content">
-
-            <div class="board-post">
-
-                <ul class="post"></ul>
-                <li class="list">
-                    <div class="doran">
-                        <div class="cover">
-                            <img src="/images/category.JPG" width="110px" height="110px">
-                        </div>
-                        <div class="doran-block">
-                            <p class="doranLocation">${board.communityArea}</p><br>
-                            <a href="#" class="doranName">${board.communityName}</a><br>
-                            <a href="#" class="categoryName">${board.categoryName}</a><br>
-                            <span class="peopleCount">${board.communityMember}</span> <span class="likeCount">${board.Pick}</span>
-
-                        </div>
-                    </div>
-                </li>
-
-
-
-                </ul>
-            </div> -->
 
         <!DOCTYPE html>
         <html lang="en">
@@ -67,6 +22,11 @@
 
         <body>
             <jsp:include page="/WEB-INF/views/common/header.jsp" />
+            <c:if test="${!empty param.query}">
+                <c:set var="sURL" value="&query=${param.query}"/>
+            </c:if>
+            
+            
 
             <section class="board">
                 <div class="create"><a href="#"><i class="fas fa-plus-circle"></i> 모임 만들기</a></div>
@@ -93,7 +53,7 @@
                                             </div>
                                             <div class="doran-block">
                                                 <p class="doranLocation"><i class="fal fa-map-marker-alt"></i> ${board.communityArea}</p><br>
-                                                <a href="#" class="doranName">${board.communityName}</a><br>
+                                                <a href="${sURL}" class="doranName">${board.communityName}</a><br>
                                                 <a href="#" class="categoryName">${board.categoryName}</a><br>
                                                 <span class="peopleCount"><i class="fal fa-user"></i> ${board.communityMember}</span> <span class="likeCount"><i class="fas fa-heart"></i> ${board.pick}</span>
         
@@ -146,7 +106,7 @@
                 </ul>
                 </div>
             </section>
-
+            <script src="${contextPath}/resources/js/community/communityList.js"></script>
         </body>
 
         </html>

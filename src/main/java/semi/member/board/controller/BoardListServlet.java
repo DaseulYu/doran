@@ -29,10 +29,14 @@ public class BoardListServlet extends HttpServlet {
 
 			Map<String, Object> map = null;
 
-			if (req.getParameter("key") == null) {
+			if (req.getParameter("query") == null) {
 
 				map = service.selectBoardList(cp);
+			} else {
 
+				String key = req.getParameter("key");
+				String query = req.getParameter("query");
+				map = service.serchBoardList(cp, key, query);
 			}
 
 			req.setAttribute("map", map);
