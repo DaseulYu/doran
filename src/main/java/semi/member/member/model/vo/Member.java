@@ -25,5 +25,72 @@ public class Member {
 		private String secessionFlag;
 		private String profileImage;
 		private String memberLive;
-	
+		public int getMemberNo() {
+			return memberNo;
+		}
+		public void setMemberNo(int memberNo) {
+			this.memberNo = memberNo;
+		}
+		public String getMemberEmail() {
+			return memberEmail;
+		}
+		public void setMemberEmail(String memberEmail) {
+			this.memberEmail = memberEmail;
+		}
+		public String getMemberPw() {
+			return memberPw;
+		}
+		public void setMemberPw(String memberPw) {
+			this.memberPw = memberPw;
+		}
+		public String getMemberName() {
+			return memberName;
+		}
+		public void setMemberName(String memberName) {
+			this.memberName = memberName;
+		}
+		public String getMemberGender() {
+			return memberGender;
+		}
+		public void setMemberGender(String memberGender) {
+			this.memberGender = memberGender;
+		}
+		public String getMemberBirth() {
+			return memberBirth;
+		}
+		public void setMemberBirth(String memberBirth) {
+			this.memberBirth = memberBirth;
+		}
+		public String getMemberPhone() {
+			return memberPhone;
+		}
+		public void setMemberPhone(String memberPhone) {
+			this.memberPhone = memberPhone;
+		}
+		public String getMemberNickname() {
+			return memberNickname;
+		}
+		public void setMemberNickname(String memberNickname) {
+			this.memberNickname = memberNickname;
+		}
+		public String getSecessionFlag() {
+			return secessionFlag;
+		}
+		public void setSecessionFlag(String secessionFlag) {
+			this.secessionFlag = secessionFlag;
+		}
+		public String getProfileImage() {
+			return profileImage;
+		}
+		public void setProfileImage(String profileImage) {
+			this.profileImage = profileImage;
+		}
+		public String getMemberLive() {
+			return memberLive;
+		}
+		public void setMemberLive(String memberLive) {
+			this.memberLive = memberLive;
+		}
+		
+		
 }

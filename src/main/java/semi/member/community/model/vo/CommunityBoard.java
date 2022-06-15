@@ -50,6 +50,30 @@ public class CommunityBoard {
 	public void setBoardName(String boardName) {
 		this.boardName = boardName;
 	}
+	public String getBoardContent() {
+		return boardContent;
+	}
+	public void setBoardContent(String boardContent) {
+		this.boardContent = boardContent;
+	}
+	public String getProfileImage() {
+		return profileImage;
+	}
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
+	public String getImage0() {
+		return image0;
+	}
+	public void setImage0(String image0) {
+		this.image0 = image0;
+	}
+	public String getImage1() {
+		return image1;
+	}
+	public void setImage1(String image1) {
+		this.image1 = image1;
+	}
 	public String getBoardTitle() {
 		return boardTitle;
 	}
