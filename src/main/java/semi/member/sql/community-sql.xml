@@ -5,8 +5,8 @@
 
 	<!-- 모임 상세정보  -->
 	<entry key= "selectCommunity">
-		SELECT COMMUNITY_NO, COMMUNITY_NM, COMMUNITY_INFO, COMMUNITY_NOTICE 
-				COMMUNITY_AREA, MEMBER_NICK, PROFILE_IMG, COMMUNITY_FL
+		SELECT COMMUNITY_NO, COMMUNITY_NM, COMMUNITY_INFO, COMMUNITY_NOTICE, 
+				COMMUNITY_AREA, MEMBER_NICK, PROFILE_IMG
 		FROM COMMUNITY
 		JOIN MEMBER ON(MEMBER_NO = COMMUNITY_ADMIN)
 		WHERE COMMUNITY_NO = ?
@@ -15,14 +15,14 @@
 	
 	<!-- 모임 추가 -->
 	<entry key = "addMeeting1">
-		INSERT INTO COMMUNITY (COMMUNITY_NO, COMMUNITY_NM, COMMUNITY_INFO, COMMUNITY_AREA) 
-		VALUES (SEQ_COMMUNITY_NO.NEXTVAL, ?, ?, ?)
+		INSERT INTO COMMUNITY (COMMUNITY_NO, COMMUNITY_NM, COMMUNITY_INFO, COMMUNITY_AREA, COMMUNITY_FL, COMMUNITY_ADMIN) 
+		VALUES (SEQ_COMMUNITY_NO.NEXTVAL, ?, ?, ?, DEFAULT, ?)
 	</entry>
 	
 	<!-- 모임 추가2 -->
 	<entry key = "addMeeting2">
-		INSERT INTO COMMUNITY (CATEGORY_NO, CATEGORY_NM) 
-		VALUES (SEQ_COMMUNITY_NO.NEXTVAL, ?)
+		INSERT INTO CATEGORY (CATEGORY_NO, CATEGORY_NM) 
+		VALUES (SEQ_CATEGORY_NO.NEXTVAL, ?)
 	</entry>
 	
 	<!-- 모임 승인 -->
@@ -34,7 +34,7 @@
 	<!-- 모임장 위임 -->
 	<entry key = "entrust">
 		UPDATE SET COMMUNITY
-		COMMUNITY_ADMIN = 'Y'
+		COMMUNITY_ADMIN = ?
 		WHERE COMMUNITY_NO = ?
 		AND MEMBER_NO = ?
 	</entry>
@@ -42,18 +42,18 @@
 	<!-- 멤버 추방 -->
 	<entry key = "memberOut">
 		UPDATE SET COMMUNITY_MEMBER
-		MEMBER_FL = 'Y',
-		MAX(MEMBER_COUNT)-1
+		MEMBER_FL = 'Y'
 		WHERE COMMUNITY_NO = ?
 		AND MEMBER_NO = ?
 	</entry>
 	
 	<!-- 모임 회원 목록 조회 -->
 	<entry key = "selectCommMember">
-		SELECT MEMBER_NICK, PROFILE_IMG, MEMBER_COUNT
+		SELECT MEMBER_NICK, PROFILE_IMG
 		FROM COMMUNITY_MEMBER
 		JOIN MEMBER (USING MEMBER_NO)
 		WHERE COMMUNITY_NO = ?
+		AND MEMBER_FL = 'N'
 	</entry>
 	
 	<!-- 가입 신청 회원 목록 조회 -->
@@ -62,5 +62,25 @@
 		FROM APPLY
 		JOIN MEMBER (USING MEMBER_NO)
 		WHERE COMMUNITY_NO = ?
+	</entry>
+	
+	<!-- 모임 삭제 -->
+	<entry key = "deleteCommunity">
+		UPDATE SET COMMUNITY
+		COMMUNITY_FL = 'Y'
+		WHERE COMMUNITY_NO = ?
+	</entry>
+	
+	<!-- 모임 대표 이미지 변경 -->
+	<entry key= "updateCommunityImage">
+		UPDATE COMMUNITY SET
+		COMMUNITY_IMG = ?
+		WHERE COMMUNITY_NO = ?
+	</entry>
+	
+	<!-- 모임 거절 -->
+	<entry key = "refuseCommunityMember">
+		INSERT INTO APPLY
+		VALUES (SEQ_APPLY_NO.NEXTVAL, ?, 'Y', ?)
 	</entry>
 </properties>

@@ -12,43 +12,39 @@ import javax.servlet.http.HttpSession;
 import semi.member.community.model.service.CommunityService;
 import semi.member.community.model.vo.CommunityMember;
 
-@WebServlet("/community/admin")
-public class CommunityAdminServlet extends HttpServlet{
+@WebServlet("/community/admin/refuse")
+public class CommunityRefuseServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		int communityNo = Integer.parseInt(req.getParameter("communityNo"));
+		
+		String path = "/WEB-INF/views/community/meeting-admin.jsp";
+		req.getRequestDispatcher(path).forward(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		int communityNo = Integer.parseInt(req.getParameter("cn"));
 		int memberNo = Integer.parseInt(req.getParameter("memberNo"));
-		String memberFlag = req.getParameter("memberFlag");
-		int memberCount = Integer.parseInt(req.getParameter("memberCount"));
 		
 		try {
-			CommunityMember cm = new CommunityMember();
-			
-			cm.setCommunityNo(communityNo);
-			cm.setMemberNo(memberNo);
-			cm.setMemberFlag(memberFlag);
-			cm.setMemberCount(memberCount);
 			
 			CommunityService service = new CommunityService();
 			
-			int result = service.addCommunityMember(cm);
+			int result = service.refuseCommunityMember(communityNo, memberNo);
 			
 			HttpSession session = req.getSession();
-			String path = null;
-			String message = null;
 			
 			if(result > 0) {
-				session.setAttribute("message", "승인하였습니다.");
+				session.setAttribute("message", "거절하였습니다.");
 				
 			} else {
-				session.setAttribute("message", "승인에 실패하였습니다.");
+				session.setAttribute("message", "거절에 실패하였습니다.");
 			}
 			
-			session.setAttribute("message", message);
-			resp.sendRedirect(path);
-
+			resp.sendRedirect(req.getContextPath());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import semi.member.category.model.vo.Category;
 import semi.member.community.model.service.CommunityService;
 import semi.member.community.model.vo.Community;
+import semi.member.member.model.vo.Member;
 
 @WebServlet("/community/addMeeting")
 public class AddMeetingServlet extends HttpServlet{
@@ -26,30 +28,33 @@ public class AddMeetingServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String communityName = req.getParameter("communityName");
-		String categoryName = req.getParameter("categoryName");
-		String communityInfo = req.getParameter("communityInfo");
-		String[] address = req.getParameterValues("communityArea");
+		String communityName = req.getParameter("groupName");
+		String categoryName = req.getParameter("groupCategory");
+		String communityInfo = req.getParameter("groupIntroduce");
+		String[] address = req.getParameterValues("regionCategory");
 		
 		String communityArea = null;
+		
 		if(!address[0].equals("")) {
 			communityArea = String.join(",,", address);
 		}
-		
+
 		Community com = new Community();
-		
+
 		com.setCommunityName(communityName);
 		com.setCommunityArea(communityArea);
 		com.setCommunityInfo(communityInfo);
 		
+		HttpSession session = req.getSession();
+		
+		Member loginMember = (Member)(session.getAttribute("loginMember"));
+		
+		int memberNo = loginMember.getMemberNo();
+		
 		try {
 			CommunityService service = new CommunityService();
 			
-			int result = service.addMeeting(com, categoryName);
-			
-			HttpSession session = req.getSession();
-			String path = null;
-			String message = null;
+			int result = service.addMeeting(com, categoryName, memberNo);
 			
 			if(result > 0) {
 				session.setAttribute("message", "모임 생성을 완료하였습니다.");
@@ -58,8 +63,7 @@ public class AddMeetingServlet extends HttpServlet{
 				session.setAttribute("message", "모임 생성에 실패하였습니다.");
 			}
 			
-			session.setAttribute("message", message);
-			resp.sendRedirect(path);
+			resp.sendRedirect(req.getContextPath());
 			
 		} catch(Exception e) {
 			e.printStackTrace();

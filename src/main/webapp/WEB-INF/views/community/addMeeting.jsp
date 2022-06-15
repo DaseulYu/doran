@@ -7,10 +7,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>새 모임 추가페이지</title>
+    <title>새 모임 추가</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/addMeeting-style.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
 
     <script src="https://kit.fontawesome.com/a2e8ca0ae3.js" crossorigin="anonymous"></script>
 </head>
@@ -20,11 +20,10 @@
 
         <section class="addMeeting-content">
             
-            <form action="#" method="POST" name="addMeeting-form" class="addMeeting-form">
+            <form action="#" method="POST" name="addMeeting-form" class="addMeeting-form" onsubmit="return addMeeting()">
                 <h1 class="addMeeting">새 모임 추가하기</h1>
                 <div class="select area">
                     <a href="#" onclick="location.reload();" id="info">상세정보</a>
-                    <a href="addMeeting-schedule.jsp" id="sch">일정관리</a>
                 </div>
 
                 <table class="addMeeting-table">
@@ -35,7 +34,7 @@
 
                     <tr>
                         <td><label for="groupCategory">카테고리 : </label></td>
-                        <th><select name="groupCategory" id="groupCategory" required>
+                        <th><select name="groupCategory" id="groupCategory">
                             <option selected>카테고리를 선택해주세요</option>
                             <option value="hobby">취미활동</option>
                             <option value="sports">운동/스포츠</option>
@@ -50,7 +49,7 @@
 
                     <tr>
                         <td><label for="regionCategory">지역선택 : </label></td>
-                        <th><select id="regionCategory" onchange="categoryChange(this)" required>
+                        <th><select id="regionCategory" name="regionCategory" onchange="categoryChange(this)">
                             <option selected>시</option>
                             <option value="seoul">서울특별시</option>
                             <option value="inchen">인천광역시</option>
@@ -71,7 +70,7 @@
                             <option value="seoul">제주도</option>
                         </select>
                         
-                        <select id="region-2" required>
+                        <select id="region-2" name="regionCategory">
                             <option selected>군/구</option>
                         </select></th>
                     </tr>
@@ -84,9 +83,13 @@
                 </table>
 
                 <div class="addMeeting-button-area">
-                    <button id="next" onclick="return nextSchedule()">next ></button>
-                    <button type="submit" id="add" onclick="return addMeeting()">추가하기</button>
+                    <button id="cancel">취소하기</button>
+                    <button type="submit" id="add">추가하기</button>
                 </div>
+
+
+                <input type="hidden" name="no" value="${param.no}">
+
             </form>
         </section>
     </main>

@@ -10,8 +10,16 @@ closePop.addEventListener("click", function(){
 });
 
 function refuseChk(){
-    
+
     if(!confirm("정말 거절하시겠습니까?")){
+        return false;
+    }
+    return true;
+}
+
+function confirmChk(){
+    
+    if(!confirm("정말 승인하시겠습니까?")){
         return false;
     }
     return true;
@@ -44,26 +52,12 @@ function outChk(){
 
 function deleteMeeting(){
 
-    Swal.fire({
-        title: '정말로 삭제하시겠습니까?',
-        text: '10일 후에 삭제 및 모든 회원은 자동 강퇴되며, 해당 내용은 각 회원 이메일로 전송됩니다.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#0C71FF',
-        cancelButtonColor: '#FF8339',
-        confirmButtonText: '삭제',
-        cancelButtonText: '취소'
+    if(!confirm("모임을 삭제하시겠습니까?")){
+        return false;
 
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire(
-                '삭제 요청이 확인되었습니다',
-                '모임장 위임을 희망하는 회원이 있으면 해당 모임은 유지됩니다',
-                'success'
-            )
-        }
-    })
-
-
+    } else {
+        alert("삭제가 완료되었습니다.")
+    }
+    return true;
 }
 

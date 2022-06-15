@@ -10,7 +10,7 @@
     <title>모임장 관리 페이지</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/meeting-admin-style.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
@@ -27,19 +27,18 @@
                 <div class="meeting-request-area">
                     <h4>모임 신청 내역</h4>
                     <c:choose>
-                        <c:when test="${empty ca.memberNo}">
-                            <h4>모임을 신청한 회원이 존재하지 않습니다.</h4>
+                        <c:when test="${empty applyMemberList}">
+                            <h4 style="color : gray;">모임을 신청한 회원이 존재하지 않습니다.</h4>
                         </c:when>
+
                         <c:otherwise>
-                            <!-- 모임 신청 테이블 추가 필요 -->
                             <c:forEach var="ca" items="${applyMemberList}">
                                 <div class="req-member-area">
-                                    <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
                                     <div class="nickname-area">
-                                        <img src="${contextPath}${ca.profileImage}" id="nickname-icon">
-                                        <span class="req-nickname">${ca.memberNickname}</span>
+                                        <a href="#" id="openPop"><img src="${contextPath}${loginMember.profileImage}" id="nickname-icon"></a>
+                                        <span class="req-nickname">${loginMember.memberNickname}</span>
                                     </div>
-                                    <button id="confirm">승인</button>
+                                    <button id="confirm" onclick="return confirmChk()">승인</button>
                                     <button id="refuse" onclick="return refuseChk()">거절</button>
                                 </div>
                             </c:forEach>
@@ -79,18 +78,18 @@
 
 
                 <div class="member-admin-area">
-                    <h4>회원 관리</h4> <h5>인원 수 : <span>${cm.memberCount}</span></h5>
+                    <h4>회원 관리</h4> 
                     <c:choose>
-                        <c:when test="${cm.memberCount == 0}">
-                            <h4>모임 회원이 존재하지 않습니다.</h4>
+                        <c:when test="${empty commMemberList}">
+                            <h4 style="color : gray;">모임 회원이 존재하지 않습니다.</h4>
                         </c:when>
 
                         <c:otherwise>
                             <c:forEach var="cm" items="${commMemberList}">
                                 <div class="member-area">
                                     <div class="member-nickname-area">
-                                        <img src="${contextPath}${cm.profileImage}" id="member-nickname-icon">
-                                        <span class="member-nickname">${cm.memberNickname}</span>
+                                        <img src="${contextPath}${loginMember.profileImage}" id="member-nickname-icon">
+                                        <span class="member-nickname">${loginMember.memberNickname}</span>
                                     </div>
                                     <div class="member-area-button">
                                         <button id="entrust" onclick="return entrustChk()">모임장 위임하기</button>
@@ -100,6 +99,7 @@
                             </c:forEach>
                         </c:otherwise>
                     </c:choose>
+                </div>
 
                     <!-- <div class="member-area">
                         <div class="member-nickname-area">
@@ -234,13 +234,13 @@
                         <!--팝업 컨텐츠 영역-->
                         <div class="popup_cont">
                             <div class="popup_content">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="nickname-icon-pop">
-                            <span class="req-nickname-pop">닉네임</span>
+                            <img src="${contextPath}${loginMember.profileImage}" id="nickname-icon-pop">
+                            <span class="req-nickname-pop">${loginMember.memberNickname}</span>
                             </div>
                             <p>
-                                이름 : <span>유저일</span> <br>
-                                성별 : <span>남</span> <br>
-                                생년월일 : <span>2020-10-25</span>
+                                이름 : <span>${loginMember.memberName}</span> <br>
+                                성별 : <span>${loginMember.memberGender}</span> <br>
+                                생년월일 : <span>${loginMember.memberBirth}</span>
                             </p>
                             <div class="popup_button">
                             <a href="#" id="closePop">확인</a>
