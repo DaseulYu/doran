@@ -56,13 +56,11 @@ public class CommunityDAO {
 				
 				comm.setCommunityNo(rs.getInt(1));
 				comm.setCommunityName(rs.getString(2));
-				comm.setCommunityImage(rs.getString(3));
-				comm.setCommunityInfo(rs.getString(4));
-				comm.setCommunityDetail(rs.getString(5));
-				comm.setCommunityArea(rs.getString(6));
-				comm.setMemberNickname(rs.getString(7));
-				comm.setProfileImage(rs.getString(8));
-				comm.setCommunityNotice(rs.getString(9));
+				comm.setCommunityInfo(rs.getString(3));
+				comm.setCommunityNotice(rs.getString(4));
+				comm.setCommunityArea(rs.getString(5));
+				comm.setMemberNickname(rs.getString(6));
+				comm.setProfileImage(rs.getString(7));
 			}
 		}finally {
 			close(conn);

@@ -26,6 +26,7 @@
         
             <form class="community-head">
                 <div class="head-left">
+                    <!-- 이미지가 없을때 기본이미지로 추가하기 -->
                     <img src="${contextPath}${comm.communityImage}">
                 </div>
                 <div class="head-right">
@@ -84,7 +85,7 @@
             
                 <!-- 모임 상세정보(모임장 작성) -->
                 <div class="board board-detail" id="board-detail">
-                    <h3>공지사항</h3>
+                    <h3>공지사항
                  
                     <%--
                     <c:if test="${comm.communityAdmin eq 'Y'}">
@@ -94,7 +95,7 @@
 
                     <!-- 공지사항으로 테이블명 수정 필요함 -->
                     <div class="board-detail-txt">
-                        ${comm.communityDetail}
+                        ${comm.communityNotice}
                     </div>
 
                 </div>
