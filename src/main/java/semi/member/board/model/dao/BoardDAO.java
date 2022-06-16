@@ -97,6 +97,7 @@ public class BoardDAO {
 				board.setCommunityName(rs.getString("COMMUNITY_NM"));
 				board.setCommunityArea(rs.getString("COMMUNITY_AREA"));
 				board.setCategoryName(rs.getString("CATEGORY_NM"));
+				board.setCategoryNo(rs.getInt("CATEGORY_NO"));
 				board.setCommunityMember(rs.getInt("COMMUNITY_MEMBER"));
 				board.setPick(rs.getInt("PICK"));
 

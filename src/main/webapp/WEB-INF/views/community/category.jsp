@@ -120,7 +120,7 @@
                                             </div>
                                             <div class="doran-block">
                                                 <p class="doranLocation"><i class="fal fa-map-marker-alt"></i> ${category.communityArea}</p><br>
-                                                <a href="${sURL}" class="doranName">${category.communityName}</a><br>
+                                                <a href="detail?cn=${board.communityNo}${sURL}" class="doranName">${category.communityName}</a><br>
                                                 <span class="peopleCount"><i class="fal fa-user"></i> ${category.communityMember}</span> <span class="likeCount"><i class="fas fa-heart"></i> ${category.pick}</span>
         
                                             </div>

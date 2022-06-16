@@ -59,14 +59,11 @@
                                                     </c:if>
                                                 </div>
                                                 <div class="doran-block">
-                                                    <p class="doranLocation"><i class="fal fa-map-marker-alt"></i>
-                                                        ${board.communityArea}</p><br>
-                                                    <a href="detail?cn=${board.communityNo}&cp=${pagination.currentPage}${sURL}"
-                                                        class="doranName">${board.communityName}</a><br>
-                                                    <a href="#" class="categoryName">${board.categoryName}</a><br>
-                                                    <span class="peopleCount"><i class="fal fa-user"></i>
-                                                        ${board.communityMember}</span> <span class="likeCount"><i
-                                                            class="fas fa-heart"></i> ${board.pick}</span>
+                                                    <p class="doranLocation"><i class="fal fa-map-marker-alt"></i> ${board.communityArea}</p><br>
+                                                    <a href="detail?cn=${board.communityNo}${sURL}" class="doranName">${board.communityName}</a><br>
+                                                    <a href="${contextPath}/community/category?type=${board.categoryNo}" class="categoryName">${board.categoryName}</a><br>
+                                                    <span class="peopleCount"><i class="fal fa-user"></i> ${board.communityMember}</span> 
+                                                    <span class="likeCount"><i class="fas fa-heart"></i> ${board.pick}</span>
                                                 </div>
                                             </div>
                                         </li>
