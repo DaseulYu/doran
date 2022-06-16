@@ -11,18 +11,8 @@ import java.util.Properties;
 
 import semi.member.member.model.vo.Member;
 
-/**
- * @author user1
- *
- */
-/**
- * @author user1
- *
- */
-/**
- * @author user1
- *
- */
+
+
 public class MemberDAO {
 
 	private Statement stmt;
@@ -63,7 +53,7 @@ public class MemberDAO {
 				loginMember.setMemberNo(rs.getInt("MEMBER_NO"));
 				loginMember.setMemberEmail(rs.getString("MEMBER_ID"));
 				loginMember.setMemberName(rs.getString("MEMBER_NM"));
-//				loginMember.setMemberGender(rs.getString("MEMBER_GENDER").charAt(0));
+				loginMember.setMemberGender(rs.getString("MEMBER_GENDER"));
 				loginMember.setMemberBirth(rs.getString("MEMBER_BIRTH"));
 				loginMember.setMemberPhone(rs.getString("MEMBER_PHONE"));
 				loginMember.setMemberNickname(rs.getString("MEMBER_NICK"));

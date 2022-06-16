@@ -207,3 +207,9 @@ form[name='myPage-form']{
     right: 0;
     cursor: pointer;
 }
+
+/* 회원 약관 타이틀 */
+
+.info-title{
+    margin-top: 20px;
+}

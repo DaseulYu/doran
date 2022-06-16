@@ -71,6 +71,15 @@
                                     <label>생년월일</label>
                                     <span>${loginMember.memberBirth}</span>
                                 </div>
+                                <div class="myPage-row">
+                                    <label>성별</label>
+                                    <c:if test="${loginMember.memberGender eq 'm'}">
+                                        <span>남성</span>
+                                    </c:if>
+                                    <c:if test="${loginMember.memberGender eq 'f'}">
+                                        <span>여성</span>
+                                    </c:if>
+                                </div>
 
                                 <div class="myPage-row">
                                     <label>지역</label>
