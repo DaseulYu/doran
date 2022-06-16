@@ -24,9 +24,9 @@
                 </div>
                 
                 <div class="reply-btn-area">
-                    <c:if test="${loginMember.memberNo != reply.memberNo}">
+                    <!-- <c:if test="${loginMember.memberNo != reply.memberNo}">
                         <button id="btn-report">신고</button>
-                    </c:if>
+                    </c:if> -->
                     <c:if test="${loginMember.memberNo == reply.memberNo}">
                         <button id="updateBtn" onclick="showUpdateReply(${reply.replyNo}, this)">수정</button>
                         <button id="deleteBtn" onclick="deleteReply(${reply.replyNo})">삭제</button>

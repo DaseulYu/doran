@@ -57,12 +57,10 @@
                 <div class="board-title-area">
                     <div class="board-title">
                         <h2>${detail.boardTitle}</h2>
-                        ${loginMember.memberNo}
-                        ${detail.memberNo}
                     </div>
                     <div class="write-btn-area">
                         <c:if test="${loginMember.memberNo != detail.memberNo}">
-                            <button id="btn-report">신고</button>
+                            <button id="btn-report" onclick="showReportPopup(${boardList.boardNo})">신고</button>
                         </c:if>
                         <c:if test="${loginMember.memberNo == detail.memberNo}">
                             <button id="updateBtn" onclick="location.href='write?mode=update&no=${param.no}&cn=${param.cn}&type=${param.type}&cp=${cp}'">수정</button>
