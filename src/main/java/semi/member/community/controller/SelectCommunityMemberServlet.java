@@ -19,7 +19,7 @@ import semi.member.member.model.vo.Member;
 public class SelectCommunityMemberServlet extends HttpServlet{
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try { 
 			
@@ -35,10 +35,6 @@ public class SelectCommunityMemberServlet extends HttpServlet{
 			
 			req.setAttribute("commMemberList", commMemberList);
 			
-			String path = "/WEB-INF/views/community/meeting-admin.jsp";
-			
-			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
-			dispatcher.forward(req, resp);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

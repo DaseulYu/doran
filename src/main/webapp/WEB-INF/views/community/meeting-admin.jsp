@@ -25,10 +25,10 @@
                 <span class="meetingname-admin">${comm.communityName} 관리</span>
             </form>
 
-            <form action="admin/applySelect" method="GET">
+            <form action="admin/applySelect" method="POST">
                 <input type="hidden" name="cn" value="${param.cn}">
                 <div class="meeting-request-area">
-                    <h4>모임 신청 내역</h4>
+                    <h4>모임 신청 내역</h4> <button id="selectApply">조회</button>
                     <c:choose>
                         <c:when test="${empty commApplyList}">
                             <h4 style="color : gray;">모임을 신청한 회원이 존재하지 않습니다.</h4>
@@ -38,7 +38,7 @@
                             <c:forEach var="commApplyList" items="${commApplyList}">
                                 <div class="req-member-area">
                                     <div class="nickname-area">
-                                        <a href="#" id="openPop"><img src="${contextPath}${commApplyList.profileImage}" id="nickname-icon"></a>
+                                        <a href="#" id="openPop"><img src="${contextPath}${commApplyList.memberProfileImage}" id="nickname-icon"></a>
                                         <span class="req-nickname">${commApplyList.memberNickname}</span>
                                     </div>
                                     <button id="confirm">승인</button>
@@ -80,9 +80,9 @@
                         <button id="refuse">거절</button>
                     </div> -->
 
-                <form action="admin/select" method="GET">
+                <form action="admin/select" method="POST">
                     <input type="hidden" name="cn" value="${param.cn}">
-                    <div class="member-admin-area">
+                    <div class="member-admin-area"> <button id="selectMember">조회</button>
                         <h4>회원 관리</h4> 
                         <c:choose>
                             <c:when test="${empty commMemberList}">
@@ -93,7 +93,7 @@
                                 <c:forEach var="cm" items="${commMemberList}">
                                     <div class="member-area">
                                         <div class="member-nickname-area">
-                                            <img src="${contextPath}${commMemberList.profileImage}" id="member-nickname-icon">
+                                            <img src="${contextPath}${commMemberList.memberProfileImage}" id="member-nickname-icon">
                                             <span class="member-nickname">${commMemberList.memberNickname}</span>
                                         </div>
                                         <div class="member-area-button">
@@ -240,13 +240,13 @@
                         <!--팝업 컨텐츠 영역-->
                         <div class="popup_cont">
                             <div class="popup_content">
-                            <img src="${contextPath}${applyMemberList.profileImage}" id="nickname-icon-pop">
-                            <span class="req-nickname-pop">${applyMemberList.memberNickname}</span>
+                            <img src="${contextPath}${commApplyList.memberProfileImage}" id="nickname-icon-pop">
+                            <span class="req-nickname-pop">${commApplyList.memberNickname}</span>
                             </div>
                             <p>
-                                이름 : <span>${applyMemberList.memberName}</span> <br>
-                                성별 : <span>${applyMemberList.memberGender}</span> <br>
-                                생년월일 : <span>${applyMemberList.memberBirth}</span>
+                                이름 : <span>${commApplyList.memberName}</span> <br>
+                                성별 : <span>${commApplyList.memberGender}</span> <br>
+                                생년월일 : <span>${commApplyList.memberBirth}</span>
                             </p>
                             <div class="popup_button">
                             <a href="#" id="closePop">확인</a>
@@ -262,6 +262,7 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/community/meeting-admin.js"></script>
 </body>
 </html>

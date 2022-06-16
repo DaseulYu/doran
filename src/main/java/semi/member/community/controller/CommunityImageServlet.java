@@ -2,6 +2,7 @@ package semi.member.community.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,12 +18,6 @@ import semi.member.community.model.vo.Community;
 
 @WebServlet("/community/detail/image")
 public class CommunityImageServlet extends HttpServlet {
-	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path = "/WEB-INF/views/community/communityDetail.jsp";
-		req.getRequestDispatcher(path).forward(req, resp);
-	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -57,7 +52,11 @@ public class CommunityImageServlet extends HttpServlet {
 			} else {
 				session.setAttribute("message", "모임 대표 이미지 변경 실패");
 			}
-			resp.sendRedirect("image");
+			
+			String path = "/WEB-INF/views/community/communityDetail.jsp";
+			
+			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
+			dispatcher.forward(req, resp);
 			
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -2,6 +2,7 @@ package semi.member.community.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +41,10 @@ public class CommunityEntrustServlet extends HttpServlet{
 				session.setAttribute("message", "모임장 위임에 실패하였습니다.");
 			}
 			
-			resp.sendRedirect(req.getContextPath());
+			String path = "/WEB-INF/views/community/meeting-admin.jsp";
+			
+			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
+			dispatcher.forward(req, resp);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

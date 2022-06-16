@@ -20,7 +20,7 @@ import semi.member.member.model.vo.Member;
 public class ApplyMemberSelectServlet extends HttpServlet{
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try { 
 			
@@ -37,14 +37,12 @@ public class ApplyMemberSelectServlet extends HttpServlet{
 			coma.setCommunityNo(communityNo);
 			coma.setMemberNo(memberNo);
 			
+			System.out.println(coma);
+			
 			List<CommunityApply> commApplyList = service.selectApllyMember(coma);
 			
 			req.setAttribute("commApplyList", commApplyList);
 			
-			String path = "/WEB-INF/views/community/meeting-admin.jsp";
-			
-			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
-			dispatcher.forward(req, resp);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
