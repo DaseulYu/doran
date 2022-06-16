@@ -40,7 +40,7 @@
                         <h2>${detail.boardTitle}</h2>
                     </div>
                     <div class="write-btn-area">
-                        <c:if test="${!empty loginMember.memberNo}">
+                        <c:if test="${loginMember.memberNo != detail.memberNo}">
                             <button id="btn-report">신고</button>
                         </c:if>
                         <c:if test="${loginMember.memberNo == detail.memberNo}">

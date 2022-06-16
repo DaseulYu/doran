@@ -7,28 +7,49 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import semi.member.admin.model.service.ReportService;
+import semi.member.member.model.vo.Member;
 
-@WebServlet("/report/select")
+@WebServlet("/community/board/report/*")
 public class ReportServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			int communityNo = Integer.parseInt(req.getParameter("cn"));
-			int boardNo = Integer.parseInt(req.getParameter("no"));
-			int memberNo = Integer.parseInt(req.getParameter("memberNo"));
+			HttpSession session = req.getSession();
+			Member loginMember = (Member)(session.getAttribute("loginMember"));
+			int memberNo = loginMember.getMemberNo();
 			
+			int communityNo = 0;
+			int boardNo = 0;
+
+			if(req.getParameter("cn") != null) {
+				communityNo = Integer.parseInt(req.getParameter("cn"));
+			}
+			if(req.getParameter("boardNo") != null) {
+				communityNo = Integer.parseInt(req.getParameter("boardNo"));
+			}
+					
+			String reportTitle = req.getParameter("reportTitle");
 			
 			ReportService service = new ReportService();
 			
-			int result = service.selectReport(communityNo, boardNo, memberNo);
+			int result = service.insertReport(communityNo, boardNo, memberNo, reportTitle);
+
+			String path = null;
+			String message = null;
 			
-			
-			
-			
-					
+			if(result > 0) {
+				message = "신고 처리되었습니다.";
+				path = req.getHeader("referer");
+			} else {
+				message = "신고 처리 실패";
+				path = req.getHeader("referer");
+			}
+			session.setAttribute("message", message);
+			resp.sendRedirect(path);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

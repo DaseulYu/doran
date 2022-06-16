@@ -52,33 +52,33 @@
                     <div><button class="btn-report">신고</button></div>
                 </div>
 
-                    <div class="head-info">
-                        <p>${comm.communityInfo}</p>
-                    </div>
-
-                    <div class="head-user">
-                        <div>
-                            <c:if test="${empty comm.profileImage}">
-                                <img src="${contextPath}/resources/images/user.png" id="user">
-                            </c:if>
-
-                            <c:if test="${!empty comm.profileImage}">
-                                <img src="${contextPath}${comm.profileImage}" id="user">
-                            </c:if>
-                        </div>
-
-                        <div>${comm.memberNickname}</div>
-
-                    </div>
-            </form>
-                    <div class="head-join">
-                        <div onclick="pick()">
-                            <img src="${contextPath}/resources/images/pick1.png" id="pick" >
-                        </div>
-                        <div class="btn-join" id="btn-join">모임 가입하기</div>
-                    </div>
-                    <div id="btn-leave">모임 탈퇴하기</div>
+                <div class="head-info">
+                    <p>${comm.communityInfo}</p>
                 </div>
+
+                <div class="head-user">
+                    <div>
+                        <c:if test="${empty comm.profileImage}">
+                            <img src="${contextPath}/resources/images/user.png" id="user">
+                        </c:if>
+
+                        <c:if test="${!empty comm.profileImage}">
+                            <img src="${contextPath}${comm.profileImage}" id="user">
+                        </c:if>
+                    </div>
+
+                    <div>${comm.memberNickname}</div>
+
+                </div>
+            </form>
+            <div class="head-join">
+                <div onclick="pick()">
+                    <img src="${contextPath}/resources/images/pick1.png" id="pick">
+                </div>
+                    <div class="btn-join" id="btn-join" onclick="join(${param.cn})">모임 가입하기</div>
+            </div>
+                <div id="btn-leave" onclick="secession(${param.cn})">모임 탈퇴하기</div>
+        </div>
 
             <div class="community-nav">
                 <ul>

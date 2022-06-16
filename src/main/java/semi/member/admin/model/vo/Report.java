@@ -1,6 +1,5 @@
 package semi.member.admin.model.vo;
 
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,10 +16,12 @@ public class Report {
 	
 	private int reportNo;
 	private String reportDate;
-	private String reportTITLE;
+	private String reportTitle;
 	private int memberNo;
-	private int memberNickname;
+	private String memberID;
+	private int boardNo;
+	private String boardTitle;
 	private int communityNo;
-	private int communityTitle;
+	private String communityName;
 	
 }

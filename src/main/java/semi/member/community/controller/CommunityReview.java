@@ -21,7 +21,7 @@ public class CommunityReview extends HttpServlet{
 		try {
 			int communityNo = Integer.parseInt(req.getParameter("cn"));
 			int type = Integer.parseInt(req.getParameter("type"));
-			
+
 			int cp = 1;
 			if( req.getParameter("cp") != null ) {
 				cp = Integer.parseInt(req.getParameter("cp"));
@@ -32,6 +32,7 @@ public class CommunityReview extends HttpServlet{
 			Map<String, Object> map = service.communityBoardList(cp, type, communityNo);
 			
 			req.setAttribute("map", map);
+			System.out.println(map);
 			
 			String path = "/WEB-INF/views/board/board-review.jsp";
 			RequestDispatcher dispatcher = req.getRequestDispatcher(path);

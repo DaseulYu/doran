@@ -21,6 +21,7 @@ public class CommunityBoardService {
 	/** 카테고리별 게시글 조회
 	 * @param cp
 	 * @param type
+	 * @param boardNo 
 	 * @return map
 	 * @throws Exception
 	 */
