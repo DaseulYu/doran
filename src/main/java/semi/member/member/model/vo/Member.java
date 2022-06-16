@@ -25,6 +25,17 @@ public class Member {
 		private String secessionFlag;
 		private String profileImage;
 		private String memberLive;
+		
+		
+		private String communityName;
+		private String communitArea;
+		private String comunityFlag;
+		private String applyFlag;
+		private String applyDate;
+		
+		
+		
+		
 		public int getMemberNo() {
 			return memberNo;
 		}

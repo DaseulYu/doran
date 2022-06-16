@@ -224,5 +224,14 @@ public class MemberService {
 		return result;
 	}
 
+	public List<Member> myCommunityList(int memberNo) throws Exception{
+		Connection conn = getConnection();
+		
+		List<Member> commulist = dao. myCommunityList(conn, memberNo);
+		
+		close(conn);
+		return commulist;
+	}
+
 }
 
