@@ -2,10 +2,10 @@
 const checkObj = {
     "memberId": false,
     "memberPw": false,
-    "memberName": false,
-    "memberTel": false,
-    "memberNickname": false,
-    "sendEmail": false
+    "memberName": true,
+    "memberTel": true,
+    "memberNickname": true,
+    "signUpEmail": false
 };
 
 
@@ -165,10 +165,10 @@ function signUpValidate(){
             case "memberPwConfirm": str="비밀번호 확인을"; break;
             case "memberNickname":  str="닉네임을"; break;
             case "memberTel":       str="전화번호를"; break;
+            case "signUpEmail":       str="인증번호를"; break;
             }
 
-            str += " 확인 해주세요.";
-
+            
             alert(str);
 
             document.getElementById(key).focus();
@@ -302,6 +302,8 @@ const cMessage = document.getElementById("cMessage");
 let checkInterval;
 let min = 4;
 let sec = 59;
+
+
 sendBtn.addEventListener("click", function () {
 
     if (checkObj.memberId) {
@@ -313,7 +315,7 @@ sendBtn.addEventListener("click", function () {
             success: function (result) {
                 console.log("이메일 발송 성공");
                 console.log("result : " + result);
-
+                checkObj.signUpEmail = true;
 
             },
             error: function () {
@@ -366,7 +368,7 @@ const cBtn = document.getElementById("cBtn");
 cBtn.addEventListener("click", function () {
 
     // 1. 인증번호 받기 버튼이 클릭되어 이메일 발송되었는지 확인
-    if (checkObj.sendEmail) {
+    if (checkObj.signUpEmail) {
 
         // 2. 입력된 인증번호가 6자리가 맞는지 확인
         if (cNumber.value.length == 6) { // 6자리 맞음
@@ -379,7 +381,7 @@ cBtn.addEventListener("click", function () {
                 },
                 type: "GET",
                 success: function (result) {
-                    console.log(result);
+                    console.log("인증번호 : "+ result);
 
                     if (result == 1) {
 
@@ -403,6 +405,6 @@ cBtn.addEventListener("click", function () {
             cNumber.focus();
         }
     } else { // 인증번호를 안받은 경우
-        alert("이메일 인증 버튼을 먼저 클릭해주세요.")
+        alert("이메일 인증 버튼을 먼저 클릭해주세요.");
     }
 });

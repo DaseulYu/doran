@@ -21,7 +21,7 @@
             <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 
         </head>
-
+    <main>
         <body>
             <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
@@ -111,12 +111,14 @@
                                             <div class="cover">
 
                                                 <c:if test="${!empty category.communityImage}">
-                                                    <img width="110px" height="110px" src="${contextPath}${category.communityImage}">
-                                                </c:if>
-                                                
-                                                <c:if test="${empty category.communityImage}">
-                                                    <img src="${contextPath}/resources/images/thumbnail.png" width="110px" height="110px">
-                                                </c:if>
+                                                            <img width="110px" height="110px"
+                                                                src="${contextPath}${category.communityImage}">
+                                                        </c:if>
+    
+                                                        <c:if test="${empty category.communityImage}">
+                                                            <img src="${contextPath}/resources/images/thumbnail.png"
+                                                                width="110px" height="110px">
+                                                        </c:if>
                                             </div>
                                             <div class="doran-block">
                                                 <p class="doranLocation"><i class="fal fa-map-marker-alt"></i> ${category.communityArea}</p><br>
@@ -172,5 +174,5 @@
             <jsp:include page="/WEB-INF/views/common/footer.jsp" />
             <script src="${contextPath}/resources/js/community/category.js"></script>
         </body>
-
+    </main>
         </html>

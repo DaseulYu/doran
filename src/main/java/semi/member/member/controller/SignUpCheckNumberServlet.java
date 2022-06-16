@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import semi.member.member.model.service.MemberService2;
 
 
-@WebServlet("/signUpCheckNumber")
+@WebServlet("/member/signUpCheckNumber")
 public class SignUpCheckNumberServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
