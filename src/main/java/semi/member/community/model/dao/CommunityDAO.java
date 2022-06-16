@@ -188,7 +188,7 @@ public class CommunityDAO {
 	 * @return commMemberList
 	 * @throws Exception
 	 */
-	public List<CommunityMember> selectCommMember(Connection conn, int communityNo, int memberNo) throws Exception {
+	public List<CommunityMember> selectCommMember(Connection conn, int communityNo) throws Exception {
 		
 		List<CommunityMember> commMemberList = new ArrayList<CommunityMember>();
 		
@@ -198,7 +198,6 @@ public class CommunityDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, communityNo);
-			pstmt.setInt(2, memberNo);
 			
 			rs = pstmt.executeQuery();
 			
@@ -224,7 +223,7 @@ public class CommunityDAO {
 	 * @return commApplyList
 	 * @throws Exception
 	 */
-	public List<CommunityApply> selectApllyMember(Connection conn, CommunityApply coma) throws Exception {
+	public List<CommunityApply> selectApllyMember(Connection conn, int communityNo) throws Exception {
 		
 		List<CommunityApply> commApplyList = new ArrayList<CommunityApply>();
 		
@@ -232,13 +231,13 @@ public class CommunityDAO {
 			String sql = prop.getProperty("selectApplyMember");
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, coma.getCommunityNo());
+			pstmt.setInt(1, communityNo);
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				
-				new CommunityApply();
+				CommunityApply coma = new CommunityApply();
 				
 				coma.setMemberNo(rs.getInt(1));
 				coma.setCommunityName(rs.getString(2));

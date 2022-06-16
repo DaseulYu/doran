@@ -27,8 +27,10 @@
 
 	<!-- 모임 승인 -->
 	<entry key = "addCommunityMember">
-		INSERT INTO APPLY
-		VALUES (SEQ_APPLY_NO.NEXTVAL, ?, 'Y', ?)
+		UPDATE APPLY SET
+		APPLY_FL = 'Y'
+		WHERE MEMBER_NO = ?
+		AND COMMUNITY_NO = ?
 	</entry>
 
 	<!-- 모임장 위임 -->
@@ -68,7 +70,7 @@
 
 	<!-- 모임 삭제 -->
 	<entry key = "deleteCommunity">
-		UPDATE SET COMMUNITY
+		UPDATE COMMUNITY SET 
 		COMMUNITY_FL = 'Y'
 		WHERE COMMUNITY_NO = ?
 	</entry>

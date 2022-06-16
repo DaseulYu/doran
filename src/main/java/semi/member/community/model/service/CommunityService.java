@@ -97,11 +97,11 @@ public class CommunityService {
 	 * @return commMemberList
 	 * @throws Exception
 	 */
-	public List<CommunityMember> selectCommMember(int communityNo, int memberNo) throws Exception {
+	public List<CommunityMember> selectCommMember(int communityNo) throws Exception {
 
 		Connection conn = getConnection();
 
-		List<CommunityMember> commMemberList = dao.selectCommMember(conn, communityNo, memberNo);
+		List<CommunityMember> commMemberList = dao.selectCommMember(conn, communityNo);
 
 		close(conn);
 
@@ -113,11 +113,11 @@ public class CommunityService {
 	 * @return applyMemberList
 	 * @throws Exception
 	 */
-	public List<CommunityApply> selectApllyMember(CommunityApply coma) throws Exception {
+	public List<CommunityApply> selectApllyMember(int communityNo) throws Exception {
 
 		Connection conn = getConnection();
 
-		List<CommunityApply> commApplyList = dao.selectApllyMember(conn, coma);
+		List<CommunityApply> commApplyList = dao.selectApllyMember(conn, communityNo);
 
 		close(conn);
 
