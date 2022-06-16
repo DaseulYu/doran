@@ -1,7 +1,10 @@
-.myPage-content{
-    width: 1000px;
-    height: 800px;
+*{box-sizing: border-box;}
 
+*{font-family: 'NanumBarunGothic';}
+
+
+.myPage-content{
+    width: 1140px;
     margin: 50px auto;
     display: flex;
 }
@@ -64,12 +67,12 @@
     margin-top: 30px;
     display: flex;
     align-items: center;
-    border-bottom: 2px solid #ccc;
+    /* border-bottom: 2px solid #ccc; */
 }
 
 .myPage-row>*{
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .myPage-row>label{
@@ -85,14 +88,15 @@
 
 .myPage-row>span{
     width: 70%;
-    padding-left:15px
+    padding-left:20px
 }
 
 .myPage-row>input{
     width: 70%;
     height: 100%;
-    padding-left: 10px;
-    border : 0;
+    padding-left: 20px;
+    border: 0;
+    border-bottom: 2px solid #ddd;
     outline : 0;
     font-weight: normal;
 }

@@ -1,0 +1,37 @@
+*{font-family: 'NanumBarunGothic';}
+
+
+.left-side{
+    width: 25%;
+    border-right: 2px solid #ddd;
+}
+
+.list-group{
+    width: 100%;
+    padding: 0 20px 0 0;
+}
+
+.list-group>li{
+    list-style: none;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.list-group > li > a{
+    text-decoration: none;
+    color : black;
+    height: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 2px solid #ddd;
+}
+
+.list-group>li>a:hover{
+    border-bottom: 2px solid #FF8339 ;
+}

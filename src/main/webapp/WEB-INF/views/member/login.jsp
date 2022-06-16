@@ -13,8 +13,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>도란도란 로그인 페이지</title>
 
-<link rel="stylesheet" href="../resources/css/main-style.css">
-<link rel="stylesheet" href="../resources/css/login-style.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/login-style.css">
+
+
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 </head>
 
 <body>

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-style.css">
 
     
+	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/aab319511f.js" crossorigin="anonymous"></script>
 
 </head>
