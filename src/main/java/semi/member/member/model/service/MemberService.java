@@ -3,6 +3,7 @@ package semi.member.member.model.service;
 import static semi.member.common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.List;
 
 import semi.member.member.model.dao.MemberDAO;
 import semi.member.member.model.vo.Member;
@@ -222,5 +223,15 @@ public class MemberService {
 		
 		return result;
 	}
+
+	public List<Member> myCommunityList(int memberNo) throws Exception{
+		Connection conn = getConnection();
+		
+		List<Member> commulist = dao. myCommunityList(conn, memberNo);
+		
+		close(conn);
+		return commulist;
+	}
+
 }
 

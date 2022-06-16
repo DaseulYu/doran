@@ -7,22 +7,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import semi.member.member.model.vo.Member;
 
-/**
- * @author user1
- *
- */
-/**
- * @author user1
- *
- */
-/**
- * @author user1
- *
- */
+
+
 public class MemberDAO {
 
 	private Statement stmt;
@@ -63,7 +55,7 @@ public class MemberDAO {
 				loginMember.setMemberNo(rs.getInt("MEMBER_NO"));
 				loginMember.setMemberEmail(rs.getString("MEMBER_ID"));
 				loginMember.setMemberName(rs.getString("MEMBER_NM"));
-//				loginMember.setMemberGender(rs.getString("MEMBER_GENDER").charAt(0));
+				loginMember.setMemberGender(rs.getString("MEMBER_GENDER"));
 				loginMember.setMemberBirth(rs.getString("MEMBER_BIRTH"));
 				loginMember.setMemberPhone(rs.getString("MEMBER_PHONE"));
 				loginMember.setMemberNickname(rs.getString("MEMBER_NICK"));
@@ -420,6 +412,37 @@ public class MemberDAO {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	public List<Member> myCommunityList(Connection conn, int memberNo) throws Exception{
+		List<Member> commuList = new ArrayList<Member>();
+		
+		try {
+			String sql = prop.getProperty("myCommunityList");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			
+			rs = pstmt.executeQuery();
+			
+			
+			
+			while(rs.next()) {
+				Member mem = new Member();
+				mem.setCommunityName(rs.getString(1));
+				mem.setCommunitArea(rs.getString(2));
+				mem.setComunityFlag(rs.getString(3));
+				mem.setApplyFlag(rs.getString(4));
+				mem.setApplyDate(rs.getString(5));
+				
+				commulist.add(mem);				
+				
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return commulist;
 	}
 
 }

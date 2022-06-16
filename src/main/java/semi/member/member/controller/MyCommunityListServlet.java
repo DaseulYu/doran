@@ -17,30 +17,30 @@ import semi.member.member.model.vo.Member;
 @WebServlet("/member/myPage/myCommuList")
 public class MyCommunityListServlet extends HttpServlet {
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+   @Override
+   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-			String path = "/WEB-INF/views/member/myCommunityList.jsp";
-			req.getRequestDispatcher(path).forward(req, resp);
-	}
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+         String path = "/WEB-INF/views/member/myCommunityList.jsp";
+         req.getRequestDispatcher(path).forward(req, resp);
+   }
+   @Override
+   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		int memberNo = Integer.parseInt(req.getParameter("loginMemberNo"));
-	
-		try {
-			MemberService service = new MemberService();
-			List<Member> commuList = service.myCommunityList(memberNo);
+      int memberNo = Integer.parseInt(req.getParameter("loginMemberNo"));
+   
+      try {
+         MemberService service = new MemberService();
+         List<Member> commulist = service.myCommunityList(memberNo);
 
-			new Gson().toJson(commuList, resp.getWriter());
+         new Gson().toJson(commulist, resp.getWriter());
 
-		} catch (Exception e) {
+      } catch (Exception e) {
 
-			e.printStackTrace();
+         e.printStackTrace();
 
-			resp.setStatus(500);
-			resp.getWriter().print(e.getMessage());
-		}
-	}
+         resp.setStatus(500);
+         resp.getWriter().print(e.getMessage());
+      }
+   }
 
 }
