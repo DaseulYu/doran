@@ -19,6 +19,13 @@ import semi.member.member.model.vo.Member;
 public class AddMeetingServlet extends HttpServlet{
 	
 	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String path = "/WEB-INF/views/community/addMeeting.jsp";
+		req.getRequestDispatcher(path).forward(req, resp);
+	}
+	
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String communityName = req.getParameter("groupName");
@@ -58,8 +65,7 @@ public class AddMeetingServlet extends HttpServlet{
 			
 			String path = "/WEB-INF/views/community/addMeeting.jsp";
 			
-			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
-			dispatcher.forward(req, resp);
+			resp.sendRedirect(req.getContextPath());
 			
 		} catch(Exception e) {
 			e.printStackTrace();

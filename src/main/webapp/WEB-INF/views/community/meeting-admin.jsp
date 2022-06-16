@@ -17,16 +17,13 @@
 </head>
 <body>
     <main>
-        
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
         <section class="meeting-admin-content">
             <form action="admin" method="GET" name="meeting-admin-form">
-                <span class="meetingname-admin">${comm.communityName} 관리</span>
-            </form>
-
-            <form action="admin/applySelect" method="POST">
                 <input type="hidden" name="cn" value="${param.cn}">
+                <span class="meetingname-admin">${comm.communityName} 관리</span>
+
                 <div class="meeting-request-area">
                     <h4>모임 신청 내역</h4> <button id="selectApply">조회</button>
                     <c:choose>
@@ -48,7 +45,6 @@
                         </c:otherwise>
                     </c:choose>
                 </div>
-            </form>
 
                     <!-- <div class="req-member-area">
                         <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
@@ -80,8 +76,6 @@
                         <button id="refuse">거절</button>
                     </div> -->
 
-                <form action="admin/select" method="POST">
-                    <input type="hidden" name="cn" value="${param.cn}">
                     <div class="member-admin-area"> <button id="selectMember">조회</button>
                         <h4>회원 관리</h4> 
                         <c:choose>
@@ -90,7 +84,7 @@
                             </c:when>
 
                             <c:otherwise>
-                                <c:forEach var="cm" items="${commMemberList}">
+                                <c:forEach var="commMemberList" items="${commMemberList}">
                                     <div class="member-area">
                                         <div class="member-nickname-area">
                                             <img src="${contextPath}${commMemberList.memberProfileImage}" id="member-nickname-icon">
@@ -105,8 +99,6 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
-                </form>
-
                     <!-- <div class="member-area">
                         <div class="member-nickname-area">
                             <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
@@ -254,14 +246,13 @@
                         </div>                    
                     </div>
                 </div>
-
-                <input type="hidden" id="commu-member-no" name="commu-member-no">
             </form>
         </section>
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+    <script> const contextPath = "${contextPath}"; </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/community/meeting-admin.js"></script>
 </body>
