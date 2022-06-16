@@ -1,6 +1,10 @@
+main {
+    width: 1140px;
+    margin: auto;
+}
+
 .board{
     width: 100%;
-    /* margin: 50px auto; */
 }
 
 .board-content{
@@ -80,7 +84,7 @@ li > .doran{
 }
 
 .doran{
-    width: 600px;
+    width: 500px;
     display: table-cell;
     float: left;
     padding-bottom: 50px;
@@ -129,10 +133,8 @@ div > ul{
     text-align: right;
 }
 .create > a{
-
     font-weight: bold;
     font-size: 20px;
-    margin-right: 500px;
 
 }
 

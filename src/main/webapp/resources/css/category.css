@@ -165,8 +165,8 @@ div > ul{
     white-space: nowrap;
     letter-spacing: -0.7px;
     display: flex;
-    justify-content: space-between;
-    padding: 0 550px;
+    justify-content: space-evenly;
+    padding: 0 150px;
     margin: 80px 100px 0;
 }
 

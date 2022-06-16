@@ -79,7 +79,6 @@ public class BoardDAO {
 		try {
 			String sql = prop.getProperty("selectBoardList");
 
-			// BETWEEN 구문에 들어갈 범위 계산
 			int start = (pagination.getCurrentPage() - 1) * pagination.getLimit() + 1;
 			int end = start + pagination.getLimit() - 1;
 
@@ -95,6 +94,7 @@ public class BoardDAO {
 
 				board.setCommunityNo(rs.getInt("COMMUNITY_NO"));
 				board.setCommunityName(rs.getString("COMMUNITY_NM"));
+				board.setCommunityImage(rs.getString("COMMUNITY_IMG"));
 				board.setCommunityArea(rs.getString("COMMUNITY_AREA"));
 				board.setCategoryName(rs.getString("CATEGORY_NM"));
 				board.setCategoryNo(rs.getInt("CATEGORY_NO"));
@@ -327,7 +327,6 @@ public class BoardDAO {
 		try {
 			String sql = prop.getProperty("selectCategoryList");
 
-			// BETWEEN 구문에 들어갈 범위 계산
 			int start = (pagination.getCurrentPage() - 1) * pagination.getLimit() + 1;
 			int end = start + pagination.getLimit() - 1;
 
@@ -348,7 +347,7 @@ public class BoardDAO {
 				board.setCategoryName(rs.getString("CATEGORY_NM"));
 				board.setCommunityMember(rs.getInt("COMMUNITY_MEMBER"));
 				board.setPick(rs.getInt("PICK"));
-
+				board.setCommunityImage(rs.getString("COMMUNITY_IMG"));
 				categoryList.add(board);
 			}
 
