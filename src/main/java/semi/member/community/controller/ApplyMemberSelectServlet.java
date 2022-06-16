@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import semi.member.community.model.service.CommunityService;
 import semi.member.community.model.vo.CommunityApply;
 import semi.member.community.model.vo.CommunityMember;
@@ -19,12 +21,23 @@ import semi.member.member.model.vo.Member;
 @WebServlet("/community/admin/applySelect")
 public class ApplyMemberSelectServlet extends HttpServlet{
 	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//	@Override
+//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String path = "/WEB-INF/views/community/meeting-admin.jsp";
-		req.getRequestDispatcher(path).forward(req, resp);
-	}
+//		String path = "/WEB-INF/views/community/meeting-admin.jsp";
+//		req.getRequestDispatcher(path).forward(req, resp);
+		
+//		try {
+//			CommunityService service = new CommunityService();
+//			
+//			List<CommunityApply> commApplyList = service.selectApllyMember();
+//			
+//			new Gson().toJson(commApplyList, resp.getWriter() );
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,22 +48,21 @@ public class ApplyMemberSelectServlet extends HttpServlet{
 			
 			CommunityService service = new CommunityService();
 			
-			HttpSession session = req.getSession();
-			Member loginMember = (Member)(session.getAttribute("loginMember"));
-			int memberNo = loginMember.getMemberNo();
+//			HttpSession session = req.getSession();
+//			Member loginMember = (Member)(session.getAttribute("loginMember"));
+//			int memberNo = loginMember.getMemberNo();
+//			
+//			CommunityApply coma = new CommunityApply();
 			
-			CommunityApply coma = new CommunityApply();
+//			coma.setCommunityNo(communityNo);
+//			coma.setMemberNo(memberNo);
 			
-			coma.setCommunityNo(communityNo);
-			coma.setMemberNo(memberNo);
+			List<CommunityApply> commApplyList = service.selectApllyMember(communityNo);
 			
-			System.out.println(coma);
+			new Gson().toJson(commApplyList, resp.getWriter());
+//			req.setAttribute("commApplyList", commApplyList);
 			
-			List<CommunityApply> commApplyList = service.selectApllyMember(coma);
-			
-			req.setAttribute("commApplyList", commApplyList);
-			
-			
+//			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

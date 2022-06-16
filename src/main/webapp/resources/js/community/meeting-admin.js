@@ -1,13 +1,13 @@
-const openPop = document.getElementById("openPop");
-const closePop = document.getElementById("closePop");
+// const openPop = document.getElementById("openPop");
+// const closePop = document.getElementById("closePop");
 
-openPop.addEventListener("click", function(){
-    document.getElementById("popup_layer").style.display = "block";
-});
+// openPop.addEventListener("click", function(){
+//     document.getElementById("popup_layer").style.display = "block";
+// });
 
-closePop.addEventListener("click", function(){
-    document.getElementById("popup_layer").style.display = "none";
-});
+// closePop.addEventListener("click", function(){
+//     document.getElementById("popup_layer").style.display = "none";
+// });
 
 function confirmChk(){
     
@@ -65,12 +65,12 @@ document.getElementById("selectApply").addEventListener("click", function(){
 
     $.ajax({
         url : "community/admin/applySelect",
-        data : {"communityNo" : cp},
+        data : {communityNo : cn},
         type : "POST",
         dataType : "JSON",
 
-        success : function(comm){
-            
+        success : function(commApplyList){
+            alert(commApplyList);
         },
         error : function(request){
             console.log("AJAX 에러 발생");
@@ -80,14 +80,16 @@ document.getElementById("selectApply").addEventListener("click", function(){
 
 document.getElementById("selectMember").addEventListener("click", function(){
     
+    console.log(commMemberList);
+
     $.ajax({
         url : "community/admin/select",
-        data : {"communityNo" : cp},
+        data : {communityNo : cn},
         type : "POST",
         dataType : "JSON",
 
-        success : function(comm){
-
+        success : function(commMemberList){
+            alert(commMemberList);
         },
         error : function(request){
             console.log("AJAX 에러 발생");
