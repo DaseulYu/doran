@@ -19,6 +19,25 @@
     <main>
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
+        <form action="report" method="post" class="report-popup" onsubmit="return reportValidation()">
+            <div class="report-detail">
+                <div>신고 사유를 선택해주세요.</div>
+                <select name="reportTitle" id="reportCategory">
+                    <option value="0" selected disabled>신고사유 선택</option>
+                    <option value="부적절한 게시글">부적절한 게시글</option>
+                    <option value="욕설">욕설</option>
+                    <option value="사용자 비방">사용자 비방</option>
+                </select>
+                <button id="report-submission">신고</button>
+                <button type="button" id="report-cancel">취소</button>
+            </div>
+
+             <!-- hidden -->
+             <%-- <input type="hidden" name="type" value="${param.type}">
+             <input type="hidden" name="cn" value="${param.cn}">--%>
+             <input type="hidden" name="no" id="boardNo">
+        </form> 
+
         <div class="board-detail">
             <div>
                 <h2>${detail.boardName}</h2>
@@ -38,6 +57,8 @@
                 <div class="board-title-area">
                     <div class="board-title">
                         <h2>${detail.boardTitle}</h2>
+                        ${loginMember.memberNo}
+                        ${detail.memberNo}
                     </div>
                     <div class="write-btn-area">
                         <c:if test="${loginMember.memberNo != detail.memberNo}">
@@ -120,6 +141,7 @@
     </script>
 
     <script src="${contextPath}/resources/js/board/board-reply.js"></script>
+    <script src="${contextPath}/resources/js/admin-page/report-form.js"></script>
     
 </body>
 </html>

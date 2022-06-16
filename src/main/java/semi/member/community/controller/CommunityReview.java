@@ -32,7 +32,6 @@ public class CommunityReview extends HttpServlet{
 			Map<String, Object> map = service.communityBoardList(cp, type, communityNo);
 			
 			req.setAttribute("map", map);
-			System.out.println(map);
 			
 			String path = "/WEB-INF/views/board/board-review.jsp";
 			RequestDispatcher dispatcher = req.getRequestDispatcher(path);

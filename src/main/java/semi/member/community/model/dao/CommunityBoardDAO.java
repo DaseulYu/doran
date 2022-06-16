@@ -129,6 +129,7 @@ public class CommunityBoardDAO {
 				list.setProfileImage(rs.getString("PROFILE_IMG"));
 				list.setCreateDate(rs.getString("CREATE_DT"));
 				list.setReadCount(rs.getInt("READ_COUNT"));
+				list.setMemberNo(rs.getInt("MEMBER_NO"));
 				list.setImage0(rs.getString("IMG0"));
 				list.setImage1(rs.getString("IMG1"));
 
@@ -172,7 +173,7 @@ public class CommunityBoardDAO {
 				detail.setReadCount(rs.getInt(5));
 				detail.setMemberNickname(rs.getString(6));
 				detail.setProfileImage(rs.getString(7));
-				detail.setBoardNo(rs.getInt(8));
+				detail.setMemberNo(rs.getInt(8));
 				detail.setBoardName(rs.getString(9));
 			}
 		} finally {
