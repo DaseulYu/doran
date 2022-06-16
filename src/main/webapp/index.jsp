@@ -35,24 +35,25 @@
 						<img src="resources/images/test.gif">
 					</div>
 					<div class="right">
-						<span id="doran"> 다같이 모여,<br> 도란도란
-						</span>
-						
-						<c:choose>
-					<%-- 로그인 되어 있지 않은 경우 --%>
-						<c:when test="${empty sessionScope.loginMember}">
-							<div id="member">
-								<button id="login">로그인</button><br>
-								<button id="signUp">회원가입</button>
-							</div>
-							<span id="boardList">내게 맞는 모임 만나려면 <a href="${contextPath}/community/list?cp=1">모임 찾기</a></span>
-						</c:when>
-						
-						<c:otherwise>
-							<div id="member">
-								<a href="${contextPath}/community/list?cp=1"><button id="login">모임 보러가기</button></a><br>
-						</c:otherwise>
-				</c:choose>
+						<span id="doran"> 다같이 모여,<br> 도란도란</span>
+
+						<%-- 로그인 되어 있지 않은 경우 --%>
+							<c:choose>
+								<c:when test="${empty sessionScope.loginMember}">
+									<div id="member">
+										<a href="${contextPath}/member/login"><button id="login">로그인</button><br></a>
+										<a href="${contextPath}/member/signUp"><button id="signUp">회원가입</button></a>
+									</div>
+									<span id="boardList">내게 맞는 모임 만나려면 <a href="${contextPath}/community/list?cp=1">모임
+											찾기</a></span>
+								</c:when>
+
+								<c:otherwise>
+									<div id="member">
+										<a href="${contextPath}/community/list?cp=1"><button id="login">모임
+												보러가기</button></a><br>
+								</c:otherwise>
+							</c:choose>
 					</div>
 				</div>
 			</main>
