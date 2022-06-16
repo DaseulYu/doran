@@ -9,11 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import semi.member.community.model.service.CommunityService;
 import semi.member.community.model.vo.CommunityMember;
+import semi.member.member.model.vo.Member;
 
-@WebServlet("/community/admin/select")
+@WebServlet("/community/admin")
 public class SelectCommunityMemberServlet extends HttpServlet{
 	
 	@Override
@@ -25,7 +27,11 @@ public class SelectCommunityMemberServlet extends HttpServlet{
 			
 			CommunityService service = new CommunityService();
 			
-			List<CommunityMember> commMemberList = service.selectCommMember(communityNo);
+			HttpSession session = req.getSession();
+			Member loginMember = (Member)(session.getAttribute("loginMember"));
+			int memberNo = loginMember.getMemberNo();
+			
+			List<CommunityMember> commMemberList = service.selectCommMember(communityNo, memberNo);
 			
 			req.setAttribute("commMemberList", commMemberList);
 			

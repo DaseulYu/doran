@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import semi.member.community.model.service.CommunityService;
 import semi.member.community.model.vo.CommunityMember;
+import semi.member.member.model.vo.Member;
 
 @WebServlet("/community/admin/confirm")
 public class CommunityConfirmServlet extends HttpServlet{
@@ -26,15 +27,16 @@ public class CommunityConfirmServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		int communityNo = Integer.parseInt(req.getParameter("cn"));
-		int memberNo = Integer.parseInt(req.getParameter("memberNo"));
 		
 		try {
 			
 			CommunityService service = new CommunityService();
+			HttpSession session = req.getSession();
+			Member loginMember = (Member)(session.getAttribute("loginMember"));
+			
+			int memberNo = loginMember.getMemberNo();
 			
 			int result = service.addCommunityMember(communityNo, memberNo);
-			
-			HttpSession session = req.getSession();
 			
 			if(result > 0) {
 				session.setAttribute("message", "승인하였습니다.");
