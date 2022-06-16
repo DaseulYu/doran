@@ -20,7 +20,7 @@
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
         <section class="meeting-admin-content">
-            <form action="admin" method="GET" name="meeting-admin-form">
+            <form action="admin" method="POST" name="meeting-admin-form">
                 <input type="hidden" name="cn" value="${param.cn}">
                 <span class="meetingname-admin">${comm.communityName} 관리</span>
 
@@ -76,8 +76,8 @@
                         <button id="refuse">거절</button>
                     </div> -->
 
-                    <div class="member-admin-area"> <button id="selectMember">조회</button>
-                        <h4>회원 관리</h4> 
+                    <div class="member-admin-area"> 
+                        <h4>회원 관리</h4> <button id="selectMember">조회</button>
                         <c:choose>
                             <c:when test="${empty commMemberList}">
                                 <h4 style="color : gray;">모임 회원이 존재하지 않습니다.</h4>
@@ -223,13 +223,13 @@
 
                 <a href="#" id="deleteMeeting" onclick="return deleteMeeting()">모임 삭제하기</a>
 
-                <div class="popup_layer" id="popup_layer" style="display: none;">
+                <!-- <div class="popup_layer" id="popup_layer" style="display: none;">
                     <div class="popup_box">
                         <div style="height: 10px; width: 375px; float: top;">
                             <a href="closePop();" class="popUp-close" width="30px" height="30px"></a>
                         </div>
 
-                        <!--팝업 컨텐츠 영역-->
+                    
                         <div class="popup_cont">
                             <div class="popup_content">
                             <img src="${contextPath}${commApplyList.memberProfileImage}" id="nickname-icon-pop">
@@ -245,15 +245,15 @@
                             </div>
                         </div>                    
                     </div>
-                </div>
+                </div> -->
             </form>
         </section>
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <script> const contextPath = "${contextPath}"; </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/community/meeting-admin.js"></script>
 </body>
 </html>
