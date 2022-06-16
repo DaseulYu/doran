@@ -6,7 +6,6 @@ public class CommunityMember {
 	private int communityNo;
 	private int memberNo;
 	private String memberFlag;
-	private int memberCount;
 	private String memberNickname;
 	private String memberProfileImage;
 	
@@ -41,12 +40,7 @@ public class CommunityMember {
 	public void setMemberFlag(String memberFlag) {
 		this.memberFlag = memberFlag;
 	}
-	public int getMemberCount() {
-		return memberCount;
-	}
-	public void setMemberCount(int memberCount) {
-		this.memberCount = memberCount;
-	}
+
 	
 	
 }

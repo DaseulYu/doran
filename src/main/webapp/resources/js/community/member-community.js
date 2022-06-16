@@ -75,9 +75,6 @@ function secession(communityNo){
 }
 
 
-
-
-
 const detail_popup = document.getElementById("detail-Popup");
 
 detail_popup.addEventListener("click", function(){
@@ -92,6 +89,7 @@ detail_popup.addEventListener("click", function(){
 const updateImage = document.getElementById("update-image");
 
 if(updateImage != null){
+    
     updateImage.addEventListener("change", function(){
 
         if(this.files[0] != undefined){
@@ -104,3 +102,4 @@ if(updateImage != null){
         }
     });
 }
+

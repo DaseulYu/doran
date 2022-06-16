@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import semi.member.community.model.service.CommunityService;
 import semi.member.community.model.vo.Community;
+import semi.member.community.model.vo.CommunityMember;
 import semi.member.member.model.vo.Member;
 
 @WebServlet("/community/admin/entrust")
@@ -19,13 +20,7 @@ public class CommunityEntrustServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		int communityAdmin = Integer.parseInt(req.getParameter("communityAdmin"));
-		int communityNo = Integer.parseInt(req.getParameter("no"));
-		
-		Community com = new Community();
-		
-		com.setCommunityAdmin(communityAdmin);
-		com.setCommunityNo(communityNo);
+		int communityNo = Integer.parseInt(req.getParameter("cn"));
 		
 		HttpSession session = req.getSession();
 		
@@ -36,7 +31,7 @@ public class CommunityEntrustServlet extends HttpServlet{
 		try {
 			CommunityService service = new CommunityService();
 			
-			int result = service.entrust(com, memberNo);
+			int result = service.entrust(communityNo, memberNo);
 			
 			if(result > 0) {
 				session.setAttribute("message", "모임장 위임을 완료하였습니다.");
@@ -46,6 +41,7 @@ public class CommunityEntrustServlet extends HttpServlet{
 			}
 			
 			resp.sendRedirect(req.getContextPath());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

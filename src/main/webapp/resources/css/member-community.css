@@ -28,6 +28,14 @@
     width: 300px; 
 }
 
+#input-image {
+    display:none;
+}
+
+#img-btn {
+    border: 0;
+}
+
 /* 모임 헤드 우측 모임명/소개 등 */
 .head-right{
     flex-basis: 65%;
@@ -315,7 +323,6 @@
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
 }
-
 
 #update-image{
     position:absolute;

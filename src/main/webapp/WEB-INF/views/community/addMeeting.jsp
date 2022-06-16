@@ -86,10 +86,6 @@
                     <button id="cancel">취소하기</button>
                     <button type="submit" id="add">추가하기</button>
                 </div>
-
-
-                <input type="hidden" name="no" value="${param.no}">
-
             </form>
         </section>
     </main>

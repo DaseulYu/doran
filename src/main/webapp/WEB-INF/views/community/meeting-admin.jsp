@@ -35,11 +35,11 @@
                             <c:forEach var="ca" items="${applyMemberList}">
                                 <div class="req-member-area">
                                     <div class="nickname-area">
-                                        <a href="#" id="openPop"><img src="${contextPath}${loginMember.profileImage}" id="nickname-icon"></a>
-                                        <span class="req-nickname">${loginMember.memberNickname}</span>
+                                        <a href="#" id="openPop"><img src="${contextPath}${applyMemberList.profileImage}" id="nickname-icon"></a>
+                                        <span class="req-nickname">${applyMemberList.memberNickname}</span>
                                     </div>
                                     <button id="confirm" onclick="return confirmChk()">승인</button>
-                                    <button id="refuse" onclick="return refuseChk()">거절</button>
+                                    <!-- <button id="refuse" onclick="return refuseChk()">거절</button> -->
                                 </div>
                             </c:forEach>
                         </c:otherwise>
@@ -88,8 +88,8 @@
                             <c:forEach var="cm" items="${commMemberList}">
                                 <div class="member-area">
                                     <div class="member-nickname-area">
-                                        <img src="${contextPath}${loginMember.profileImage}" id="member-nickname-icon">
-                                        <span class="member-nickname">${loginMember.memberNickname}</span>
+                                        <img src="${contextPath}${commMemberList.profileImage}" id="member-nickname-icon">
+                                        <span class="member-nickname">${commMemberList.memberNickname}</span>
                                     </div>
                                     <div class="member-area-button">
                                         <button id="entrust" onclick="return entrustChk()">모임장 위임하기</button>
@@ -234,20 +234,22 @@
                         <!--팝업 컨텐츠 영역-->
                         <div class="popup_cont">
                             <div class="popup_content">
-                            <img src="${contextPath}${loginMember.profileImage}" id="nickname-icon-pop">
-                            <span class="req-nickname-pop">${loginMember.memberNickname}</span>
+                            <img src="${contextPath}${applyMemberList.profileImage}" id="nickname-icon-pop">
+                            <span class="req-nickname-pop">${applyMemberList.memberNickname}</span>
                             </div>
                             <p>
-                                이름 : <span>${loginMember.memberName}</span> <br>
-                                성별 : <span>${loginMember.memberGender}</span> <br>
-                                생년월일 : <span>${loginMember.memberBirth}</span>
+                                이름 : <span>${applyMemberList.memberName}</span> <br>
+                                성별 : <span>${applyMemberList.memberGender}</span> <br>
+                                생년월일 : <span>${applyMemberList.memberBirth}</span>
                             </p>
                             <div class="popup_button">
                             <a href="#" id="closePop">확인</a>
                             </div>
                         </div>                    
                     </div>
-                    </div>
+                </div>
+
+                <input type="hidden" id="commu-member-no" name="commu-member-no">
             </form>
         </section>
     </main>
