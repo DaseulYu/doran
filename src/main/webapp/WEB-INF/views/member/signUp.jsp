@@ -48,7 +48,7 @@
                             maxlength="30">
                         <br>
                     </div>
-                    <p class="signUp-message" id="pwMessage">문자, 숫자, 특수문자 조합으로 8자 이상</p>
+                    <p class="signUp-message" id="pwMessage">영문, 숫자, 특수문자 조합으로 8자 이상 20글자 이하</p>
 
                     <div class="signUp-input-area">
                         <input type="password" id="memberPwConfirm" class="singUp-input" placeholder="비밀번호"
@@ -72,7 +72,7 @@
                     <span class="signUp-message" id="telMessage"></span>
                     <div class="signUp-input-area">
                         <input type="text" id="memberNickname" name="memberNickname" class="singUp-input"
-                            placeholder="닉네임" maxlength="10">
+                            placeholder="닉네임" maxlength="8">
                         <div class="form-radio">
                             <div class="form-flex">
                                 <input type="radio" name="memberGender" value="m" id="male">
