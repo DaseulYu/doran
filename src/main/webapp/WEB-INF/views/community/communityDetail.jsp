@@ -53,7 +53,7 @@
                                 <a href="admin?cn=${param.cn}"><span class="btn-edit">edit</span></a>
                             </c:if>
                         </div>
-                    <div><button class="btn-report">신고</button></div>
+                    <!-- <div><button class="btn-report">신고</button></div> -->
                 </div>
 
                     <div class="head-info">

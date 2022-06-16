@@ -92,6 +92,7 @@ public class CommunityDAO {
 			pstmt.setString(2, com.getCommunityInfo());
 			pstmt.setString(3, com.getCommunityArea());
 			pstmt.setInt(4, memberNo);
+			pstmt.setInt(5, com.getCategoryNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -385,7 +386,7 @@ public class CommunityDAO {
       return result;
    }
 
-	   /**
+	   /** 모임 이름 조회
 	 * @param conn
 	 * @param comm
 	 * @return result

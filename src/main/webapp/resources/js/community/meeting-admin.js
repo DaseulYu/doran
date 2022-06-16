@@ -49,6 +49,14 @@ function deleteMeeting(){
 
     } else {
         alert("삭제가 완료되었습니다.")
+
+        const pathname = location.pathname;
+        let url = pathname.substring(0,  pathname.indexOf("/", 1));
+
+        url += "/community/list?cp=1"; 
+        const params = new URL(location.href).searchParams;
+
+        location.href = url;
     }
     return true;
 }

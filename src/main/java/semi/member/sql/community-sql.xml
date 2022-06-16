@@ -54,7 +54,6 @@
 		FROM COMMUNITY_MEMBER
 		JOIN MEMBER (USING MEMBER_NO)
 		WHERE COMMUNITY_NO = ?
-		AND MEMBER_NO = ?
 	</entry>
 
 	<!-- 가입 신청 회원 목록 조회 -->
