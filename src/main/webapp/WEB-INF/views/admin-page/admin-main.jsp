@@ -38,7 +38,7 @@
             </c:if>
             
             <div class="btn-area">
-                <button id="insertBtn" onclick="location.href='write?mode=insert'">새글 작성</button>
+                <button id="insertBtn" onclick="location.href='write?mode=insert'">새글작성</button>
             </div>
 
             <div class="list-wrapper">
@@ -49,7 +49,6 @@
                             <th>카테고리</th>
                             <th>제목</th>
                             <th>작성일</th>
-                            <th>조회수</th>
                             <th colspan="3">게시글 상태<br>(등록:N, 삭제:Y)</th>
                         </tr>
                     </thead>
@@ -58,7 +57,7 @@
                         <c:choose>
                             <c:when test="${empty noticeList}">
                                 <tr>
-                                    <td colspan="8">게시글이 없습니다.</td>
+                                    <td colspan="7">게시글이 없습니다.</td>
                                 </tr>
                             </c:when>
 
@@ -71,7 +70,6 @@
                                             <a href="detail?no=${noticeList.noticeNo}&cp=${pagination.currentPage}${sURL}">${noticeList.noticeTitle}</a>
                                         </td>
                                         <td>${noticeList.createDate}</td>
-                                        <td>${noticeList.readCount}</td>
                                         <td id="noticeState">${noticeList.noticeState}</td>
                                         <td>
                                             <button id="noticeInsertBtn" onclick="noticeInsert(${noticeList.noticeNo})">등록</button>

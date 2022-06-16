@@ -16,6 +16,7 @@ public class CommunityService {
 
 	/** 모임 상세 정보 조회
 	 * @param communityNo
+	 * @param memberNo 
 	 * @return comm
 	 * @throws Exception
 	 */
@@ -195,6 +196,44 @@ public class CommunityService {
 		Connection conn = getConnection();
 		
 		int result = dao.refuseCommunityMember(conn, communityNo, memberNo);
+		
+		if(result > 0) commit(conn);
+		else         rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/** 모임 가입하기
+	 * @param memberNo
+	 * @param communityNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int communityJoin(int memberNo, int communityNo) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.communityJoin(conn, memberNo, communityNo);
+		
+		if(result > 0) commit(conn);
+		else         rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/** 모임 탈퇴하기
+	 * @param memberNo
+	 * @param communityNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int communitySecession(int memberNo, int communityNo) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.communitySecession(conn, memberNo, communityNo);
 		
 		if(result > 0) commit(conn);
 		else         rollback(conn);

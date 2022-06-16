@@ -268,3 +268,66 @@
     background-color: #0C71FF;
     border-radius: 10%;
 }
+
+
+/* *{border: 1px solid black;} */
+/* 신고 팝업 */
+.report-popup{
+    background-color: rgba(252, 186, 46, 0.4);
+    width: 600px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    z-index: 100;
+    /* display: none; */
+    margin: auto;
+    position: sticky;
+    top: 0; 
+}
+.report-detail{
+    width: 80%;
+    text-align: center;
+}
+
+.report-detail > div{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+.report-detail > input{
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+}
+.report-detail > button{
+    width: 70px;
+    height: 30px;
+    margin-top: 10px;
+    background-color: #ff8339;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+.report-detail > button:hover{
+    background-color: white;
+    color: #ff8339;
+    border: 1px solid #ff8339;
+    font-weight: bold;
+}
+
+/* 닫기 버튼 */
+#report-close {
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    color: gray;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#report-close:hover{
+    transform: scale(1.2);
+}

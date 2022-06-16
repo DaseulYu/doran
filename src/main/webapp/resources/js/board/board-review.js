@@ -1,4 +1,4 @@
-// board-review.js 연결
+// board-review.jsp 연결
 
 // 후기 게시글 삭제
 function boardDelete(boardNo){

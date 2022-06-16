@@ -16,6 +16,8 @@ import semi.member.community.model.vo.BoardSignup;
 @WebServlet("/community/signup/list")
 public class CommunitySignup extends HttpServlet {
 	
+//	가입인사 조회 게시판
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {

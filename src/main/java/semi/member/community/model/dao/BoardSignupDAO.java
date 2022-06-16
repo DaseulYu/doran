@@ -60,6 +60,7 @@ public class BoardSignupDAO {
 				b.setProfileImage(rs.getString(3));
 				b.setSignupContent(rs.getString(4));
 				b.setCreateDate(rs.getString(5));
+				b.setMemberNo(rs.getInt(6));
 				
 				sList.add(b);
 			}

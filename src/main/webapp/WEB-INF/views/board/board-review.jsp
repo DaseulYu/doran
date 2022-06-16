@@ -23,6 +23,22 @@
     <main>
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
+            <!-- 신고 팝업 -->
+       
+    <form action="#" method="post" class="report-popup" onsubmit="return reportValidation()">
+        <div class="report-detail">
+            <div>신고 사유를 입력해주세요.</div>
+            <select name="reportCategory" id="reportCategory">
+                <option value="0" selected disabled>신고사유 선택</option>
+                <option value="부적절한 게시글">부적절한 게시글</option>
+                <option value="욕설">욕설</option>
+                <option value="사용자 비방">사용자 비방</option>
+            </select>
+            <button id="report-submission">신고</button>
+            <button id="report-cancel">취소</button>
+        </div>
+    </form>
+
         <div class="board-detail">
             <div>
                 <h2>모임후기</h2>
@@ -45,9 +61,13 @@
                                     <h2>${boardList.boardTitle}</h2>
                                 </div>
                                 <div class="write-btn-area">
-                                    <button id="btn-report">신고</button>
-                                    <button id="updateBtn" onclick="location.href='write?mode=update&no=${boardList.boardNo}&cn=${param.cn}&type=${param.type}&cp=${param.cp}'">수정</button>
-                                    <button id="deleteBtn" onclick="boardDelete(${boardList.boardNo})">삭제</button>
+                                    <c:if test="${loginMember.memberNo != signup.memberNo}">
+                                        <button id="btn-report">신고</button>
+                                    </c:if>
+                                    <c:if test="${loginMember.memberNo == signup.memberNo}">
+                                        <button id="updateBtn" onclick="location.href='write?mode=update&no=${boardList.boardNo}&cn=${param.cn}&type=${param.type}&cp=${param.cp}'">수정</button>
+                                        <button id="deleteBtn" onclick="boardDelete(${boardList.boardNo})">삭제</button>
+                                    </c:if>
                                 </div>
                             </div>
                             <div class="userInfo">
@@ -129,6 +149,8 @@
         const type = "${param.type}";
     </script>
     <script src="${contextPath}/resources/js/board/board-review.js"></script>
+    <script src="${contextPath}/resources/js/admin-page/report-form.js"></script>
+
     
 </body>
 </html>

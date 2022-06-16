@@ -40,6 +40,8 @@ for(let i=0; i<inputImage.length; i++){
 function writeValidate(){
     const boardTitle = document.getElementsByName("boardTitle")[0];
     const boardContent = document.querySelector("[id='boardContent']");
+    const img0 = document.getElementById("img0");
+    const img1 = document.getElementById("img1");
 
         if(boardTitle.value.trim().length == 0){
             alert("제목을 입력해주세요.")

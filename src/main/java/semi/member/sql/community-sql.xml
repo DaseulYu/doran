@@ -83,4 +83,18 @@
 		INSERT INTO APPLY
 		VALUES (SEQ_APPLY_NO.NEXTVAL, ?, 'Y', ?)
 	</entry>
+	
+	<!-- 모임 가입 -->
+	<entry key="communityJoin">
+		INSERT INTO COMMUNITY_MEMBER VALUES(?, ?, 'Y', SYSDATE)
+	</entry>
+	
+	<!-- 모임 탈퇴 -->
+	<entry key="communitySecession">
+		INSERT INTO COMMUNITY_MEMBER VALUES(?, ?, 'N', SYSDATE)
+	</entry>
+	
+	
+	
+	
 </properties>

@@ -2,20 +2,18 @@
 -- 개인 테스트용
 
 -- 게시판 종류
-DROP TABLE "BOARD_TYPE";
+DROP TABLE "COMMUNITY";
 
 CREATE TABLE "BOARD_TYPE" (
 	"BOARD_CD"	NUMBER		PRIMARY KEY,
 	"BOARD_NM"	VARCHAR2(50)		NOT NULL
-	"COMMUNITY_NO"	NUMBER		NOT NULL
 );
 
 COMMENT ON COLUMN "BOARD_TYPE"."BOARD_CD" IS '게시판 코드';
 COMMENT ON COLUMN "BOARD_TYPE"."BOARD_NM" IS '게시판 이름';
-COMMENT ON COLUMN "BOARD_TYPE"."COMMUNITY_NO" IS '모임 번호';
 
-INSERT INTO BOARD_TYPE VALUES(1,'자유게시판','1');
-INSERT INTO BOARD_TYPE VALUES(2,'후기','1');
+INSERT INTO BOARD_TYPE VALUES(1,'자유게시판');
+INSERT INTO BOARD_TYPE VALUES(2,'후기게시판');
 
 -- 자유/후기 게시글 
 DROP TABLE "BOARD";
@@ -90,6 +88,8 @@ UPDATE BOARD SET
 		AND COMMUNITY_NO = 1
 		AND BOARD_CD = 1;
 
+update member set PROFILE_IMG = '/resources/images/admin.png'
+where member_no = 1;
 
 -- 게시판 조회 
 SELECT * FROM(
@@ -306,14 +306,18 @@ INSERT INTO MEMBER
 VALUES(0, 'admin@doran.com', 'doran1234', '관리자', 'F', SYSDATE, '01012345678', '관리자', 'N', '/resources/images/admin.png', '서울');
 INSERT INTO MEMBER
 VALUES(1, 'user@doran.com', 'doran1234', '유저일', 'M', SYSDATE, '01012345678', '유저일', 'N', '/resources/images/user.png', '서울');
+INSERT INTO MEMBER
+VALUES(2, 'user2@doran.com', 'doran1234', '유저이', 'M', SYSDATE, '01012345678', '유저이', 'N', '/resources/images/user.png', '서울');
 
 -- 모임 샘플 
 INSERT INTO COMMUNITY
-VALUES(1, '도란도란', '/resources/images/sample.png', '도란도란 소개글 입니다', '상세정보 입니다', 
-		'서울 종로구', '0', DEFAULT, '공지', 1);
+VALUES(1, '도란도란 1번 모임', '/resources/images/sample.png', '이곳은 소개글 입니다', '서울 종로구', 
+		DEFAULT, '이곳은 공지사항 입니다', 2, 41);
+
 INSERT INTO COMMUNITY
-VALUES(2, '도란도란2', '/resources/images/user_sample.jpg', '도란도란2 소개글 입니다', '모임2 상세정보 입니다', 
-		'서울 종로구', '0', DEFAULT, '공지', 1);
+VALUES(2, '도란도란2', '/resources/images/sample.png', '도란도란2 소개글 입니다', '서울 ', 
+		DEFAULT, '이곳은 공지사항 입니다', 1, 41);
+
 
 
 SELECT SIGNUP_NO, MEMBER_NICK, PROFILE_IMG, SIGNUP_CONTENT,  
@@ -518,7 +522,6 @@ SELECT * FROM(
 WHERE RNUM BETWEEN 1 AND 5;
 
 
-SELECT * FROM(
 	SELECT ROWNUM RNUM, A.* FROM(
 		SELECT MEMBER_NICK, PROFILE_IMG, SIGNUP_CONTENT,  
 			TO_CHAR(CREATE_DT, 'YYYY-MM-DD') CREATE_DT
@@ -526,9 +529,8 @@ SELECT * FROM(
 		JOIN MEMBER USING(MEMBER_NO)
 		WHERE COMMUNITY_NO = 1
 		AND SIGNUP_ST = 'N'
-		ORDER BY SIGNUP_NO DESC
+		ORDER BY SIGNUP_NO 
 			) A
-)
 WHERE RNUM BETWEEN 1 AND 5;
 
 
@@ -550,5 +552,32 @@ SELECT * FROM(
 )
 WHERE RNUM BETWEEN 1 AND 4;
 
+SELECT COMMUNITY_NO, COMMUNITY_NM, COMMUNITY_INFO, COMMUNITY_NOTICE 
+				COMMUNITY_AREA, MEMBER_NICK, PROFILE_IMG, COMMUNITY_FL
+		FROM COMMUNITY
+		JOIN MEMBER ON(MEMBER_NO = COMMUNITY_ADMIN)
+		WHERE COMMUNITY_NO = 62
+		AND COMMUNITY_FL = 'N';
 
+SELECT NOTICE_NM FROM NOTICE_TYPE WHERE NOTICE_CD = 1;
 
+SELECT * FROM(
+			SELECT ROWNUM RNUM, A.* FROM(
+				SELECT NOTICE_NO, NOTICE_NM, NOTICE_TITLE, MEMBER_NICK, 
+					TO_CHAR(CREATE_DT, 'YYYY.MM.DD') CREATE_DT
+				FROM NOTICE
+				JOIN MEMBER USING(MEMBER_NO)
+				JOIN NOTICE_TYPE USING (NOTICE_CD)
+				WHERE NOTICE_ST = 'N'
+				AND NOTICE_CD = 1
+				ORDER BY NOTICE_NO DESC
+			) A
+		)
+		WHERE RNUM BETWEEN 1 AND 5;
+
+INSERT INTO REPLY VALUES (SEQ_REPLY_NO.NEXTVAL,'댓글 내용','N',DEFAULT, 1, 0);
+INSERT INTO PICK VALUES (1, 1);
+INSERT INTO PICK VALUES (1, 2);
+INSERT INTO PICK VALUES (2, 2);
+
+INSERT INTO COMMUNITY_MEMBER VALUES (1, 1,'N');
