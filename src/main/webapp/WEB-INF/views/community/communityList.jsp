@@ -29,7 +29,7 @@
             
 
             <section class="board">
-                <div class="create"><a href="/community/addMeeting"><i class="fas fa-plus-circle"></i> 모임 만들기</a></div>
+                <div class="create"><a href="${contextPath}/community/addMeeting"><i class="fas fa-plus-circle"></i> 모임 만들기</a></div>
                 <section class="board-content">
                     <div class="board-post">
 
