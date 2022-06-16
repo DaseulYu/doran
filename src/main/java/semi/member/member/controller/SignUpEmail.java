@@ -138,6 +138,8 @@ public class SignUpEmail extends HttpServlet{
 	         
 	         // 인증번호 받을 이메일, 인증번호
 	         int result = new MemberService2().insertCertification(memberId, cNumber);
+	         
+	         resp.getWriter().print(result);
 
 	      } catch (Exception e) {
 	         e.printStackTrace();

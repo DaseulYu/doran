@@ -48,14 +48,14 @@
                             maxlength="30">
                         <br>
                     </div>
-                    <p class="signUp-message" id="pwMessage">문자, 숫자, 특수문자 중 2가지 이상의 조합으로 10자 이상</p>
+                    <p class="signUp-message" id="pwMessage">문자, 숫자, 특수문자 조합으로 8자 이상</p>
 
                     <div class="signUp-input-area">
                         <input type="password" id="memberPwConfirm" class="singUp-input" placeholder="비밀번호"
                             maxlength="30">
                         <br>
                     </div>
-                    <p class="signUp-message" id="confirmPwMessage">비밀번호가 일치하지 않습니다.</p>
+                    <p class="signUp-message" id="confirmPwMessage"></p>
 
 
 
@@ -223,11 +223,11 @@
                     <!-- footer -->
                 </form>
             </section>
-            
-            
+
+
             <jsp:include page="/WEB-INF/views/common/footer.jsp" />
             <!-- jQuery -->
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
