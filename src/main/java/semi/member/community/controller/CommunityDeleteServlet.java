@@ -2,6 +2,7 @@ package semi.member.community.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,13 +15,6 @@ import semi.member.community.model.vo.Community;
 
 @WebServlet("/community/admin/delete")
 public class CommunityDeleteServlet extends HttpServlet{
-	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		String path = "/WEB-INF/views/community/meeting-admin.jsp";
-		req.getRequestDispatcher(path).forward(req, resp);
-	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,7 +36,10 @@ public class CommunityDeleteServlet extends HttpServlet{
 				session.setAttribute("message", "모임 삭제에 실패하였습니다.");
 			}
 			
-			resp.sendRedirect(req.getContextPath());
+			String path = "/WEB-INF/views/community/meeting-admin.jsp";
+			
+			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
+			dispatcher.forward(req, resp);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

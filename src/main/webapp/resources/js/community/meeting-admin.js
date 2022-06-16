@@ -53,3 +53,36 @@ function deleteMeeting(){
     return true;
 }
 
+document.getElementById("selectApply").addEventListener("click", function(){
+
+    $.ajax({
+        url : "community/admin/applySelect",
+        data : {"communityNo" : cp},
+        type : "POST",
+        dataType : "JSON",
+
+        success : function(comm){
+            
+        },
+        error : function(request){
+            console.log("AJAX 에러 발생");
+        }
+    })
+});
+
+document.getElementById("selectMember").addEventListener("click", function(){
+    
+    $.ajax({
+        url : "community/admin/select",
+        data : {"communityNo" : cp},
+        type : "POST",
+        dataType : "JSON",
+
+        success : function(comm){
+
+        },
+        error : function(request){
+            console.log("AJAX 에러 발생");
+        }
+    })
+})
