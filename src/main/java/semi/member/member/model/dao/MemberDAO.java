@@ -435,14 +435,14 @@ public class MemberDAO {
 				mem.setApplyFlag(rs.getString(4));
 				mem.setApplyDate(rs.getString(5));
 				
-				commulist.add(mem);				
+				commuList.add(mem);				
 				
 			}
 		} finally {
 			close(rs);
 			close(pstmt);
 		}
-		return commulist;
+		return commuList;
 	}
 
 }
