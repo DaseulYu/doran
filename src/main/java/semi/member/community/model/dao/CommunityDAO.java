@@ -360,7 +360,7 @@ public class CommunityDAO {
       return result;
    }
 
-   /**
+   /** 모임 탈퇴
     * @param conn
     * @param memberNo
     * @param communityNo
@@ -375,8 +375,7 @@ public class CommunityDAO {
          
          pstmt = conn.prepareStatement(sql);
          
-         pstmt.setInt(1, communityNo);
-         pstmt.setInt(2, memberNo);
+         pstmt.setInt(1, memberNo);
          
          result = pstmt.executeUpdate();
          

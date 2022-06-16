@@ -34,8 +34,3 @@ reportCategory.addEventListener("change", function(){
     document.getElementsByName("reportTitle")[0].value = this.value;
 });
 
-
-
-
-
-
