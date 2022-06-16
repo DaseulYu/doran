@@ -106,7 +106,7 @@ public class BoardWriteController extends HttpServlet{
 			String mode = mpReq.getParameter("mode");
 			
 			if(mode.equals("insert")) {
-				int boardNo = service.insertBoard(detail, imageList, boardCode, communityNo);
+				int boardNo = service.insertBoard(detail, imageList, boardCode, communityNo, memberNo);
 				
 				String path = null;
 				String message = null;

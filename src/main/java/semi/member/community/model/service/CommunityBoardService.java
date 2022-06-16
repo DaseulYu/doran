@@ -72,10 +72,11 @@ public class CommunityBoardService {
 	 * @param imageList
 	 * @param boardCode
 	 * @param communityNo 
+	 * @param memberNo 
 	 * @return boardNo
 	 * @throws Exception
 	 */
-	public int insertBoard(BoardDetail detail, List<BoardImage> imageList, int boardCode, int communityNo) throws Exception {
+	public int insertBoard(BoardDetail detail, List<BoardImage> imageList, int boardCode, int communityNo, int memberNo) throws Exception {
 		Connection conn = getConnection();
 		
 		int boardNo = dao.nextBoardNo(conn);
@@ -86,7 +87,7 @@ public class CommunityBoardService {
 		detail.setBoardContent(Util.XSSHandling(detail.getBoardContent()));
 		detail.setBoardContent(Util.newLineHandling(detail.getBoardContent()));
 		
-		int result = dao.insertBoard(conn, detail, boardCode, communityNo);
+		int result = dao.insertBoard(conn, detail, boardCode, communityNo, memberNo);
 		
 		if(result > 0) {
 			for(BoardImage image : imageList) {
