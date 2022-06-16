@@ -30,18 +30,18 @@
                         <input type="text" id="memberId" name="memberId" class="singUp-input" placeholder="이메일"
                             maxlength="30" autocomplete="off">
 
-                        <button class="certified">이메일 인증</button>
+                        <button class="certified" type="button" id="sendBtnC">이메일 인증</button>
 
                     </div>
                     <p class="signUp-message" id="emailMessage">이메일을 입력해주세요.</p>
 
                     <div class="signUp-input-area">
-                        <input type="text" id="emailCheck" class="singUp-input" placeholder="인증번호를 입력해주세요" maxlength="6"
+                        <input type="text" id="cNumber" class="singUp-input" placeholder="인증번호를 입력해주세요" maxlength="6"
                             autocomplete="off">
 
-                        <button class="certified">인증번호 확인</button>
+                        <button class="certified" type="button" id="cBtn">인증번호 확인</button>
                     </div>
-                    <p class="signUp-message">사용 가능한 이메일 입니다.</p>
+                    <p class="signUp-message" id="cMessage"></p>
 
                     <div class="signUp-input-area">
                         <input type="password" id="memberPw" name="memberPw" class="singUp-input" placeholder="비밀번호"

@@ -10,6 +10,7 @@ import static semi.member.common.JDBCTemplate.*;
 import semi.member.board.model.dao.BoardDAO;
 import semi.member.board.model.vo.Board;
 import semi.member.board.model.vo.Pagination;
+import semi.member.community.model.vo.BoardDetail;
 
 public class BoardService {
 	private BoardDAO dao = new BoardDAO();
@@ -128,6 +129,8 @@ public class BoardService {
 		close(conn);
 		return map;
 	}
+
+
 
 	
 }

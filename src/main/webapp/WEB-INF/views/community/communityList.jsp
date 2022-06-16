@@ -29,7 +29,7 @@
             
 
             <section class="board">
-                <div class="create"><a href="#"><i class="fas fa-plus-circle"></i> 모임 만들기</a></div>
+                <div class="create"><a href="/community/addMeeting"><i class="fas fa-plus-circle"></i> 모임 만들기</a></div>
                 <section class="board-content">
                     <div class="board-post">
 
@@ -56,7 +56,7 @@
                                             </div>
                                             <div class="doran-block">
                                                 <p class="doranLocation"><i class="fal fa-map-marker-alt"></i> ${board.communityArea}</p><br>
-                                                <a href="${sURL}" class="doranName">${board.communityName}</a><br>
+                                                <a href="detail?cn=${board.communityNo}&cp=${pagination.currentPage}${sURL}" class="doranName">${board.communityName}</a><br>
                                                 <a href="#" class="categoryName">${board.categoryName}</a><br>
                                                 <span class="peopleCount"><i class="fal fa-user"></i> ${board.communityMember}</span> <span class="likeCount"><i class="fas fa-heart"></i> ${board.pick}</span>
         

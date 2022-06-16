@@ -1,5 +1,6 @@
 package semi.member.board.model.vo;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,9 @@ public class Board {
 	private String categoryName;
 	private int communityMember;
 	private int pick;
+	
+
+	
 	public int getCommunityNo() {
 		return communityNo;
 	}
