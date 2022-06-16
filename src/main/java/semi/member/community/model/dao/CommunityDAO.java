@@ -61,6 +61,7 @@ public class CommunityDAO {
 				comm.setCommunityArea(rs.getString(5));
 				comm.setMemberNickname(rs.getString(6));
 				comm.setProfileImage(rs.getString(7));
+				comm.setCommunityAdmin(rs.getInt(8));
 			}
 		}finally {
 			close(conn);

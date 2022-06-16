@@ -203,9 +203,9 @@ public class CommunityBoardDAO {
 				
 				image.setImageNo(rs.getInt(1));
 				image.setImageLevel(rs.getInt(2));
-				image.setBoardNo(rs.getInt(3));
-				image.setImageName(rs.getString(4));
-				image.setImageOriginal(rs.getString(5));
+				image.setImageName(rs.getString(3));
+				image.setImageOriginal(rs.getString(4));
+				image.setBoardNo(rs.getInt(5));
 				
 				imageList.add(image);
 			}
@@ -245,10 +245,11 @@ public class CommunityBoardDAO {
 	 * @param detail
 	 * @param boardCode
 	 * @param communityNo 
+	 * @param memberNo 
 	 * @return result
 	 * @throws Exception
 	 */
-	public int insertBoard(Connection conn, BoardDetail detail, int boardCode, int communityNo) throws Exception {
+	public int insertBoard(Connection conn, BoardDetail detail, int boardCode, int communityNo, int memberNo) throws Exception {
 		int result = 0;
 		
 		try {
@@ -260,7 +261,7 @@ public class CommunityBoardDAO {
 			pstmt.setString(2, detail.getBoardTitle());
 			pstmt.setString(3, detail.getBoardContent());
 			pstmt.setInt(4, boardCode);
-			pstmt.setInt(5, detail.getMemberNo());
+			pstmt.setInt(5, memberNo);
 			pstmt.setInt(6, communityNo);
 			
 			result = pstmt.executeUpdate();
@@ -285,9 +286,9 @@ public class CommunityBoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, image.getImageLevel());
-			pstmt.setInt(2, image.getBoardNo());
-			pstmt.setString(3, image.getImageName());
-			pstmt.setString(4, image.getImageOriginal());
+			pstmt.setString(2, image.getImageName());
+			pstmt.setString(3, image.getImageOriginal());
+			pstmt.setInt(4, image.getBoardNo());
 			
 			result = pstmt.executeUpdate();
 		} finally {
