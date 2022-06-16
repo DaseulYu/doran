@@ -86,7 +86,7 @@ memberPw.addEventListener("input", function () {
     memberPw.addEventListener("input", function () {
 
         if (memberPw.value.length == 0) {
-            pwMessage.innerText = "문자, 숫자, 특수문자 조합으로 8자 이상";
+            pwMessage.innerText = "영문, 숫자, 특수문자 조합으로 8자 이상 20글자 이하";
             pwMessage.classList.remove("confirm", "error");
 
             pwMessage.style.color = "red";
@@ -95,7 +95,7 @@ memberPw.addEventListener("input", function () {
             return;
         }
 
-        const regExp = /^[\w!@#_-]{6,30}$/;
+        const regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[~!@#$%^&*()+|=])[A-Za-z\d~!@#$%^&*()+|=]{8,20}$/;
 
         if (regExp.test(memberPw.value)) { // 비밀번호 유효
 
@@ -282,7 +282,6 @@ memberLive.addEventListener("click", function () {
     } else {
         boxes.style.display = "none";
     }
-
 });
 
 const state = document.getElementById("state");
