@@ -48,13 +48,13 @@
                                 <a href='${contextPath}/community/category?type=2'>운동/스포츠</a>
                             </div>
 
-                            <div class="category" onclick="">
+                            <div class="category">
                                 <img src="${contextPath}/resources/images/category/category3.JPG" width="80px" height="80px">
                                 <br>
                                 <a href='${contextPath}/community/category?type=3'>업종/직무</a>
                             </div>
 
-                            <div class="category" onclick="">
+                            <div class="category">
                                 <img src="${contextPath}/resources/images/category/category4.JPG" width="80px" height="80px">
                                 <br>
                                 <a href='${contextPath}/community/category?type=4'>문화/공연/축제</a>
@@ -64,25 +64,25 @@
 
 
                         <div class="drop-category">
-                            <div class="category" onclick="">
+                            <div class="category">
                                 <img src="${contextPath}/resources/images/category/category5.JPG" width="80px" height="80px">
                                 <br>
                                 <a href='${contextPath}/community/category?type=5'>음악/악기</a>
                             </div>
 
-                            <div class="category" onclick="">
+                            <div class="category">
                                 <img src="${contextPath}/resources/images/category/category6.JPG" width="80px" height="80px">
                                 <br>
                                 <a href='${contextPath}/community/category?type=6'>봉사활동</a>
                             </div>
 
-                            <div class="category" onclick="">
+                            <div class="category">
                                 <img src="${contextPath}/resources/images/category/category7.JPG" width="80px" height="80px">
                                 <br>
                                 <a href='${contextPath}/community/category?type=7'>사교/인맥</a>
                             </div>
 
-                            <div class="category" onclick="">
+                            <div class="category">
                                 <img src="${contextPath}/resources/images/category/category8.JPG" width="80px" height="80px">
                                 <br>
                                 <a href='${contextPath}/community/category?type=8'>취미활동</a>
