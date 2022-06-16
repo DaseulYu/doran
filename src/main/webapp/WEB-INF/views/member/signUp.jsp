@@ -13,116 +13,116 @@
             <link rel="stylesheet" href="${contextPath}/resources/css/signUp-style.css">
             <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
         </head>
+        <main>
 
-        <body>
+            <body>
 
-            <!-- header -->
-            <jsp:include page="/WEB-INF/views/common/header.jsp" />
-
-
-            <section class="signUp-content">
-                <form action="signUp" method="Post" name="signUp-form" onsubmit="return signUpValidate()">
-                    <div class="title">
-                        <sapn>회원가입</sapn>
-                    </div>
-                    <div class="signUp-input-area">
-
-                        <input type="text" id="memberId" name="memberId" class="singUp-input" placeholder="이메일"
-                            maxlength="30" autocomplete="off">
-
-                        <button class="certified" type="button" id="sendBtnC">이메일 인증</button>
-
-                    </div>
-                    <p class="signUp-message" id="emailMessage">이메일을 입력해주세요.</p>
-
-                    <div class="signUp-input-area">
-                        <input type="text" id="cNumber" class="singUp-input" placeholder="인증번호를 입력해주세요" maxlength="6"
-                            autocomplete="off">
-
-                        <button class="certified" type="button" id="cBtn">인증번호 확인</button>
-                    </div>
-                    <p class="signUp-message" id="cMessage"></p>
-
-                    <div class="signUp-input-area">
-                        <input type="password" id="memberPw" name="memberPw" class="singUp-input" placeholder="비밀번호"
-                            maxlength="30">
-                        <br>
-                    </div>
-                    <p class="signUp-message" id="pwMessage">영문, 숫자, 특수문자 조합으로 8자 이상 20글자 이하</p>
-
-                    <div class="signUp-input-area">
-                        <input type="password" id="memberPwConfirm" class="singUp-input" placeholder="비밀번호"
-                            maxlength="30">
-                        <br>
-                    </div>
-                    <p class="signUp-message" id="confirmPwMessage"></p>
+                <!-- header -->
+                <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 
+                <section class="signUp-content">
+                    <form action="signUp" method="Post" name="signUp-form" onsubmit="return signUpValidate()">
+                        <div class="title">
+                            <sapn>회원가입</sapn>
+                        </div>
+                        <div class="signUp-input-area">
+
+                            <input type="text" id="memberId" name="memberId" class="singUp-input" placeholder="이메일"
+                                maxlength="30" autocomplete="off">
+
+                            <button class="certified" type="button" id="sendBtnC">이메일 인증</button>
+
+                        </div>
+                        <p class="signUp-message" id="emailMessage">이메일을 입력해주세요.</p>
+
+                        <div class="signUp-input-area">
+                            <input type="text" id="cNumber" class="singUp-input" placeholder="인증번호를 입력해주세요"
+                                maxlength="6" autocomplete="off">
+
+                            <button class="certified" type="button" id="cBtn">인증번호 확인</button>
+                        </div>
+                        <p class="signUp-message" id="cMessage"></p>
+
+                        <div class="signUp-input-area">
+                            <input type="password" id="memberPw" name="memberPw" class="singUp-input" placeholder="비밀번호"
+                                maxlength="30">
+                            <br>
+                        </div>
+                        <p class="signUp-message" id="pwMessage">영문, 숫자, 특수문자 조합으로 8자 이상 20글자 이하</p>
+
+                        <div class="signUp-input-area">
+                            <input type="password" id="memberPwConfirm" class="singUp-input" placeholder="비밀번호"
+                                maxlength="30">
+                            <br>
+                        </div>
+                        <p class="signUp-message" id="confirmPwMessage"></p>
 
 
-                    <div class="signUp-input-area">
-                        <input type="text" id="memberName" name="memberName" class="singUp-input" placeholder="이름"
-                            maxlength="10">
-                    </div>
-                    <span class="signUp-message" id="nameMessage"></span>
-                    <div class="signUp-input-area">
-                        <input type="text" id="memberTel" name="memberTel" class="singUp-input"
-                            placeholder="휴대폰 번호(-없이 입력)" maxlength="11">
-                    </div>
-                    <span class="signUp-message" id="telMessage"></span>
-                    <div class="signUp-input-area">
-                        <input type="text" id="memberNickname" name="memberNickname" class="singUp-input"
-                            placeholder="닉네임" maxlength="8">
-                        <div class="form-radio">
-                            <div class="form-flex">
-                                <input type="radio" name="memberGender" value="m" id="male">
-                                <label for="male">남</label>
-                                <input type="radio" name="memberGender" value="f" id="female">
-                                <label for="female">여</label>
+
+
+                        <div class="signUp-input-area">
+                            <input type="text" id="memberName" name="memberName" class="singUp-input" placeholder="이름"
+                                maxlength="10">
+                        </div>
+                        <span class="signUp-message" id="nameMessage"></span>
+                        <div class="signUp-input-area">
+                            <input type="text" id="memberTel" name="memberTel" class="singUp-input"
+                                placeholder="휴대폰 번호(-없이 입력)" maxlength="11">
+                        </div>
+                        <span class="signUp-message" id="telMessage"></span>
+                        <div class="signUp-input-area">
+                            <input type="text" id="memberNickname" name="memberNickname" class="singUp-input"
+                                placeholder="닉네임" maxlength="8">
+                            <div class="form-radio">
+                                <div class="form-flex">
+                                    <input type="radio" name="memberGender" value="m" id="male">
+                                    <label for="male">남</label>
+                                    <input type="radio" name="memberGender" value="f" id="female">
+                                    <label for="female">여</label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <span class="signUp-message" id="nickMessage"> </span>
-                    <br><br>
-                    <div class="signUp-input-area birthLive">
-                        <input type="text" name="memberBirth" id="memberBirth" class="singUp-input" placeholder="생년월일"
-                            aria-invalid="false" autocomplete="off" readonly>
-                        <input type="text" name="memberLive" id="memberLive" placeholder="지역" class="singUp-input"
-                            readonly>
-                    </div>
-
-                    <div class="search_boxes">
-                        <div class="search_box">
-                            <select name="local" id="local" onchange="categoryChange(this)">
-                                <option value>시/도 선택</option>
-                                <option value="강원">강원</option>
-                                <option value="경기">경기</option>
-                                <option value="경남">경남</option>
-                                <option value="경북">경북</option>
-                                <option value="광주">광주</option>
-                                <option value="대구">대구</option>
-                                <option value="대전">대전</option>
-                                <option value="부산">부산</option>
-                                <option value="서울">서울</option>
-                                <option value="울산">울산</option>
-                                <option value="인천">인천</option>
-                                <option value="전남">전남</option>
-                                <option value="전북">전북</option>
-                                <option value="제주">제주</option>
-                                <option value="충남">충남</option>
-                                <option value="충북">충북</option>
-                            </select>
+                        <span class="signUp-message" id="nickMessage"> </span>
+                        <br><br>
+                        <div class="signUp-input-area birthLive">
+                            <input type="text" name="memberBirth" id="memberBirth" class="singUp-input"
+                                placeholder="생년월일" aria-invalid="false" autocomplete="off">
+                            <input type="text" name="memberLive" id="memberLive" placeholder="지역" class="singUp-input"  autocomplete="off">
                         </div>
 
-                        <div class="search_box">
-                            <select name="state" id="state">
-                                <option>군/구 선택</option>
-                            </select>
-                        </div>
-                    </div>
+                        <div class="search_boxes">
+                            <div class="search_box">
+                                <select name="local" id="local" onchange="categoryChange(this)">
+                                    <option value>시/도 선택</option>
+                                    <option value="강원">강원</option>
+                                    <option value="경기">경기</option>
+                                    <option value="경남">경남</option>
+                                    <option value="경북">경북</option>
+                                    <option value="광주">광주</option>
+                                    <option value="대구">대구</option>
+                                    <option value="대전">대전</option>
+                                    <option value="부산">부산</option>
+                                    <option value="서울">서울</option>
+                                    <option value="울산">울산</option>
+                                    <option value="인천">인천</option>
+                                    <option value="전남">전남</option>
+                                    <option value="전북">전북</option>
+                                    <option value="제주">제주</option>
+                                    <option value="충남">충남</option>
+                                    <option value="충북">충북</option>
+                                </select>
+                            </div>
 
-                    <br>
-                    <!-- <div>
+                            <div class="search_box">
+                                <select name="state" id="state">
+                                    <option>군/구 선택</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <br>
+                        <!-- <div>
                         <span class="signUp-category">관심 카테고리(선택)</span>
                         <br>
                         <div class="category">
@@ -218,21 +218,22 @@
 
                         </div>
                     </div> -->
-                    <button class="next">가입하기</button>
-                    </div>
-                    <!-- footer -->
-                </form>
-            </section>
+                        <button class="next">가입하기</button>
+                        </div>
+                        <!-- footer -->
+                    </form>
+                </section>
 
 
-            <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-            <!-- jQuery -->
-            <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-            <!-- js -->
-            <script src="${contextPath}/resources/js/member/signUp.js"></script>
-        </body>
+                <!-- jQuery -->
+                <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+                <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                
+                <!-- js -->
+                <script src="${contextPath}/resources/js/member/signUp.js"></script>
+            </body>
+        </main>
+        <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
         </html>

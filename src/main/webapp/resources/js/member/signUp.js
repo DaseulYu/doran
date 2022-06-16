@@ -2,10 +2,10 @@
 const checkObj = {
     "memberId": false,
     "memberPw": false,
-    "memberName": true,
-    "memberTel": true,
-    "memberNickname": true,
-    "signUpEmail": false
+    "memberName": false,
+    "memberTel": false,
+    "memberNickname": false,
+    "memberPwConfirm" : false
 };
 
 
@@ -19,9 +19,9 @@ memberId.addEventListener("input", function () {
 
     if (memberId.value.length == 0) {
         emailMessage.innerText = "이메일을 입력해주세요.";
-        emailMessage.classList.remove("confirm", "error");
 
         checkObj.memberId = false;
+        return;
     }
 
     const regExp = /^[\w\-\_]{4,}@[\w\-\_]+(\.\w+){1,3}$/;
@@ -31,8 +31,6 @@ memberId.addEventListener("input", function () {
         emailMessage.style.color = "red";
 
         memberId.style.border = "1px solid red";
-        emailMessage.classList.add("error");
-        emailMessage.classList.remove("confirm");
 
         checkObj.memberId = false;
         return;
@@ -40,8 +38,6 @@ memberId.addEventListener("input", function () {
         emailMessage.innerText = "사용 가능한 이메일 입니다.";
         emailMessage.style = "";
 
-        emailMessage.classList.add("confirm");
-        emailMessage.classList.remove("error");
         memberId.style = "";
         checkObj.memberId = true;
 
@@ -52,14 +48,10 @@ memberId.addEventListener("input", function () {
             success: function (result) {
                 if (result == 1) { // 중복 O
                     emailMessage.innerText = "이미 사용중인 이메일 입니다.";
-                    emailMessage.classList.add("error");
-                    emailMessage.classList.remove("confirm");
                     console.log("result : " + result);
-                    checkObj.memberEmail = false; // 유효 X 기록
+                    checkObj.memberId = false; // 유효 X 기록
                 } else { // 중복 X
                     emailMessage.innerText = "사용 가능한 이메일 입니다.";
-                    emailMessage.classList.add("confirm");
-                    emailMessage.classList.remove("error");
 
                     console.log("result : " + result);
                     checkObj.memberId = true; // 유효 O 기록
@@ -81,103 +73,201 @@ const memberPw = document.getElementById("memberPw");
 const pwMessage = document.getElementById("pwMessage");
 const memberPwConfirm = document.getElementById("memberPwConfirm");
 const cPwMessage = document.getElementById("confirmPwMessage");
+
 memberPw.addEventListener("input", function () {
 
-    memberPw.addEventListener("input", function () {
+    if (memberPw.value.length == 0) {
+        pwMessage.innerText = "영문, 숫자, 특수문자 조합으로 8자 이상 20글자 이하";
 
-        if (memberPw.value.length == 0) {
-            pwMessage.innerText = "영문, 숫자, 특수문자 조합으로 8자 이상 20글자 이하";
-            pwMessage.classList.remove("confirm", "error");
+        pwMessage.style.color = "red";
+        memberPw.style.border = "1px solid red";
+        checkObj.memberPw = false;
+        // return;
+    }
 
-            pwMessage.style.color = "red";
-            memberPw.style.border = "1px solid red";
-            checkObj.memberPw = false; // 유효하지 않은 상태임을 기록
-            return;
-        }
+    const regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[~!@#$%^&*()+|=])[A-Za-z\d~!@#$%^&*()+|=]{8,20}$/;
 
-        const regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[~!@#$%^&*()+|=])[A-Za-z\d~!@#$%^&*()+|=]{8,20}$/;
+    if (regExp.test(memberPw.value)) {
 
-        if (regExp.test(memberPw.value)) { // 비밀번호 유효
+        checkObj.memberPw = true;
 
-            checkObj.memberPw = true; // 유효한 상태임을 기록
+        pwMessage.innerText = "";
+        pwMessage.style.color = "";
+        memberPw.style.border = "";
 
-            // if (memberPwConfirm.value.length == 0) { // 비밀번호 유효, 확인 작성 X
-            //     pwMessage.innerText = "";
-            //     pwMessage.classList.add("confirm");
-            //     pwMessage.classList.remove("error");
-            pwMessage.innerText = "";
-                pwMessage.style.color = "";
-                memberPw.style.border = "";
-            // } else { // 비밀번호 유효, 확인 작성 O
-            //     checkPw(); // 비밀번호 일치 검사 함수 호출()
-            // }
+        if (memberPwConfirm.value.length == 0) {
+            pwMessage.innerText = "유효한 비밀번호 형식입니다.";
 
         } else {
-            pwMessage.innerText = "비밀번호 형식이 유효하지 않습니다.";
-            pwMessage.classList.add("error");
-            pwMessage.classList.remove("confirm");
-
-            pwMessage.style.color = "red";
-            memberPw.style.border = "1px solid red";
-            checkObj.memberPw = false; // 유효하지 않은 상태임을 기록
+            checkPw();
         }
-    });
+    } else {
+        pwMessage.innerText = "비밀번호 형식이 유효하지 않습니다.";
+
+        pwMessage.style.color = "red";
+        memberPw.style.border = "1px solid red";
+        checkObj.memberPw = false;
+        // return;
+    }
 });
 
-// 비밀번호 확인 유효성 검사
 
-// 함수명() : 함수 호출(수행)
-// 함수명   : 함수에 작성된 코드 반환
 memberPwConfirm.addEventListener("input", checkPw);
-// -> 이벤트가 발생 되었을 때 정의된 함수를 호출하겠다
 
-function checkPw() { // 비밀번호 일치 검사
-    // 비밀번호 / 비밀번호 확인이 같을 경우
+function checkPw() {
     if (memberPw.value == memberPwConfirm.value) {
         cPwMessage.innerText = "비밀번호가 일치합니다.";
-        cPwMessage.classList.add("confirm");
-        cPwMessage.classList.remove("error");
         cPwMessage.innerText = "";
         cPwMessage.style.color = "";
         memberPwConfirm.style.border = "";
-        checkObj.memberPwConfirm = true; // 유효한 상태임을 기록
+        checkObj.memberPwConfirm = true;
 
     } else {
         cPwMessage.innerText = "비밀번호가 일치하지 않습니다.";
-        cPwMessage.classList.add("error");
-        cPwMessage.classList.remove("confirm");
         cPwMessage.style.color = "red";
         memberPwConfirm.style.border = "1px solid red";
-        checkObj.memberPwConfirm = false; // 유효하지 않은 상태임을 기록
+        checkObj.memberPwConfirm = false;
+        // return;
     }
 }
 
+// 이름
+const memberName = document.getElementById("memberName");
+const nameMessage = document.getElementById("nameMessage");
 
-function signUpValidate(){
+memberName.addEventListener("input", function () {
 
-    let str;
+    if (memberName.value.length == 0) {
+        nameMessage.innerText = "닉네임을 입력해주세요.";
 
-    for( let key in checkObj ){
-        if( !checkObj[key]){
-            switch(key){
-            case "memberId":     str="이메일을"; break;
-            case "memberPw":        str="비밀번호를"; break;    
-            case "memberPwConfirm": str="비밀번호 확인을"; break;
-            case "memberNickname":  str="닉네임을"; break;
-            case "memberTel":       str="전화번호를"; break;
-            case "signUpEmail":       str="인증번호를"; break;
-            }
+        nameMessage.style.color = "red";
+        memberName.style.border = "1px solid red";
+        checkObj.memberName = false;
+        // return;
+    }
 
-            
-            alert(str);
+    const regExp = /^[가-힣A-Za-z]{2,}$/;
 
-            document.getElementById(key).focus();
-    
-            return false; 
+    if (regExp.test(memberName.value)) {
+
+        checkObj.memberName = true;
+
+        nameMessage.innerText = "";
+        nameMessage.style.color = "";
+        memberName.style.border = "";
+
+        
+    } else {
+        nameMessage.innerText = "이름 형식을 확인해주세요.";
+
+        nameMessage.style.color = "red";
+        memberName.style.border = "1px solid red";
+        checkObj.memberName = false;
+        // return;
+    }
+});
+
+// 닉네임
+const memberNick = document.getElementById("memberNickname");
+const nickMessage = document.getElementById("nickMessage");
+
+memberNick.addEventListener("input", function () {
+
+    if (memberNick.value.length == 0) {
+        nickMessage.innerText = "닉네임을 입력해주세요.";
+
+        nickMessage.style.color = "red";
+        memberNick.style.border = "1px solid red";
+        checkObj.memberNickname = false;
+        // return;
+    }
+
+    const regExp = /^[가-힣ㄱ-ㅎa-zA-Z0-9_ -]{2,}$/;
+
+    if (regExp.test(memberNick.value)) {
+
+        checkObj.memberNickname = true;
+
+        nickMessage.innerText = "";
+        nickMessage.style.color = "";
+        memberNick.style.border = "";
+
+        
+    } else {
+        nickMessage.innerText = "문자, 숫자 _ - 만 사용 가능합니다.";
+
+        nickMessage.style.color = "red";
+        memberNick.style.border = "1px solid red";
+        checkObj.memberNickname = false;
+        // return;
+    }
+});
+
+// 휴대폰 번호
+const memberTel = document.getElementById("memberTel");
+const telMessage = document.getElementById("telMessage");
+
+memberTel.addEventListener("input", function(){
+
+    if(memberTel.value.length == 0){
+        telMessage.innerText = "휴대폰 번호(-없이 입력)";
+
+        telMessage.style.color = "red";
+        memberTel.style.border = "1px solid red";
+        checkObj.memberTel = false;
+
+        return;
+    }
+    const regExp = /^0(1[01679]|2|[3-6][1-5]|70)\d{3,4}\d{4}$/;
+
+    if(regExp.test(memberTel.value)){
+        telMessage.innerText = "유효한 전화번호 형식입니다.";
+
+        telMessage.innerText = "";
+        telMessage.style.color = "";
+        memberTel.style.border = "";
+        checkObj.memberTel = true;
+        
+    } else{
+        telMessage.innerText = "전화번호 형식이 올바르지 않습니다.";
+        telMessage.style.color = "red";
+        memberTel.style.border = "1px solid red";
+        checkObj.memberTel = false; 
+        // return;
+    }
+});
+
+
+
+
+
+const memberGender = document.getElementsByName("memberGender");
+if(
+memberGender[0].checked==false &&  memberGender[1].checked==false){
+            checkObj.memberGender = false; 
         }
+
+
+
+
+
+const memberLive = document.getElementById("memberLive");
+const state = document.getElementById("state");
+state.addEventListener("change", function(){
+    
+    if(state.value.length == 0){
+        checkObj.memberLive = false; 
+        console.log("지역 실패")
+        // return;
+    }else{
+        checkObj.memberLive = true;
+        console.log("지역 성공")
     }
-    return true; 
-}
+});
+
+
+
+
 
 
 
@@ -188,25 +278,25 @@ $(function () {
         , showOtherMonths: true
         , showMonthAfterYear: true
         , changeYear: true
-        , changeMonth: true              
+        , changeMonth: true
         , buttonImageOnly: true
-        , buttonText: "선택"          
-        , yearSuffix: "년" 
-        , monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] 
+        , buttonText: "선택"
+        , yearSuffix: "년"
+        , monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
         , monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
         , dayNamesMin: ['일', '월', '화', '수', '목', '금', '토']
-        , dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'] 
+        , dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
         , minDate: "-50Y"
         , maxDate: "+0y"
     });
 
-    $('#datepicker').datepicker('setDate', 'today'); 
+    $('#datepicker').datepicker('setDate', 'today');
 });
 
 // 지역
 
 function categoryChange(e) {
-    const state = document.getElementById("state");
+    // const state = document.getElementById("state");
 
     const gangwon = ["강릉시", "동해시", "삼척시", "속초시", "원주시", "춘천시", "태백시", "고성군", "양구군", "양양군", "영월군", "인제군", "정선군", "철원군", "평창군", "홍천군", "화천군", "횡성군"];
     const gyeonggi = ["고양시", "과천시", "광명시", "광주시", "구리시", "군포시", "김포시", "남양주시", "동두천시", "부천시", "성남시", "수원시", "시흥시", "안산시", "안성시", "안양시", "양주시", "오산시", "용인시", "의왕시", "의정부시", "이천시", "파주시", "평택시", "포천시", "하남시", "화성시", "가평군", "양평군", "여주군", "연천군"];
@@ -271,7 +361,7 @@ function categoryChange(e) {
     }
 }
 // 지역
-const memberLive = document.getElementById("memberLive");
+
 const boxes = document.getElementsByClassName("search_boxes")[0];
 boxes.style.display = "none";
 
@@ -284,8 +374,8 @@ memberLive.addEventListener("click", function () {
     }
 });
 
-const state = document.getElementById("state");
-const local = document.getElementById("local")
+// const state = document.getElementById("state");
+const local = document.getElementById("local");
 state.addEventListener("change", function () {
 
 
@@ -294,7 +384,6 @@ state.addEventListener("change", function () {
 });
 
 
-// 인증번호 보내기
 const sendBtn = document.getElementById("sendBtnC");
 const cMessage = document.getElementById("cMessage");
 
@@ -314,8 +403,8 @@ sendBtn.addEventListener("click", function () {
             success: function (result) {
                 console.log("이메일 발송 성공");
                 console.log("result : " + result);
+                
                 checkObj.signUpEmail = true;
-
             },
             error: function () {
 
@@ -324,15 +413,11 @@ sendBtn.addEventListener("click", function () {
 
         });
 
-        // 5분 타이머
-        // setInterval(함수, 지연시간) : 지연시간이 지난 후 함수를 수행 (반복)
 
-        cMessage.innerText = "5:00"; // 초기값 5분
+        cMessage.innerText = "5:00"; 
         min = 4;
-        sec = 59; // 분, 초 초기화
-        cMessage.classList.remove("confirm");
-        cMessage.classList.remove("error");
-        // 변수에 저장해야지 멈출 수 있음
+        sec = 59;
+        
         checkInterval = setInterval(function () {
             if (sec < 10) sec = "0" + sec;
             cMessage.innerText = min + ":" + sec;
@@ -346,15 +431,15 @@ sendBtn.addEventListener("click", function () {
             }
 
 
-            if (min === -1) { // 만료
-                cMessage.classList.add("error");
+            if (min === -1) { 
                 cMessage.innerText = "인증번호가 만료되었습니다.";
-
-                clearInterval(checkInterval); // checkInterval 반복을 지움
+                checkObj.checkNumber = false;
+                clearInterval(checkInterval);
             }
-        }, 1000); // 1초 지연후 수행
+        }, 1000);
 
         alert("인증번호가 발송되었습니다. 이메일을 확인해주세요.");
+        checkObj.checkNumber = false;
     }
 });
 
@@ -362,15 +447,12 @@ sendBtn.addEventListener("click", function () {
 
 const cNumber = document.getElementById("cNumber");
 const cBtn = document.getElementById("cBtn");
-// + cMessage, memberEmail 요소도 사용
 
 cBtn.addEventListener("click", function () {
 
-    // 1. 인증번호 받기 버튼이 클릭되어 이메일 발송되었는지 확인
     if (checkObj.signUpEmail) {
 
-        // 2. 입력된 인증번호가 6자리가 맞는지 확인
-        if (cNumber.value.length == 6) { // 6자리 맞음
+        if (cNumber.value.length == 6) { 
 
             $.ajax({
                 url: "signUpCheckNumber",
@@ -380,30 +462,54 @@ cBtn.addEventListener("click", function () {
                 },
                 type: "GET",
                 success: function (result) {
-                    console.log("인증번호 : "+ result);
+                    console.log("인증번호 : " + result);
 
                     if (result == 1) {
 
-                        clearInterval(checkInterval); // 타이머 멈춤
-
+                        clearInterval(checkInterval); 
+                        
                         cMessage.innerText = "인증되었습니다."
-                        cMessage.classList.add("confirm");
-                        cMessage.classList.remove("error");
                     } else if (result == 2) {
                         alert("만료된 인증 번호 입니다.");
-                    } else { // 3
-                        alert("인증 번호가 일치하지 않습니다.")
+                    } else { 
+                        alert("인증 번호가 일치하지 않습니다.");
                     }
                 },
                 error: function () {
-                    console.log("이메일 인증 실패")
+                    console.log("이메일 인증 실패");
                 }
             });
-        } else { // 6자리 아님
+        } else { 
             alert("인증번호를 정확하게 입력해주세요.");
             cNumber.focus();
         }
-    } else { // 인증번호를 안받은 경우
+    } else { 
         alert("이메일 인증 버튼을 먼저 클릭해주세요.");
     }
 });
+
+function signUpValidate() {
+
+    let str;
+
+    for (let key in checkObj) {
+        if (!checkObj[key]) {
+            switch (key) {
+                case "memberId": str = "이메일을"; break;
+                case "memberPw": str = "비밀번호를"; break;
+                case "memberPwConfirm": str = "비밀번호 확인을"; break;
+                case "memberName": str = "이름을"; break;
+                case "memberTel": str = "휴대폰 번호를"; break;
+                case "memberNickname": str = "닉네임을"; break;
+               
+                str += " 확인 해주세요.";
+
+            alert(str);
+            document.getElementById(key).focus();
+
+            return false;
+        }
+    }
+    return true;
+}
+};
