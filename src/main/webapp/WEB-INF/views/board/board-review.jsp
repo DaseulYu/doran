@@ -22,22 +22,27 @@
 
     <main>
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+    
+    
+        <form action="report" method="post" class="report-popup" onsubmit="return reportValidation()">
+            <div class="report-detail">
+                <div>신고 사유를 선택해주세요.</div>
+                <select name="reportTitle" id="reportCategory">
+                    <option value="0" selected disabled>신고사유 선택</option>
+                    <option value="부적절한 게시글">부적절한 게시글</option>
+                    <option value="욕설">욕설</option>
+                    <option value="사용자 비방">사용자 비방</option>
+                </select>
+                <button id="report-submission">신고</button>
+                <button type="button" id="report-cancel">취소</button>
+            </div>
 
-            <!-- 신고 팝업 -->
-       
-    <form action="#" method="post" class="report-popup" onsubmit="return reportValidation()">
-        <div class="report-detail">
-            <div>신고 사유를 입력해주세요.</div>
-            <select name="reportCategory" id="reportCategory">
-                <option value="0" selected disabled>신고사유 선택</option>
-                <option value="부적절한 게시글">부적절한 게시글</option>
-                <option value="욕설">욕설</option>
-                <option value="사용자 비방">사용자 비방</option>
-            </select>
-            <button id="report-submission">신고</button>
-            <button id="report-cancel">취소</button>
-        </div>
-    </form>
+             <!-- hidden -->
+             <%-- <input type="hidden" name="type" value="${param.type}">
+             <input type="hidden" name="cn" value="${param.cn}">--%>
+             <input type="hidden" name="no" id="boardNo">
+        </form> 
+
 
         <div class="board-detail">
             <div>
@@ -62,7 +67,7 @@
                                 </div>
                                 <div class="write-btn-area">
                                     <c:if test="${loginMember.memberNo != signup.memberNo}">
-                                        <button id="btn-report">신고</button>
+                                        <button id="btn-report" onclick="showReportPopup(${boardList.boardNo})">신고</button>
                                     </c:if>
                                     <c:if test="${loginMember.memberNo == signup.memberNo}">
                                         <button id="updateBtn" onclick="location.href='write?mode=update&no=${boardList.boardNo}&cn=${param.cn}&type=${param.type}&cp=${param.cp}'">수정</button>
@@ -144,10 +149,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    <script> 
-        const cn = "${param.cn}";
-        const type = "${param.type}";
-    </script>
+  
     <script src="${contextPath}/resources/js/board/board-review.js"></script>
     <script src="${contextPath}/resources/js/admin-page/report-form.js"></script>
 

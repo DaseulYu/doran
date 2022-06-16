@@ -95,6 +95,7 @@ public class CommunityBoardDAO {
 	 * @param pagination
 	 * @param type
 	 * @param communityNo 
+	 * @param boardNo 
 	 * @return boardList
 	 * @throws Exception
 	 */
