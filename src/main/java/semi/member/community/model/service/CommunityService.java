@@ -113,15 +113,15 @@ public class CommunityService {
 	 * @return applyMemberList
 	 * @throws Exception
 	 */
-	public List<CommunityApply> selectApllyMember(int communityNo, int memberNo) throws Exception {
+	public List<CommunityApply> selectApllyMember(CommunityApply coma) throws Exception {
 
 		Connection conn = getConnection();
 
-		List<CommunityApply> applyMemberList = dao.selectApllyMember(conn, communityNo, memberNo);
+		List<CommunityApply> commApplyList = dao.selectApllyMember(conn, coma);
 
 		close(conn);
 
-		return applyMemberList;
+		return commApplyList;
 	}
 
 
@@ -150,11 +150,11 @@ public class CommunityService {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int updateCommunityImage(int communityNo, String communityImage) throws Exception {
+	public int updateCommunityImage(Community comm) throws Exception {
 
 		Connection conn = getConnection();
 
-		int result = dao.updateCommunityImage(conn, communityNo, communityImage);
+		int result = dao.updateCommunityImage(conn, comm);
 
 		if(result > 0) commit(conn);
 		else         rollback(conn);
@@ -220,6 +220,21 @@ public class CommunityService {
 		close(conn);
 
 		return result;
+	}
+
+	/** 모임 이름 조회 Service
+	 * @param comm
+	 * @return result
+	 * @throws Exception
+	 */
+	public Community selectCommunityName(int communityNo) throws Exception {
+		Connection conn = getConnection();
+		
+		Community comm = dao.selectCommunityName(conn, communityNo);
+		
+		close(conn);
+		
+		return comm;
 	}
 	
 }

@@ -111,6 +111,18 @@ public class Community {
 	
 	
 	
+	@Override
+	public String toString() {
+		return "Community [communityNo=" + communityNo + ", communityName=" + communityName + ", communityImage="
+				+ communityImage + ", communityInfo=" + communityInfo + ", communityDetail=" + communityDetail
+				+ ", communityArea=" + communityArea + ", memberNickname=" + memberNickname + ", profileImage="
+				+ profileImage + ", communityFlag=" + communityFlag + ", communityNotice=" + communityNotice
+				+ ", categoryNo=" + categoryNo + ", communityAdmin=" + communityAdmin + ", memberNo=" + memberNo
+				+ ", boardList=" + boardList + ", replyList=" + replyList + "]";
+	}
+
+
+
 	private List<CommunityBoard> boardList;
 	private List<BoardReply> replyList;
 	

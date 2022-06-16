@@ -12,7 +12,14 @@ public class CommunityApply {
 	private String memberName;
 	private String memberGender;
 	private String memberBirth;
+	private String communityName;
 	
+	public String getCommunityName() {
+		return communityName;
+	}
+	public void setCommunityName(String communityName) {
+		this.communityName = communityName;
+	}
 	public String getMemberName() {
 		return memberName;
 	}

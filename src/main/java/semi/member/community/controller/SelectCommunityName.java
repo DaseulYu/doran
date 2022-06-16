@@ -1,7 +1,6 @@
 package semi.member.community.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,14 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import semi.member.community.model.service.CommunityService;
-import semi.member.community.model.vo.CommunityMember;
-import semi.member.member.model.vo.Member;
+import semi.member.community.model.vo.Community;
 
 @WebServlet("/community/admin/select")
-public class SelectCommunityMemberServlet extends HttpServlet{
+public class SelectCommunityName extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,15 +22,13 @@ public class SelectCommunityMemberServlet extends HttpServlet{
 			
 			int communityNo = Integer.parseInt(req.getParameter("cn"));
 			
+			Community comm = new Community();
+			
 			CommunityService service = new CommunityService();
 			
-			HttpSession session = req.getSession();
-			Member loginMember = (Member)(session.getAttribute("loginMember"));
-			int memberNo = loginMember.getMemberNo();
+			comm = service.selectCommunityName(communityNo);
 			
-			List<CommunityMember> commMemberList = service.selectCommMember(communityNo, memberNo);
-			
-			req.setAttribute("commMemberList", commMemberList);
+			req.setAttribute("comm", comm);
 			
 			String path = "/WEB-INF/views/community/meeting-admin.jsp";
 			
@@ -43,6 +38,5 @@ public class SelectCommunityMemberServlet extends HttpServlet{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 }
