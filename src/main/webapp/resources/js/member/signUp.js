@@ -5,8 +5,6 @@ const checkObj = {
     "memberName": false,
     "memberTel": false,
     "memberNickname": false,
-    "memberBirth": false,
-    "memberLive": false,
     "sendEmail": false
 };
 
@@ -162,14 +160,14 @@ function signUpValidate(){
     for( let key in checkObj ){
         if( !checkObj[key]){
             switch(key){
-            case "memberEmail":     str="이메일이"; break;
-            case "memberPw":        str="비밀번호가"; break;    
-            case "memberPwConfirm": str="비밀번호 확인이"; break;
-            case "memberNickname":  str="닉네임이"; break;
-            case "memberTel":       str="전화번호가"; break;
+            case "memberId":     str="이메일을"; break;
+            case "memberPw":        str="비밀번호를"; break;    
+            case "memberPwConfirm": str="비밀번호 확인을"; break;
+            case "memberNickname":  str="닉네임을"; break;
+            case "memberTel":       str="전화번호를"; break;
             }
 
-            str += " 유효하지 않습니다.";
+            str += " 확인 해주세요.";
 
             alert(str);
 
