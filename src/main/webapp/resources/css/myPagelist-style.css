@@ -1,0 +1,91 @@
+*{box-sizing: border-box;}
+
+*{font-family: 'NanumBarunGothic';}
+
+.myPage-content{
+    width: 1140px;
+
+    margin: 50px auto;
+    display: flex;
+}
+
+.left-side{
+    width: 25%;
+    border-right: 2px solid #ddd;
+}
+
+.list-group{
+    width: 100%;
+    padding: 0 20px 0 0;
+}
+
+.list-group>li{
+    list-style: none;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.list-group > li > a{
+    text-decoration: none;
+    color : black;
+    height: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 2px solid #ddd;
+}
+
+.list-group>li>a:hover{
+    border-bottom: 2px solid #FF8339 ;
+}
+.list-wrapper{
+    margin: 7px auto;
+    border: 0;
+}
+/* 목록 출력 테이블 */
+.list-table{
+    width: 70%;
+    border-collapse: collapse;
+    font-size: 14px;
+    
+}
+.list-table > thead{
+    background-color: #ff8339;
+    color: white;
+}
+.list-table tr{
+    height: 35px;
+}
+
+.list-table > tbody > tr{
+    border-bottom: 1px solid gray;
+}
+
+.list-table tr > *{
+    text-align: center;
+}
+
+.list-table tr > *:nth-of-type(1){ width: 10%;}
+
+.list-table tr > *:nth-of-type(2){ width: 50%;}
+.list-table tr > td:nth-of-type(2){
+    text-align: left;
+    padding-left: 50px;
+}
+.list-table tr > *:nth-of-type(3){ width: 15%;}
+.list-table tr > *:nth-of-type(4){ width: 15%;}
+.list-table tr > *:nth-of-type(5){ width: 10%;}
+
+.list-table a{
+    text-decoration: none;
+    color: black;
+}
+
+.list-table a:hover{
+    text-decoration: underline;
+}

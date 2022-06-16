@@ -35,21 +35,22 @@
                         <img src="${contextPath}${comm.communityImage}" id="community-image">
                     </c:if>
 
-                        <label for="update-image" id="update-image">등록</label>
-                        <input type="file" name="communityImage" id="update-image" accept="image/*">
-
-
+                    <!-- <c:if test="${comm.communityAdmin == loginMember.memberNo}"> -->
+                        <input type="file" name="communityImage" id="input-image" accept="image/*">
+                        <button type="submit" id="img-btn">+</button>
+                    <!-- </c:if> -->
                 </div>
+
                 <div class="head-right">
                     <div class="head-title">
                         <div class="community-name">
                             <span>${comm.communityName}</span>
                             <c:if test="${comm.communityAdmin == loginMember.memberNo}">
-                                <a href="/src/main/webapp/WEB-INF/views/community/meeting-admin.jsp"><span class="btn-edit">edit</span></a>
+                                <a href="/WEB-INF/views/community/meeting-admin.jsp"><span class="btn-edit">edit</span></a>
                             </c:if>
                         </div>
-                        <div><button class="btn-report">신고</button></div>
-                    </div>
+                    <div><button class="btn-report">신고</button></div>
+                </div>
 
                     <div class="head-info">
                         <p>${comm.communityInfo}</p>
@@ -69,7 +70,7 @@
                         <div>${comm.memberNickname}</div>
 
                     </div>
-
+            </form>
                     <div class="head-join">
                         <div onclick="pick()">
                             <img src="${contextPath}/resources/images/pick1.png" id="pick" >
@@ -78,7 +79,6 @@
                     </div>
                     <div id="btn-leave">모임 탈퇴하기</div>
                 </div>
-            </form>
 
             <div class="community-nav">
                 <ul>
@@ -98,10 +98,10 @@
                 <div class="board board-detail" id="board-detail">
                     <h3>공지사항
                       <c:if test="${comm.communityAdmin == loginMember.memberNo}">
-                        <a href="#" id="detail-Popup">edit</a>
+                          <a href="#" id="detail-Popup">edit</a>
                       </c:if>
                       </h3>
-                      
+
                     <!-- 공지사항으로 테이블명 수정 필요함 -->
                     <div class="board-detail-txt">
                         ${comm.communityNotice}
@@ -152,8 +152,8 @@
 
                         <div class="detail_popup_cont">
                             <h4>모임 상세정보 수정하기</h4>
-                            </div>
-                            <textarea type="text" id="detailUpdate" name="detailUpdate" placeholder="수정할 내용을 입력해주세요."></textarea>
+                        </div>
+                        <textarea type="text" id="detailUpdate" name="detailUpdate" placeholder="수정할 내용을 입력해주세요."></textarea>
                             <div class="detail_popup_button">
                                 <a href="#" id="detail-cancelBtn">취소</a>
                                 <a href="#" id="detail-updateBtn">수정</a>
@@ -165,6 +165,13 @@
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+      const memberNo = "${loginMember.memberNo}";
+      const communityNo = "${param.cn}";
+    </script>
 
     <script src="${contextPath}/resources/js/community/member-community.js"></script>
 

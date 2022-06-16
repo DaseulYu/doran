@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import semi.member.community.model.service.CommunityService;
 import semi.member.community.model.vo.Community;
 import semi.member.community.model.vo.CommunityMember;
+import semi.member.member.model.vo.Member;
 
 @WebServlet("/community/admin/out")
 public class CommunityOutServlet extends HttpServlet{
@@ -19,26 +20,16 @@ public class CommunityOutServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		int communityNo = Integer.parseInt(req.getParameter("communityNo"));
-		int memberNo = Integer.parseInt(req.getParameter("memberNo"));
-		String memberFlag = req.getParameter("memberFlag");
-		int memberCount = Integer.parseInt(req.getParameter("memberCount"));
-		
-		CommunityMember cm = new CommunityMember();
-		
-		cm.setCommunityNo(communityNo);
-		cm.setMemberNo(memberNo);
-		cm.setMemberFlag(memberFlag);
-		cm.setMemberCount(memberCount);
+		int communityNo = Integer.parseInt(req.getParameter("cn"));
 		
 		CommunityService service = new CommunityService();
 		
+		HttpSession session = req.getSession();
+		Member loginMember = (Member)(session.getAttribute("loginMember"));
+		int memberNo = loginMember.getMemberNo();
+		
 		try {
-			int result = service.memberOut(cm);
-			
-			HttpSession session = req.getSession();
-			String path = null;
-			String message = null;
+			int result = service.memberOut(communityNo, memberNo);
 			
 			if(result > 0) {
 				session.setAttribute("message", "멤버 추방에 성공하였습니다.");
@@ -47,8 +38,7 @@ public class CommunityOutServlet extends HttpServlet{
 				session.setAttribute("message", "멤버 추방에 실패하였습니다.");
 			}
 			
-			session.setAttribute("message", message);
-			resp.sendRedirect(path);
+			resp.sendRedirect(req.getContextPath());
 			
 		} catch (Exception e) {
 			e.printStackTrace();

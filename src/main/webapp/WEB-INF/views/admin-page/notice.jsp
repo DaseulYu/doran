@@ -57,7 +57,7 @@
                             <th>분류</th>
                             <th>제목</th>
                             <th>작성일</th>
-                            <th>조회수</th>
+                            <th>작성자</th>
                         </tr>
                     </thead>
 
@@ -85,7 +85,7 @@
                                             </c:choose>
                                         </td>
                                         <td>${noticeList.createDate}</td>
-                                        <td>${noticeList.readCount}</td>
+                                        <td>${noticeList.memberNickname}</td>
                                     </tr>
 
                                 </c:forEach>

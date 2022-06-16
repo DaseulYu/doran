@@ -9,14 +9,6 @@ closePop.addEventListener("click", function(){
     document.getElementById("popup_layer").style.display = "none";
 });
 
-function refuseChk(){
-
-    if(!confirm("정말 거절하시겠습니까?")){
-        return false;
-    }
-    return true;
-}
-
 function confirmChk(){
     
     if(!confirm("정말 승인하시겠습니까?")){

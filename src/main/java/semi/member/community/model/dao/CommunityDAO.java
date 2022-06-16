@@ -61,6 +61,7 @@ public class CommunityDAO {
 				comm.setCommunityArea(rs.getString(5));
 				comm.setMemberNickname(rs.getString(6));
 				comm.setProfileImage(rs.getString(7));
+				comm.setCommunityAdmin(rs.getInt(8));
 			}
 		}finally {
 			close(conn);
@@ -159,7 +160,7 @@ public class CommunityDAO {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int memberOut(Connection conn, CommunityMember cm) throws Exception  {
+	public int memberOut(Connection conn, int communityNo, int memberNo) throws Exception  {
 		
 		int result = 0;
 		
@@ -168,8 +169,8 @@ public class CommunityDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, cm.getCommunityNo());
-			pstmt.setInt(2, cm.getMemberNo());
+			pstmt.setInt(1, communityNo);
+			pstmt.setInt(2, memberNo);
 			
 			result = pstmt.executeUpdate();
 			
@@ -185,7 +186,7 @@ public class CommunityDAO {
 	 * @return commMemberList
 	 * @throws Exception
 	 */
-	public List<CommunityMember> selectCommMember(Connection conn, int communityNo) throws Exception {
+	public List<CommunityMember> selectCommMember(Connection conn, int communityNo, int memberNo) throws Exception {
 		
 		List<CommunityMember> commMemberList = new ArrayList<CommunityMember>();
 		
@@ -195,6 +196,7 @@ public class CommunityDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, communityNo);
+			pstmt.setInt(2, memberNo);
 			
 			rs = pstmt.executeQuery();
 			
@@ -220,7 +222,7 @@ public class CommunityDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<CommunityApply> selectApllyMember(Connection conn, int communityNo) throws Exception {
+	public List<CommunityApply> selectApllyMember(Connection conn, int communityNo, int memberNo) throws Exception {
 		
 		List<CommunityApply> applyMemberList = new ArrayList<CommunityApply>();
 		
@@ -229,15 +231,20 @@ public class CommunityDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, communityNo);
+			pstmt.setInt(2, memberNo);
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				
 				CommunityApply ca = new CommunityApply();
 				
 				ca.setMemberNo(rs.getInt("memberNo"));
 				ca.setMemberNickname(rs.getString("memberNickname"));
 				ca.setMemberProfileImage(rs.getString("memberProfileImage"));
+				ca.setMemberName(rs.getString("memberName"));
+				ca.setMemberGender(rs.getString("memberGender"));
+				ca.setMemberBirth(rs.getString("memberBitrh"));
 				
 				applyMemberList.add(ca);
 			}
@@ -248,6 +255,12 @@ public class CommunityDAO {
 		return applyMemberList;
 	}
 
+	/** 모임 삭제 DAO
+	 * @param conn
+	 * @param communityNo
+	 * @return result
+	 * @throws Exception
+	 */
 	public int deleteCommunity(Connection conn, int communityNo) throws Exception {
 		
 		int result = 0;
@@ -301,7 +314,7 @@ public class CommunityDAO {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int entrust(Connection conn, Community com, int memberNo) throws Exception {
+	public int entrust(Connection conn, int communityNo, int memberNo) throws Exception {
 		
 		int result = 0;
 		
@@ -310,9 +323,8 @@ public class CommunityDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, com.getCommunityAdmin());
-			pstmt.setInt(2, com.getCommunityNo());
-			pstmt.setInt(3, memberNo);
+			pstmt.setInt(1, communityNo);
+			pstmt.setInt(2, memberNo);
 			
 			result = pstmt.executeUpdate();
 			
@@ -322,30 +334,56 @@ public class CommunityDAO {
 		return result;
 	}
 
-	/** 모임장 - 승인 거절 DAO
-	 * @param conn
-	 * @param communityNo
-	 * @param memberNo
-	 * @return result
-	 * @throws Exception
-	 */
-	public int refuseCommunityMember(Connection conn, int communityNo, int memberNo) throws Exception {
-		
-		int result = 0;
-		
-		try {
-			String sql = prop.getProperty("refuseCommunityMember");
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, memberNo);
-			pstmt.setInt(2, communityNo);
-			
-			result = pstmt.executeUpdate();
-			
-		} finally {
-			close(pstmt);
-		}
-		return result;
-	}
+	/** 모임 가입
+    * @param conn
+    * @param memberNo
+    * @param communityNo
+    * @return result
+    * @throws Exception
+    */
+   public int communityJoin(Connection conn, int memberNo, int communityNo) throws Exception {
+      int result = 0;
+      
+      try {
+         String sql = prop.getProperty("communityJoin");
+         
+         pstmt = conn.prepareStatement(sql);
+         
+         pstmt.setInt(1, communityNo);
+         pstmt.setInt(2, memberNo);
+         
+         result = pstmt.executeUpdate();
+         
+      } finally {
+         close(pstmt);
+      }
+      return result;
+   }
+
+   /**
+    * @param conn
+    * @param memberNo
+    * @param communityNo
+    * @return result
+    * @throws Exception
+    */
+   public int communitySecession(Connection conn, int memberNo, int communityNo) throws Exception {
+      int result = 0;
+      
+      try {
+         String sql = prop.getProperty("communitySecession");
+         
+         pstmt = conn.prepareStatement(sql);
+         
+         pstmt.setInt(1, communityNo);
+         pstmt.setInt(2, memberNo);
+         
+         result = pstmt.executeUpdate();
+         
+      } finally {
+         close(pstmt);
+      }
+      return result;
+   }
+
 }

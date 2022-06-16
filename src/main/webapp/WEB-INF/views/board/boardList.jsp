@@ -31,8 +31,9 @@
             <div>
                 <h2>${boardName}</h2>
             </div>
+
             <div class="btn-area">
-                <button id="insertBtn" onclick="location.href='write?mode=insert&cn=${param.cn}&type=${param.type}&cp=${param.cp}'">새글 작성</button>
+                    <button id="insertBtn" onclick="location.href='write?mode=insert&cn=${param.cn}&type=${param.type}&cp=${param.cp}'">새글 작성</button>
             </div>
 
             <div class="list-wrapper">
@@ -43,7 +44,6 @@
                             <th>제목</th>
                             <th>작성자</th>
                             <th>작성일</th>
-                            <th>조회수</th>
                         </tr>
                     </thead>
 
@@ -64,7 +64,6 @@
                                         </td>
                                         <td>${boardList.memberNickname}</td>
                                         <td>${boardList.createDate}</td>
-                                        <td>${boardList.readCount}</td>
                                     </tr>
                                 </c:forEach>
                             </c:otherwise>

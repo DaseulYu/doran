@@ -30,6 +30,7 @@
                     </c:if>
                 </div>
                 
+                
                 <div class="content">
                     <div class="board-title">
                         <h3>제목 : <input type="text" name="boardTitle" placeholder="제목을 입력해주세요." value="${detail.boardTitle}"></h3> 
@@ -48,7 +49,7 @@
                     </c:forEach>
 
                     <div class="img-input">
-                        <h3>첨부파일1 : <input type="file" class="inputImage" id="img0" name="0" accept="image/*"></h3>
+                        <h3>첨부파일1(썸네일) : <input type="file" class="inputImage" id="img0" name="0" accept="image/*"></h3>
                         <h3>첨부파일2 : <input type="file" class="inputImage" id="img1" name="1" accept="image/*"></h3>
                     </div>
                     

@@ -9,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import semi.member.community.model.service.CommunityService;
 import semi.member.community.model.vo.CommunityApply;
+import semi.member.member.model.vo.Member;
 
 @WebServlet("/community/admin/Applyselect")
 public class ApplyMemberSelectServlet extends HttpServlet{
@@ -25,7 +27,11 @@ public class ApplyMemberSelectServlet extends HttpServlet{
 			
 			CommunityService service = new CommunityService();
 			
-			List<CommunityApply> applyMemberList = service.selectApllyMember(communityNo);
+			HttpSession session = req.getSession();
+			Member loginMember = (Member)(session.getAttribute("loginMember"));
+			int memberNo = loginMember.getMemberNo();
+			
+			List<CommunityApply> applyMemberList = service.selectApllyMember(communityNo, memberNo);
 			
 			req.setAttribute("applyMemberList", applyMemberList);
 			
@@ -33,6 +39,7 @@ public class ApplyMemberSelectServlet extends HttpServlet{
 			
 			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
 			dispatcher.forward(req, resp);
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -12,6 +12,9 @@
 
     <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/findPw-style.css">
+
+    
+	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 </head>
 
 <body>
@@ -20,6 +23,8 @@
 
 
         <section class="findPw-content">
+
+            
             
             <div class="findPw-area">
             <h1 class="findPw-title">비밀번호 찾기</h1>

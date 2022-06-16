@@ -15,6 +15,7 @@
                 <link rel="stylesheet" href="${contextPath}/resources/css/myPage-style.css">
 
 
+                <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
                 <script src="https://kit.fontawesome.com/aab319511f.js" crossorigin="anonymous"></script>
 
             </head>
@@ -66,9 +67,18 @@
                                     <label>닉네임</label>
                                     <span>${loginMember.memberNickname}</span>
                                 </div>
-                                <div class="myPage-row">
+                                <div class="myPage-row ">
                                     <label>생년월일</label>
                                     <span>${loginMember.memberBirth}</span>
+                                </div>
+                                <div class="myPage-row">
+                                    <label>성별</label>
+                                    <c:if test="${loginMember.memberGender eq 'm'}">
+                                        <span>남성</span>
+                                    </c:if>
+                                    <c:if test="${loginMember.memberGender eq 'f'}">
+                                        <span>여성</span>
+                                    </c:if>
                                 </div>
 
                                 <div class="myPage-row">

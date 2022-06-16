@@ -14,7 +14,9 @@
 						</c:when>
 
 						<c:otherwise>
-							<a href="${contextPath}/admin/list">admin</a>
+							<c:if test="${loginMember.memberNo == 0}">
+								<a href="${contextPath}/admin/list">admin</a>
+							</c:if>
 							<a href="${contextPath}/member/myPage/info">${loginMember.memberNickname}님</a>
 							<a href="${contextPath}/member/logout">로그아웃</a>
 							<a href="${contextPath}/notice">공지사항</a>

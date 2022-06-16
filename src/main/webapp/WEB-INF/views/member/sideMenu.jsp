@@ -8,7 +8,7 @@
     <ul class="list-group">
         <li><a href="${contextPath}/member/myPage/profile">프로필</a></li>
         <li><a href="${contextPath}/member/myPage/info">내 정보</a></li>
-        <li><a href="#">내 신청 내역</a></li>
+        <li><a href="${contextPath}/member/myPage/myCommuList">내 모임 신청 내역</a></li>
         <li><a href="${contextPath}/member/myPage/changePw">비밀번호 변경</a></li>
         <li><a href="${contextPath}/member/myPage/secession">회원 탈퇴</a></li>
     </ul>

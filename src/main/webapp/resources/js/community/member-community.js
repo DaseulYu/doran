@@ -1,15 +1,76 @@
 // communityDetail 연결
 
-// 관심모임 클릭
-function pick(){
-    const pick = document.getElementById("pick");
+// 관심모임 클릭 (수정예정)
+// function pick(){
+//     const pick = document.getElementById("pick");
 
-    if(pick.src.match("pick1.png")){
-        alert("관심모임으로 선택되었습니다.");
-        pick.src = "../resources/images/pick2.png";
-    } else {
-        alert("관심모임이 취소되었습니다.");
-        pick.src = "../resources/images/pick1.png";
+//     if(pick.src.match("pick1.png")){
+//         alert("관심모임으로 선택되었습니다.");
+//         pick.src = "../resources/images/pick2.png";
+//     } else {
+//         alert("관심모임이 취소되었습니다.");
+//         pick.src = "../resources/images/pick1.png";
+//     }
+// }
+
+// 모임 가입하기
+function join(communityNo){
+
+    if(memberNo == ""){ 
+        alert("로그인 후 이용해주세요.");
+        return;
+    }
+
+    if(confirm("모임에 가입하시겠습니까?")){
+        $.ajax({
+            url : "join/insert",
+            data : {"cn" : communityNo,
+                    },
+            type : "post",
+            success : function(result){
+                if(result>0){
+                    alert("모임에 가입되었습니다.");
+                    window.location.reload();
+                } else  {
+                    alert("모입 가입 실패");
+                }
+            },
+            error : function(req, status, error){
+                console.log("모임 가입 에러");
+                console.log(req.responseText);
+            }
+        });
+    }
+}
+
+// 모임 탈퇴하기
+function secession(communityNo){
+
+    if(memberNo == ""){ 
+        alert("로그인 후 이용해주세요.");
+        return;
+    }
+
+    if(confirm("모임에 탈퇴하시겠습니까?")){
+        $.ajax({
+            url : "join/delete",
+            data : {"memberNo" : memberNo,
+                    "cn" : communityNo,
+                    },
+            type : "post",
+            success : function(result){
+                if(result>0){
+                    alert("모임에 탈퇴되었습니다.");
+                    window.location.reload();
+                } else  {
+                    alert("모입 탈퇴 실패");
+                }
+            },
+            error : function(req, status, error){
+                console.log("모임 탈퇴 에러");
+                console.log(req.responseText);
+            }
+        });
     }
 }
 
@@ -28,6 +89,7 @@ detail_popup.addEventListener("click", function(){
 const updateImage = document.getElementById("update-image");
 
 if(updateImage != null){
+    
     updateImage.addEventListener("change", function(){
 
         if(this.files[0] != undefined){
@@ -40,3 +102,4 @@ if(updateImage != null){
         }
     });
 }
+

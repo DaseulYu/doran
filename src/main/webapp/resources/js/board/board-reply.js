@@ -59,17 +59,17 @@ function selectReplyList(){
                 replyBtnArea.classList.add("reply-btn-area");
                 
                 // 댓글 작성자가 아닐때 신고 버튼
-                // if( loginMemberNo != reply.memberNo ){
+                if( loginMemberNo != reply.memberNo ){
                     const reportBtn = document.createElement("button");
                     reportBtn.id = "btn-report";
                     reportBtn.innerText = "신고";
 
                     replyBtnArea.append(reportBtn);
-                // }
+                }
                     
 
                 // 댓글 작성자 일때 수정/삭제 버튼
-                // if( loginMemberNo == reply.memberNo ){
+                if( loginMemberNo == reply.memberNo ){
                     const updateBtn = document.createElement("button");
                     updateBtn.id = "updateBtn";
                     updateBtn.innerText = "수정";
@@ -81,7 +81,7 @@ function selectReplyList(){
                     deleteBtn.setAttribute("onclick", "deleteReply("+reply.replyNo+")");
                     
                     replyBtnArea.append(updateBtn, deleteBtn);
-                // }
+                }
                     
                 replyRow.append(replyBtnArea);
 
@@ -102,10 +102,10 @@ const replyBtn = document.getElementById("btn-reply");
 const replyContent = document.getElementById("msgContent");
 replyBtn.addEventListener("click", function(){
 
-    // if(loginMemberNo == ""){ 
-    //     alert("로그인 후 이용해주세요.");
-    //     return;
-    // }
+    if(loginMemberNo == ""){ 
+        alert("로그인 후 이용해주세요.");
+        return;
+    }
 
     if(replyContent.value.trim().length == 0){ 
         alert("댓글을 작성한 후 버튼을 클릭해주세요.");
@@ -118,7 +118,7 @@ replyBtn.addEventListener("click", function(){
         url : contextPath + "/community/board/reply/insert",
         data : {"no" : boardNo,
                 "memberNo" : 0,
-                // "memberNo" : loginMemberNo, 로그인 멤버로 교체해야함
+                "memberNo" : loginMemberNo,
                 "replyContent" : replyContent.value},
         type : "post",
         success : function(result){

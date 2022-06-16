@@ -11,7 +11,7 @@ import semi.member.community.model.vo.CommunityApply;
 import semi.member.community.model.vo.CommunityMember;
 
 public class CommunityService {
-	
+
 	private CommunityDAO dao = new CommunityDAO();
 
 	/** 모임 상세 정보 조회
@@ -20,16 +20,16 @@ public class CommunityService {
 	 * @throws Exception
 	 */
 	public Community selectCommunity(int communityNo) throws Exception {
-		
+
 		Connection conn = getConnection();
-		
+
 		Community comm = dao.selectCommunity(conn, communityNo);
-		
+
 		close(conn);
-		
+
 		return comm;
 	}
-	
+
 	/** 모임 등록 Service
 	 * @param com
 	 * @param categoryNo
@@ -37,20 +37,20 @@ public class CommunityService {
 	 * @throws Exception
 	 */
 	public int addMeeting(Community com, String categoryName, int memberNo) throws Exception {
-		
+
 		Connection conn = getConnection();
-		
+
 		int result = dao.addMeeting1(conn, com, memberNo);
-		
+
 		if(result > 0) {
 			result = dao.addMeeting2(conn, categoryName);
 		}
-		
+
 		if(result > 0) commit(conn);
 		else         rollback(conn);
-		
+
 		close(conn);
-		
+
 		return result;
 	}
 
@@ -61,16 +61,16 @@ public class CommunityService {
 	 * @throws Exception
 	 */
 	public int addCommunityMember(int communityNo, int memberNo) throws Exception {
-		
+
 		Connection conn = getConnection();
-		
+
 		int result = dao.addCommunityMember(conn, communityNo, memberNo);
-		
+
 		if(result > 0) commit(conn);
 		else         rollback(conn);
-		
+
 		close(conn);
-		
+
 		return result;
 	}
 
@@ -79,17 +79,17 @@ public class CommunityService {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int memberOut(CommunityMember cm) throws Exception {
-		
+	public int memberOut(int communityNo, int memberNo) throws Exception {
+
 		Connection conn = getConnection();
-		
-		int result = dao.memberOut(conn, cm);
-		
+
+		int result = dao.memberOut(conn, communityNo, memberNo);
+
 		if(result > 0) commit(conn);
 		else         rollback(conn);
-		
+
 		close(conn);
-		
+
 		return result;
 	}
 
@@ -97,14 +97,14 @@ public class CommunityService {
 	 * @return commMemberList
 	 * @throws Exception
 	 */
-	public List<CommunityMember> selectCommMember(int communityNo) throws Exception {
-		
+	public List<CommunityMember> selectCommMember(int communityNo, int memberNo) throws Exception {
+
 		Connection conn = getConnection();
-		
-		List<CommunityMember> commMemberList = dao.selectCommMember(conn, communityNo);
-		
+
+		List<CommunityMember> commMemberList = dao.selectCommMember(conn, communityNo, memberNo);
+
 		close(conn);
-		
+
 		return commMemberList;
 	}
 
@@ -113,34 +113,34 @@ public class CommunityService {
 	 * @return applyMemberList
 	 * @throws Exception
 	 */
-	public List<CommunityApply> selectApllyMember(int communityNo) throws Exception {
-		
+	public List<CommunityApply> selectApllyMember(int communityNo, int memberNo) throws Exception {
+
 		Connection conn = getConnection();
-		
-		List<CommunityApply> applyMemberList = dao.selectApllyMember(conn, communityNo);
-		
+
+		List<CommunityApply> applyMemberList = dao.selectApllyMember(conn, communityNo, memberNo);
+
 		close(conn);
-		
+
 		return applyMemberList;
 	}
-	
-	
-	/** 모임 삭제 Service 
+
+
+	/** 모임 삭제 Service
 	 * @param communityNo
 	 * @return result
 	 * @throws Exception
 	 */
 	public int deleteCommunity(int communityNo) throws Exception {
-		
+
 		Connection conn = getConnection();
-		
+
 		int result = dao.deleteCommunity(conn, communityNo);
-		
+
 		if(result > 0) commit(conn);
 		else         rollback(conn);
-		
+
 		close(conn);
-		
+
 		return result;
 	}
 
@@ -151,16 +151,16 @@ public class CommunityService {
 	 * @throws Exception
 	 */
 	public int updateCommunityImage(int communityNo, String communityImage) throws Exception {
-		
+
 		Connection conn = getConnection();
-		
+
 		int result = dao.updateCommunityImage(conn, communityNo, communityImage);
-		
+
 		if(result > 0) commit(conn);
 		else         rollback(conn);
-		
+
 		close(conn);
-		
+
 		return result;
 	}
 
@@ -170,37 +170,56 @@ public class CommunityService {
 	 * @return return
 	 * @throws Exception
 	 */
-	public int entrust(Community com, int memberNo) throws Exception {
-		
+	public int entrust(int communityNo, int memberNo) throws Exception {
+
 		Connection conn = getConnection();
-		
-		int result = dao.entrust(conn, com, memberNo);
-		
+
+		int result = dao.entrust(conn, communityNo, memberNo);
+
 		if(result > 0) commit(conn);
 		else         rollback(conn);
-		
+
 		close(conn);
-		
+
 		return result;
 	}
 
-	/** 모임장 - 승인 거절 Service
-	 * @param communityNo
+	/** 모임 가입하기
 	 * @param memberNo
-	 * @return return
+	 * @param communityNo
+	 * @return result
 	 * @throws Exception
 	 */
-	public int refuseCommunityMember(int communityNo, int memberNo) throws Exception  {
-		
+	public int communityJoin(int memberNo, int communityNo) throws Exception {
 		Connection conn = getConnection();
-		
-		int result = dao.refuseCommunityMember(conn, communityNo, memberNo);
-		
+
+		int result = dao.communityJoin(conn, memberNo, communityNo);
+
 		if(result > 0) commit(conn);
 		else         rollback(conn);
-		
+
 		close(conn);
-		
+
 		return result;
 	}
+
+	/** 모임 탈퇴하기
+	 * @param memberNo
+	 * @param communityNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int communitySecession(int memberNo, int communityNo) throws Exception {
+		Connection conn = getConnection();
+
+		int result = dao.communitySecession(conn, memberNo, communityNo);
+
+		if(result > 0) commit(conn);
+		else         rollback(conn);
+
+		close(conn);
+
+		return result;
+	}
+	
 }

@@ -6,7 +6,6 @@
     <ul id="reply-list">
 
         <c:forEach var="reply" items="${rList}">
-
             <li class="reply-row">
 
                 <div class="reply-nick">
@@ -25,20 +24,14 @@
                 </div>
                 
                 <div class="reply-btn-area">
-                    <button id="btn-report">신고</button>
-                    <button id="updateBtn" onclick="showUpdateReply(${reply.replyNo}, this)">수정</button>
-                    <button id="deleteBtn" onclick="deleteReply(${reply.replyNo})">삭제</button>
-                </div>
-                <!-- 댓글 등록 로그인 후 교체
-                <div class="reply-btn-area">
-                    <c:if test="${loginMember.memberNo == reply.memberNo}">
+                    <c:if test="${loginMember.memberNo != reply.memberNo}">
                         <button id="btn-report">신고</button>
                     </c:if>
                     <c:if test="${loginMember.memberNo == reply.memberNo}">
                         <button id="updateBtn" onclick="showUpdateReply(${reply.replyNo}, this)">수정</button>
                         <button id="deleteBtn" onclick="deleteReply(${reply.replyNo})">삭제</button>
                     </c:if>
-                </div> -->
+                </div>
 
             </li>
         </c:forEach>
