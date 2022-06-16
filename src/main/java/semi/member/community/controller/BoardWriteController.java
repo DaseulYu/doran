@@ -18,6 +18,7 @@ import semi.member.common.MyRenamePolicy;
 import semi.member.community.model.service.CommunityBoardService;
 import semi.member.community.model.vo.BoardDetail;
 import semi.member.community.model.vo.BoardImage;
+import semi.member.member.model.vo.Member;
 
 @WebServlet("/community/board/write")
 public class BoardWriteController extends HttpServlet{
@@ -91,14 +92,14 @@ public class BoardWriteController extends HttpServlet{
 			
 			
 			// 로그인 정보 얻어오기
-//			Member loginMember = (Member)session.getAttribute("loginMember");
-//			int memberNo = loginMember.getMemberNo();
+			Member loginMember = (Member)session.getAttribute("loginMember");
+			int memberNo = loginMember.getMemberNo();
 			
 			
 			BoardDetail detail = new BoardDetail();
 			detail.setBoardTitle(boardTitle);
 			detail.setBoardContent(boardContent);
-//			detail.setMemberNo(memberNo);
+			detail.setMemberNo(memberNo);
 			
 			CommunityBoardService service = new CommunityBoardService();
 			
@@ -111,7 +112,7 @@ public class BoardWriteController extends HttpServlet{
 				String message = null;
 				
 				if(boardNo > 0) { // 성공
-					message = "게시글이 등록되었습니다.";
+					session.setAttribute("message", "게시글이 등록되었습니다.");
 					
 					if(boardCode==1) {
 						path = "detail?no=" + boardNo + "&type=" + boardCode + "&cn=" + communityNo;
@@ -120,10 +121,9 @@ public class BoardWriteController extends HttpServlet{
 					}
 					
 				} else { // 실패
-					message = "게시글 등록 실패";
+					session.setAttribute("message", "게시글 등록 실패");
 					path = "write?mode="+ mode +"&cn=" + communityNo + "&type=" + boardCode;
 				}
-				session.setAttribute("message", message);
 				resp.sendRedirect(path);
 			}
 			

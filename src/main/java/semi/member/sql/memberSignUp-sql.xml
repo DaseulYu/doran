@@ -7,6 +7,6 @@
 	<entry key="signUp">
 		INSERT INTO MEMBER
 		VALUES(SEQ_MEMBER_NO.NEXTVAL , ?, ?, ? , ? , 
-		TO_DATE(?, 'YYYY-MM-DD'), ?, ?, DEFAULT, DEFAULT, ?)
+		TO_DATE(?, 'YYYY.MM.DD'), ?, ?, DEFAULT, DEFAULT, ?)
 	</entry>
 </properties>

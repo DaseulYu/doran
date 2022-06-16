@@ -40,9 +40,13 @@
                         <h2>${detail.boardTitle}</h2>
                     </div>
                     <div class="write-btn-area">
-                        <button id="btn-report">신고</button>
-                        <button id="updateBtn" onclick="location.href='write?mode=update&no=${param.no}&cn=${param.cn}&type=${param.type}&cp=${cp}'">수정</button>
-                        <button id="deleteBtn">삭제</button>
+                        <c:if test="${!empty loginMember.memberNo}">
+                            <button id="btn-report">신고</button>
+                        </c:if>
+                        <c:if test="${loginMember.memberNo == detail.memberNo}">
+                            <button id="updateBtn" onclick="location.href='write?mode=update&no=${param.no}&cn=${param.cn}&type=${param.type}&cp=${cp}'">수정</button>
+                            <button id="deleteBtn">삭제</button>
+                        </c:if>
                     </div>
                 </div>
                 <div class="userInfo">
@@ -112,9 +116,7 @@
     <script>
         const contextPath = "${contextPath}";
         const boardNo = "${param.no}";
-
-        // 로그인한 회원
-        // const loginMemberNo = "${loginMember.memberNo}";
+        const loginMemberNo = "${loginMember.memberNo}";
     </script>
 
     <script src="${contextPath}/resources/js/board/board-reply.js"></script>

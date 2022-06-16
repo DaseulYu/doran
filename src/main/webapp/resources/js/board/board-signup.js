@@ -59,29 +59,29 @@ function selectSignupList(){
                 signupBtnArea.classList.add("write-btn-area");
 
                 // 댓글 작성자가 아닐때 신고 버튼
-                // if( loginMemberNo != signup.memberNo ){
+                if( loginMemberNo != signup.memberNo ){
                     const reportBtn = document.createElement("button");
                     reportBtn.id = "btn-report";
                     reportBtn.innerText = "신고";
 
                     signupBtnArea.append(reportBtn);
-                // }
+                }
                     
 
                 // 댓글 작성자 일때 수정/삭제 버튼
-                // if( loginMemberNo == signup.memberNo ){
+                if( loginMemberNo == signup.memberNo ){
                     const updateBtn = document.createElement("button");
                     updateBtn.id = "updateBtn";
                     updateBtn.innerText = "수정";
-                    updateBtn.setAttribute("onclick", "showUpdateSignup("+signup.signupNo+", this)");
+                    updateBtn.setAttribute("onclick", "showUpdateReply("+signup.signupNo+", this)");
 
                     const deleteBtn = document.createElement("button");
                     deleteBtn.id = "deleteBtn";
                     deleteBtn.innerText = "삭제";
-                    deleteBtn.setAttribute("onclick", "deleteSignup("+signup.signupNo+")");
+                    deleteBtn.setAttribute("onclick", "deleteReply("+signup.signupNo+")");
                     
                     signupBtnArea.append(updateBtn, deleteBtn);
-                // }
+                }
 
                 signupRow.append(signupBtnArea);
                 signupList.append(signupRow);
@@ -100,11 +100,6 @@ const signupBtn = document.getElementById("btn-reply");
 const signupContent = document.getElementById("msgContent");
 signupBtn.addEventListener("click", function(){
 
-    // if(loginMemberNo == ""){ 
-    //     alert("로그인 후 이용해주세요.");
-    //     return;
-    // }
-
     if(signupContent.value.trim().length == 0){ 
         alert("내용을 작성한 후 버튼을 클릭해주세요.");
         signupContent.value = ""; 
@@ -115,8 +110,7 @@ signupBtn.addEventListener("click", function(){
     $.ajax({
         url : contextPath + "/community/board/signup/insert",
         data : {"cn" : communityNo,
-                "memberNo" : 0,
-                // "memberNo" : loginMemberNo, 로그인 멤버로 교체해야함
+                "memberNo" : loginMemberNo, 
                 "signupContent" : signupContent.value},
         type : "post",
         success : function(result){
@@ -137,14 +131,14 @@ signupBtn.addEventListener("click", function(){
 
 
 // 가입인사 삭제
-function deleteSignup(signupNo){
+function deleteReply(signupNo){
     if(confirm("작성한 글을 삭제 하시겠습니까?")) {
         $.ajax({
             url : contextPath + "/community/board/signup/delete",
             data : {"signupNo" : signupNo},
             type : "GET",
             success : function(result){
-                if(result>0){
+                if(result > 0){
                     alert("글이 삭제되었습니다.");
                     selectSignupList();
                 } else  {
@@ -162,7 +156,7 @@ function deleteSignup(signupNo){
 
 // 가입인사 수정 화면
 let beforeSignupRow;
-function showUpdateSignup(signupNo, btn){
+function showUpdateReply(signupNo, btn){
 
     const updateArea = document.getElementsByClassName("signup-update-area");
 

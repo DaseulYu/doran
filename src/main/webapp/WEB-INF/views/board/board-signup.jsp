@@ -38,8 +38,8 @@
     <script>
         const contextPath = "${contextPath}";
         const communityNo = "${param.cn}";
-        // 로그인한 회원
-        // const loginMemberNo = "${loginMember.memberNo}";
+        const loginMemberNo = "${loginMember.memberNo}";
+        const communityMemberNo = "${comm.memberNo}";
     </script>
 
     <script src="${contextPath}/resources/js/board/board-signup.js"></script>

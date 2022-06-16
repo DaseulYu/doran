@@ -9,15 +9,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import semi.member.community.model.service.BoardReplyService;
 import semi.member.community.model.service.BoardSignupService;
 import semi.member.community.model.service.CommunityBoardService;
 import semi.member.community.model.service.CommunityService;
-import semi.member.community.model.vo.BoardReply;
 import semi.member.community.model.vo.BoardSignup;
 import semi.member.community.model.vo.Community;
 import semi.member.community.model.vo.CommunityBoard;
+import semi.member.member.model.vo.Member;
 
 @WebServlet("/community/detail")
 public class CommunityServlet extends HttpServlet{
@@ -31,7 +31,6 @@ public class CommunityServlet extends HttpServlet{
 			CommunityService service = new CommunityService();
 			
 			Community comm = service.selectCommunity(communityNo);
-			
 			
 			// 게시판별 내용 얻어오기
 			if(comm != null) {

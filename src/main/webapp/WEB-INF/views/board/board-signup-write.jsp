@@ -27,20 +27,14 @@
                             <span class="message-date">${signup.createDate}</span>
                         </div>
                         <div class="write-btn-area">
-                            <button id="btn-report">신고</button>
-                            <button id="updateBtn" onclick="showUpdateSignup(${signup.signupNo}, this)">수정</button>
-                            <button id="deleteBtn" onclick="deleteSignup(${signup.signupNo})">삭제</button>
-                        </div>
-                        <!-- 댓글 등록 로그인 후 교체
-                        <div class="write-btn-area">
-                            <c:if test="${loginMember.memberNo == signup.memberNo}">
+                            <c:if test="${loginMember.memberNo != signup.memberNo}">
                                 <button id="btn-report">신고</button>
                             </c:if>
                             <c:if test="${loginMember.memberNo == signup.memberNo}">
                                 <button id="updateBtn" onclick="showUpdateReply(${signup.signupNo}, this)">수정</button>
                                 <button id="deleteBtn" onclick="deleteReply(${signup.signupNo})">삭제</button>
                             </c:if>
-                        </div> -->
+                        </div>
 
                     </li>
                 </c:forEach>

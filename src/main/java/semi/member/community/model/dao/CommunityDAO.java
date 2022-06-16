@@ -348,4 +348,56 @@ public class CommunityDAO {
 		}
 		return result;
 	}
+
+	/** 모임 가입
+	 * @param conn
+	 * @param memberNo
+	 * @param communityNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int communityJoin(Connection conn, int memberNo, int communityNo) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("communityJoin");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, communityNo);
+			pstmt.setInt(2, memberNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/**
+	 * @param conn
+	 * @param memberNo
+	 * @param communityNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int communitySecession(Connection conn, int memberNo, int communityNo) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("communitySecession");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, communityNo);
+			pstmt.setInt(2, memberNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }

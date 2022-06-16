@@ -32,21 +32,15 @@
             </nav>
 
             <div class="list-wrapper">
-                <div class="list-tab">
-                    <ul>
-                        <li><a class="current-tab">신고받은 게시글</a></li>
-                        <li><a href="#">신고받은 회원</a></li>
-                    </ul>
-                </div>
                 <table class="list-table" border="1">
                     <thead>
                         <tr>
                             <th>번호</th>
                             <th>신고한 회원</th>
                             <th>신고받은 회원</th>
-                            <th>신고 게시글</th>
-                            <th>사유</th>
-                            <th>신고날짜</th>
+                            <th>신고받은 게시글</th>
+                            <th>신고 사유</th>
+                            <th>신고 날짜</th>
                             <th colspan="2">관리</th>
                         </tr>
                     </thead>
