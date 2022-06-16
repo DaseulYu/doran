@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import semi.member.community.model.service.CommunityService;
 import semi.member.community.model.vo.Community;
 
-@WebServlet("/community/admin/select")
+@WebServlet("/community/admin")
 public class SelectCommunityName extends HttpServlet{
 	
 	@Override
