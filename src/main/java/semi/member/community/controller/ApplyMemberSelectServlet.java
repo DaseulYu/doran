@@ -13,9 +13,10 @@ import javax.servlet.http.HttpSession;
 
 import semi.member.community.model.service.CommunityService;
 import semi.member.community.model.vo.CommunityApply;
+import semi.member.community.model.vo.CommunityMember;
 import semi.member.member.model.vo.Member;
 
-@WebServlet("/community/admin/Applyselect")
+@WebServlet("/community/admin/applySelect")
 public class ApplyMemberSelectServlet extends HttpServlet{
 	
 	@Override
@@ -31,15 +32,19 @@ public class ApplyMemberSelectServlet extends HttpServlet{
 			Member loginMember = (Member)(session.getAttribute("loginMember"));
 			int memberNo = loginMember.getMemberNo();
 			
-			List<CommunityApply> applyMemberList = service.selectApllyMember(communityNo, memberNo);
+			CommunityApply coma = new CommunityApply();
 			
-			req.setAttribute("applyMemberList", applyMemberList);
+			coma.setCommunityNo(communityNo);
+			coma.setMemberNo(memberNo);
+			
+			List<CommunityApply> commApplyList = service.selectApllyMember(coma);
+			
+			req.setAttribute("commApplyList", commApplyList);
 			
 			String path = "/WEB-INF/views/community/meeting-admin.jsp";
 			
 			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
 			dispatcher.forward(req, resp);
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();

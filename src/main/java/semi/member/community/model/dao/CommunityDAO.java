@@ -62,9 +62,10 @@ public class CommunityDAO {
 				comm.setMemberNickname(rs.getString(6));
 				comm.setProfileImage(rs.getString(7));
 				comm.setCommunityAdmin(rs.getInt(8));
+				comm.setCommunityImage(rs.getString(9));
 			}
 		}finally {
-			close(conn);
+			close(rs);
 			close(pstmt);
 		}
 		
@@ -203,9 +204,9 @@ public class CommunityDAO {
 			while(rs.next()) {
 				CommunityMember cm = new CommunityMember();
 				
-				cm.setMemberNo(rs.getInt("memberNo"));
-				cm.setMemberNickname(rs.getString("memberNickname"));
-				cm.setMemberProfileImage(rs.getString("memberProfileImage"));
+				cm.setMemberNo(rs.getInt(1));
+				cm.setMemberNickname(rs.getString(2));
+				cm.setMemberProfileImage(rs.getString(3));
 				
 				commMemberList.add(cm);
 			}
@@ -219,40 +220,40 @@ public class CommunityDAO {
 	/** 가입 신청 회원 목록 조회 DAO
 	 * @param conn
 	 * @param communityNo
-	 * @return
+	 * @return commApplyList
 	 * @throws Exception
 	 */
-	public List<CommunityApply> selectApllyMember(Connection conn, int communityNo, int memberNo) throws Exception {
+	public List<CommunityApply> selectApllyMember(Connection conn, CommunityApply coma) throws Exception {
 		
-		List<CommunityApply> applyMemberList = new ArrayList<CommunityApply>();
+		List<CommunityApply> commApplyList = new ArrayList<CommunityApply>();
 		
 		try {
-			String sql = prop.getProperty("selectApllyMember");
+			String sql = prop.getProperty("selectApplyMember");
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, communityNo);
-			pstmt.setInt(2, memberNo);
+			pstmt.setInt(1, coma.getCommunityNo());
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				
-				CommunityApply ca = new CommunityApply();
+				new CommunityApply();
 				
-				ca.setMemberNo(rs.getInt("memberNo"));
-				ca.setMemberNickname(rs.getString("memberNickname"));
-				ca.setMemberProfileImage(rs.getString("memberProfileImage"));
-				ca.setMemberName(rs.getString("memberName"));
-				ca.setMemberGender(rs.getString("memberGender"));
-				ca.setMemberBirth(rs.getString("memberBitrh"));
+				coma.setMemberNo(rs.getInt(1));
+				coma.setCommunityName(rs.getString(2));
+				coma.setMemberName(rs.getString(3));
+				coma.setMemberGender(rs.getString(4));
+				coma.setMemberBirth(rs.getString(5));
+				coma.setMemberNickname(rs.getString(6));
+				coma.setMemberProfileImage(rs.getString(7));
 				
-				applyMemberList.add(ca);
+				commApplyList.add(coma);
 			}
 		} finally {
 			close(rs);
 			close(pstmt);
 		}
-		return applyMemberList;
+		return commApplyList;
 	}
 
 	/** 모임 삭제 DAO
@@ -286,17 +287,16 @@ public class CommunityDAO {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int updateCommunityImage(Connection conn, int communityNo, String communityImage) throws Exception {
+	public int updateCommunityImage(Connection conn, Community comm) throws Exception {
 		
 		int result = 0;
 		
 		try {
 			String sql = prop.getProperty("updateCommunityImage");
-			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, communityImage);
-			pstmt.setInt(2, communityNo);
+			pstmt.setString(1, comm.getCommunityImage());
+			pstmt.setInt(2, comm.getCommunityNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -386,4 +386,35 @@ public class CommunityDAO {
       return result;
    }
 
+	   /**
+	 * @param conn
+	 * @param comm
+	 * @return result
+	 * @throws Exception
+	 */
+	public Community selectCommunityName(Connection conn, int communityNo) throws Exception {
+		
+		Community comm = null;
+		
+		try {
+			String sql = prop.getProperty("selectCommunityName");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, communityNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				comm = new Community();
+				
+				comm.setCommunityName(rs.getString(1));
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}	
+		return comm;
+	}
 }

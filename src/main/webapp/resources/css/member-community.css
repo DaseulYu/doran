@@ -22,6 +22,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    position : relative;
 }
 .head-left > img{
     height: 300px;
@@ -32,8 +34,19 @@
     display:none;
 }
 
+.head-left > label{
+    cursor: pointer;
+}
+
 #img-btn {
     border: 0;
+    background-color: transparent;
+    position:absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    color : gray;
+    font-weight: bold;
 }
 
 /* 모임 헤드 우측 모임명/소개 등 */
@@ -325,9 +338,6 @@
 }
 
 #update-image{
-    position:absolute;
-    top: 0;
-    right: 0;
-    cursor: pointer;
+
 }
 

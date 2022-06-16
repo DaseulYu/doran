@@ -20,11 +20,14 @@
 <body>
 
     <main>
-        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
         <div class="board-container">
 
-            <form class="community-head" onsubmit="return communityEdit()">
+            <form action="detail/image" method="POST" name ="detail-form" enctype = "multipart/form-data" class="community-head" onsubmit="return communityEdit()">
+                
+                <input type="hidden" name="cn" value="${param.cn}">
+
                 <div class="head-left">
 
                     <c:if test="${empty comm.communityImage}">
@@ -35,10 +38,11 @@
                         <img src="${contextPath}${comm.communityImage}" id="community-image">
                     </c:if>
 
-                    <!-- <c:if test="${comm.communityAdmin == loginMember.memberNo}"> -->
+                    <c:if test="${comm.communityAdmin == loginMember.memberNo}">
+                        <label for="input-image">&nbsp;&nbsp;</label>
                         <input type="file" name="communityImage" id="input-image" accept="image/*">
                         <button type="submit" id="img-btn">+</button>
-                    <!-- </c:if> -->
+                    </c:if>
                 </div>
 
                 <div class="head-right">
@@ -46,39 +50,43 @@
                         <div class="community-name">
                             <span>${comm.communityName}</span>
                             <c:if test="${comm.communityAdmin == loginMember.memberNo}">
-                                <a href="/WEB-INF/views/community/meeting-admin.jsp"><span class="btn-edit">edit</span></a>
+                                <a href="admin?cn=${param.cn}"><span class="btn-edit">edit</span></a>
                             </c:if>
                         </div>
                     <div><button class="btn-report">신고</button></div>
                 </div>
 
-                <div class="head-info">
-                    <p>${comm.communityInfo}</p>
-                </div>
-
-                <div class="head-user">
-                    <div>
-                        <c:if test="${empty comm.profileImage}">
-                            <img src="${contextPath}/resources/images/user.png" id="user">
-                        </c:if>
-
-                        <c:if test="${!empty comm.profileImage}">
-                            <img src="${contextPath}${comm.profileImage}" id="user">
-                        </c:if>
+                    <div class="head-info">
+                        <p>${comm.communityInfo}</p>
                     </div>
 
-                    <div>${comm.memberNickname}</div>
+                    <div class="head-user">
+                        <div>
+                            <c:if test="${empty comm.profileImage}">
+                                <img src="${contextPath}/resources/images/user.png" id="user">
+                            </c:if>
 
-                </div>
+                            <c:if test="${!empty comm.profileImage}">
+                                <img src="${contextPath}${comm.profileImage}" id="user">
+                            </c:if>
+                        </div>
+
+                        <div>${comm.memberNickname}</div>
+
+                    </div>
             </form>
+            
             <div class="head-join">
                 <div onclick="pick()">
                     <img src="${contextPath}/resources/images/pick1.png" id="pick">
                 </div>
-                    <div class="btn-join" id="btn-join" onclick="join(${param.cn})">모임 가입하기</div>
+                <div class="btn-join" id="btn-join" onclick="join(${param.cn})">모임 가입하기</div>
             </div>
+            <c:if test="">
                 <div id="btn-leave" onclick="secession(${param.cn})">모임 탈퇴하기</div>
+            </c:if>
         </div>
+    
 
             <div class="community-nav">
                 <ul>
@@ -177,3 +185,4 @@
 
 </body>
 </html>
+

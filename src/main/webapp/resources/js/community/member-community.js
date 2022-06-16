@@ -86,11 +86,11 @@ detail_popup.addEventListener("click", function(){
 // });
 
 // 커뮤니티 대표 이미지 등록
-const updateImage = document.getElementById("update-image");
+const inputImage = document.getElementById("input-image");
 
-if(updateImage != null){
+if(inputImage != null){
     
-    updateImage.addEventListener("change", function(){
+    inputImage.addEventListener("change", function(){
 
         if(this.files[0] != undefined){
             const reader = new FileReader();
@@ -101,5 +101,15 @@ if(updateImage != null){
             }
         }
     });
+}
+
+function communityEdit(){
+    const inputImage = document.getElementById("input-image");
+
+    if(inputImage.value == ""){
+        alert("이미지를 선택한 후 버튼을 눌러주세요");
+        return false;
+    }
+    return true;
 }
 

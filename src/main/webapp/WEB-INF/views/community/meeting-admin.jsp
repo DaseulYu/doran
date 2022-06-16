@@ -21,30 +21,34 @@
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
         <section class="meeting-admin-content">
-            <form action="#" method="POST" name="meeting-admin-form">
+            <form action="admin" method="GET" name="meeting-admin-form">
                 <span class="meetingname-admin">${comm.communityName} 관리</span>
+            </form>
 
+            <form action="admin/applySelect" method="GET">
+                <input type="hidden" name="cn" value="${param.cn}">
                 <div class="meeting-request-area">
                     <h4>모임 신청 내역</h4>
                     <c:choose>
-                        <c:when test="${empty applyMemberList}">
+                        <c:when test="${empty commApplyList}">
                             <h4 style="color : gray;">모임을 신청한 회원이 존재하지 않습니다.</h4>
                         </c:when>
 
                         <c:otherwise>
-                            <c:forEach var="ca" items="${applyMemberList}">
+                            <c:forEach var="commApplyList" items="${commApplyList}">
                                 <div class="req-member-area">
                                     <div class="nickname-area">
-                                        <a href="#" id="openPop"><img src="${contextPath}${applyMemberList.profileImage}" id="nickname-icon"></a>
-                                        <span class="req-nickname">${applyMemberList.memberNickname}</span>
+                                        <a href="#" id="openPop"><img src="${contextPath}${commApplyList.profileImage}" id="nickname-icon"></a>
+                                        <span class="req-nickname">${commApplyList.memberNickname}</span>
                                     </div>
-                                    <button id="confirm" onclick="return confirmChk()">승인</button>
+                                    <button id="confirm">승인</button>
                                     <!-- <button id="refuse" onclick="return refuseChk()">거절</button> -->
                                 </div>
-                            </c:forEach>
+                            <!-- </c:forEach> -->
                         </c:otherwise>
                     </c:choose>
                 </div>
+            </form>
 
                     <!-- <div class="req-member-area">
                         <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
@@ -76,30 +80,32 @@
                         <button id="refuse">거절</button>
                     </div> -->
 
+                <form action="admin/select" method="GET">
+                    <input type="hidden" name="cn" value="${param.cn}">
+                    <div class="member-admin-area">
+                        <h4>회원 관리</h4> 
+                        <c:choose>
+                            <c:when test="${empty commMemberList}">
+                                <h4 style="color : gray;">모임 회원이 존재하지 않습니다.</h4>
+                            </c:when>
 
-                <div class="member-admin-area">
-                    <h4>회원 관리</h4> 
-                    <c:choose>
-                        <c:when test="${empty commMemberList}">
-                            <h4 style="color : gray;">모임 회원이 존재하지 않습니다.</h4>
-                        </c:when>
-
-                        <c:otherwise>
-                            <c:forEach var="cm" items="${commMemberList}">
-                                <div class="member-area">
-                                    <div class="member-nickname-area">
-                                        <img src="${contextPath}${commMemberList.profileImage}" id="member-nickname-icon">
-                                        <span class="member-nickname">${commMemberList.memberNickname}</span>
+                            <c:otherwise>
+                                <c:forEach var="cm" items="${commMemberList}">
+                                    <div class="member-area">
+                                        <div class="member-nickname-area">
+                                            <img src="${contextPath}${commMemberList.profileImage}" id="member-nickname-icon">
+                                            <span class="member-nickname">${commMemberList.memberNickname}</span>
+                                        </div>
+                                        <div class="member-area-button">
+                                            <button id="entrust" onclick="return entrustChk()">모임장 위임하기</button>
+                                            <button id="out" onclick="return outChk()">추방</button>
+                                        </div>
                                     </div>
-                                    <div class="member-area-button">
-                                        <button id="entrust" onclick="return entrustChk()">모임장 위임하기</button>
-                                        <button id="out" onclick="return outChk()">추방</button>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </form>
 
                     <!-- <div class="member-area">
                         <div class="member-nickname-area">
