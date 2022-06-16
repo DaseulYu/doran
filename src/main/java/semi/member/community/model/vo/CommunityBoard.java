@@ -19,7 +19,7 @@ public class CommunityBoard {
 	private String boardName;
 	private String boardTitle;
 	private String boardContent;
-	private String memberNo; 
+	private int memberNo; 
 	private String memberNickname;
 	private String profileImage;
 	private String createDate;
@@ -80,10 +80,10 @@ public class CommunityBoard {
 	public void setBoardTitle(String boardTitle) {
 		this.boardTitle = boardTitle;
 	}
-	public String getMemberNo() {
+	public int getMemberNo() {
 		return memberNo;
 	}
-	public void setMemberNo(String memberNo) {
+	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
 	public String getMemberNickname() {
