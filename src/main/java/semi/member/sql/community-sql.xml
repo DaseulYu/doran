@@ -43,7 +43,7 @@
 
 	<!-- 멤버 추방 -->
 	<entry key = "memberOut">
-		UPDATE SET COMMUNITY_MEMBER
+		UPDATE COMMUNITY_MEMBER SET 
 		MEMBER_FL = 'Y',
 		DATE_FL = DEFAULT
 		WHERE COMMUNITY_NO = ?

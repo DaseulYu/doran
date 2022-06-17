@@ -104,10 +104,10 @@
                 <c:if test="${!empty comm.memberNo}">
                     <div class="btn-join" id="btn-join" onclick="join(${param.cn})">모임 가입하기</div>
                 </c:if>
-<!-- 
-                <c:if test="${!empty comm.memberNo}">
+
+                <c:if test="${!empty commApplyList.memberNo}">
                     <div>모임 신청완료 승인 대기</div>
-                </c:if> -->
+                </c:if>
 
             </div>
 
