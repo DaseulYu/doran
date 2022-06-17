@@ -15,7 +15,7 @@
 
 						<c:otherwise>
 							<c:if test="${loginMember.memberNo == 0}">
-								<a href="${contextPath}/admin/list">admin</a>
+								<a href="${contextPath}/admin/list" target="_blank">admin</a>
 							</c:if>
 							<a href="${contextPath}/member/myPage/info">${loginMember.memberNickname}님</a>
 							<a href="${contextPath}/member/logout">로그아웃</a>
