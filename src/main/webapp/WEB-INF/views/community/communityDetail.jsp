@@ -158,7 +158,7 @@
 
 
                 <!-- 자유게시판 -->
-                <div class="board board-list" id="board-list">
+                <div class="board commu-list" id="board-list">
                     <h3>자유게시판
                         <a href="${contextPath}/community/board/list?cn=${param.cn}&type=1" target="_blank"><span class="board-all">전체 게시글 보기 &gt;</span></a>
                     </h3>
