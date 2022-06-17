@@ -59,13 +59,13 @@ function selectSignupList(){
                 signupBtnArea.classList.add("write-btn-area");
 
                 // 댓글 작성자가 아닐때 신고 버튼
-                if( loginMemberNo != signup.memberNo ){
-                    const reportBtn = document.createElement("button");
-                    reportBtn.id = "btn-report";
-                    reportBtn.innerText = "신고";
+                // if( loginMemberNo != signup.memberNo ){
+                //     const reportBtn = document.createElement("button");
+                //     reportBtn.id = "btn-report";
+                //     reportBtn.innerText = "신고";
 
-                    signupBtnArea.append(reportBtn);
-                }
+                //     signupBtnArea.append(reportBtn);
+                // }
                     
 
                 // 댓글 작성자 일때 수정/삭제 버튼

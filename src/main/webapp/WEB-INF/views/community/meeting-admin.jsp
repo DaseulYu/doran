@@ -37,7 +37,7 @@
 
                         <tbody id="applyList">
                             <tr>
-                                <td>다용</td>
+                                <td>${commApplyList.memberNickname}</td>
                                 <td>승인</td>
                             </tr>
                         </tbody>

@@ -84,7 +84,7 @@ function selectApply(){
                 const td2 = document.createElement("td");
                 const btn = document.createElement("button");
                 btn.setAttribute("id", "confirm");
-                btn.innerTest = "승인";
+                btn.innerText = "승인";
 
                 td2.append(btn);
 
@@ -120,10 +120,10 @@ function selectMember(){
                 const td2 = document.createElement("td");
                 const btn = document.createElement("button");
                 btn.setAttribute("id", "entrust");
-                btn.innerTest = "위임";
+                btn.innerText = "위임";
                 const btn2 = document.createElement("button");
-                btn.setAttribute("id", "out");
-                btn.innerTest = "추방"
+                btn2.setAttribute("id", "out");
+                btn2.innerText = "추방";
                 td2.append(btn, btn2);
 
                 tr.append(td1, td2);

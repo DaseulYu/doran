@@ -19,10 +19,12 @@ public class CommunityDeleteServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		int communityNo = Integer.parseInt(req.getParameter("cn"));
 			
 		try {
 			
+			int communityNo = Integer.parseInt(req.getParameter("cn"));
+			System.out.println("communityNo : "+communityNo);
+
 			CommunityService service = new CommunityService();
 			
 			int result = service.deleteCommunity(communityNo); 
