@@ -21,23 +21,15 @@ import semi.member.member.model.vo.Member;
 @WebServlet("/community/admin/applySelect")
 public class ApplyMemberSelectServlet extends HttpServlet{
 	
-//	@Override
-//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-//		String path = "/WEB-INF/views/community/meeting-admin.jsp";
-//		req.getRequestDispatcher(path).forward(req, resp);
+		String path = "/WEB-INF/views/community/meeting-admin.jsp";
+		req.getRequestDispatcher(path).forward(req, resp);
 		
-//		try {
-//			CommunityService service = new CommunityService();
-//			
-//			List<CommunityApply> commApplyList = service.selectApllyMember();
-//			
-//			new Gson().toJson(commApplyList, resp.getWriter() );
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+	}
+	
+	
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

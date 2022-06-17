@@ -61,38 +61,85 @@ function deleteMeeting(){
     return true;
 }
 
-document.getElementById("selectApply").addEventListener("click", function(){
+function selectApply(){
 
     $.ajax({
-        url : "community/admin/applySelect",
-        data : {communityNo : cn},
+        url : "admin/applySelect",
+        data : {"cn" : cn},
         type : "POST",
         dataType : "JSON",
 
         success : function(commApplyList){
-            alert(commApplyList);
+
+            const applyList = document.getElementById("applyList");
+            applyList.innerHTML = "";
+
+            for (let item of commApplyList) {
+
+                const tr = document.createElement("tr");
+
+                const td1 = document.createElement("td");
+                td1.innerText = item.memberNickname;
+
+                const td2 = document.createElement("td");
+                const btn = document.createElement("button");
+                btn.setAttribute("id", "confirm");
+                btn.innerTest = "승인";
+
+                td2.append(btn);
+
+                tr.append(td1, td2);
+                applyList.append(tr);
+            }
         },
         error : function(request){
             console.log("AJAX 에러 발생");
         }
     })
-});
+}
 
-document.getElementById("selectMember").addEventListener("click", function(){
-    
-    console.log(commMemberList);
+function selectMember(){
 
     $.ajax({
-        url : "community/admin/select",
-        data : {communityNo : cn},
+        url : "admin/select",
+        data : {"cn" : cn},
         type : "POST",
         dataType : "JSON",
 
         success : function(commMemberList){
-            alert(commMemberList);
+            const memberList = document.getElementById("memberList");
+            memberList.innerHTML = "";
+
+            for (let item of commMemberList) {
+
+                const tr = document.createElement("tr");
+
+                const td1 = document.createElement("td");
+                td1.innerText = item.memberNickname;
+
+                const td2 = document.createElement("td");
+                const btn = document.createElement("button");
+                btn.setAttribute("id", "entrust");
+                btn.innerTest = "위임";
+                const btn2 = document.createElement("button");
+                btn.setAttribute("id", "out");
+                btn.innerTest = "추방"
+                td2.append(btn, btn2);
+
+                tr.append(td1, td2);
+                applyList.append(tr);
+            }
         },
         error : function(request){
             console.log("AJAX 에러 발생");
         }
     })
-})
+}
+
+(function () {
+    selectApply();
+})();
+
+(function () {
+    selectMember();
+})();

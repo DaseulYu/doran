@@ -409,6 +409,7 @@ public class CommunityDAO {
 				comm = new Community();
 				
 				comm.setCommunityName(rs.getString(1));
+				comm.setCommunityNo(rs.getInt(2));
 			}
 		} finally {
 			close(rs);
