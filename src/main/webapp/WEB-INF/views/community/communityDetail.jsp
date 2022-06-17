@@ -73,7 +73,7 @@
                                 <a href="admin?cn=${param.cn}"><span class="btn-edit">edit</span></a>
                             </c:if>
                         </div>
-                    <!-- <div> <button type="button" class="btn-report" onclick="showReportPopup(${boardList.boardNo})">신고</button></div> -->
+                     <div> <!-- <button type="button" class="btn-report" onclick="showReportPopup(${boardList.boardNo})">신고</button> --></div>
                 </div>
 
                 <div class="head-info">

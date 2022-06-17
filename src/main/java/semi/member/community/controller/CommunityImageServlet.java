@@ -55,8 +55,7 @@ public class CommunityImageServlet extends HttpServlet {
 			
 			String path = "/WEB-INF/views/community/communityDetail.jsp";
 			
-			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
-			dispatcher.forward(req, resp);
+			resp.sendRedirect(req.getContextPath());
 			
 		} catch(Exception e) {
 			e.printStackTrace();
