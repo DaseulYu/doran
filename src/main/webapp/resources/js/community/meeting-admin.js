@@ -121,13 +121,15 @@ function selectMember(){
                 const btn = document.createElement("button");
                 btn.setAttribute("id", "entrust");
                 btn.innerText = "위임";
+                td2.append(btn);
+                const td3 = document.createElement("td");
                 const btn2 = document.createElement("button");
                 btn2.setAttribute("id", "out");
                 btn2.innerText = "추방";
-                td2.append(btn, btn2);
+                td3.append(btn2);
 
-                tr.append(td1, td2);
-                applyList.append(tr);
+                tr.append(td1, td2, td3);
+                memberList.append(tr);
             }
         },
         error : function(request){

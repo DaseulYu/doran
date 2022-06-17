@@ -1,9 +1,9 @@
-.meeting-admin-content{
+.meeting-admin-content {
     width: 1100px;
     margin: 0px auto;
 }
 
-form[name="meeting-admin-form"]{
+form[name="meeting-admin-form"] {
     margin: 0px auto;
     width: 80%;
     display: block;
@@ -15,14 +15,15 @@ form[name="meeting-admin-form"]{
     color: #0C71FF;
 }
 
-.meeting-request-area{
-    width: 100%;
+.meeting-request-area {
+    width: 300px;
+    height: 300px;
     margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #F6F6F6;
-    margin: 0px auto;
+    /* margin: 0px auto; */
     margin-bottom: 20px;
 }
 
@@ -32,27 +33,27 @@ form[name="meeting-admin-form"]{
     align-items: center;
 }
 
-.meeting-request-area h4{
-    padding : 10px;
+.meeting-request-area h4 {
+    padding: 10px;
 }
 
-.member-admin-area{
-    width: 100%;
+.member-admin-area {
+    width: 300px;
     height: 300px;
     margin-top: 20px;
     display: flex;
-    align-items: center;
+    align-items: center; 
     justify-content: center;
     background-color: #F6F6F6;
-    margin: 0px auto;
+    /* margin: 0px auto; */
     margin-bottom: 20px;
 }
 
-.member-admin-area h4{
-    padding : 10px;
+.member-admin-area h4 {
+    padding: 10px;
 }
 
-.req-member-area{
+.req-member-area {
     width: 24%;
     justify-content: center;
     align-items: center;
@@ -60,20 +61,20 @@ form[name="meeting-admin-form"]{
     display: inline-block;
 }
 
-#profile{
+#profile {
     width: 50%;
     display: block;
     margin: 0px auto;
 }
 
-#nickname-icon{
+#nickname-icon {
     width: 20%;
     display: inline-block;
     margin-left: 50px;
 }
 
-.req-nickname{
-    width: 80%;  
+.req-nickname {
+    width: 80%;
     font-size: 15px;
     color: #8C8C8C;
     display: inline;
@@ -82,19 +83,19 @@ form[name="meeting-admin-form"]{
 }
 
 
-td > button {
+td>button {
     width: 100%;
     height: 100%;
 }
 
-#confirm{
+#confirm {
     background-color: #FF8339;
     border: none;
     color: white;
     border-radius: 5px;
 }
 
-#refuse{
+#refuse {
     background-color: #BDBDBD;
     border: none;
     color: white;
@@ -103,7 +104,7 @@ td > button {
     margin-bottom: 10px;
 }
 
-.member-area{
+.member-area {
     padding: 5px;
     background-color: #EAEAEA;
     width: 21%;
@@ -125,7 +126,7 @@ td > button {
     margin-right: 5px;
 }
 
-.member-nickname-area > span {
+.member-nickname-area>span {
     width: 100%;
     display: inline;
 }
@@ -134,27 +135,28 @@ td > button {
     justify-content: end;
     padding: 5px;
 }
-#entrust{
+
+#entrust {
     border: none;
     font-size: 11px;
     background-color: transparent;
 }
 
-#entrust:hover{
+#entrust:hover {
     cursor: pointer;
     border-bottom: 0.5px solid black;
     font-size: 11px;
     background-color: transparent;
 }
 
-#out{
+#out {
     border: none;
     font-size: 11px;
     color: red;
     background-color: transparent;
 }
 
-#out:hover{
+#out:hover {
     cursor: pointer;
     border-bottom: 0.5px solid red;
     font-size: 11px;
@@ -162,12 +164,12 @@ td > button {
     background-color: transparent;
 }
 
-#deleteMeeting{
+#deleteMeeting {
     color: red;
     font-weight: bold;
 }
 
-#deleteMeeting:hover{
+#deleteMeeting:hover {
     cursor: pointer;
     border-bottom: 0.5px solid red;
     color: red;
@@ -178,42 +180,42 @@ td > button {
 /* 팝업창 */
 /*popup*/
 .popup_layer {
-    position:fixed;
-    top:0;
-    left:0;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 10000;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); 
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 /*팝업 박스*/
-.popup_box{
+.popup_box {
     position: relative;
-    top:50%;
-    left:50%; 
-    overflow: auto; 
-    height: 400px; 
-    width:375px;
-    transform:translate(-50%, -50%);
-    z-index:1002;
-    box-sizing:border-box;
-    background:#fff;
-    box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
-    -webkit-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
-    -moz-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+    top: 50%;
+    left: 50%;
+    overflow: auto;
+    height: 400px;
+    width: 375px;
+    transform: translate(-50%, -50%);
+    z-index: 1002;
+    box-sizing: border-box;
+    background: #fff;
+    box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
 }
 
 /*컨텐츠 영역*/
 .popup_box .popup_cont {
-    line-height:1.4rem;
-    font-size:14px; 
+    line-height: 1.4rem;
+    font-size: 14px;
 }
 
-.popup_content{
-    padding-top:30px;
+.popup_content {
+    padding-top: 30px;
     padding-bottom: 15px;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -234,10 +236,11 @@ td > button {
     line-height: 30px;
 }
 
-.popup_cont .popup_button{
+.popup_cont .popup_button {
     display: flex;
     justify-content: center;
 }
+
 .popup_cont #closePop {
     width: 50%;
     height: 30px;
@@ -253,7 +256,7 @@ td > button {
     width: 50%;
     height: 30px;
     background-color: white;
-    color:#FF8339;
+    color: #FF8339;
     border-radius: 5px;
     text-align: center;
     line-height: 30px;
@@ -261,22 +264,78 @@ td > button {
 }
 
 /*오버레이 뒷배경*/
-.popup_overlay{
-    position:fixed;
-    top:0px;
-    right:0;
-    left:0;
-    bottom:0;
-    z-index:1001;
-    background:rgba(0,0,0,0.5);
+.popup_overlay {
+    position: fixed;
+    top: 0px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1001;
+    background: rgba(0, 0, 0, 0.5);
 }
 
-#selectMember{
+#selectMember {
     border: 0;
     background-color: transparent;
 }
 
-#selectApply{
+#selectApply {
     border: 0;
     background-color: transparent;
+}
+
+
+
+
+/* .applyList-table{
+    margin: 7px auto;
+} */
+/* 목록 출력 테이블 */
+.applyList-table {
+    width: 500x;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.applyList-table>thead {
+    background-color: #ff8339;
+    color: white;
+}
+
+.applyList-table tr {
+    height: 35px;
+}
+
+.applyList-table>tbody>tr {
+    border-bottom: 1px solid gray;
+}
+
+.applyList-table tr>* {
+    text-align: center;
+}
+
+/* .applyList-table th > *:nth-of-type(1){ width: 50%;}
+.applyList-table th > *:nth-of-type(2){ width: 50%;} */
+
+.memberList-table {
+    width: 500x;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.memberList-table>thead {
+    background-color: #ff8339;
+    color: white;
+}
+
+.memberList-table tr {
+    height: 35px;
+}
+
+.memberList-table>tbody>tr {
+    border-bottom: 1px solid gray;
+}
+
+.memberList-table tr>* {
+    text-align: center;
 }

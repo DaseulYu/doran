@@ -24,9 +24,8 @@
                 <input type="hidden" name="cn" value="${param.cn}">
                 <span class="meetingname-admin">${comm.communityName} 관리</span>
 
+                <h4>모임 신청 내역</h4> 
                 <div class="meeting-request-area">
-                    <h4>모임 신청 내역</h4> 
-                
                     <table class="applyList-table">
                         <thead>
                             <tr>
@@ -74,15 +73,15 @@
                         <button id="confirm">승인</button>
                         <button id="refuse">거절</button>
                     </div> -->
-
+                    
+                    <h4>회원 관리</h4> 
                     <div class="member-admin-area"> 
-                        <h4>회원 관리</h4> 
 
                         <table class="memberList-table">
                             <thead>
                                 <tr>
                                     <th>닉네임</th>
-                                    <th>모임장 위임하기</th>
+                                    <th>위임하기</th>
                                     <th>강퇴하기 </th>
                                 </tr>
                             </thead>
