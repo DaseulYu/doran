@@ -39,6 +39,7 @@
 /* 공지사항 전체 영역*/
 .notice-content{
     width: 1000px;
+    height: 700px;
     margin: auto;
 }
 

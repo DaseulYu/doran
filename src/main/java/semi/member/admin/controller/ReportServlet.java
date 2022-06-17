@@ -29,15 +29,18 @@ public class ReportServlet extends HttpServlet{
 				communityNo = Integer.parseInt(req.getParameter("cn"));
 			}
 			if(req.getParameter("boardNo") != null) {
-				communityNo = Integer.parseInt(req.getParameter("boardNo"));
+				boardNo = Integer.parseInt(req.getParameter("boardNo"));
 			}
 					
+
 			String reportTitle = req.getParameter("reportTitle");
 			
 			ReportService service = new ReportService();
 			
 			int result = service.insertReport(communityNo, boardNo, memberNo, reportTitle);
 
+//			System.out.println(communityNo);
+//			System.out.println(boardNo);
 			String path = null;
 			String message = null;
 			
