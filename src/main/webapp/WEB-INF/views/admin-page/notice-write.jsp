@@ -9,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <c:if test="${param.mode == 'insert'}">
-            <h2>게시글 작성</h2>
+            게시글 작성
         </c:if>
         <c:if test="${param.mode == 'update'}">
-            <h2>게시글 수정</h2>
+            게시글 수정
         </c:if>
     </title>
     <link rel="stylesheet" href="${contextPath}/resources/css/board-write.css">
