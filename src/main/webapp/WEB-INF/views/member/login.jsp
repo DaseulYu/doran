@@ -54,7 +54,7 @@
 				<div class="signUp-find-area">
 
 					<a href="${contextPath}/member/findPw">비밀번호 찾기</a> <span>|</span>
-					<a href="#">회원가입</a>
+					<a href="${contextPath}/member/signUp">회원가입</a>
 
 				</div>
 			</div>
