@@ -291,7 +291,6 @@
 
 
 
-
 /* 모임 후기 */
 .review-content {
     display: flex;
@@ -337,7 +336,78 @@
     -webkit-box-orient: vertical;
 }
 
-#update-image{
 
+
+/* 신고 팝업 */
+.report-popup{
+    background-color: rgba(252, 186, 46, 0.4);
+    width: 400px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    display: none;
+    margin: auto;
+    position: sticky;
+    top: 0; 
+}
+.report-detail{
+    width: 80%;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.report-detail > div{
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 18px;
+}
+
+#reportCategory{
+    width: 100%;
+    height: 40px;
+    margin-top: 15px;
+    font-size: 15px;
+}
+#reportCategory > option:hover{
+    background-color: #ff8339;
+}
+#report-submission{
+    width: 70px;
+    height: 30px;
+    margin-top: 10px;
+    background-color: #ff8339;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+#report-submission:hover{
+    background-color: white;
+    color: #ff8339;
+    border: 1px solid #ff8339;
+    font-weight: bold;
+}
+
+
+/* 취소 버튼 */
+#report-cancel{
+    width: 70px;
+    height: 30px;
+    background-color: lightgray;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+#report-cancel:hover{
+    background-color: white;
+    color: gray;
+    border: 1px solid gray;
+    font-weight: bold;
 }
 

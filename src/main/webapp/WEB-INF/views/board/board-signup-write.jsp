@@ -27,9 +27,9 @@
                             <span class="message-date">${signup.createDate}</span>
                         </div>
                         <div class="write-btn-area">
-                            <c:if test="${loginMember.memberNo != signup.memberNo}">
+                         <!--    <c:if test="${loginMember.memberNo != signup.memberNo}">
                                 <button id="btn-report">신고</button>
-                            </c:if>
+                            </c:if> -->
                             <c:if test="${loginMember.memberNo == signup.memberNo}">
                                 <button id="updateBtn" onclick="showUpdateReply(${signup.signupNo}, this)">수정</button>
                                 <button id="deleteBtn" onclick="deleteReply(${signup.signupNo})">삭제</button>

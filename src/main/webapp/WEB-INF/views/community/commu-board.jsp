@@ -9,7 +9,7 @@
                 <th>제목</th>
                 <th>작성자</th>
                 <th>작성일</th>
-                <th>조회수</th>
+                <!-- <th>조회수</th> -->
             </tr>
         </thead>
 
@@ -28,7 +28,7 @@
                             <td>${boardList.boardTitle}</td>
                             <td>${boardList.memberNickname}</td>
                             <td>${boardList.createDate}</td>
-                            <td>${boardList.readCount}</td>
+                            <!-- <td>${boardList.readCount}</td> -->
                         </tr>
                     </c:forEach>
                 </c:otherwise>

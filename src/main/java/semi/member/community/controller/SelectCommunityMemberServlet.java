@@ -35,15 +35,10 @@ public class SelectCommunityMemberServlet extends HttpServlet{
 			int communityNo = Integer.parseInt(req.getParameter("cn"));
 			
 			CommunityService service = new CommunityService();
-//			
-//			HttpSession session = req.getSession();
-//			Member loginMember = (Member)(session.getAttribute("loginMember"));
-//			int memberNo = loginMember.getMemberNo();
 			
 			List<CommunityMember> commMemberList = service.selectCommMember(communityNo);
 			
 			new Gson().toJson(commMemberList, resp.getWriter());
-//			req.setAttribute("commMemberList", commMemberList);
 			
 			
 		} catch (Exception e) {

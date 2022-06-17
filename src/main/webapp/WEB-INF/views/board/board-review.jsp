@@ -43,7 +43,6 @@
              <input type="hidden" name="no" id="boardNo">
         </form> 
 
-
         <div class="board-detail">
             <div>
                 <h2>모임후기</h2>
@@ -66,10 +65,10 @@
                                     <h2>${boardList.boardTitle}</h2>
                                 </div>
                                 <div class="write-btn-area">
-                                    <c:if test="${loginMember.memberNo != signup.memberNo}">
+                                    <c:if test="${loginMember.memberNo != boardList.memberNo}">
                                         <button id="btn-report" onclick="showReportPopup(${boardList.boardNo})">신고</button>
                                     </c:if>
-                                    <c:if test="${loginMember.memberNo == signup.memberNo}">
+                                    <c:if test="${loginMember.memberNo == boardList.memberNo}">
                                         <button id="updateBtn" onclick="location.href='write?mode=update&no=${boardList.boardNo}&cn=${param.cn}&type=${param.type}&cp=${param.cp}'">수정</button>
                                         <button id="deleteBtn" onclick="boardDelete(${boardList.boardNo})">삭제</button>
                                     </c:if>

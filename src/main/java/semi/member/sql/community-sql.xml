@@ -84,7 +84,7 @@
 
 	<!-- 모임 가입 -->
 	<entry key="communityJoin">
-		INSERT INTO COMMUNITY_MEMBER VALUES(?, ?, SYSDATE)
+		INSERT INTO APPLY VALUES(SEQ_APPLY_NO.NEXTVAL, ?, DEFAULT, ?, SYSDATE)
 	</entry>
 
 	<!-- 모임 탈퇴 -->
