@@ -11,6 +11,15 @@
     height: 700px;
     margin: auto;
 }
+.commu-list{
+    width: 1000px;
+    margin: auto;
+}
+.board-list{
+    width: 1000px;
+    height: 700px;
+    margin: auto;
+}
 
 /* 글쓰기 버튼 */
 .btn-area{
