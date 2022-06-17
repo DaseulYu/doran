@@ -1,17 +1,22 @@
 // communityDetail 연결
 
 // 관심모임 클릭 (수정예정)
-// function pick(){
-//     const pick = document.getElementById("pick");
+function pick(){
+    const pick = document.getElementById("pick");
+    
+    if(memberNo == ""){ 
+        alert("로그인 후 이용해주세요.");
+        return;
+    }
 
-//     if(pick.src.match("pick1.png")){
-//         alert("관심모임으로 선택되었습니다.");
-//         pick.src = "../resources/images/pick2.png";
-//     } else {
-//         alert("관심모임이 취소되었습니다.");
-//         pick.src = "../resources/images/pick1.png";
-//     }
-// }
+    if(pick.src.match("pick1.png")){
+        alert("관심모임으로 선택되었습니다.");
+        pick.src = "../resources/images/pick2.png";
+    } else {
+        alert("관심모임이 취소되었습니다.");
+        pick.src = "../resources/images/pick1.png";
+    }
+}
 
 // 모임 가입하기
 function join(communityNo){

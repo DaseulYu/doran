@@ -6,11 +6,16 @@ const reportCategory = document.getElementById("reportCategory");
 
 // btnReport.addEventListener("click", function(){
 //     document.getElementsByClassName("report-popup")[0].style.display = "block";
-// })
 function showReportPopup(boardNo){
+
+
     document.getElementsByClassName("report-popup")[0].style.display = "block";
+    
+    
+    
     document.getElementById("boardNo").value = boardNo;
 }
+
 
 
 reportCancel.addEventListener("click", function(){

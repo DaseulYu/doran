@@ -23,6 +23,7 @@ public class MyCommunityListServlet extends HttpServlet {
          String path = "/WEB-INF/views/member/myCommunityList.jsp";
          req.getRequestDispatcher(path).forward(req, resp);
    }
+   
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

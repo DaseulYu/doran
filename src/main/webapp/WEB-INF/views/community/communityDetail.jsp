@@ -22,7 +22,27 @@
     <main>
 
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+        
         <div class="board-container">
+
+            <form action="report" method="post" class="report-popup" onsubmit="return reportValidation()">
+                <div class="report-detail">
+                    <div>신고 사유를 선택해주세요.</div>
+                    <select name="reportTitle" id="reportCategory">
+                        <option value="0" selected disabled>신고사유 선택</option>
+                        <option value="부적절한 게시글">부적절한 게시글</option>
+                        <option value="욕설">욕설</option>
+                        <option value="사용자 비방">사용자 비방</option>
+                    </select>
+                    <button id="report-submission">신고</button>
+                    <button type="button" id="report-cancel">취소</button>
+                </div>
+    
+                 <!-- hidden -->
+                 <%-- <input type="hidden" name="type" value="${param.type}">
+                 <input type="hidden" name="cn" value="${param.cn}">--%>
+                 <input type="hidden" name="no" id="boardNo">
+            </form> 
 
             <form action="detail/image" method="POST" name ="detail-form" enctype = "multipart/form-data" class="community-head" onsubmit="return communityEdit()">
                 
@@ -53,12 +73,13 @@
                                 <a href="admin?cn=${param.cn}"><span class="btn-edit">edit</span></a>
                             </c:if>
                         </div>
-                    <!-- <div><button class="btn-report">신고</button></div> -->
+                    <!-- <div> <button type="button" class="btn-report" onclick="showReportPopup(${boardList.boardNo})">신고</button></div> -->
                 </div>
 
-                    <div class="head-info">
-                        <p>${comm.communityInfo}</p>
-                    </div>
+                <div class="head-info">
+                    <p>${comm.communityInfo}</p>
+                </div>
+            </form>
 
                     <div class="head-user">
                         <div>
@@ -74,15 +95,23 @@
                         <div>${comm.memberNickname}</div>
 
                     </div>
-            </form>
             
             <div class="head-join">
                 <div onclick="pick()">
                     <img src="${contextPath}/resources/images/pick1.png" id="pick">
                 </div>
-                <div class="btn-join" id="btn-join" onclick="join(${param.cn})">모임 가입하기</div>
+
+                <c:if test="${!empty comm.memberNo}">
+                    <div class="btn-join" id="btn-join" onclick="join(${param.cn})">모임 가입하기</div>
+                </c:if>
+<!-- 
+                <c:if test="${!empty comm.memberNo}">
+                    <div>모임 신청완료 승인 대기</div>
+                </c:if> -->
+
             </div>
-            <c:if test="">
+
+            <c:if test="${empty comm.memberNo}">
                 <div id="btn-leave" onclick="secession(${param.cn})">모임 탈퇴하기</div>
             </c:if>
         </div>
@@ -110,7 +139,6 @@
                       </c:if>
                       </h3>
 
-                    <!-- 공지사항으로 테이블명 수정 필요함 -->
                     <div class="board-detail-txt">
                         ${comm.communityNotice}
                     </div>
@@ -182,6 +210,7 @@
     </script>
 
     <script src="${contextPath}/resources/js/community/member-community.js"></script>
+    <script src="${contextPath}/resources/js/admin-page/report-form.js"></script>
 
 </body>
 </html>

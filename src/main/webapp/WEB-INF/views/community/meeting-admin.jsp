@@ -20,31 +20,30 @@
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
         <section class="meeting-admin-content">
-            <form action="admin" method="POST" name="meeting-admin-form">
+            <form action="admin" method="GET" name="meeting-admin-form">
                 <input type="hidden" name="cn" value="${param.cn}">
                 <span class="meetingname-admin">${comm.communityName} 관리</span>
 
                 <div class="meeting-request-area">
-                    <h4>모임 신청 내역</h4> <button id="selectApply">조회</button>
-                    <c:choose>
-                        <c:when test="${empty commApplyList}">
-                            <h4 style="color : gray;">모임을 신청한 회원이 존재하지 않습니다.</h4>
-                        </c:when>
+                    <h4>모임 신청 내역</h4> 
+                
+                    <table class="applyList-table">
+                        <thead>
+                            <tr>
+                                <th>닉네임</th>
+                                <th>승인</th>
+                            </tr>
+                        </thead>
 
-                        <c:otherwise>
-                            <c:forEach var="commApplyList" items="${commApplyList}">
-                                <div class="req-member-area">
-                                    <div class="nickname-area">
-                                        <a href="#" id="openPop"><img src="${contextPath}${commApplyList.memberProfileImage}" id="nickname-icon"></a>
-                                        <span class="req-nickname">${commApplyList.memberNickname}</span>
-                                    </div>
-                                    <button id="confirm">승인</button>
-                                    <!-- <button id="refuse" onclick="return refuseChk()">거절</button> -->
-                                </div>
-                            <!-- </c:forEach> -->
-                        </c:otherwise>
-                    </c:choose>
-                </div>
+                        <tbody id="applyList">
+                            <tr>
+                                <td>다용</td>
+                                <td>승인</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div> 
 
                     <!-- <div class="req-member-area">
                         <a href="#" id="openPop"><img src="${contextPath}/resources/images/profile_icon.png" id="profile"></a>
@@ -77,149 +76,27 @@
                     </div> -->
 
                     <div class="member-admin-area"> 
-                        <h4>회원 관리</h4> <button id="selectMember">조회</button>
-                        <c:choose>
-                            <c:when test="${empty commMemberList}">
-                                <h4 style="color : gray;">모임 회원이 존재하지 않습니다.</h4>
-                            </c:when>
+                        <h4>회원 관리</h4> 
 
-                            <c:otherwise>
-                                <c:forEach var="commMemberList" items="${commMemberList}">
-                                    <div class="member-area">
-                                        <div class="member-nickname-area">
-                                            <img src="${contextPath}${commMemberList.memberProfileImage}" id="member-nickname-icon">
-                                            <span class="member-nickname">${commMemberList.memberNickname}</span>
-                                        </div>
-                                        <div class="member-area-button">
-                                            <button id="entrust" onclick="return entrustChk()">모임장 위임하기</button>
-                                            <button id="out" onclick="return outChk()">추방</button>
-                                        </div>
-                                    </div>
-                                </c:forEach>
-                            </c:otherwise>
-                        </c:choose>
-                    </div>
-                    <!-- <div class="member-area">
-                        <div class="member-nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
-                            <span class="member-nickname">닉네임</span>
-                        </div>
-                        <div class="member-area-button">
-                            <button id="entrust">모임장 위임하기</button>
-                            <button id="out">추방</button>
-                        </div>
-                    </div>
+                        <table class="memberList-table">
+                            <thead>
+                                <tr>
+                                    <th>닉네임</th>
+                                    <th>모임장 위임하기</th>
+                                    <th>강퇴하기 </th>
+                                </tr>
+                            </thead>
 
-                    <div class="member-area">
-                        <div class="member-nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
-                            <span class="member-nickname">닉네임</span>
-                        </div>
-                        <div class="member-area-button">
-                            <button id="entrust">모임장 위임하기</button>
-                            <button id="out">추방</button>
-                        </div>
-                    </div>
+                            <tbody id="memberList">
+                                <tr>
+                                    <td>다용</td>
+                                    <td>위임</td>
+                                    <td>강퇴</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                    <div class="member-area">
-                        <div class="member-nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
-                            <span class="member-nickname">닉네임</span>
-                        </div>
-                        <div class="member-area-button">
-                            <button id="entrust">모임장 위임하기</button>
-                            <button id="out">추방</button>
-                        </div>
                     </div>
-
-                    <div class="member-area">
-                        <div class="member-nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
-                            <span class="member-nickname">닉네임</span>
-                        </div>
-                        <div class="member-area-button">
-                            <button id="entrust">모임장 위임하기</button>
-                            <button id="out">추방</button>
-                        </div>
-                    </div>
-
-                    <div class="member-area">
-                        <div class="member-nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
-                            <span class="member-nickname">닉네임</span>
-                        </div>
-                        <div class="member-area-button">
-                            <button id="entrust">모임장 위임하기</button>
-                            <button id="out">추방</button>
-                        </div>
-                    </div>
-
-                    <div class="member-area">
-                        <div class="member-nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
-                            <span class="member-nickname">닉네임</span>
-                        </div>
-                        <div class="member-area-button">
-                            <button id="entrust">모임장 위임하기</button>
-                            <button id="out">추방</button>
-                        </div>
-                    </div>
-
-                    <div class="member-area">
-                        <div class="member-nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
-                            <span class="member-nickname">닉네임</span>
-                        </div>
-                        <div class="member-area-button">
-                            <button id="entrust">모임장 위임하기</button>
-                            <button id="out">추방</button>
-                        </div>
-                    </div>
-
-                    <div class="member-area">
-                        <div class="member-nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
-                            <span class="member-nickname">닉네임</span>
-                        </div>
-                        <div class="member-area-button">
-                            <button id="entrust">모임장 위임하기</button>
-                            <button id="out">추방</button>
-                        </div>
-                    </div>
-
-                    <div class="member-area">
-                        <div class="member-nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
-                            <span class="member-nickname">닉네임</span>
-                        </div>
-                        <div class="member-area-button">
-                            <button id="entrust">모임장 위임하기</button>
-                            <button id="out">추방</button>
-                        </div>
-                    </div>
-
-                    <div class="member-area">
-                        <div class="member-nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
-                            <span class="member-nickname">닉네임</span>
-                        </div>
-                        <div class="member-area-button">
-                            <button id="entrust">모임장 위임하기</button>
-                            <button id="out">추방</button>
-                        </div>
-                    </div>
-
-                    <div class="member-area">
-                        <div class="member-nickname-area">
-                            <img src="${contextPath}/resources/images/nickname_icon.png" id="member-nickname-icon">
-                            <span class="member-nickname">닉네임</span>
-                        </div>
-                        <div class="member-area-button">
-                            <button id="entrust">모임장 위임하기</button>
-                            <button id="out">추방</button>
-                        </div>
-                    </div>
-                </div> -->
 
                 <a href="#" id="deleteMeeting" onclick="return deleteMeeting()">모임 삭제하기</a>
 
@@ -229,7 +106,7 @@
                             <a href="closePop();" class="popUp-close" width="30px" height="30px"></a>
                         </div>
 
-                    
+                        
                         <div class="popup_cont">
                             <div class="popup_content">
                             <img src="${contextPath}${commApplyList.memberProfileImage}" id="nickname-icon-pop">
@@ -252,8 +129,14 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+        const cn = "${comm.communityNo}";
+        const apimg = "${commApplyList.memberProfileImage}";
+        const apnic = "${commApplyList.memberNickname}";
+    </script>
+
     <script src="${contextPath}/resources/js/community/meeting-admin.js"></script>
 </body>
 </html>

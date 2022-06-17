@@ -349,8 +349,8 @@ public class CommunityDAO {
          
          pstmt = conn.prepareStatement(sql);
          
-         pstmt.setInt(1, communityNo);
-         pstmt.setInt(2, memberNo);
+         pstmt.setInt(1, memberNo);
+         pstmt.setInt(2, communityNo);
          
          result = pstmt.executeUpdate();
          
@@ -409,6 +409,7 @@ public class CommunityDAO {
 				comm = new Community();
 				
 				comm.setCommunityName(rs.getString(1));
+				comm.setCommunityNo(rs.getInt(2));
 			}
 		} finally {
 			close(rs);

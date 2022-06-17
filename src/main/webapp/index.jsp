@@ -9,7 +9,7 @@
 			<meta charset="UTF-8">
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>임시index</title>
+			<title>다같이 모여, 도란도란</title>
 
 			<link rel="stylesheet" href="${contextPath}/resources/css/member-community.css">
 			<link rel="stylesheet" href="${contextPath}/resources/css/board-signup.css">
@@ -22,8 +22,6 @@
 		</head>
 
 		<body>
-
-			<!-- 임시 index => 메인 완성 후 교체 -->
 
 			<main>
 				<!-- header -->
